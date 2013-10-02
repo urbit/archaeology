@@ -849,12 +849,11 @@
 ++  weld                                                ::  concatenate
   ~/  %weld
   |*  [a=(list) b=(list)]
-  =>  .(a (homo a), b (homo b))
-  |-
-  ^+  b
-  ?@  a
-    b
-  [i.a $(a t.a)]
+  =+  .(c (homo a), d (homo b))
+  |-  ^+  d
+  ?@  c
+    d
+  [i.c $(c t.c)]
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::                section 2bC, gears                    ::
 ::
