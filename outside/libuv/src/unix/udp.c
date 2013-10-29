@@ -335,6 +335,7 @@ static int uv__bind(uv_udp_t* handle,
    * None of the above applies to Linux: SO_REUSEADDR implies SO_REUSEPORT on
    * Linux and hence it does not have SO_REUSEPORT at all.
    */
+  /*
 #ifdef SO_REUSEPORT
   yes = 1;
   if (setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof yes) == -1) {
@@ -342,6 +343,7 @@ static int uv__bind(uv_udp_t* handle,
     goto out;
   }
 #endif
+*/
 
   if (flags & UV_UDP_IPV6ONLY) {
 #ifdef IPV6_V6ONLY
@@ -506,6 +508,7 @@ int uv_udp_open(uv_udp_t* handle, uv_os_sock_t sock) {
    * None of the above applies to Linux: SO_REUSEADDR implies SO_REUSEPORT on
    * Linux and hence it does not have SO_REUSEPORT at all.
    */
+  /*
 #ifdef SO_REUSEPORT
   yes = 1;
   if (setsockopt(sock, SOL_SOCKET, SO_REUSEPORT, &yes, sizeof yes) == -1) {
@@ -513,6 +516,7 @@ int uv_udp_open(uv_udp_t* handle, uv_os_sock_t sock) {
     goto out;
   }
 #endif
+*/
 
   handle->io_watcher.fd = sock;
   status = 0;
