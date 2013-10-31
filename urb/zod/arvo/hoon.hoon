@@ -2952,7 +2952,8 @@
     ==
   ++  nuck
     %+  knee  *coin  |.  ~+
-    %-  stew  :~
+    %-  stew
+    :~
       :-  ['a' 'z']  (cook |=(a=@ta [~ %tas a]) sym)
       :-  ['0' '9']  (stag ~ bisk) 
       :-  '-'        (stag ~ tash)
