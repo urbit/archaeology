@@ -110,10 +110,10 @@
     %+  snag  zar
     :~  0wN.Kdp5k.p5ncD.4Wsih.bFQFu   ::  0, ~zod, Curtis Yarvin (sator)
         0w0                           ::  1, ~nec
-        0w0                           ::  2, ~bud, Charles Songhurst (donum)
+        0w0                           ::  2, ~bud, Charles Songhurst (aequitas)
         0w0                           ::  3, ~wes
         0w0                           ::  4, ~sev
-        0wt.cKYxs.Yb5VZ.boSwm.l0yYc   ::  5, ~per, Jonathan Perlow (donum)
+        0wt.cKYxs.Yb5VZ.boSwm.l0yYc   ::  5, ~per, Jonathan Perlow (aequitas)
         0w0                           ::  6, ~sut
         0w0                           ::  7, ~let
         0w0                           ::  8, ~ful
@@ -122,7 +122,7 @@
         0w0                           ::  11, ~dur
         0w0                           ::  12, ~wep
         0w0                           ::  13, ~ser
-        0w3j.H0sty.jHa3F.JlD26.4LPwV  ::  14, ~wyl, Zimran Ahmed (donum)
+        0w3j.H0sty.jHa3F.JlD26.4LPwV  ::  14, ~wyl, Zimran Ahmed (aequitas)
         0w3F.QdvV-.toAsR.hvUNk.fHjW6  ::  15, ~sun, Colin Smith (fortuna)
         0w0                           ::  16, ~ryp
         0w0                           ::  17, ~syx
@@ -196,7 +196,7 @@
         0w0                           ::  85, ~sum
         0w0                           ::  86, ~mut
         0w0                           ::  87, ~nyx
-        0w30.UUr19.iBPlD.wfyJD.2CWPv  ::  88, ~rex, Ben Davenport (donum)
+        0w30.UUr19.iBPlD.wfyJD.2CWPv  ::  88, ~rex, Ben Davenport (aequitas)
         0w0                           ::  89, ~teb
         0w0                           ::  90, ~fus
         0w0                           ::  91, ~hep
@@ -216,7 +216,7 @@
         0w0                           ::  105, ~det
         0w0                           ::  106, ~bet
         0w0                           ::  107, ~bel
-        0w0                           ::  108, ~tux, Chen Zheng (donum)
+        0w0                           ::  108, ~tux, Chen Zheng (aequitas)
         0w0                           ::  109, ~tug
         0w0                           ::  110, ~myr
         0w0                           ::  111, ~pel
@@ -321,7 +321,7 @@
         0w0                           ::  210, ~rel
         0w0                           ::  211, ~rud
         0w0                           ::  212, ~nes
-        0w16.~8NZV.VyMmf.4toMO.pui1R  ::  213, ~hes, Alex Moskalyuk (donum)
+        0w16.~8NZV.VyMmf.4toMO.pui1R  ::  213, ~hes, Alex Moskalyuk (aequitas)
         0w0                           ::  214, ~fet
         0w0                           ::  215, ~des
         0w0                           ::  216, ~ret
@@ -343,7 +343,7 @@
         0w0                           ::  232, ~lyn
         0w0                           ::  233, ~dyn
         0w0                           ::  234, ~dem
-        0w0                           ::  235, ~lux, Mark Zavislak (donum)
+        0w0                           ::  235, ~lux, Mark Zavislak (aequitas)
         0w0                           ::  236, ~fed
         0w0                           ::  237, ~sed
         0w0                           ::  238, ~bec
