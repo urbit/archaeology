@@ -174,7 +174,7 @@
         0w0                           ::  63, ~pur
         0w0                           ::  64, ~rys
         0w0                           ::  65, ~reb
-        0wp.LslIa.IFSM9.mIp-z.KBIBh   ::  66, ~den  Michael Hartl (donum)
+        0wp.LslIa.IFSM9.mIp-z.KBIBh   ::  66, ~den, Michael Hartl (donum)
         0w0                           ::  67, ~nut
         0w0                           ::  68, ~sub
         0w0                           ::  69, ~pet
@@ -192,11 +192,11 @@
         0w0                           ::  81, ~mul
         0w0                           ::  82, ~nym
         0w0                           ::  83, ~tev
-        0w2x.~ldho.Oo7kE.QqNSx.XteFh  ::  84, ~web  Ar Vicco (pseud) (donum)
+        0w2x.~ldho.Oo7kE.QqNSx.XteFh  ::  84, ~web, Ar Vicco (pseud) (donum)
         0w0                           ::  85, ~sum
         0w0                           ::  86, ~mut
         0w0                           ::  87, ~nyx
-        0w30.UUr19.iBPlD.wfyJD.2CWPv  ::  88, ~rex  Ben Davenport (donum)
+        0w30.UUr19.iBPlD.wfyJD.2CWPv  ::  88, ~rex, Ben Davenport (donum)
         0w0                           ::  89, ~teb
         0w0                           ::  90, ~fus
         0w0                           ::  91, ~hep
@@ -207,7 +207,7 @@
         0w0                           ::  96, ~sel
         0w0                           ::  97, ~ruc
         0w0                           ::  98, ~dec
-        0w1L.NQ-5f.ABF9R.kVwVJ.zRfn2  ::  99, ~wex  Pax Dickinson (donum)
+        0w1L.NQ-5f.ABF9R.kVwVJ.zRfn2  ::  99, ~wex, Pax Dickinson (donum)
         0w0                           ::  100, ~syr
         0w0                           ::  101, ~wet
         0w0                           ::  102, ~dyl
@@ -216,7 +216,7 @@
         0w0                           ::  105, ~det
         0w0                           ::  106, ~bet
         0w0                           ::  107, ~bel
-        0w0                           ::  108, ~tux Chen Zheng (donum)
+        0w0                           ::  108, ~tux, Chen Zheng (donum)
         0w0                           ::  109, ~tug
         0w0                           ::  110, ~myr
         0w0                           ::  111, ~pel
@@ -343,7 +343,7 @@
         0w0                           ::  232, ~lyn
         0w0                           ::  233, ~dyn
         0w0                           ::  234, ~dem
-        0w0                           ::  235, ~lux Mark Zavislak (donum)
+        0w0                           ::  235, ~lux, Mark Zavislak (donum)
         0w0                           ::  236, ~fed
         0w0                           ::  237, ~sed
         0w0                           ::  238, ~bec
