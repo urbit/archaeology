@@ -1156,7 +1156,7 @@
       **
       ** Returns the entry's sequence number.
       */
-        c3_w
+        c3_d
         u2_sist_pack(u2_reck* rec_u, u2_rent* ent_u);
 
       /* u2_sist_rent(): retrieve a log entry.
@@ -1164,12 +1164,17 @@
       ** Caller must free ent_u->bob_w.
       */
         void
-        u2_sist_rent(c3_w ent_w, u2_rent* ent_u);
+        u2_sist_rent(c3_d ent_d, u2_rent* ent_u);
 
       /* u2_sist_term(): term of log entry.
       */
         c3_w
-        u2_sist_term(c3_w ent_w);
+        u2_sist_term(c3_d ent_d);
+
+      /* u2_sist_song(): bring core up to date with entry n.
+      */
+        void
+        u2_sist_song(c3_d ent_d);
 
       /* u2_sist_redo(): rewrite log entries.
       **

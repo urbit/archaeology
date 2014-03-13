@@ -24,7 +24,7 @@
 
 /* u2_sist_pack(): write a blob to disk, retaining.
 */
-c3_w
+c3_d
 u2_sist_pack(u2_reck* rec_u, u2_rent* ent_u)
 {
   u2_ulog* lug_u = &u2R->lug_u;
@@ -82,14 +82,14 @@ u2_sist_pack(u2_reck* rec_u, u2_rent* ent_u)
 /* u2_sist_rent(): retrieve a log entry. Caller must free ent_u->bob_w.
 */
 void
-u2_sist_rent(c3_w ent_w, u2_rent* ent_u)
+u2_sist_rent(c3_d ent_d, u2_rent* ent_u)
 {
   u2_ulog* lug_u = &u2R->lug_u;
   c3_d     end_d;
   c3_d     tar_d;
   u2_ular  lar_u;
 
-  c3_assert(ent_w > 0);
+  c3_assert(ent_d > 0);
   end_d = lug_u->len_d;
   while ( end_d != c3_wiseof(u2_uled) ) {
     tar_d = end_d - c3_wiseof(u2_ular);
@@ -104,7 +104,7 @@ u2_sist_rent(c3_w ent_w, u2_rent* ent_u)
       c3_assert(0);
     }
     end_d = tar_d - lar_u.len_w;
-    if ( ent_w == lar_u.ent_w ) {
+    if ( ent_d == lar_u.ent_w ) {
       ent_u->tem_w = lar_u.tem_w;
       ent_u->typ_w = lar_u.typ_w;
       ent_u->len_w = lar_u.len_w;
@@ -130,15 +130,15 @@ u2_sist_rent(c3_w ent_w, u2_rent* ent_u)
 /* u2_sist_term(): term of a log entry.
 */
 c3_w
-u2_sist_term(c3_w ent_w)
+u2_sist_term(c3_d ent_d)
 {
   u2_rent ent_u;
 
-  if ( 0 == ent_w ) {
+  if ( 0 == ent_d ) {
     return 0;
   }
   else {
-    u2_sist_rent(ent_w, &ent_u);
+    u2_sist_rent(ent_d, &ent_u);
     free(ent_u.bob_w);  //  XX
     return ent_u.tem_w;
   }
@@ -372,6 +372,14 @@ _sist_sing(u2_reck* rec_u, u2_noun ovo)
     }
     u2z(ovo);
   }
+}
+
+/* u2_sist_song(): bring core up to date with ent_d.
+*/
+void
+u2_sist_song(c3_d ent_d)
+{
+  //  TODO
 }
 
 
