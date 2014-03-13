@@ -485,8 +485,10 @@ u2_lo_shut(u2_bean inn)
   }
   else {
     //  poll arvo to generate any event binding changes
-    //
-    _lo_poll();
+    //  XX remove raty_lead guard
+    if ( u2R->typ_e == u2_raty_lead ) {
+      _lo_poll();
+    }
   }
 }
 
@@ -646,6 +648,7 @@ u2_lo_loop()
 
   _lo_init();
   u2_raft_init();
+  u2_sist_boot();
 
   if ( u2_no == u2_Host.ops_u.bat ) {
     uv_run(u2L, UV_RUN_DEFAULT);
@@ -671,7 +674,7 @@ u2_lo_lead(u2_reck* rec_u)
   }
   _lo_poll();
 
-#if 1
+#if 0
   u2_loom_save(rec_u->ent_w);
 
   u2_Host.sav_u.ent_w = rec_u->ent_w;
@@ -684,6 +687,14 @@ u2_lo_lead(u2_reck* rec_u)
 #if 1
   _lo_slow();
 #endif
+}
+
+/* u2_lo_deal(): actions on demotion from leader.
+*/
+void
+u2_lo_deal(u2_reck* rec_u)
+{
+  //  TODO
 }
 
 /* _lo_mark_reck(): mark a reck.

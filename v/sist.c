@@ -22,26 +22,26 @@
 #endif
 
 
-/* u2_sist_pack(): write a blob to disk, transferring.
+/* u2_sist_pack(): write a blob to disk, retaining.
 */
 c3_w
-u2_sist_pack(u2_reck* rec_u, c3_w tem_w, c3_w typ_w, c3_w* bob_w, c3_w len_w)
+u2_sist_pack(u2_reck* rec_u, u2_rent* ent_u)
 {
   u2_ulog* lug_u = &u2R->lug_u;
   c3_d     tar_d;
   u2_ular  lar_u;
 
-  tar_d = lug_u->len_d + len_w;
+  tar_d = lug_u->len_d + ent_u->len_w;
 
-  lar_u.tem_w = tem_w;
-  lar_u.typ_w = typ_w;
+  lar_u.tem_w = ent_u->tem_w;
+  lar_u.typ_w = ent_u->typ_w;
   lar_u.syn_w = u2_cr_mug((c3_w)tar_d);
-  lar_u.mug_w = u2_cr_mug_both(u2_cr_mug_words(bob_w, len_w),
+  lar_u.mug_w = u2_cr_mug_both(u2_cr_mug_words(ent_u->bob_w, ent_u->len_w),
                                u2_cr_mug_both(u2_cr_mug(lar_u.tem_w),
                                               u2_cr_mug(lar_u.typ_w)));
   lar_u.ent_w = rec_u->ent_w;
   rec_u->ent_w++;
-  lar_u.len_w = len_w;
+  lar_u.len_w = ent_u->len_w;
 
   if ( -1 == lseek64(lug_u->fid_i, 4ULL * tar_d, SEEK_SET) ) {
     perror("lseek");
@@ -66,16 +66,133 @@ u2_sist_pack(u2_reck* rec_u, c3_w tem_w, c3_w typ_w, c3_w* bob_w, c3_w len_w)
                  lar_u.len_w,
                  lar_u.mug_w));
 #endif
-  if ( (4 * len_w) != write(lug_u->fid_i, bob_w, (4 * len_w)) ) {
+  if ( (4 * ent_u->len_w) != write(lug_u->fid_i,
+                                   ent_u->bob_w,
+                                   (4 * ent_u->len_w)) )
+  {
     perror("write");
     uL(fprintf(uH, "sist_pack: write failed\n"));
     c3_assert(0);
   }
   lug_u->len_d += (c3_d)(lar_u.len_w + c3_wiseof(lar_u));
 
-  free(bob_w);
+  return rec_u->ent_w - 1;
+}
 
-  return rec_u->ent_w;
+/* u2_sist_rent(): retrieve a log entry. Caller must free ent_u->bob_w.
+*/
+void
+u2_sist_rent(c3_w ent_w, u2_rent* ent_u)
+{
+  u2_ulog* lug_u = &u2R->lug_u;
+  c3_d     end_d;
+  c3_d     tar_d;
+  u2_ular  lar_u;
+
+  c3_assert(ent_w > 0);
+  end_d = lug_u->len_d;
+  while ( end_d != c3_wiseof(u2_uled) ) {
+    tar_d = end_d - c3_wiseof(u2_ular);
+    if ( -1 == lseek64(lug_u->fid_i, 4ULL * tar_d, SEEK_SET) ) {
+      perror("lseek");
+      uL(fprintf(uH, "sist_rent: seek failed\n"));
+      c3_assert(0);
+    }
+    if ( sizeof(lar_u) != read(lug_u->fid_i, &lar_u, sizeof(lar_u)) ) {
+      perror("read");
+      uL(fprintf(uH, "sist_rent: read failed\n"));
+      c3_assert(0);
+    }
+    end_d = tar_d - lar_u.len_w;
+    if ( ent_w == lar_u.ent_w ) {
+      ent_u->tem_w = lar_u.tem_w;
+      ent_u->typ_w = lar_u.typ_w;
+      ent_u->len_w = lar_u.len_w;
+      ent_u->bob_w = malloc(4 * lar_u.len_w);
+      if ( -1 == lseek64(lug_u->fid_i, 4ULL * end_d, SEEK_SET) ) {
+        perror("lseek");
+        uL(fprintf(uH, "sist_rent: seek failed\n"));
+        c3_assert(0);
+      }
+      if ( 4 * ent_u->len_w != read(lug_u->fid_i,
+                                    ent_u->bob_w,
+                                    4 * ent_u->len_w) )
+      {
+        perror("read");
+        uL(fprintf(uH, "sist_rent: read failed\n"));
+        c3_assert(0);
+      }
+      break;
+    }
+  }
+}
+
+/* u2_sist_term(): term of a log entry.
+*/
+c3_w
+u2_sist_term(c3_w ent_w)
+{
+  u2_rent ent_u;
+
+  if ( 0 == ent_w ) {
+    return 0;
+  }
+  else {
+    u2_sist_rent(ent_w, &ent_u);
+    free(ent_u.bob_w);  //  XX
+    return ent_u.tem_w;
+  }
+}
+
+/* u2_sist_redo(): rewrite log entries starting at ent_w, retaining.
+*/
+c3_w
+u2_sist_redo(u2_reck* rec_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
+{
+  u2_ulog* lug_u = &u2R->lug_u;
+  u2_ular  lar_u;
+  c3_d     end_d;
+  c3_d     tar_d;
+  c3_d     i_d;
+
+  //uL(fprintf(uH, "sist_redo: rewriting %llu entries starting at %llu\n", nuu_d, ent_d));
+  c3_assert(u2_raty_foll == u2R->typ_e);
+
+  end_d = lug_u->len_d;
+
+  while ( end_d != c3_wiseof(u2_uled) ) {
+    tar_d = end_d - c3_wiseof(u2_ular);
+    if ( -1 == lseek64(lug_u->fid_i, 4ULL * tar_d, SEEK_SET) ) {
+      perror("lseek");
+      uL(fprintf(uH, "sist_redo: seek failed\n"));
+      c3_assert(0);
+    }
+    if ( sizeof(lar_u) != read(lug_u->fid_i, &lar_u, sizeof(lar_u)) ) {
+      perror("read");
+      uL(fprintf(uH, "sist_redo: read failed\n"));
+      c3_assert(0);
+    }
+    c3_assert(rec_u->ent_w - 1 == lar_u.ent_w);
+    if ( ent_d == lar_u.ent_w ) {
+      break;
+    }
+    else {
+      rec_u->ent_w = rec_u->ent_w - 1;
+      end_d = tar_d - lar_u.len_w;
+    }
+  }
+  lug_u->len_d = end_d;
+  if ( -1 == ftruncate(lug_u->fid_i, 4ULL * lug_u->len_d) ) {
+    perror("ftruncate");
+    uL(fprintf(uH, "sist_redo: truncate failed\n"));
+    c3_assert(0);
+  }
+
+  for ( i_d = 0; i_d < nuu_d; i_d++) {
+    u2_sist_pack(u2A, &ent_u[i_d]);
+  }
+
+  return rec_u->ent_w - 1;
 }
 
 /* u2_sist_put(): moronic key-value store put.
@@ -1193,5 +1310,8 @@ u2_sist_boot(void)
   }
   else {
     _sist_rest(u2A);
+  }
+  if ( u2_yes == u2_Host.ops_u.bat ) {
+    u2_loom_save(u2A->ent_w);
   }
 }

@@ -436,6 +436,7 @@
         u2_ulog          lug_u;             //  event log
         c3_w             ent_w;             //  last log index
         c3_w             lat_w;             //  last log term
+        c3_d             cit_d;             //  commitIndex
         u2_raty          typ_e;             //  server type
         struct _u2_rnam* nam_u;             //  list of peers
         struct _u2_rcon* run_u;             //  unknown connections
@@ -487,8 +488,19 @@
         c3_c*            por_c;             //  port
         u2_rcon*         ron_u;             //  connection
         struct _u2_rnam* nex_u;             //  pointer to next peer
+        c3_d             nei_d;             //  next log to send them
+        c3_d             mai_d;             //  highest matching log
         u2_bean          vog;               //  did they vote for us?
       } u2_rnam;
+
+    /* u2_rent: raft log entry. Sent over the wire.
+    */
+      typedef struct {
+        c3_w             tem_w;             //  term
+        c3_w             typ_w;             //  type, %ra|%ov
+        c3_w             len_w;             //  word length of blob
+        c3_w*            bob_w;             //  blob
+      } u2_rent;
 
     /* u2_opts: command line configuration.
     */
@@ -830,6 +842,11 @@
         void
         u2_lo_lead(u2_reck* rec_u);
 
+      /* u2_lo_deal(): actions on demotion from leader.
+      */
+        void
+        u2_lo_deal(u2_reck* rec_u);
+
       /* u2_lo_exit(): shut down io across pier.
       */
         void
@@ -1137,17 +1154,30 @@
       **
       ** XX Synchronous.
       **
-      ** typ_w is a mote describing the entry type: %ov for Arvo
-      ** logs, %ra for Raft events.
-      **
       ** Returns the entry's sequence number.
       */
         c3_w
-        u2_sist_pack(u2_reck* rec_u,
-                     c3_w tem_w,
-                     c3_w typ_w,
-                     c3_w* bob_w,
-                     c3_w len_w);
+        u2_sist_pack(u2_reck* rec_u, u2_rent* ent_u);
+
+      /* u2_sist_rent(): retrieve a log entry.
+      **
+      ** Caller must free ent_u->bob_w.
+      */
+        void
+        u2_sist_rent(c3_w ent_w, u2_rent* ent_u);
+
+      /* u2_sist_term(): term of log entry.
+      */
+        c3_w
+        u2_sist_term(c3_w ent_w);
+
+      /* u2_sist_redo(): rewrite log entries.
+      **
+      ** ent_d is the location of the last entry to preserve. nuu_d is
+      ** the number of entries to write. ent_u is the entries.
+      */
+        c3_w
+        u2_sist_redo(u2_reck* rec_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u);
 
       /* u2_sist_put(): moronic key-value store put.
       **

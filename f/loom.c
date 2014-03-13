@@ -217,6 +217,9 @@ u2_loom_save(c3_w ent_w)
   u2_cheg* ceg_u;
   c3_w tot_w = 0;
 
+  //  TODO raft checkpointing
+  return u2_yes;
+
   // uL(fprintf(uH, "# saving at event %u...\n", ent_w));
   u2_wr_check_save();
 
