@@ -178,7 +178,7 @@ _raft_promote(u2_raft* raf_u)
         u2_rnam* nam_u;
 
         for ( nam_u = raf_u->nam_u; nam_u; nam_u = nam_u->nex_u ) {
-          nam_u->nei_d = raf_u->ent_w + 1;
+          nam_u->nei_d = raf_u->sis_u.ent_d + 1ULL;
           nam_u->mai_d = 0;
         }
       }
@@ -323,8 +323,9 @@ _raft_do_apen(u2_rcon* ron_u, const u2_rmsg* msg_u)
     if ( msg_u->tem_w < raf_u->tem_w ) {
       _raft_send_rasp(ron_u, 0);
     }
-    else if ( raf_u->ent_w < msg_u->rest.lai_d ||
-              msg_u->rest.lat_w != u2_sist_term(msg_u->rest.lai_d) )
+    else if ( raf_u->sis_u.ent_d < msg_u->rest.lai_d ||
+              msg_u->rest.lat_w != u2_sist_term(&raf_u->sis_u,
+                                                msg_u->rest.lai_d) )
     {
       _raft_send_rasp(ron_u, 0);
     }
@@ -333,14 +334,10 @@ _raft_do_apen(u2_rcon* ron_u, const u2_rmsg* msg_u)
     }
     else {
       c3_assert(c3__foll == raf_u->sat_w);
-      //  XX maintain ent_w more sanely
-      raf_u->ent_w = u2_sist_redo(u2A, msg_u->rest.lai_d,
-                                  msg_u->rest.apen.ent_d,
-                                  msg_u->rest.apen.ent_u);
-      raf_u->lat_w = u2_sist_term(raf_u->ent_w);
-      if ( msg_u->rest.apen.cit_d > raf_u->cit_d ) {
-        raf_u->cit_d = c3_min(msg_u->rest.apen.cit_d, raf_u->ent_w);
-        u2_sist_song(raf_u->cit_d);
+      u2_sist_redo(&raf_u->sis_u, msg_u->rest.lai_d, msg_u->rest.apen.ent_d,
+                   msg_u->rest.apen.ent_u);
+      if ( msg_u->rest.apen.cit_d > raf_u->sis_u.cit_d ) {
+        u2_sist_song(&raf_u->sis_u, u2A, msg_u->rest.apen.cit_d);
       }
       _raft_send_rasp(ron_u, 1);
     }
@@ -362,12 +359,12 @@ _raft_tall(u2_raft* raf_u, c3_d mai_d)
     }
   }
   if ( mat_w >= raf_u->pop_w / 2 &&
-       raf_u->ent_w >= mai_d &&
-       raf_u->tem_w == u2_sist_term(mai_d) )
+       raf_u->sis_u.ent_d >= mai_d &&
+       raf_u->tem_w == u2_sist_term(&raf_u->sis_u, mai_d) )
   {
     uL(fprintf(uH, "raft: committing %llu\n", mai_d));
-    raf_u->cit_d = mai_d;
-    _raft_comm(u2A, raf_u->cit_d);
+    raf_u->sis_u.cit_d = mai_d;
+    _raft_comm(u2A, mai_d);
   }
 }
 
@@ -415,9 +412,9 @@ _raft_do_revo(u2_rcon* ron_u, const u2_rmsg* msg_u)
   if ( msg_u->tem_w >= raf_u->tem_w                     &&
        (0 == raf_u->vog_c                             ||
         0 == strcmp(raf_u->vog_c, ron_u->nam_u->str_c)) &&
-       (raf_u->lat_w < msg_u->rest.lat_w              ||
-        (raf_u->lat_w == msg_u->rest.lat_w          &&
-         raf_u->ent_w <= msg_u->rest.lai_d)) )
+       (raf_u->sis_u.lat_w < msg_u->rest.lat_w        ||
+        (raf_u->sis_u.lat_w == msg_u->rest.lat_w    &&
+         raf_u->sis_u.ent_d <= msg_u->rest.lai_d)) )
   {
     raf_u->vog_c = ron_u->nam_u->str_c;
     u2_sist_put("vote", (c3_y*)raf_u->vog_c, strlen(raf_u->vog_c));
@@ -1272,7 +1269,7 @@ _raft_write_revo(u2_rcon* ron_u, u2_rmsg* msg_u)
 {
   u2_raft* raf_u = ron_u->raf_u;
 
-  _raft_write_rest(ron_u, raf_u->ent_w, raf_u->lat_w, msg_u);
+  _raft_write_rest(ron_u, raf_u->sis_u.ent_d, raf_u->sis_u.lat_w, msg_u);
   msg_u->typ_w = c3__revo;
 }
 
@@ -1321,22 +1318,22 @@ _raft_send_apen(u2_rcon* ron_u)
   c3_d     ent_d;
 
   c3_assert(nam_u);
-  c3_assert(nam_u->nei_d <= raf_u->ent_w);
-  ent_d = raf_u->ent_w - nam_u->nei_d;
+  c3_assert(nam_u->nei_d <= raf_u->sis_u.ent_d);
+  ent_d = raf_u->sis_u.ent_d - nam_u->nei_d;
   ent_u = malloc(sizeof(u2_rent) * ent_d);
 
   {
     c3_d i_d;
 
     for ( i_d = 0; i_d < ent_d; i_d++ ) {
-      u2_sist_rent(nam_u->nei_d + i_d, ent_u + i_d);
+      u2_sist_rent(&raf_u->sis_u, nam_u->nei_d + i_d, ent_u + i_d);
     }
   }
 
   _raft_write_apen(ron_u,
                    nam_u->nei_d - 1,
-                   u2_sist_term(nam_u->nei_d - 1),
-                   raf_u->cit_d,
+                   u2_sist_term(&raf_u->sis_u, nam_u->nei_d - 1),
+                   raf_u->sis_u.cit_d,
                    ent_d,
                    ent_u,
                    msg_u);
@@ -1733,7 +1730,7 @@ _raft_comm_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
   u2_raft* raf_u = tim_u->data;
 
-  _raft_comm(u2A, raf_u->ent_w);
+  _raft_comm(u2A, raf_u->sis_u.ent_d);
 }
 
 /* _raft_push(): write log entry to raft, transferring.
@@ -1751,9 +1748,7 @@ _raft_push(u2_raft* raf_u, c3_w* bob_w, c3_w len_w)
   ent_u.len_w = len_w;
   ent_u.bob_w = bob_w;
 
-  raf_u->ent_w = u2_sist_pack(u2A, &ent_u);
-  raf_u->lat_w = raf_u->tem_w;  //  XX
-  //uL(fprintf(uH, "raft: packed to %u\n", raf_u->ent_w));
+  u2_sist_pack(&raf_u->sis_u, &ent_u);
   _raft_conn_all(raf_u, _raft_send_apen);
 
   if ( 1 == raf_u->pop_w ) {
@@ -1763,7 +1758,7 @@ _raft_push(u2_raft* raf_u, c3_w* bob_w, c3_w len_w)
   }
 
   free(bob_w);
-  return raf_u->ent_w;
+  return raf_u->sis_u.ent_d;
 }
 
 /* _raft_kick_all(): kick a list of events, transferring.
@@ -1834,7 +1829,7 @@ u2_raft_work(u2_reck* rec_u)
     //  Poke pending events, leaving the poked events and errors on rec_u->roe.
     //
     {
-      if ( 0 == u2R->lug_u.len_d ) {
+      if ( 0 == u2R->sis_u.lug_u.len_d ) {
         return;
       }
       ova = u2_ckb_flop(rec_u->roe);

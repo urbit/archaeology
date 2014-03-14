@@ -419,18 +419,24 @@
         struct _u2_utty* nex_u;             //  next in host list
       } u2_utty;
 
+    /* u2_sist: disk persistence layer.
+    */
+      typedef struct {
+        u2_ulog lug_u;
+        c3_d    ent_d;
+        c3_w    lat_w;
+        c3_d    cit_d;
+      } u2_sist;
+
     /* u2_raft: raft state.
     */
       typedef struct {
         uv_tcp_t         wax_u;             //  TCP listener
         uv_timer_t       tim_u;             //  election/heartbeat timer
-        u2_ulog          lug_u;             //  event log
-        c3_w             ent_w;             //  last log index
-        c3_w             lat_w;             //  last log term
-        c3_d             cit_d;             //  commitIndex
+        u2_sist          sis_u;             //  event log
         c3_w             sat_w;             //  state (%foll|%cand|%lead)
         struct _u2_rnam* nam_u;             //  list of peers
-        struct _u2_rcon* run_u;             //  unknown connections
+        struct _u2_rcon* run_u;             //  unidentified conns
         c3_w             pop_w;             //  population count
         c3_w             vot_w;             //  votes in this election
         c3_c*            str_c;             //  our name
@@ -1144,36 +1150,34 @@
       /* u2_sist_pack(): write a log entry to disk.
       **
       ** XX Synchronous.
-      **
-      ** Returns the entry's sequence number.
       */
-        c3_d
-        u2_sist_pack(u2_reck* rec_u, u2_rent* ent_u);
+        void
+        u2_sist_pack(u2_sist* sis_u, u2_rent* ent_u);
 
       /* u2_sist_rent(): retrieve a log entry.
       **
       ** Caller must free ent_u->bob_w.
       */
         void
-        u2_sist_rent(c3_d ent_d, u2_rent* ent_u);
+        u2_sist_rent(u2_sist* sis_u, c3_d ent_d, u2_rent* ent_u);
 
       /* u2_sist_term(): term of log entry.
       */
         c3_w
-        u2_sist_term(c3_d ent_d);
+        u2_sist_term(u2_sist* sis_u, c3_d ent_d);
 
-      /* u2_sist_song(): bring core up to date with entry n.
+      /* u2_sist_song(): bring reck up to date with entry ent_d.
       */
         void
-        u2_sist_song(c3_d ent_d);
+        u2_sist_song(u2_sist* sis_u, u2_reck* rec_u, c3_d cit_d);
 
       /* u2_sist_redo(): rewrite log entries.
       **
       ** ent_d is the location of the last entry to preserve. nuu_d is
       ** the number of entries to write. ent_u is the entries.
       */
-        c3_w
-        u2_sist_redo(u2_reck* rec_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u);
+        void
+        u2_sist_redo(u2_sist* sis_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u);
 
       /* u2_sist_put(): moronic key-value store put.
       **

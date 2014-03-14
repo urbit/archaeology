@@ -24,23 +24,29 @@
 
 /* u2_sist_pack(): write a blob to disk, retaining.
 */
-c3_d
-u2_sist_pack(u2_reck* rec_u, u2_rent* ent_u)
+void
+u2_sist_pack(u2_sist* sis_u, u2_rent* ent_u)
 {
-  u2_ulog* lug_u = &u2R->lug_u;
+  u2_ulog* lug_u = &sis_u->lug_u;
   c3_d     tar_d;
   u2_ular  lar_u;
 
   tar_d = lug_u->len_d + ent_u->len_w;
 
+  c3_assert(ent_u->tem_w >= sis_u->lat_w);
+  sis_u->ent_d++;
+  sis_u->lat_w = ent_u->tem_w;
   lar_u.tem_w = ent_u->tem_w;
   lar_u.typ_w = ent_u->typ_w;
   lar_u.syn_w = u2_cr_mug((c3_w)tar_d);
   lar_u.mug_w = u2_cr_mug_both(u2_cr_mug_words(ent_u->bob_w, ent_u->len_w),
                                u2_cr_mug_both(u2_cr_mug(lar_u.tem_w),
                                               u2_cr_mug(lar_u.typ_w)));
-  lar_u.ent_w = rec_u->ent_w;
-  rec_u->ent_w++;
+  lar_u.ent_w = sis_u->ent_d;
+  if ( lar_u.ent_w != sis_u->ent_d ) {
+    uL(fprintf(uH, "sist: 32-bit sequence number overflow\n"));
+    c3_assert(0);
+  }
   lar_u.len_w = ent_u->len_w;
 
   if ( -1 == lseek64(lug_u->fid_i, 4ULL * tar_d, SEEK_SET) ) {
@@ -75,16 +81,14 @@ u2_sist_pack(u2_reck* rec_u, u2_rent* ent_u)
     c3_assert(0);
   }
   lug_u->len_d += (c3_d)(lar_u.len_w + c3_wiseof(lar_u));
-
-  return rec_u->ent_w - 1;
 }
 
 /* u2_sist_rent(): retrieve a log entry. Caller must free ent_u->bob_w.
 */
 void
-u2_sist_rent(c3_d ent_d, u2_rent* ent_u)
+u2_sist_rent(u2_sist* sis_u, c3_d ent_d, u2_rent* ent_u)
 {
-  u2_ulog* lug_u = &u2R->lug_u;
+  u2_ulog* lug_u = &sis_u->lug_u;
   c3_d     end_d;
   c3_d     tar_d;
   u2_ular  lar_u;
@@ -130,7 +134,7 @@ u2_sist_rent(c3_d ent_d, u2_rent* ent_u)
 /* u2_sist_term(): term of a log entry.
 */
 c3_w
-u2_sist_term(c3_d ent_d)
+u2_sist_term(u2_sist* sis_u, c3_d ent_d)
 {
   u2_rent ent_u;
 
@@ -138,24 +142,25 @@ u2_sist_term(c3_d ent_d)
     return 0;
   }
   else {
-    u2_sist_rent(ent_d, &ent_u);
+    u2_sist_rent(sis_u, ent_d, &ent_u);
     free(ent_u.bob_w);  //  XX
     return ent_u.tem_w;
   }
 }
 
-/* u2_sist_redo(): rewrite log entries starting at ent_w, retaining.
+/* u2_sist_redo(): append log entries starting at ent_w, retaining.
 */
-c3_w
-u2_sist_redo(u2_reck* rec_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
+void
+u2_sist_redo(u2_sist* sis_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
 {
-  u2_ulog* lug_u = &u2R->lug_u;
+  u2_ulog* lug_u = &sis_u->lug_u;
   u2_ular  lar_u;
   c3_d     end_d;
   c3_d     tar_d;
   c3_d     i_d;
 
   //uL(fprintf(uH, "sist_redo: rewriting %llu entries starting at %llu\n", nuu_d, ent_d));
+  c3_assert(sis_u->cit_d <= ent_d);
   end_d = lug_u->len_d;
 
   while ( end_d != c3_wiseof(u2_uled) ) {
@@ -170,12 +175,14 @@ u2_sist_redo(u2_reck* rec_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
       uL(fprintf(uH, "sist_redo: read failed\n"));
       c3_assert(0);
     }
-    c3_assert(rec_u->ent_w - 1 == lar_u.ent_w);
+    c3_assert(sis_u->ent_d == lar_u.ent_w);
+    c3_assert(sis_u->lat_w >= lar_u.tem_w);
+    sis_u->lat_w = lar_u.tem_w;
     if ( ent_d == lar_u.ent_w ) {
       break;
     }
     else {
-      rec_u->ent_w = rec_u->ent_w - 1;
+      sis_u->ent_d = sis_u->ent_d - 1ULL;
       end_d = tar_d - lar_u.len_w;
     }
   }
@@ -187,10 +194,8 @@ u2_sist_redo(u2_reck* rec_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
   }
 
   for ( i_d = 0; i_d < nuu_d; i_d++) {
-    u2_sist_pack(u2A, &ent_u[i_d]);
+    u2_sist_pack(sis_u, &ent_u[i_d]);
   }
-
-  return rec_u->ent_w - 1;
 }
 
 /* u2_sist_put(): moronic key-value store put.
@@ -375,9 +380,11 @@ _sist_sing(u2_reck* rec_u, u2_noun ovo)
 /* u2_sist_song(): bring core up to date with ent_d.
 */
 void
-u2_sist_song(c3_d ent_d)
+u2_sist_song(u2_sist* sis_u, u2_reck* rec_u, c3_d cit_d)
 {
   //  TODO
+  uL(fprintf(uH, "sist_song: %u -> %llu\n", rec_u->ent_w, cit_d));
+  sis_u->cit_d = c3_min(cit_d, sis_u->ent_d);
 }
 
 
@@ -667,7 +674,7 @@ _sist_zest(u2_reck* rec_u)
       uL(fprintf(uH, "can't create record (%s)\n", ful_c));
       u2_lo_bail(rec_u);
     }
-    u2R->lug_u.fid_i = fid_i;
+    u2R->sis_u.lug_u.fid_i = fid_i;
   }
 
   //  Generate a 31-bit salt.
@@ -715,7 +722,7 @@ _sist_zest(u2_reck* rec_u)
       u2_lo_bail(rec_u);
     }
 
-    u2R->lug_u.len_d = c3_wiseof(led_u);
+    u2R->sis_u.lug_u.len_d = c3_wiseof(led_u);
   }
 
   //  Work through the boot events.
@@ -930,8 +937,8 @@ _sist_rest(u2_reck* rec_u)
 
       return;
     }
-    u2R->lug_u.fid_i = fid_i;
-    u2R->lug_u.len_d = ((buf_b.st_size + 3ULL) >> 2ULL);
+    u2R->sis_u.lug_u.fid_i = fid_i;
+    u2R->sis_u.lug_u.len_d = ((buf_b.st_size + 3ULL) >> 2ULL);
   }
 
   //  Check the fscking header.  It's probably corrupt.
@@ -944,8 +951,8 @@ _sist_rest(u2_reck* rec_u)
     }
 
     if ( u2_mug('f') == led_u.mag_l ) {
-      _sist_rest_nuu(&u2R->lug_u, led_u, ful_c);
-      fid_i = u2R->lug_u.fid_i;
+      _sist_rest_nuu(&u2R->sis_u.lug_u, led_u, ful_c);
+      fid_i = u2R->sis_u.lug_u.fid_i;
     }
     else if (u2_mug('g') != led_u.mag_l ) {
       uL(fprintf(uH, "record (%s) is obsolete (or corrupt)\n", ful_c));
@@ -1008,7 +1015,7 @@ _sist_rest(u2_reck* rec_u)
     c3_w ent_w;
     c3_d end_d;
 
-    end_d = u2R->lug_u.len_d;
+    end_d = u2R->sis_u.lug_u.len_d;
     ent_w = 0;
 
     if ( -1 == lseek64(fid_i, 4ULL * end_d, SEEK_SET) ) {
@@ -1052,7 +1059,7 @@ _sist_rest(u2_reck* rec_u)
                       lar_u.len_w,
                       lar_u.mug_w));
 #endif
-      if ( end_d == u2R->lug_u.len_d ) {
+      if ( end_d == u2R->sis_u.lug_u.len_d ) {
         ent_w = las_w = lar_u.ent_w;
       }
       else {
@@ -1209,7 +1216,7 @@ _sist_rest(u2_reck* rec_u)
     c3_d    tar_d;
 
     rec_u->ent_w++;
-    end_d = u2R->lug_u.len_d;
+    end_d = u2R->sis_u.lug_u.len_d;
     while ( end_d != c3_wiseof(u2_uled) ) {
       tar_d = end_d - c3_wiseof(u2_ular);
       if ( -1 == lseek64(fid_i, 4ULL * tar_d, SEEK_SET) ) {
