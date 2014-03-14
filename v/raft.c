@@ -1707,6 +1707,8 @@ _raft_punk(u2_reck* rec_u, u2_noun ovo)
   // uL(fprintf(uH, "punk oot %s\n", txt_c));
 }
 
+/* _raft_comm(): mark events committed.
+*/
 static void
 _raft_comm(u2_reck* rec_u, c3_w bid_w)
 {
@@ -1725,6 +1727,8 @@ _raft_comm(u2_reck* rec_u, c3_w bid_w)
   u2_lo_shut(u2_yes);
 }
 
+/* _raft_comm_cb(): call _raft_comm from single-instance mode.
+*/
 static void
 _raft_comm_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
@@ -1733,7 +1737,7 @@ _raft_comm_cb(uv_timer_t* tim_u, c3_i sas_i)
   _raft_comm(u2A, raf_u->sis_u.ent_d);
 }
 
-/* _raft_push(): write log entry to raft, transferring.
+/* _raft_push(): write ovum to raft, transferring.
 */
 static c3_w
 _raft_push(u2_raft* raf_u, c3_w* bob_w, c3_w len_w)
@@ -1749,12 +1753,14 @@ _raft_push(u2_raft* raf_u, c3_w* bob_w, c3_w len_w)
   ent_u.bob_w = bob_w;
 
   u2_sist_pack(&raf_u->sis_u, &ent_u);
-  _raft_conn_all(raf_u, _raft_send_apen);
 
   if ( 1 == raf_u->pop_w ) {
     if ( !uv_is_active((uv_handle_t*)&raf_u->tim_u) ) {
       uv_timer_start(&raf_u->tim_u, _raft_comm_cb, 0, 0);
     }
+  }
+  else {
+    _raft_conn_all(raf_u, _raft_send_apen);
   }
 
   free(bob_w);

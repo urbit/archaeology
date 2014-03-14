@@ -917,14 +917,6 @@ _sist_rest(u2_reck* rec_u)
     }
   }
 
-  if ( 0 != rec_u->ent_w ) {
-    u2_noun ent = u2_dc("scot", c3__ud, rec_u->ent_w);
-    c3_c* ent_c = u2_cr_string(ent);
-    uL(fprintf(uH, "rest: checkpoint to event %s\n", ent_c));
-    free(ent_c);
-    u2z(ent);
-  }
-
   //  Open the fscking file.  Does it even exist?
   {
     snprintf(ful_c, 2048, "%s/egz.hope", u2_Host.cpu_c);
