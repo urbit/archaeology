@@ -462,9 +462,9 @@ u2_lo_shut(u2_bean inn)
   // u2_lo_grab("lo_shut c", u2_none);
 
   //  for input operations, poll fs (XX not permanent)
-  //  XX remove raty_lead guard
+  //  TODO remove c3__lead guard
   //
-  if ( u2R->typ_e == u2_raty_lead && u2_yes == inn ) {
+  if ( c3__lead == u2R->sat_w && u2_yes == inn ) {
     u2_unix_ef_look();
   }
 
@@ -485,8 +485,8 @@ u2_lo_shut(u2_bean inn)
   }
   else {
     //  poll arvo to generate any event binding changes
-    //  XX remove raty_lead guard
-    if ( u2R->typ_e == u2_raty_lead ) {
+    //  TODO remove c3__lead guard
+    if ( c3__lead == u2R->sat_w ) {
       _lo_poll();
     }
   }

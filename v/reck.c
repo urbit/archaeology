@@ -986,7 +986,7 @@ u2_reck_plan(u2_reck* rec_u,
              u2_noun  pax,
              u2_noun  fav)
 {
-  if ( u2_raty_lead == u2R->typ_e ) {
+  if ( c3__lead == u2R->sat_w ) {
     u2_noun egg = u2nc(pax, fav);
     rec_u->roe = u2nc(u2nc(u2_nul, egg), rec_u->roe);
   }

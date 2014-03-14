@@ -155,12 +155,12 @@ _raft_election_rand()
 static void
 _raft_promote(u2_raft* raf_u)
 {
-  if ( u2_raty_lead == raf_u->typ_e ) {
+  if ( c3__lead == raf_u->sat_w ) {
     uL(fprintf(uH, "raft: double promote; ignoring\n"));
   }
   else {
     if ( 1 != raf_u->pop_w ) {
-      c3_assert(u2_raty_cand == raf_u->typ_e);
+      c3_assert(c3__cand == raf_u->sat_w);
       uL(fprintf(uH, "raft: cand -> lead\n"));
 
       //  Reset timer for heartbeats.
@@ -184,7 +184,7 @@ _raft_promote(u2_raft* raf_u)
       }
     }
 
-    raf_u->typ_e = u2_raty_lead;
+    raf_u->sat_w = c3__lead;
 
     if ( u2_no == u2_Host.ops_u.bat ) {
       u2_lo_lead(u2A);
@@ -197,14 +197,14 @@ _raft_promote(u2_raft* raf_u)
 static void
 _raft_demote(u2_raft* raf_u)
 {
-  u2_raty typ_e = raf_u->typ_e;
+  c3_w sat_w = raf_u->sat_w;
 
   raf_u->vog_c = 0;
   u2_sist_nil("vote");
   raf_u->vot_w = 0;
-  raf_u->typ_e = u2_raty_foll;
+  raf_u->sat_w = c3__foll;
 
-  if ( u2_raty_lead == typ_e ) {
+  if ( c3__lead == sat_w ) {
     c3_i sas_i;
 
     uL(fprintf(uH, "raft: lead -> foll\n"));
@@ -216,7 +216,7 @@ _raft_demote(u2_raft* raf_u)
     u2_lo_deal(u2A);
   }
   else {
-    c3_assert(u2_raty_cand == typ_e);
+    c3_assert(c3__cand == sat_w);
     uL(fprintf(uH, "raft: cand -> foll\n"));
   }
 }
@@ -230,8 +230,8 @@ _raft_note_term(u2_raft* raf_u, c3_w tem_w)
     uL(fprintf(uH, "raft: got term from network: %d\n", tem_w));
     raf_u->tem_w = tem_w;
     u2_sist_put("term", (c3_y*)&raf_u->tem_w, sizeof(c3_w));
-    c3_assert(raf_u->typ_e != u2_raty_none);
-    if ( raf_u->typ_e == u2_raty_foll ) {
+    c3_assert(raf_u->sat_w != 0);
+    if ( raf_u->sat_w == c3__foll ) {
       c3_assert(0 == raf_u->vot_w);
     } else _raft_demote(raf_u);
   }
@@ -287,7 +287,7 @@ _raft_do_rest(u2_rcon* ron_u, const u2_rmsg* msg_u)
 {
   u2_raft* raf_u = ron_u->raf_u;
 
-  if ( u2_raty_cand == raf_u->typ_e || u2_raty_foll == raf_u->typ_e ) {
+  if ( c3__cand == raf_u->sat_w || c3__foll == raf_u->sat_w ) {
     c3_i sas_i;
 
     sas_i = uv_timer_stop(&raf_u->tim_u);
@@ -299,7 +299,7 @@ _raft_do_rest(u2_rcon* ron_u, const u2_rmsg* msg_u)
 
   _raft_rest_name(ron_u, msg_u->rest.nam_c);
   _raft_note_term(raf_u, msg_u->tem_w);
-  if ( u2_raty_foll != raf_u->typ_e &&
+  if ( c3__foll != raf_u->sat_w &&
        c3__apen == msg_u->typ_w )
   {
     uL(fprintf(uH, "raft: got apen from new leader\n"));
@@ -332,7 +332,7 @@ _raft_do_apen(u2_rcon* ron_u, const u2_rmsg* msg_u)
       _raft_send_rasp(ron_u, 1);
     }
     else {
-      c3_assert(u2_raty_foll == raf_u->typ_e);
+      c3_assert(c3__foll == raf_u->sat_w);
       //  XX maintain ent_w more sanely
       raf_u->ent_w = u2_sist_redo(u2A, msg_u->rest.lai_d,
                                   msg_u->rest.apen.ent_d,
@@ -1407,21 +1407,21 @@ _raft_time_cb(uv_timer_t* tim_u, c3_i sas_i)
   //uL(fprintf(uH, "raft: time\n"));
 
   c3_assert(sas_i == 0);
-  switch ( raf_u->typ_e ) {
+  switch ( raf_u->sat_w ) {
     default: {
       uL(fprintf(uH, "raft: time_cb: unknown server state\n"));
       c3_assert(0);
     }
-    case u2_raty_foll: {
+    case c3__foll: {
       uL(fprintf(uH, "raft: foll -> cand\n"));
-      raf_u->typ_e = u2_raty_cand;
+      raf_u->sat_w = c3__cand;
       // continue to cand
     }
-    case u2_raty_cand: {
+    case c3__cand: {
       _raft_start_election(raf_u);
       break;
     }
-    case u2_raty_lead: {
+    case c3__lead: {
       _raft_heartbeat(raf_u);
       break;
     }
@@ -1434,7 +1434,7 @@ static void
 _raft_foll_init(u2_raft* raf_u)
 {
   uL(fprintf(uH, "raft: none -> foll\n"));
-  raf_u->typ_e = u2_raty_foll;
+  raf_u->sat_w = c3__foll;
 
   //  Initialize and count peers.
   {
@@ -1487,7 +1487,7 @@ _raft_foll_init(u2_raft* raf_u)
       if ( 0 == strcmp(vog_c, raf_u->str_c) ) {
         raf_u->vog_c = raf_u->str_c;
         raf_u->vot_w = 1;
-        raf_u->typ_e = u2_raty_cand;
+        raf_u->sat_w = c3__cand;
       }
       else {
         u2_rnam* nam_u;
@@ -1743,7 +1743,7 @@ _raft_push(u2_raft* raf_u, c3_w* bob_w, c3_w len_w)
 {
   u2_rent ent_u;
 
-  c3_assert(u2_raty_lead == raf_u->typ_e);
+  c3_assert(c3__lead == raf_u->sat_w);
   c3_assert(0 != bob_w && 0 < len_w);
 
   ent_u.tem_w = raf_u->tem_w;
@@ -1785,7 +1785,7 @@ _raft_kick_all(u2_reck* rec_u, u2_noun vir)
 void
 u2_raft_work(u2_reck* rec_u)
 {
-  if ( u2R->typ_e != u2_raty_lead ) {
+  if ( u2R->sat_w != c3__lead ) {
     c3_assert(rec_u->ova.egg_u == 0);
     if ( u2_nul != rec_u->roe ) {
       uL(fprintf(uH, "raft: dropping roe!!\n"));

@@ -419,15 +419,6 @@
         struct _u2_utty* nex_u;             //  next in host list
       } u2_utty;
 
-    /* u2_raty: raft server type.
-    */
-      typedef enum {
-        u2_raty_none,
-        u2_raty_foll,
-        u2_raty_cand,
-        u2_raty_lead
-      } u2_raty;
-
     /* u2_raft: raft state.
     */
       typedef struct {
@@ -437,7 +428,7 @@
         c3_w             ent_w;             //  last log index
         c3_w             lat_w;             //  last log term
         c3_d             cit_d;             //  commitIndex
-        u2_raty          typ_e;             //  server type
+        c3_w             sat_w;             //  state (%foll|%cand|%lead)
         struct _u2_rnam* nam_u;             //  list of peers
         struct _u2_rcon* run_u;             //  unknown connections
         c3_w             pop_w;             //  population count

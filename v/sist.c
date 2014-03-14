@@ -156,8 +156,6 @@ u2_sist_redo(u2_reck* rec_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
   c3_d     i_d;
 
   //uL(fprintf(uH, "sist_redo: rewriting %llu entries starting at %llu\n", nuu_d, ent_d));
-  c3_assert(u2_raty_foll == u2R->typ_e);
-
   end_d = lug_u->len_d;
 
   while ( end_d != c3_wiseof(u2_uled) ) {
