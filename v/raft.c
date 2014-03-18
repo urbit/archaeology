@@ -1719,7 +1719,6 @@ _raft_comm(u2_reck* rec_u, c3_w bid_w)
   egg_u = rec_u->ova.egg_u;
   while ( egg_u ) {
     if ( egg_u->ent_w <= bid_w ) {
-      egg_u->did = u2_yes;
       egg_u->cit = u2_yes;
     } else break;
     egg_u = egg_u->nex_u;
@@ -1805,9 +1804,8 @@ u2_raft_work(u2_reck* rec_u)
     while ( rec_u->ova.egg_u ) {
       egg_u = rec_u->ova.egg_u;
 
-      if ( u2_yes == egg_u->did ) {
+      if ( u2_yes == egg_u->cit ) {
         vir = egg_u->vir;
-
         if ( egg_u == rec_u->ova.geg_u ) {
           c3_assert(egg_u->nex_u == 0);
           rec_u->ova.geg_u = rec_u->ova.egg_u = 0;
@@ -1819,15 +1817,7 @@ u2_raft_work(u2_reck* rec_u)
           free(egg_u);
         }
 
-        if ( u2_yes == egg_u->cit ) {
-          _raft_kick_all(rec_u, vir);
-        }
-        else {
-          //  We poked an event, but Raft failed to persist it.
-          //  TODO: gracefully recover.
-          uL(fprintf(uH, "vere: event executed but not persisted\n"));
-          c3_assert(0);
-        }
+        _raft_kick_all(rec_u, vir);
       }
       else break;
     }
@@ -1872,7 +1862,6 @@ u2_raft_work(u2_reck* rec_u)
           egg_u = c3_malloc(sizeof(*egg_u));
           egg_u->nex_u = 0;
           egg_u->cit = u2_no;
-          egg_u->did = u2_no;
           egg_u->vir = vir;
 
           ron = u2_cke_jam(u2nc(u2k(rec_u->now), ovo));

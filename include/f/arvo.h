@@ -10,7 +10,6 @@
 
       typedef struct _u2_cart {
         u2_noun vir;                      //  effects of ovum
-        u2_bean did;                      //  cart considered for commit?
         u2_bean cit;                      //  cart committed?
         c3_w    ent_w;                    //  entry in raft queue?
         void (*clr_f)                     //  ovum processing failed
