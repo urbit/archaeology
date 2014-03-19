@@ -277,9 +277,8 @@ void
 u2_ames_io_init()
 {
   u2_ames* sam_u = &u2_Host.sam_u;
-  c3_s por_s;
+  c3_s     por_s = u2_Host.ops_u.por_s;
 
-  por_s = u2_Host.ops_u.por_s;
   if ( 0 != u2_Host.ops_u.imp_c ) {
     u2_noun imp   = u2_ci_string(u2_Host.ops_u.imp_c);
     u2_noun num   = u2_dc("slaw", 'p', imp);
@@ -303,13 +302,8 @@ u2_ames_io_init()
 
   //  Bind and stuff.
   {
-    struct sockaddr_in add_u;
+    struct sockaddr_in add_u = uv_ip4_addr("0.0.0.0", por_s);
     c3_i               add_i = sizeof(add_u);
-
-    memset(&add_u, 0, sizeof(add_u));
-    add_u.sin_family = AF_INET;
-    add_u.sin_addr.s_addr = htonl(INADDR_ANY);
-    add_u.sin_port = htons(por_s);
 
     if ( uv_udp_bind(&sam_u->wax_u, add_u, 0) != 0 ) {
       uL(fprintf(uH, "ames: bind: %s\n",
