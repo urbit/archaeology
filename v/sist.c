@@ -186,6 +186,78 @@ u2_sist_redo(u2_sist* sis_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
   }
 }
 
+/* _sist_suck(): past failure.
+*/
+static void
+_sist_suck(u2_reck* rec_u, u2_noun ovo, u2_noun gon)
+{
+  uL(fprintf(uH, "sing: ovum failed!\n"));
+  {
+    c3_c* hed_c = u2_cr_string(u2h(u2t(ovo)));
+
+    uL(fprintf(uH, "fail %s\n", hed_c));
+    free(hed_c);
+  }
+
+  u2_lo_punt(2, u2_ckb_flop(u2k(u2t(gon))));
+  u2_loom_exit();
+  u2_lo_exit();
+
+  exit(1);
+}
+
+/* _sist_sing(): replay ovum from the past, time already set.
+*/
+static void
+_sist_sing(u2_reck* rec_u, u2_noun ovo)
+{
+  u2_noun gon = u2_lo_soft(rec_u, 0, u2_reck_poke, u2k(ovo));
+
+  if ( u2_blip != u2h(gon) ) {
+    _sist_suck(rec_u, ovo, gon);
+  }
+  else {
+    u2_noun vir = u2k(u2h(u2t(gon)));
+    u2_noun cor = u2k(u2t(u2t(gon)));
+    u2_noun nug;
+
+    u2z(gon);
+    nug = u2_reck_nick(rec_u, vir, cor);
+
+    if ( u2_blip != u2h(nug) ) {
+      _sist_suck(rec_u, ovo, nug);
+    }
+    else {
+      vir = u2h(u2t(nug));
+      cor = u2k(u2t(u2t(nug)));
+
+      while ( u2_nul != vir ) {
+        u2_noun fex = u2h(vir);
+        u2_noun fav = u2t(fex);
+
+        if ( (c3__init == u2h(fav)) || (c3__inuk == u2h(fav)) ) {
+          rec_u->own = u2nc(u2k(u2t(fav)), rec_u->own);
+        }
+        vir = u2t(vir);
+      }
+      u2z(nug);
+      u2z(rec_u->roc);
+      rec_u->roc = cor;
+    }
+    u2z(ovo);
+  }
+}
+
+/* u2_sist_song(): bring core up to date with ent_d.
+*/
+void
+u2_sist_song(u2_sist* sis_u, u2_reck* rec_u, c3_d cit_d)
+{
+  //  TODO
+  uL(fprintf(uH, "sist_song: %u -> %llu\n", rec_u->ent_w, cit_d));
+  sis_u->cit_d = c3_min(cit_d, sis_u->ent_d);
+}
+
 /* u2_sist_put(): moronic key-value store put.
 */
 void
@@ -302,79 +374,6 @@ u2_sist_nil(const c3_c* key_c)
     }
   }
 }
-
-/* _sist_suck(): past failure.
-*/
-static void
-_sist_suck(u2_reck* rec_u, u2_noun ovo, u2_noun gon)
-{
-  uL(fprintf(uH, "sing: ovum failed!\n"));
-  {
-    c3_c* hed_c = u2_cr_string(u2h(u2t(ovo)));
-
-    uL(fprintf(uH, "fail %s\n", hed_c));
-    free(hed_c);
-  }
-
-  u2_lo_punt(2, u2_ckb_flop(u2k(u2t(gon))));
-  u2_loom_exit();
-  u2_lo_exit();
-
-  exit(1);
-}
-
-/* _sist_sing(): replay ovum from the past, time already set.
-*/
-static void
-_sist_sing(u2_reck* rec_u, u2_noun ovo)
-{
-  u2_noun gon = u2_lo_soft(rec_u, 0, u2_reck_poke, u2k(ovo));
-
-  if ( u2_blip != u2h(gon) ) {
-    _sist_suck(rec_u, ovo, gon);
-  }
-  else {
-    u2_noun vir = u2k(u2h(u2t(gon)));
-    u2_noun cor = u2k(u2t(u2t(gon)));
-    u2_noun nug;
-
-    u2z(gon);
-    nug = u2_reck_nick(rec_u, vir, cor);
-
-    if ( u2_blip != u2h(nug) ) {
-      _sist_suck(rec_u, ovo, nug);
-    }
-    else {
-      vir = u2h(u2t(nug));
-      cor = u2k(u2t(u2t(nug)));
-
-      while ( u2_nul != vir ) {
-        u2_noun fex = u2h(vir);
-        u2_noun fav = u2t(fex);
-
-        if ( (c3__init == u2h(fav)) || (c3__inuk == u2h(fav)) ) {
-          rec_u->own = u2nc(u2k(u2t(fav)), rec_u->own);
-        }
-        vir = u2t(vir);
-      }
-      u2z(nug);
-      u2z(rec_u->roc);
-      rec_u->roc = cor;
-    }
-    u2z(ovo);
-  }
-}
-
-/* u2_sist_song(): bring core up to date with ent_d.
-*/
-void
-u2_sist_song(u2_sist* sis_u, u2_reck* rec_u, c3_d cit_d)
-{
-  //  TODO
-  uL(fprintf(uH, "sist_song: %u -> %llu\n", rec_u->ent_w, cit_d));
-  sis_u->cit_d = c3_min(cit_d, sis_u->ent_d);
-}
-
 
 /* _sist_home(): create ship directory.
 */
