@@ -262,20 +262,11 @@
         c3_l tno_l;                         //  terminal count in host
       } u2_uled;
 
-    /* u2_olar: event log trailer, old version.
+    /* u2_ular: event trailer.
     */
       typedef struct {
         c3_w syn_w;                         //  must equal mug of address
-        c3_w ent_w;                         //  event sequence number
-        c3_w len_w;                         //  word length of this event
-        c3_w mug_w;                         //  mug of entry
-      } u2_olar;
-
-    /* u2_ular: event log trailer.
-    */
-      typedef struct {
-        c3_w syn_w;                         //  must equal mug of address
-        c3_w ent_w;                         //  event sequence number
+        c3_d ent_d;                         //  event sequence number
         c3_w len_w;                         //  word length of this event
         c3_w mug_w;                         //  mug of entry
         c3_w tem_w;                         //  raft term of event
@@ -869,6 +860,11 @@
       */
         void
         u2_lo_punt(c3_l tab_l, u2_noun tac);
+
+      /* u2_lo_rand(): fill a 32-byte buffer with random data.
+      */
+        void
+        u2_lo_rand(c3_w* rad_w);
 
       /* u2_lo_sway(): print trace.
       */
