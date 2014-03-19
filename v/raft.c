@@ -94,7 +94,7 @@ _raft_readname(const c3_c* str_c, c3_w siz_w)
 /* u2_raft_readopt(): parse a string into a list of raft peers.
 */
 u2_rnam*
-u2_raft_readopt(const c3_c* arg_c, c3_c* our_c, c3_s oup_s)
+u2_raft_readopt(const c3_c* arg_c, const c3_c* our_c, c3_s oup_s)
 {
   u2_rnam* nam_u;
   u2_rnam* nex_u;
@@ -113,7 +113,7 @@ u2_raft_readopt(const c3_c* arg_c, c3_c* our_c, c3_s oup_s)
     c3_c* end_c;
     c3_w  por_w = strtoul(nam_u->por_c, &end_c, 10);
 
-    if ( '\0' == *nam_u->por_c || '\0' != *end_c || por_w >= 65536 ) {
+    if ( '\0' == *nam_u->por_c || '\0' != *end_c || por_w >= 65536U ) {
       uL(fprintf(uH, "raft: invalid port %s\n", nam_u->por_c));
       _raft_rnam_free(nam_u);
       _raft_rnam_free(nex_u);
@@ -146,6 +146,7 @@ static c3_w
 _raft_election_rand()
 {
   c3_w ret = (1.0 + (float) rand() / RAND_MAX) * 150;
+
   //uL(fprintf(uH, "raft: timeout %d\n", ret));
   return ret;
 }
@@ -183,12 +184,8 @@ _raft_promote(u2_raft* raf_u)
         }
       }
     }
-
     raf_u->sat_w = c3__lead;
-
-    if ( u2_no == u2_Host.ops_u.bat ) {
-      u2_lo_lead(u2A);
-    }
+    u2_lo_lead(u2A);
   }
 }
 
@@ -298,12 +295,8 @@ _raft_do_rest(u2_rcon* ron_u, const u2_rmsg* msg_u)
   }
 
   _raft_rest_name(ron_u, msg_u->rest.nam_c);
-  _raft_note_term(raf_u, msg_u->tem_w);
-  if ( c3__foll != raf_u->sat_w &&
-       c3__apen == msg_u->typ_w )
-  {
-    uL(fprintf(uH, "raft: got apen from new leader\n"));
-    _raft_demote(raf_u);
+  if ( u2_yes == ron_u->liv ) {
+    _raft_note_term(raf_u, msg_u->tem_w);
   }
 }
 
@@ -320,26 +313,27 @@ _raft_do_apen(u2_rcon* ron_u, const u2_rmsg* msg_u)
     uL(fprintf(uH, "raft: ignoring apen on dead conn\n"));
   }
   else {
-    if ( msg_u->tem_w < raf_u->tem_w ) {
-      _raft_send_rasp(ron_u, 0);
-    }
-    else if ( raf_u->sis_u.ent_d < msg_u->rest.lai_d ||
-              msg_u->rest.lat_w != u2_sist_term(&raf_u->sis_u,
-                                                msg_u->rest.lai_d) )
+    if ( msg_u->tem_w < raf_u->tem_w ||
+         raf_u->sis_u.ent_d < msg_u->rest.lai_d ||
+         msg_u->rest.lat_w != u2_sist_term(&raf_u->sis_u,
+                                           msg_u->rest.lai_d) )
     {
       _raft_send_rasp(ron_u, 0);
     }
-    else if ( 0 == msg_u->rest.apen.ent_d ) {
-      _raft_send_rasp(ron_u, 1);
-    }
     else {
-      c3_assert(c3__foll == raf_u->sat_w);
-      u2_sist_redo(&raf_u->sis_u, msg_u->rest.lai_d, msg_u->rest.apen.ent_d,
-                   msg_u->rest.apen.ent_u);
-      if ( msg_u->rest.apen.cit_d > raf_u->sis_u.cit_d ) {
-        u2_sist_song(&raf_u->sis_u, u2A, msg_u->rest.apen.cit_d);
-      }
       _raft_send_rasp(ron_u, 1);
+
+      if ( c3__foll != raf_u->sat_w ) {
+        uL(fprintf(uH, "raft: received apen from new leader\n"));
+        _raft_demote(raf_u);
+      }
+      if ( 0 != msg_u->rest.apen.ent_d ) {
+        u2_sist_redo(&raf_u->sis_u, msg_u->rest.lai_d, msg_u->rest.apen.ent_d,
+                     msg_u->rest.apen.ent_u);
+        if ( msg_u->rest.apen.cit_d > raf_u->sis_u.cit_d ) {
+          u2_sist_song(&raf_u->sis_u, u2A, msg_u->rest.apen.cit_d);
+        }
+      }
     }
   }
 }
@@ -968,13 +962,29 @@ _raft_rreq_free(u2_rreq* req_u)
   free(req_u);
 }
 
+/* _raft_unnamed(): no u2_rnam has this connection.
+*/
+static u2_bean
+_raft_unnamed(u2_rcon* ron_u)
+{
+  u2_raft* raf_u = ron_u->raf_u;
+  u2_rnam* nam_u = raf_u->nam_u;
+
+  while ( nam_u ) {
+    if ( nam_u->ron_u == ron_u ) {
+      return u2_no;
+    }
+    nam_u = nam_u->nex_u;
+  }
+  return u2_yes;
+}
+
 /* _raft_conn_free(): unlink a connection and free its resources.
 */
 static void
 _raft_conn_free(uv_handle_t* had_u)
 {
   u2_rcon* ron_u = (void*)had_u;
-  u2_raft* raf_u = ron_u->raf_u;
 
   //uL(fprintf(uH, "raft: conn_free %p\n", ron_u));
 
@@ -987,16 +997,9 @@ _raft_conn_free(uv_handle_t* had_u)
   }
   else {
     u2_bean suc = _raft_remove_run(ron_u);
-    c3_assert(u2_yes == suc);
-    //  Slow, expensive debug assert.
-    {
-      u2_rnam* nam_u = raf_u->nam_u;
 
-      while ( nam_u ) {
-        c3_assert(nam_u->ron_u != ron_u);
-        nam_u = nam_u->nex_u;
-      }
-    }
+    c3_assert(u2_yes == suc);
+    c3_assert(u2_yes == _raft_unnamed(ron_u));
   }
 
   //  Free requests.
@@ -1029,15 +1032,13 @@ _raft_conn_dead(u2_rcon* ron_u)
 {
   if ( u2_no == ron_u->liv ) {
     //uL(fprintf(uH, "raft: conn already dead %p\n", ron_u));
-    return;
   }
   else {
     uL(fprintf(uH, "raft: conn_dead %p\n", ron_u));
     ron_u->liv = u2_no;
+    uv_read_stop((uv_stream_t*)&ron_u->wax_u);
+    uv_close((uv_handle_t*)&ron_u->wax_u, _raft_conn_free);
   }
-
-  uv_read_stop((uv_stream_t*)&ron_u->wax_u);
-  uv_close((uv_handle_t*)&ron_u->wax_u, _raft_conn_free);
 }
 
 /* _raft_listen_cb(): generic listen callback.
@@ -1146,7 +1147,7 @@ _raft_getaddrinfo_cb(uv_getaddrinfo_t* raq_u,
   free(raq_u);
 }
 
-/* _raft_conn_all(): ensure that we are connected to each peer.
+/* _raft_conn_all(): perform an action once per peer, connecting if necessary.
 */
 static void
 _raft_conn_all(u2_raft* raf_u, void (*con_f)(u2_rcon* ron_u))
@@ -1535,6 +1536,7 @@ _raft_lone_init(u2_raft* raf_u)
 {
   uL(fprintf(uH, "raft: single-instance mode\n"));
   raf_u->pop_w = 1;
+  u2_sist_song(&raf_u->sis_u, u2A, raf_u->sis_u.ent_d);
   _raft_promote(raf_u);
 }
 

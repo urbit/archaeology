@@ -1128,7 +1128,7 @@
       /* u2_raft_readopt(): parse command line options.
       */
         u2_rnam*
-        u2_raft_readopt(const c3_c* arg_c, c3_c* our_c, c3_s oup_s);
+        u2_raft_readopt(const c3_c* arg_c, const c3_c* our_c, c3_s oup_s);
 
       /* u2_raft_init(): start Raft process.
       */
