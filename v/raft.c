@@ -1313,32 +1313,32 @@ _raft_send_apen(u2_rcon* ron_u)
 {
   u2_rnam* nam_u = ron_u->nam_u;
   u2_raft* raf_u = ron_u->raf_u;
-  u2_rreq* req_u = _raft_rreq_new(ron_u);
-  u2_rmsg* msg_u = req_u->msg_u;
-  u2_rent* ent_u;
-  c3_d     ent_d;
 
   c3_assert(nam_u);
-  c3_assert(nam_u->nei_d <= raf_u->sis_u.ent_d);
-  ent_d = raf_u->sis_u.ent_d - nam_u->nei_d;
-  ent_u = malloc(sizeof(u2_rent) * ent_d);
-
-  {
-    c3_d i_d;
-
-    for ( i_d = 0; i_d < ent_d; i_d++ ) {
-      u2_sist_rent(&raf_u->sis_u, nam_u->nei_d + i_d, ent_u + i_d);
-    }
+  if ( nam_u->nei_d > raf_u->sis_u.ent_d ) {
+    _raft_send_beat(ron_u);
   }
+  else {
+    u2_rreq* req_u = _raft_rreq_new(ron_u);
+    u2_rmsg* msg_u = req_u->msg_u;
+    u2_rent* ent_u;
+    c3_d     n_d;
+    c3_d     lai_d;
+    c3_w     lat_w;
 
-  _raft_write_apen(ron_u,
-                   nam_u->nei_d - 1,
-                   u2_sist_term(&raf_u->sis_u, nam_u->nei_d - 1),
-                   raf_u->sis_u.cit_d,
-                   ent_d,
-                   ent_u,
-                   msg_u);
-  _raft_rmsg_send(ron_u, msg_u);
+    c3_assert(nam_u->nei_d > 0);
+    c3_assert(raf_u->sis_u.ent_d >= nam_u->nei_d);
+    lai_d = nam_u->nei_d - 1;
+    lat_w = u2_sist_term(&raf_u->sis_u, lai_d);
+    n_d = raf_u->sis_u.ent_d - lai_d;
+
+    ent_u = malloc(sizeof(u2_rent) * n_d);
+    u2_sist_rent(&raf_u->sis_u, lai_d, n_d, ent_u);
+
+    _raft_write_apen(ron_u, lai_d, lat_w, raf_u->sis_u.cit_d, n_d, ent_u,
+                     msg_u);
+    _raft_rmsg_send(ron_u, msg_u);
+  }
 }
 
 /* _raft_send_revo(): send a RequestVote to a peer.
@@ -1390,7 +1390,7 @@ _raft_start_election(u2_raft* raf_u)
 static void
 _raft_heartbeat(u2_raft* raf_u)
 {
-  _raft_conn_all(raf_u, _raft_send_beat);
+  _raft_conn_all(raf_u, _raft_send_apen);
 }
 
 /* _raft_time_cb(): generic timer callback.

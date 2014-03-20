@@ -1150,12 +1150,16 @@
         void
         u2_sist_pack(u2_sist* sis_u, u2_rent* ent_u);
 
-      /* u2_sist_rent(): retrieve a log entry.
+      /* u2_sist_rent(): retrieve a range of log entries.
       **
-      ** Caller must free ent_u->bob_w.
+      ** lai_d refers to the entry before the first to retrieve (e.g. 0 to
+      ** retrieve the first entry, whose sequence nubmer is 1.) n_d is the
+      ** number of entries to retrieve.
+      **
+      ** Caller must free all ent_u->bob_w.
       */
         void
-        u2_sist_rent(u2_sist* sis_u, c3_d ent_d, u2_rent* ent_u);
+        u2_sist_rent(u2_sist* sis_u, c3_d lai_d, c3_d n_d, u2_rent* ent_u);
 
       /* u2_sist_term(): term of log entry.
       */

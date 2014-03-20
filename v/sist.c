@@ -71,51 +71,107 @@ u2_sist_pack(u2_sist* sis_u, u2_rent* ent_u)
   lug_u->len_d += (c3_d)(lar_u.len_w + c3_wiseof(lar_u));
 }
 
-/* u2_sist_rent(): retrieve a log entry. Caller must free ent_u->bob_w.
+/* u2_sist_rent(): retrieve a range of log entries.
+**
+** Caller must free ent_u->bob_w.
 */
 void
-u2_sist_rent(u2_sist* sis_u, c3_d ent_d, u2_rent* ent_u)
+u2_sist_rent(u2_sist* sis_u, c3_d lai_d, c3_d n_d, u2_rent* ent_u)
 {
   u2_ulog* lug_u = &sis_u->lug_u;
   c3_d     end_d;
+  c3_d     ent_d;
   c3_d     tar_d;
+  c3_d     i_d;
   u2_ular  lar_u;
 
-  c3_assert(ent_d > 0);
+  //uL(fprintf(uH, "sist: rent: %llu (%llu)\n", ent_d, n_d));
+
+  c3_assert(n_d != 0);
   end_d = lug_u->len_d;
+  ent_d = sis_u->ent_d;
   while ( end_d != c3_wiseof(u2_uled) ) {
     tar_d = end_d - c3_wiseof(u2_ular);
     if ( -1 == lseek64(lug_u->fid_i, 4ULL * tar_d, SEEK_SET) ) {
       perror("lseek");
-      uL(fprintf(uH, "sist_rent: seek failed\n"));
-      c3_assert(0);
+      uL(fprintf(uH, "sist: rent: record is corrupt (d)\n"));
+      u2_lo_bail(u2A);
     }
     if ( sizeof(lar_u) != read(lug_u->fid_i, &lar_u, sizeof(lar_u)) ) {
       perror("read");
-      uL(fprintf(uH, "sist_rent: read failed\n"));
-      c3_assert(0);
+      uL(fprintf(uH, "sist: rent: record is corrupt (e)\n"));
+      u2_lo_bail(u2A);
     }
-    end_d = tar_d - lar_u.len_w;
-    if ( ent_d == lar_u.ent_d ) {
-      ent_u->tem_w = lar_u.tem_w;
-      ent_u->typ_w = lar_u.typ_w;
-      ent_u->len_w = lar_u.len_w;
-      ent_u->bob_w = malloc(4 * lar_u.len_w);
-      if ( -1 == lseek64(lug_u->fid_i, 4ULL * end_d, SEEK_SET) ) {
-        perror("lseek");
-        uL(fprintf(uH, "sist_rent: seek failed\n"));
-        c3_assert(0);
-      }
-      if ( 4 * ent_u->len_w != read(lug_u->fid_i,
-                                    ent_u->bob_w,
-                                    4 * ent_u->len_w) )
-      {
-        perror("read");
-        uL(fprintf(uH, "sist_rent: read failed\n"));
-        c3_assert(0);
-      }
+    if ( lar_u.syn_w != u2_mug((c3_w)tar_d) ) {
+      uL(fprintf(uH, "sist: rent: record is corrupt (f)\n"));
+      u2_lo_bail(u2A);
+    }
+    if ( lar_u.ent_d != ent_d ) {
+      uL(fprintf(uH, "sist: rent: record is corrupt (g)\n"));
+      u2_lo_bail(u2A);
+    }
+    if ( sis_u->ent_d - (lai_d + n_d) == ent_d ) {
       break;
     }
+    ent_d = ent_d - 1;
+    end_d = tar_d - lar_u.len_w;
+  }
+  for ( i_d = 0; i_d < n_d; i_d++ ) {
+    if ( end_d == c3_wiseof(u2_uled) ) {
+      uL(fprintf(uH, "sist: rent: record is corrupt (l)\n"));
+      u2_lo_bail(u2A);
+    }
+    tar_d = end_d - c3_wiseof(u2_ular);
+    if ( -1 == lseek64(lug_u->fid_i, 4ULL * tar_d, SEEK_SET) ) {
+      perror("lseek");
+      uL(fprintf(uH, "sist: rent: record is corrupt (d)\n"));
+      u2_lo_bail(u2A);
+    }
+    if ( sizeof(lar_u) != read(lug_u->fid_i, &lar_u, sizeof(lar_u)) ) {
+      perror("read");
+      uL(fprintf(uH, "sist: rent: record is corrupt (e)\n"));
+      u2_lo_bail(u2A);
+    }
+    if ( lar_u.syn_w != u2_mug((c3_w)tar_d) ) {
+      uL(fprintf(uH, "sist: rent: record is corrupt (f)\n"));
+      u2_lo_bail(u2A);
+    }
+    if ( ent_d != lar_u.ent_d ) {
+      uL(fprintf(uH, "sist: rent: record is corrupt (g)\n"));
+      uL(fprintf(uH, "lar_u.ent_d %llx, ent_d %llx\n",
+                 lar_u.ent_d, ent_d));
+      u2_lo_bail(u2A);
+    }
+    else {
+      u2_rent* cur_u = ent_u + n_d - 1 - i_d;
+
+      cur_u->tem_w = lar_u.tem_w;
+      cur_u->typ_w = lar_u.typ_w;
+      cur_u->len_w = lar_u.len_w;
+      cur_u->bob_w = malloc(4 * lar_u.len_w);
+      if ( -1 == lseek64(lug_u->fid_i, 4ULL * end_d, SEEK_SET) ) {
+        perror("lseek");
+        uL(fprintf(uH, "sist: rent: record is corrupt (h)\n"));
+        u2_lo_bail(u2A);
+      }
+      if ( 4 * cur_u->len_w != read(lug_u->fid_i, cur_u->bob_w,
+                                    4 * cur_u->len_w) )
+      {
+        perror("read");
+        uL(fprintf(uH, "sist: rent: record is corrupt (i)\n"));
+        u2_lo_bail(u2A);
+      }
+      if ( lar_u.mug_w !=
+           u2_cr_mug_both(u2_cr_mug_words(cur_u->bob_w, cur_u->len_w),
+                          u2_cr_mug_both(u2_cr_mug(lar_u.tem_w),
+                                         u2_cr_mug(lar_u.typ_w))) )
+      {
+        uL(fprintf(uH, "sist: rent: record is corrupt (j)\n"));
+        u2_lo_bail(u2A);
+      }
+    }
+    end_d = tar_d - lar_u.len_w;
+    ent_d = ent_d - 1;
   }
 }
 
@@ -130,7 +186,7 @@ u2_sist_term(u2_sist* sis_u, c3_d ent_d)
     return 0;
   }
   else {
-    u2_sist_rent(sis_u, ent_d, &ent_u);
+    u2_sist_rent(sis_u, ent_d, 1, &ent_u);
     free(ent_u.bob_w);  //  XX
     return ent_u.tem_w;
   }
