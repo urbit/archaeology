@@ -164,16 +164,6 @@ _raft_promote(u2_raft* raf_u)
       c3_assert(c3__cand == raf_u->sat_w);
       uL(fprintf(uH, "raft: cand -> lead\n"));
 
-      //  Reset timer for heartbeats.
-      {
-        c3_i sas_i;
-
-        sas_i = uv_timer_stop(&raf_u->tim_u);
-        c3_assert(0 == sas_i);
-        sas_i = uv_timer_start(&raf_u->tim_u, _raft_time_cb, 50, 50);
-        c3_assert(0 == sas_i);
-      }
-
       //  Reinitialize leader-specific state.
       {
         u2_rnam* nam_u;
@@ -182,6 +172,16 @@ _raft_promote(u2_raft* raf_u)
           nam_u->nei_d = raf_u->sis_u.ent_d + 1ULL;
           nam_u->mai_d = 0;
         }
+      }
+
+      //  Reset timer for heartbeats.
+      {
+        c3_i sas_i;
+
+        sas_i = uv_timer_stop(&raf_u->tim_u);
+        c3_assert(0 == sas_i);
+        sas_i = uv_timer_start(&raf_u->tim_u, _raft_time_cb, 0, 50);
+        c3_assert(0 == sas_i);
       }
     }
     raf_u->sat_w = c3__lead;
