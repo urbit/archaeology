@@ -1740,7 +1740,7 @@ _raft_comm_cb(uv_timer_t* tim_u, c3_i sas_i)
 
 /* _raft_push(): write ovum to raft, transferring.
 */
-static c3_w
+static c3_d
 _raft_push(u2_raft* raf_u, c3_w* bob_w, c3_w len_w)
 {
   u2_rent ent_u;
