@@ -110,7 +110,7 @@ u2_sist_rent(u2_sist* sis_u, c3_d lai_d, c3_d n_d, u2_rent* ent_u)
       uL(fprintf(uH, "sist: rent: record is corrupt (g)\n"));
       u2_lo_bail(u2A);
     }
-    if ( sis_u->ent_d - (lai_d + n_d) == ent_d ) {
+    if ( (lai_d + n_d) == ent_d ) {
       break;
     }
     ent_d = ent_d - 1;
@@ -136,6 +136,7 @@ u2_sist_rent(u2_sist* sis_u, c3_d lai_d, c3_d n_d, u2_rent* ent_u)
       uL(fprintf(uH, "sist: rent: record is corrupt (f)\n"));
       u2_lo_bail(u2A);
     }
+    end_d = tar_d - lar_u.len_w;
     if ( ent_d != lar_u.ent_d ) {
       uL(fprintf(uH, "sist: rent: record is corrupt (g)\n"));
       uL(fprintf(uH, "lar_u.ent_d %llx, ent_d %llx\n",
@@ -170,7 +171,6 @@ u2_sist_rent(u2_sist* sis_u, c3_d lai_d, c3_d n_d, u2_rent* ent_u)
         u2_lo_bail(u2A);
       }
     }
-    end_d = tar_d - lar_u.len_w;
     ent_d = ent_d - 1;
   }
 }
@@ -309,9 +309,89 @@ _sist_sing(u2_reck* rec_u, u2_noun ovo)
 void
 u2_sist_song(u2_sist* sis_u, u2_reck* rec_u, c3_d cit_d)
 {
-  //  TODO
+  u2_rent* ent_u;
+  u2_noun  ron;
+  u2_noun  roe = u2_nul;
+  c3_d     i_d;
+  c3_d     n_d;
+
   uL(fprintf(uH, "sist_song: %u -> %llu\n", rec_u->ent_w, cit_d));
   sis_u->cit_d = c3_min(cit_d, sis_u->ent_d);
+  c3_assert(sis_u->cit_d >= rec_u->ent_w);
+  if ( sis_u->cit_d == rec_u->ent_w ) {
+    //  Nothing to do.
+    return;
+  }
+  else {
+    n_d = sis_u->cit_d - rec_u->ent_w;
+    ent_u = malloc(sizeof(*ent_u) * n_d);
+    u2_sist_rent(sis_u, rec_u->ent_w, n_d, ent_u);
+    for ( i_d = 1; i_d <= n_d; i_d++ ) {
+      u2_rent* cur_u = ent_u + n_d - i_d;
+
+      if ( c3__ov != cur_u->typ_w ) {
+        free(cur_u->bob_w);
+        continue;
+      }
+      else {
+        ron = u2_ci_words(cur_u->len_w, cur_u->bob_w);
+        free(cur_u->bob_w);
+        if ( rec_u->key ) {
+          u2_noun dep;
+
+          dep = u2_dc("de:crya", u2k(rec_u->key), ron);
+          if ( u2_no == u2du(dep) ) {
+            uL(fprintf(uH, "sist: song: record is corrupt (k)\n"));
+            u2_lo_bail(rec_u);
+          }
+          else {
+            ron = u2k(u2t(dep));
+            u2z(dep);
+          }
+        }
+        roe = u2nc(u2_cke_cue(ron), roe);
+      }
+    }
+    free(ent_u);
+
+    if ( u2_nul != roe ) {
+      u2_noun rou = roe;
+      c3_w    xno_w;
+
+      uL(fprintf(uH, "sist: song: playback starting\n"));
+
+      xno_w = 0;
+      while ( u2_nul != roe ) {
+        u2_noun i_roe = u2h(roe);
+        u2_noun t_roe = u2t(roe);
+        u2_noun now = u2h(i_roe);
+        u2_noun ovo = u2t(i_roe);
+
+        u2_reck_wind(rec_u, u2k(now));
+        if ( u2_yes == u2_Host.ops_u.vno &&
+             c3__veer == u2h(u2t(ovo)) ) {
+          uL(fprintf(uH, "sist: song: skipped veer\n"));
+        }
+        else {
+          _sist_sing(rec_u, u2k(ovo));
+        }
+
+        fputc('.', uH); uL(0);
+
+        roe = t_roe;
+        xno_w++;
+
+        if ( 0 == (xno_w % 1000) ) {
+          uL(fprintf(uH, "{%d}\n", xno_w));
+          u2_lo_grab("song", rou, u2_none);
+        }
+      }
+      u2z(rou);
+    }
+    uL(fprintf(uH, "\nsist: song: playback complete\n"));
+    rec_u->ent_w = sis_u->cit_d;
+    c3_assert(rec_u->ent_w == sis_u->cit_d);
+  }
 }
 
 /* u2_sist_put(): moronic key-value store put.
@@ -741,9 +821,6 @@ _sist_rest(u2_sist* sis_u, u2_reck* rec_u)
   struct stat buf_b;
   c3_i        fid_i;
   c3_c        ful_c[2048];
-  c3_w        old_w = rec_u->ent_w;
-  c3_d        las_d = 0;
-  u2_noun     roe = u2_nul;
   u2_noun     sev_l, tno_l, key_l, sal_l;
 
   //  Open the fscking file.  Does it even exist?
@@ -827,13 +904,11 @@ _sist_rest(u2_sist* sis_u, u2_reck* rec_u)
     }
   }
 
-  //  Read in the fscking events.  These are probably corrupt as well.
+  //  Read the last event sequence number. It's probably wrong.
   {
-    c3_d ent_d;
-    c3_d end_d;
-
-    end_d = u2R->sis_u.lug_u.len_d;
-    ent_d = 0;
+    c3_d     end_d = u2R->sis_u.lug_u.len_d;
+    c3_d     tar_d = end_d - (c3_d)c3_wiseof(u2_ular);
+    u2_ular  lar_u;
 
     if ( -1 == lseek64(fid_i, 4ULL * end_d, SEEK_SET) ) {
       fprintf(stderr, "end_d %llx\n", end_d);
@@ -842,148 +917,20 @@ _sist_rest(u2_sist* sis_u, u2_reck* rec_u)
       u2_lo_bail(rec_u);
     }
 
-    while ( end_d != c3_wiseof(u2_uled) ) {
-      c3_d    tar_d = (end_d - (c3_d)c3_wiseof(u2_ular));
-      u2_ular lar_u;
-      c3_w*   img_w;
-      u2_noun ron;
-
-      // uL(fprintf(uH, "rest: reading event at %llx\n", end_d));
-
-      if ( -1 == lseek64(fid_i, 4ULL * tar_d, SEEK_SET) ) {
-        uL(fprintf(uH, "record (%s) is corrupt (d)\n", ful_c));
-        u2_lo_bail(rec_u);
-      }
-      if ( sizeof(u2_ular) != read(fid_i, &lar_u, sizeof(u2_ular)) ) {
-        uL(fprintf(uH, "record (%s) is corrupt (e)\n", ful_c));
-        u2_lo_bail(rec_u);
-      }
-
-      if ( lar_u.syn_w != u2_mug((c3_w)tar_d) ) {
-        uL(fprintf(uH, "record (%s) is corrupt (f)\n", ful_c));
-        u2_lo_bail(rec_u);
-      }
-
-#if 0
-      uL(fprintf(uH, "log: read: at %d, %d: lar ent %llu, len %d, mug %x\n",
-                      (tar_w - lar_u.len_w),
-                      tar_w,
-                      lar_u.ent_d,
-                      lar_u.len_w,
-                      lar_u.mug_w));
-#endif
-      if ( end_d == u2R->sis_u.lug_u.len_d ) {
-        ent_d = las_d = lar_u.ent_d;
-      }
-      else {
-        if ( lar_u.ent_d != (ent_d - 1ULL) ) {
-          uL(fprintf(uH, "record (%s) is corrupt (g)\n", ful_c));
-          uL(fprintf(uH, "lar_u.ent_d %llx, ent_d %llx\n", lar_u.ent_d, ent_d));
-          u2_lo_bail(rec_u);
-        }
-        ent_d -= 1ULL;
-      }
-      end_d = (tar_d - (c3_d)lar_u.len_w);
-
-      if ( ent_d < old_w ) {
-        break;
-      }
-
-      img_w = c3_malloc(4 * lar_u.len_w);
-
-      if ( -1 == lseek64(fid_i, 4ULL * end_d, SEEK_SET) ) {
-        uL(fprintf(uH, "record (%s) is corrupt (h)\n", ful_c));
-        u2_lo_bail(rec_u);
-      }
-      if ( (4 * lar_u.len_w) != read(fid_i, img_w, (4 * lar_u.len_w)) ) {
-        uL(fprintf(uH, "record (%s) is corrupt (i)\n", ful_c));
-        u2_lo_bail(rec_u);
-      }
-
-      ron = u2_ci_words(lar_u.len_w, img_w);
-      free(img_w);
-
-      if ( lar_u.mug_w !=
-            u2_cr_mug_both(u2_cr_mug(ron),
-                           u2_cr_mug_both(u2_cr_mug(lar_u.tem_w),
-                                          u2_cr_mug(lar_u.typ_w))) )
-      {
-        uL(fprintf(uH, "record (%s) is corrupt (j)\n", ful_c));
-        u2_lo_bail(rec_u);
-      }
-
-      if ( c3__ov != lar_u.typ_w ) {
-        u2z(ron);
-        continue;
-      }
-
-      if ( rec_u->key ) {
-        u2_noun dep;
-
-        dep = u2_dc("de:crya", u2k(rec_u->key), ron);
-        if ( u2_no == u2du(dep) ) {
-          uL(fprintf(uH, "record (%s) is corrupt (k)\n", ful_c));
-          u2_lo_bail(rec_u);
-        }
-        else {
-          ron = u2k(u2t(dep));
-          u2z(dep);
-        }
-      }
-      roe = u2nc(u2_cke_cue(ron), roe);
+    if ( -1 == lseek64(fid_i, 4ULL * tar_d, SEEK_SET) ) {
+      uL(fprintf(uH, "record (%s) is corrupt (d)\n", ful_c));
+      u2_lo_bail(rec_u);
     }
-    rec_u->ent_w = c3_max(las_d + 1ULL, old_w);
-  }
-
-  if ( u2_nul == roe ) {
-    //  Nothing in the log that was not also in the checkpoint.
-    //
-    c3_assert(rec_u->ent_w == old_w);
-    c3_assert((las_d + 1ULL) == old_w);
-  }
-  else {
-    u2_noun rou = roe;
-    c3_w    xno_w;
-
-    //  Execute the fscking things.  This is pretty much certain to crash.
-    //
-    uL(fprintf(uH, "rest: replaying through event %llu\n", las_d));
-    fprintf(uH, "---------------- playback starting----------------\n");
-
-    xno_w = 0;
-    while ( u2_nul != roe ) {
-      u2_noun i_roe = u2h(roe);
-      u2_noun t_roe = u2t(roe);
-      u2_noun now = u2h(i_roe);
-      u2_noun ovo = u2t(i_roe);
-
-      u2_reck_wind(rec_u, u2k(now));
-      if ( (u2_yes == u2_Host.ops_u.vno) &&
-           (c3__veer == u2h(u2t(ovo))) ) {
-        fprintf(stderr, "replay: skipped veer\n");
-      }
-      else if ( u2_yes == u2_Host.ops_u.fog &&
-                u2_nul == t_roe ) {
-        fprintf(stderr, "replay: -Xwtf, skipped last event\n");
-      }
-      else {
-        _sist_sing(rec_u, u2k(ovo));
-        fputc('.', stderr);
-      }
-
-      // fprintf(stderr, "playback: sing: %d\n", xno_w));
-
-      roe = t_roe;
-      xno_w++;
-
-      if ( 0 == (xno_w % 1000) ) {
-        uL(fprintf(uH, "{%d}\n", xno_w));
-        u2_lo_grab("rest", rou, u2_none);
-      }
+    if ( sizeof(u2_ular) != read(fid_i, &lar_u, sizeof(u2_ular)) ) {
+      uL(fprintf(uH, "record (%s) is corrupt (e)\n", ful_c));
+      u2_lo_bail(rec_u);
     }
-    u2z(rou);
+
+    u2R->sis_u.ent_d = lar_u.ent_d;
   }
-  uL(fprintf(stderr, "\n---------------- playback complete----------------\n"));
+
+  //  Replay the events.
+  u2_sist_song(&u2R->sis_u, rec_u, u2R->sis_u.ent_d);
 
 #if 0
   //  If you see this error, your record is totally fscking broken!
