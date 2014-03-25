@@ -1096,8 +1096,9 @@ _raft_connect_cb(uv_connect_t* con_u, c3_i sas_i)
   free(con_u);
 
   if ( 0 != sas_i ) {
-    uL(fprintf(uH, "raft: connect_cb: %s\n",
-                   uv_strerror(uv_last_error(u2L))));
+    //  XX drops specific error types
+    c3_log_every(25, "raft: connect_cb: %s 25\n",
+                 uv_strerror(uv_last_error(u2L)));
     uv_close((uv_handle_t*)&ron_u->wax_u, _raft_conn_free);
   }
   else {
@@ -1372,6 +1373,7 @@ _raft_start_election(u2_raft* raf_u)
 {
   c3_i sas_i;
 
+  c3_assert(c3__cand == raf_u->sat_w);
   c3_assert(0 == uv_is_active((uv_handle_t*)&raf_u->tim_u));
   sas_i = uv_timer_start(&raf_u->tim_u, _raft_time_cb,
                          _raft_election_rand(), 0);

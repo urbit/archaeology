@@ -194,7 +194,7 @@ u2_sist_term(u2_sist* sis_u, c3_d ent_d)
   }
 }
 
-/* u2_sist_redo(): append log entries starting at ent_d, retaining.
+/* u2_sist_redo(): append nuu_d log entries after ent_d, retaining.
 */
 void
 u2_sist_redo(u2_sist* sis_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
