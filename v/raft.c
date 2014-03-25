@@ -323,11 +323,19 @@ _raft_do_apen(u2_rcon* ron_u, const u2_rmsg* msg_u)
     uL(fprintf(uH, "raft: ignoring apen on dead conn\n"));
   }
   else {
-    if ( msg_u->tem_w < raf_u->tem_w ||
-         raf_u->sis_u.ent_d < msg_u->rest.lai_d ||
-         msg_u->rest.lat_w != u2_sist_term(&raf_u->sis_u,
-                                           msg_u->rest.lai_d) )
+    if ( msg_u->tem_w < raf_u->tem_w ) {
+      uL(fprintf(uH, "raft: apen: term\n"));
+      _raft_send_rasp(ron_u, 0);
+    }
+    else if (raf_u->sis_u.ent_d < msg_u->rest.lai_d ) {
+      uL(fprintf(uH, "raft: apen: ent %llu %llu\n",
+                 raf_u->sis_u.ent_d, msg_u->rest.lai_d));
+      _raft_send_rasp(ron_u, 0);
+    }
+    else if (msg_u->rest.lat_w != u2_sist_term(&raf_u->sis_u,
+                                               msg_u->rest.lai_d) )
     {
+      uL(fprintf(uH, "raft: apen: tem\n"));
       _raft_send_rasp(ron_u, 0);
     }
     else {
