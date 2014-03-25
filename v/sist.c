@@ -85,11 +85,13 @@ u2_sist_rent(u2_sist* sis_u, c3_d lai_d, c3_d n_d, u2_rent* ent_u)
   c3_d     i_d;
   u2_ular  lar_u;
 
-  //uL(fprintf(uH, "sist: rent: %llu (%llu)\n", ent_d, n_d));
 
   c3_assert(n_d != 0);
   end_d = lug_u->len_d;
   ent_d = sis_u->ent_d;
+
+  //uL(fprintf(uH, "sist: rent: lai:%llu n:%llu ent:%llu\n", lai_d, n_d, ent_d));
+
   while ( end_d != c3_wiseof(u2_uled) ) {
     tar_d = end_d - c3_wiseof(u2_ular);
     if ( -1 == lseek64(lug_u->fid_i, 4ULL * tar_d, SEEK_SET) ) {
@@ -186,7 +188,7 @@ u2_sist_term(u2_sist* sis_u, c3_d ent_d)
     return 0;
   }
   else {
-    u2_sist_rent(sis_u, ent_d, 1, &ent_u);
+    u2_sist_rent(sis_u, ent_d - 1, 1, &ent_u);
     free(ent_u.bob_w);  //  XX
     return ent_u.tem_w;
   }
@@ -203,7 +205,8 @@ u2_sist_redo(u2_sist* sis_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u)
   c3_d     tar_d;
   c3_d     i_d;
 
-  //uL(fprintf(uH, "sist_redo: rewriting %llu entries starting at %llu\n", nuu_d, ent_d));
+  uL(fprintf(uH, "sist_redo: rewriting %llu entries starting at %llu "
+             "(cit_d %llu)\n", nuu_d, ent_d, sis_u->cit_d));
   c3_assert(sis_u->cit_d <= ent_d);
   end_d = lug_u->len_d;
 
@@ -927,10 +930,11 @@ _sist_rest(u2_sist* sis_u, u2_reck* rec_u)
     }
 
     u2R->sis_u.ent_d = lar_u.ent_d;
+    u2R->sis_u.lat_w = lar_u.tem_w;
   }
 
   //  Replay the events.
-  u2_sist_song(&u2R->sis_u, rec_u, u2R->sis_u.ent_d);
+  //u2_sist_song(&u2R->sis_u, rec_u, u2R->sis_u.ent_d);
 
 #if 0
   //  If you see this error, your record is totally fscking broken!

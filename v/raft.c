@@ -43,6 +43,7 @@ typedef struct _u2_rmsg {
 static ssize_t _raft_rmsg_read(const u2_rbuf* buf_u, u2_rmsg* msg_u);
 static void _raft_rmsg_send(u2_rcon* ron_u, const u2_rmsg* msg_u);
 static void _raft_rmsg_free(u2_rmsg* msg_u);
+static void _raft_conn_all(u2_raft* raf_u, void (*con_f)(u2_rcon* ron_u));
 static void _raft_conn_dead(u2_rcon* ron_u);
 static u2_bean _raft_remove_run(u2_rcon* ron_u);
 static void _raft_send_apen(u2_rcon* ron_u);
@@ -185,6 +186,8 @@ _raft_promote(u2_raft* raf_u)
       }
     }
     raf_u->sat_w = c3__lead;
+    u2_sist_song(&raf_u->sis_u, u2A, raf_u->sis_u.ent_d);
+    _raft_conn_all(raf_u, _raft_send_apen);
     u2_lo_lead(u2A);
   }
 }
@@ -256,6 +259,8 @@ _raft_rest_name(u2_rcon* ron_u, const c3_c* nam_c)
 
     while ( nam_u ) {
       if ( 0 == strcmp(nam_u->str_c, nam_c) ) {
+        u2_bean suc;
+
         if ( nam_u->ron_u ) {
           c3_assert(nam_u->ron_u != ron_u);
           //uL(fprintf(uH, "raft: closing old conn %p to %s (%p)\n",
@@ -265,7 +270,8 @@ _raft_rest_name(u2_rcon* ron_u, const c3_c* nam_c)
         uL(fprintf(uH, "raft: incoming conn from %s\n", nam_u->str_c));
         nam_u->ron_u = ron_u;
         ron_u->nam_u = nam_u;
-        _raft_remove_run(ron_u);
+        suc = _raft_remove_run(ron_u);
+        c3_assert(u2_yes == suc);
         break;
       }
       else nam_u = nam_u->nex_u;
@@ -1390,7 +1396,7 @@ _raft_start_election(u2_raft* raf_u)
 static void
 _raft_heartbeat(u2_raft* raf_u)
 {
-  _raft_conn_all(raf_u, _raft_send_apen);
+  _raft_conn_all(raf_u, _raft_send_beat);
 }
 
 /* _raft_time_cb(): generic timer callback.
@@ -1536,7 +1542,6 @@ _raft_lone_init(u2_raft* raf_u)
 {
   uL(fprintf(uH, "raft: single-instance mode\n"));
   raf_u->pop_w = 1;
-  u2_sist_song(&raf_u->sis_u, u2A, raf_u->sis_u.ent_d);
   _raft_promote(raf_u);
 }
 
