@@ -318,7 +318,6 @@ u2_sist_song(u2_sist* sis_u, u2_reck* rec_u, c3_d cit_d)
   c3_d     i_d;
   c3_d     n_d;
 
-  uL(fprintf(uH, "sist_song: %u -> %llu\n", rec_u->ent_w, cit_d));
   sis_u->cit_d = c3_min(cit_d, sis_u->ent_d);
   c3_assert(sis_u->cit_d >= rec_u->ent_w);
   if ( sis_u->cit_d == rec_u->ent_w ) {
@@ -326,6 +325,7 @@ u2_sist_song(u2_sist* sis_u, u2_reck* rec_u, c3_d cit_d)
     return;
   }
   else {
+    uL(fprintf(uH, "sist: song: playing through %llu\n", sis_u->cit_d));
     n_d = sis_u->cit_d - rec_u->ent_w;
     ent_u = malloc(sizeof(*ent_u) * n_d);
     u2_sist_rent(sis_u, rec_u->ent_w, n_d, ent_u);
