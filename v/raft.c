@@ -161,7 +161,10 @@ _raft_promote(u2_raft* raf_u)
     uL(fprintf(uH, "raft: double promote; ignoring\n"));
   }
   else {
-    if ( 1 != raf_u->pop_w ) {
+    if ( 1 == raf_u->pop_w ) {
+      u2_sist_song(&raf_u->sis_u, u2A, raf_u->sis_u.ent_d);
+    }
+    else {
       c3_assert(c3__cand == raf_u->sat_w);
       uL(fprintf(uH, "raft: cand -> lead\n"));
 
@@ -184,10 +187,11 @@ _raft_promote(u2_raft* raf_u)
         sas_i = uv_timer_start(&raf_u->tim_u, _raft_time_cb, 0, 50);
         c3_assert(0 == sas_i);
       }
+
+      //  Try to get everyone's log up to date.
+      _raft_conn_all(raf_u, _raft_send_apen);
     }
     raf_u->sat_w = c3__lead;
-    u2_sist_song(&raf_u->sis_u, u2A, raf_u->sis_u.ent_d);
-    _raft_conn_all(raf_u, _raft_send_apen);
     u2_lo_lead(u2A);
   }
 }
