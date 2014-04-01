@@ -1115,10 +1115,18 @@ u2_unix_ef_ergo(u2_noun who,
   }
 }
 
-/* u2_unix_ef_look(): update the root.
+/* u2_unix_ef_look(): ask arvo to look
 */
 void
 u2_unix_ef_look(void)
+{
+  u2A->syn = u2_yes;
+}
+
+/* u2_unix_do_look(): actually fscking look
+ */
+void
+u2_unix_do_look(void)
 {
   u2_unix* unx_u = &u2_Host.unx_u;
   u2_noun  won;

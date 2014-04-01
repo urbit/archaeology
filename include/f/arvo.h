@@ -48,6 +48,7 @@
             struct _u2_cart* geg_u;         //  entry of ovum queue
           } ova;
         };
+        u2_bean syn;                      //  sync next go-round
       } u2_reck;
 
   /**   Global variables.

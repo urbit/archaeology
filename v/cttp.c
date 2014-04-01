@@ -42,6 +42,8 @@
   static void  _cttp_ccon_fail_cb(uv_handle_t* wax_u);
   static c3_c* _cttp_creq_url(u2_noun pul);
 
+  static u2_noun _cttp_pox;
+
 /* _cttp_alloc(): libuv buffer allocator.
 */
 static uv_buf_t
@@ -439,12 +441,20 @@ _cttp_creq_host(u2_noun hot)
 /* _cttp_httr(): deliver http result.
 */
 static void
-_cttp_httr(c3_l num_l, c3_w sas_w, u2_noun mes, u2_noun uct)
+_cttp_httr(c3_l num_l, c3_w sas_w, u2_hhed* mes, u2_hbod* uct)
 {
-  u2_noun htr = u2nt(sas_w, mes, uct);
-  u2_noun pox = u2nt(c3__iron, c3__http, u2_nul);
+  u2_plan* pan;
 
-  u2_reck_plan(u2_Host.arv_u, pox, u2nt(c3__they, num_l, htr));
+  pan = malloc(sizeof(u2_plan));
+
+  pan->typ_m = c3__cttp;
+  pan->pax = _cttp_pox;
+  pan->they.num_l = num_l;
+  pan->they.sas_w = sas_w;
+  pan->they.hed_u = mes;
+  pan->they.bod_u = uct;
+
+  u2_reck_plam(u2_Host.arv_u, pan);
 }
 
 /* _cttp_httr_cres(): deliver valid response.
@@ -452,11 +462,7 @@ _cttp_httr(c3_l num_l, c3_w sas_w, u2_noun mes, u2_noun uct)
 static void
 _cttp_httr_cres(c3_l num_l, u2_cres* res_u)
 {
-  _cttp_httr
-    (num_l,
-     res_u->sas_w,
-     _cttp_heds_to_list(res_u->hed_u),
-     res_u->bod_u ? u2nc(u2_nul, _cttp_bods_to_octs(res_u->bod_u)) : u2_nul);
+  _cttp_httr(num_l, res_u->sas_w, res_u->hed_u, res_u->bod_u);
 }
 
 /* _cttp_httr_fail(): fail out a request by number.
@@ -1577,6 +1583,7 @@ u2_cttp_io_init()
   }
   RAND_seed(buf, 4096);
   close(rad);
+  _cttp_pox = u2nt(c3__iron, c3__http, u2_nul);
 }
 
 /* u2_cttp_io_poll(): poll kernel for cttp I/O.

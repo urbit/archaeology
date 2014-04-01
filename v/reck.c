@@ -871,18 +871,7 @@ u2_reck_kick(u2_reck* rec_u, u2_noun ovo)
   {
     u2_noun tox = _reck_spat(rec_u, u2k(u2h(ovo)));
 
-#if 0
-    if ( (c3__warn != u2h(u2t(ovo))) &&
-         (c3__text != u2h(u2t(ovo))) &&
-         (c3__note != u2h(u2t(ovo))) )
-#endif
-#if 1
     if ( (c3__crud == u2h(u2t(ovo))) )
-#if 0
-         (c3__talk == u2h(u2t(ovo))) ||
-         (c3__helo == u2h(u2t(ovo))) ||
-         (c3__init == u2h(u2t(ovo))) )
-#endif
     {
       u2_reck_plan(rec_u, u2nt(c3__gold, c3__term, u2_nul),
                           u2nc(c3__flog, u2k(u2t(ovo))));
@@ -891,13 +880,7 @@ u2_reck_kick(u2_reck* rec_u, u2_noun ovo)
       uL(fprintf(uH, "kick: lost %%%s on %s\n",
                      u2_cr_string(u2h(u2t(ovo))),
                      u2_cr_string(tox)));
-#if 0
-      if ( c3__hear == u2h(u2t(ovo)) ) {
-        c3_assert(0);
-      }
-#endif
     }
-#endif
     u2z(tox);
   }
   u2z(ovo);
@@ -996,6 +979,13 @@ u2_reck_plan(u2_reck* rec_u,
     free(hed_c);
     u2z(pax); u2z(fav);
   }
+}
+
+/* u2_reck_plam(): queue plan/pock for deferred ovum conversion.
+ */
+void
+u2_reck_plam(u2_reck* rec_u, u2_plan* pan_u)
+{
 }
 
 /* u2_reck_plow(): queue multiple ova (external).
