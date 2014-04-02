@@ -19,6 +19,7 @@
 
 #include "all.h"
 #include "f/coal.h"
+#include "v/reck.h"
 #include "v/vere.h"
 
 /* _reck_mung(): formula wrapper with gate and sample.

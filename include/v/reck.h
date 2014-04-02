@@ -18,3 +18,5 @@ typedef struct _u2_plan {
   u2_noun  pax;    //  static path to arvo-side handler
   u2_pock  poc;    //  some structure somehow representing C-to-arvo data
 } u2_plan;
+void
+u2_reck_plam(u2_reck* rec_u, u2_plan* pan_u);

@@ -245,6 +245,7 @@
 #   define c3__cull   c3_s4('c','u','l','l')
 #   define c3__curd   c3_s4('c','u','r','d')
 #   define c3__ctl    c3_s3('c','t','l')
+#   define c3__cttp   c3_s4('c','t','t','p')
 #   define c3__cut    c3_s3('c','u','t')
 #   define c3__cyl    c3_s3('c','y','l')
 #   define c3__da     c3_s2('d','a')

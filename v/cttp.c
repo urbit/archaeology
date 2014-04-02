@@ -25,6 +25,7 @@
 
 #include "../outside/jhttp/http_parser.h"   // Joyent HTTP
 #include "all.h"
+#include "v/reck.h"
 #include "v/vere.h"
 
 #ifdef U2_OS_osx
@@ -445,14 +446,14 @@ _cttp_httr(c3_l num_l, c3_w sas_w, u2_hhed* mes, u2_hbod* uct)
 {
   u2_plan* pan;
 
-  pan = malloc(sizeof(u2_plan));
+  pan = c3_malloc(sizeof(u2_plan));
 
   pan->typ_m = c3__cttp;
   pan->pax = _cttp_pox;
-  pan->they.num_l = num_l;
-  pan->they.sas_w = sas_w;
-  pan->they.hed_u = mes;
-  pan->they.bod_u = uct;
+  pan->poc.they.num_l = num_l;
+  pan->poc.they.sas_w = sas_w;
+  pan->poc.they.hed_u = mes;
+  pan->poc.they.bod_u = uct;
 
   u2_reck_plam(u2_Host.arv_u, pan);
 }

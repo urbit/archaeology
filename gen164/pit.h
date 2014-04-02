@@ -55,7 +55,6 @@
     typedef u2_noun u2_home;
     typedef u2_noun u2_init;
     typedef u2_noun u2_menu;
-    typedef u2_noun u2_plan;
     typedef u2_noun u2_plot;
     typedef u2_noun u2_rack;
     typedef u2_noun u2_rung;
