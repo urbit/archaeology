@@ -987,6 +987,7 @@ u2_reck_plan(u2_reck* rec_u,
 void
 u2_reck_plam(u2_reck* rec_u, u2_plan* pan_u)
 {
+  c3_stub;
 }
 
 /* u2_reck_plow(): queue multiple ova (external).

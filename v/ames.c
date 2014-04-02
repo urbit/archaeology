@@ -21,7 +21,10 @@
 #include <term.h>
 
 #include "all.h"
+#include "v/reck.h"
 #include "v/vere.h"
+
+static u2_noun _ames_pox;
 
 /* _ames_alloc(): libuv buffer allocator.
 */
@@ -232,7 +235,7 @@ _ames_time_cb(uv_timer_t* tim_u, c3_i sas_i)
   {
     u2_reck_plan
       (u2A,
-       u2nt(c3__gold, c3__ames, u2_nul),
+       _ames_pox,
        u2nc(c3__wake, u2_nul));
   }
   u2_lo_shut(u2_no);
@@ -251,24 +254,28 @@ _ames_recv_cb(uv_udp_t*        wax_u,
 
   if ( 0 == nrd_i ) {
     _ames_free(buf_u.base);
+    return;
   }
-  else {
-    u2_lo_open();
-    {
-      struct sockaddr_in* add_u = (struct sockaddr_in *)adr_u;
-      u2_noun             msg   = u2_ci_bytes((c3_w)nrd_i, (c3_y*)buf_u.base);
-      c3_s                por_s = ntohs(add_u->sin_port);
-      c3_w                pip_w = ntohl(add_u->sin_addr.s_addr);
 
-      // fprintf(stderr, "ames: plan\r\n");
-      u2_reck_plan
-        (u2A,
-         u2nt(c3__gold, c3__ames, u2_nul),
-         u2nt(c3__hear, u2nt(c3__if, por_s, u2_ci_words(1, &pip_w)), msg));
-    }
-    _ames_free(buf_u.base);
-    u2_lo_shut(u2_yes);
+  u2_lo_open();
+  {
+    struct sockaddr_in* add_u = (struct sockaddr_in *)adr_u;
+    c3_s                por_s = ntohs(add_u->sin_port);
+    c3_w                pip_w = ntohl(add_u->sin_addr.s_addr);
+    u2_plan*            pan = c3_malloc(sizeof(u2_plan));
+
+    // fprintf(stderr, "ames: plan\r\n");
+    pan->typ_m = c3__ames;
+    pan->pax   = _ames_pox;
+
+    pan->poc.nam_m      = c3__hear;
+    pan->poc.hear.aty_w = c3__if;
+    pan->poc.hear.por_s = por_s;
+    pan->poc.hear.pip_w = pip_w;
+    pan->poc.hear.len_w = nrd_i;
+    pan->poc.hear.buf_u = buf_u.base;
   }
+  u2_lo_shut(u2_yes);
 }
 
 /* u2_ames_io_init(): initialize ames I/O.
@@ -278,6 +285,8 @@ u2_ames_io_init()
 {
   u2_ames* sam_u = &u2_Host.sam_u;
   c3_s por_s;
+
+  _ames_pox = u2nt(c3__gold, c3__ames, u2_nul);
 
   por_s = u2_Host.ops_u.por_s;
   if ( 0 != u2_Host.ops_u.imp_c ) {
@@ -356,7 +365,7 @@ void
 u2_ames_io_poll()
 {
   u2_ames* sam_u = &u2_Host.sam_u;
-  u2_noun  wen = u2_reck_keep(u2A, u2nt(c3__gold, c3__ames, u2_nul));
+  u2_noun  wen = u2_reck_keep(u2A, _ames_pox);
 
   if ( (u2_nul != wen) &&
        (u2_yes == u2du(wen)) &&

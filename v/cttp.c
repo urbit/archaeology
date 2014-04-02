@@ -90,7 +90,7 @@ _cttp_bud(c3_c* nam_c, c3_c* val_c)
 
 /* _cttp_heds_to_list(): C headers to list.
 */
-static u2_noun
+u2_noun
 _cttp_heds_to_list(u2_hhed* hed_u)
 {
   if ( 0 == hed_u ) {
@@ -133,7 +133,7 @@ _cttp_bods_free(u2_hbod* bod_u)
 
 /* _cttp_bods_to_octs: translate body into octet-stream noun.
 */
-static u2_noun
+u2_noun
 _cttp_bods_to_octs(u2_hbod* bod_u)
 {
   c3_w    len_w;
@@ -449,7 +449,9 @@ _cttp_httr(c3_l num_l, c3_w sas_w, u2_hhed* mes, u2_hbod* uct)
   pan = c3_malloc(sizeof(u2_plan));
 
   pan->typ_m = c3__cttp;
-  pan->pax = _cttp_pox;
+  pan->pax   = _cttp_pox;
+
+  pan->poc.nam_m      = c3__they;
   pan->poc.they.num_l = num_l;
   pan->poc.they.sas_w = sas_w;
   pan->poc.they.hed_u = mes;
