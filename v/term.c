@@ -20,6 +20,7 @@
 #include <term.h>
 
 #include "all.h"
+#include "v/reck.h"
 #include "v/vere.h"
 
 static void _term_read_cb(uv_stream_t*, ssize_t, uv_buf_t);
@@ -527,7 +528,7 @@ _term_io_belt(u2_utty* uty_u, u2_noun  blb)
 
 /* _term_io_suck_char(): process a single character.
 */
-static void
+void
 _term_io_suck_char(u2_utty* uty_u, c3_y cay_y)
 {
   u2_utat* tat_u = &uty_u->tat_u;
@@ -620,26 +621,28 @@ _term_read_cb(uv_stream_t* str_u,
 {
   u2_utty* uty_u = (u2_utty*)(void*)str_u;
 
-  u2_lo_open();
-  {
-    if ( siz_i < 0 ) {
-      uv_err_t las_u = uv_last_error(u2L);
+  if ( siz_i < 0 ) {
+    uv_err_t las_u = uv_last_error(u2L);
 
-      uL(fprintf(uH, "term: read: %s\n", uv_strerror(las_u)));
-    }
-    else {
-      c3_i i;
-
-      for ( i=0; i < siz_i; i++ ) {
-        _term_io_suck_char(uty_u, buf_u.base[i]);
-      }
-    }
-
-    if ( siz_i <= 0 && buf_u.base ) {
-      free(buf_u.base);
-    }
+    uL(fprintf(uH, "term: read: %s\n", uv_strerror(las_u)));
   }
-  u2_lo_shut(u2_yes);
+  else if ( 0 == siz_i ) {
+    free(buf_u.base);
+  }
+  else {
+    u2_plan* pan = c3_malloc(sizeof(*pan));
+
+    pan->met_m = c3__gold;
+    pan->van_m = c3__term;
+
+    pan->poc.nam_m = c3__term;
+
+    pan->poc.term.num_w = uty_u->tid_l;
+    pan->poc.term.len_w = siz_i;
+    pan->poc.term.buf_u = buf_u.base;
+
+    u2_reck_plam(u2A, pan);
+  }
 }
 
 /* _term_main(): return main or console terminal.
