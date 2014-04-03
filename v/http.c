@@ -21,6 +21,7 @@
 
 #include "../outside/jhttp/http_parser.h"   // Joyent HTTP
 #include "all.h"
+#include "v/reck.h"
 #include "v/vere.h"
 
 static void _http_request(u2_hreq* req_u);
@@ -782,7 +783,7 @@ _http_octs_to_bod(u2_noun oct)
 
 /* _http_pox_to_noun(): translate srv/con/req to path noun (pox).
 */
-static u2_noun
+u2_noun
 _http_pox_to_noun(c3_w sev_l, c3_w coq_l, c3_w seq_l)
 {
   return
@@ -797,7 +798,7 @@ _http_pox_to_noun(c3_w sev_l, c3_w coq_l, c3_w seq_l)
 
 /* _http_request_to_noun(): translate http request into noun, or u2_none.
 */
-static u2_noun
+u2_noun
 _http_request_to_noun(u2_hreq* req_u)
 {
   u2_noun med, url, hed, bod;
@@ -840,25 +841,20 @@ _http_new_response(c3_l sev_l, c3_l coq_l, c3_l seq_l, u2_noun rep)
   }
 }
 
-/* _http_request(): dispatch http request, returning null if async.
+/* _http_request(): dispatch http request
 */
 static void
 _http_request(u2_hreq* req_u)
 {
-  u2_noun req = _http_request_to_noun(req_u);
+  u2_plan* pan = c3_malloc(sizeof(*pan));
 
-  if ( u2_none != req ) {
-    u2_noun pox = _http_pox_to_noun(req_u->hon_u->htp_u->sev_l,
-                                    req_u->hon_u->coq_l,
-                                    req_u->seq_l);
+  pan->met_m = c3__iron;
+  pan->van_m = c3__http;
 
-    u2_reck_plan(u2_Host.arv_u, 
-                 pox, 
-                 u2nq(c3__this, 
-                      req_u->hon_u->htp_u->sec,
-                      u2nc(u2_yes, u2_ci_words(1, &req_u->ipf_w)),
-                      req));
-  }
+  pan->poc.nam_m      = c3__this;
+  pan->poc.this.req_u = req_u;
+
+  u2_reck_plam(u2A, pan);
 }
 
 /* _http_flush(): transmit any ready data.

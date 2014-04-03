@@ -49,6 +49,9 @@
           } ova;
         };
         u2_bean syn;                      //  sync next go-round
+        u2_bean ames_wake;
+        u2_bean batz_wake;
+        u2_bean clay_wake;
       } u2_reck;
 
   /**   Global variables.

@@ -635,7 +635,7 @@ _term_read_cb(uv_stream_t* str_u,
       }
     }
 
-    if ( buf_u.base ) {
+    if ( siz_i <= 0 && buf_u.base ) {
       free(buf_u.base);
     }
   }

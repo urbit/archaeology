@@ -231,14 +231,7 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
 static void
 _ames_time_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
-  u2_lo_open();
-  {
-    u2_reck_plan
-      (u2A,
-       _ames_pox,
-       u2nc(c3__wake, u2_nul));
-  }
-  u2_lo_shut(u2_no);
+  u2A->ames_wake = u2_yes;
 }
 
 /* _ames_recv_cb(): receive callback.
@@ -265,8 +258,8 @@ _ames_recv_cb(uv_udp_t*        wax_u,
     u2_plan*            pan = c3_malloc(sizeof(u2_plan));
 
     // fprintf(stderr, "ames: plan\r\n");
-    pan->typ_m = c3__ames;
-    pan->pax   = _ames_pox;
+    pan->met_m = c3__gold;
+    pan->van_m = c3__ames;
 
     pan->poc.nam_m      = c3__hear;
     pan->poc.hear.aty_w = c3__if;

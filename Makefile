@@ -555,7 +555,7 @@ all: $(BIN)/vere
 $(LIBUV): 
 	$(MAKE) -C outside/libuv libuv.a
 
-$(V_OFILES) f/loom.o f/trac.o: include/v/vere.h
+$(V_OFILES) f/loom.o f/trac.o: include/v/vere.h include/v/reck.h
 
 $(BIN)/vere: $(VERE_OFILES) $(LIBUV) $(CAPN)
 	mkdir -p $(BIN)

@@ -43,8 +43,6 @@
   static void  _cttp_ccon_fail_cb(uv_handle_t* wax_u);
   static c3_c* _cttp_creq_url(u2_noun pul);
 
-  static u2_noun _cttp_pox;
-
 /* _cttp_alloc(): libuv buffer allocator.
 */
 static uv_buf_t
@@ -448,8 +446,8 @@ _cttp_httr(c3_l num_l, c3_w sas_w, u2_hhed* mes, u2_hbod* uct)
 
   pan = c3_malloc(sizeof(u2_plan));
 
-  pan->typ_m = c3__cttp;
-  pan->pax   = _cttp_pox;
+  pan->met_m = c3__iron;
+  pan->van_m = c3__http;
 
   pan->poc.nam_m      = c3__they;
   pan->poc.they.num_l = num_l;
@@ -1586,7 +1584,6 @@ u2_cttp_io_init()
   }
   RAND_seed(buf, 4096);
   close(rad);
-  _cttp_pox = u2nt(c3__iron, c3__http, u2_nul);
 }
 
 /* u2_cttp_io_poll(): poll kernel for cttp I/O.
