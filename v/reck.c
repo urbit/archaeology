@@ -985,7 +985,16 @@ u2_reck_plan(u2_reck* rec_u,
 void
 u2_reck_plam(u2_reck* rec_u, u2_plan* pan_u)
 {
-  c3_stub;
+  uv_mutex_lock(&u2_Host.qoc);
+  if ( u2_nul == rec_u->pla.pan_u ) {
+    c3_assert(0 == rec_u->pla.pan_u);
+    rec_u->pla.pan_u = rec_u->pla.nap_u = pan_u;
+  } else {
+    c3_assert(0 == rec_u->pla.pan_u->nex_u);
+    rec_u->pla.nap_u->nex_u = pan_u;
+    rec_u->pla.nap_u = pan_u;
+  }
+  uv_mutex_unlock(&u2_Host.qoc);
 }
 
 /* u2_reck_plow(): queue multiple ova (external).
