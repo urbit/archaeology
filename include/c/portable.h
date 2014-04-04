@@ -63,7 +63,7 @@
 #     include <sys/mman.h>
 
 #   else
-      #error "port: headers"
+#     error "port: headers"
 
 #   endif
 
@@ -105,6 +105,9 @@
     ** (Tested with version 4.0.1.)
     */
 #      include <gmp.h>
+    /* libuv abstraction layer
+    */
+#      include <uv.h>
 
 
   /** Private C "extensions."

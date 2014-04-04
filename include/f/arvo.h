@@ -25,7 +25,6 @@
     */
       typedef struct _u2_reck {
         c3_w    kno_w;                    //  kernel stage
-        c3_w    rno_w;                    //  rotor index (always 0)
         c3_w    ent_w;                    //  event counter XX 64
 
         u2_noun yot;                      //  new toy system

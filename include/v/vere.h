@@ -559,9 +559,6 @@
     c3_global  u2_bean  u2_Flag_Profile;
     c3_global  u2_bean  u2_Flag_Verbose;
 
-#   define u2_ve_at() ( &u2_Host.ver_e[u2_Host.kno_w] )
-
-
   /** Functions.
   **/
     /*  Urbit time: 128 bits, leap-free.
