@@ -40,17 +40,18 @@
         u2_noun ken;                      //  kernel formula (for now)
         u2_noun roc;                      //  rotor core
 
-        union {
-          struct { uint64_t a; uint64_t b; };
-          struct {
-            struct _u2_cart* egg_u;         //  exit of ovum queue
-            struct _u2_cart* geg_u;         //  entry of ovum queue
-          } ova;
-        };
-        u2_bean syn;                      //  sync next go-round
-        u2_bean ames_wake;
-        u2_bean batz_wake;
-        u2_bean clay_wake;
+        struct {
+          struct _u2_cart* egg_u;         //  exit of ovum queue
+          struct _u2_cart* geg_u;         //  entry of ovum queue
+        } ova;
+        struct {
+          struct _u2_pock* pok_u;         //  exit of pock queue
+          struct _u2_pock* kop_u;         //  entry of pock queue
+        } poc;
+        u2_bean syn:1;                    //  sync next go-round
+        u2_bean ames_wake:1;
+        u2_bean batz_wake:1;
+        u2_bean clay_wake:1;
       } u2_reck;
 
   /**   Global variables.

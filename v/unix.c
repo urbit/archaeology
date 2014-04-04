@@ -1216,14 +1216,7 @@ _unix_ef_sync(uv_prepare_t* han_u, c3_i sas_i)
 static void
 _unix_time_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
-  u2_lo_open();
-  {
-    u2_reck_plan
-      (u2A,
-       u2nt(c3__gold, c3__clay, u2_nul),
-       u2nc(c3__wake, u2_nul));
-  }
-  u2_lo_shut(u2_no);
+  u2A->clay_wake = u2_yes;
 }
 
 /* _unix_sign_cb: signal callback.
@@ -1280,6 +1273,8 @@ void
 u2_unix_io_init(void)
 {
   u2_unix* unx_u = &u2_Host.unx_u;
+  u2A->syn      = u2_no;
+  u2A->clay_wake = u2_no;
 
   uv_timer_init(u2L, &unx_u->tim_u);
   unx_u->alm = u2_no;

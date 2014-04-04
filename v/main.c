@@ -301,6 +301,9 @@ main(c3_i   argc,
   {
     u2_wr_check_init(u2_Host.ops_u.cpu_c);
 
+    c3_assert(0 == uv_mutex_init(&u2_Host.qoc));
+    c3_assert(0 == uv_mutex_init(&u2_Host.woc));
+
     if ( (u2_no == u2_Host.ops_u.nuu) &&
           (u2_yes == u2_loom_load()) )
     {

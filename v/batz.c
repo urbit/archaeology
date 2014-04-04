@@ -45,14 +45,7 @@ u2_batz_io_exit(void)
 static void
 _batz_time_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
-  u2_lo_open();
-  {
-    u2_reck_plan
-      (u2A,
-       u2nt(c3__gold, c3__batz, u2_nul),
-       u2nc(c3__wake, u2_nul));
-  }
-  u2_lo_shut(u2_no);
+  u2A->batz_wake = u2_yes;
 }
 
 /* u2_batz_io_poll(): update batz IO state.

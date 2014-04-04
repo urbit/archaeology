@@ -30,6 +30,8 @@ typedef struct _u2_pock {
 } u2_pock;
 
 typedef struct _u2_plan {
+  struct _u2_plan* nex_u;  //  next in q
+
   c3_w     met_m;  //  %gold|%iron|%lead
   c3_w     van_m;  //  %ames|%batz|%clay|%http|%term
   u2_pock  poc;    //  some structure somehow representing C-to-arvo data

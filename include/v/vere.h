@@ -536,6 +536,8 @@
         void*      ssl_u;                   //  struct SSL_CTX*
 
         u2_reck*   arv_u;                   //  runtime
+        uv_mutex_t qoc;                     //  ovum-queue lock
+        uv_mutex_t woc;                     //  wire allocator lock
       } u2_host;                            //  host == computer == process
 
 #     define u2L  u2_Host.lup_u             //  global event loop
