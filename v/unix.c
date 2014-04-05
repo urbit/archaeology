@@ -1120,7 +1120,7 @@ u2_unix_ef_ergo(u2_noun who,
 void
 u2_unix_ef_look(void)
 {
-  u2A->syn = u2_yes;
+  u2_Host.syn = u2_yes;
 }
 
 /* u2_unix_do_look(): actually fscking look
@@ -1216,7 +1216,7 @@ _unix_ef_sync(uv_prepare_t* han_u, c3_i sas_i)
 static void
 _unix_time_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
-  u2A->clay_wake = u2_yes;
+  u2_Host.clay_wake = u2_yes;
 }
 
 /* _unix_sign_cb: signal callback.
@@ -1273,8 +1273,8 @@ void
 u2_unix_io_init(void)
 {
   u2_unix* unx_u = &u2_Host.unx_u;
-  u2A->syn      = u2_no;
-  u2A->clay_wake = u2_no;
+  u2_Host.syn      = u2_no;
+  u2_Host.clay_wake = u2_no;
 
   uv_timer_init(u2L, &unx_u->tim_u);
   unx_u->alm = u2_no;

@@ -45,7 +45,7 @@ u2_batz_io_exit(void)
 static void
 _batz_time_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
-  u2A->batz_wake = u2_yes;
+  u2_Host.batz_wake = u2_yes;
 }
 
 /* u2_batz_io_poll(): update batz IO state.

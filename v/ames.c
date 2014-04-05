@@ -231,7 +231,7 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
 static void
 _ames_time_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
-  u2A->ames_wake = u2_yes;
+  u2_Host.ames_wake = u2_yes;
 }
 
 /* _ames_recv_cb(): receive callback.

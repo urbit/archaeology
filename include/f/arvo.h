@@ -44,16 +44,8 @@
         struct {
           struct _u2_cart* egg_u;         //  exit of ovum queue
           struct _u2_cart* geg_u;         //  entry of ovum queue
-        } ova;
-        struct {
-          struct _u2_plan* pan_u;         //  exit of plan queue
-          struct _u2_plan* nap_u;         //  entry of plan queue
-        } pla;
-        u2_bean syn:1;                    //  sync next go-round
-        u2_bean ames_wake:1;
-        u2_bean batz_wake:1;
-        u2_bean clay_wake:1;
-      } u2_reck;
+        } ova;                            ////////////////////////////
+      } u2_reck;  // do not extend or otherwise mangle this structure!
 
   /**   Global variables.
   **/
