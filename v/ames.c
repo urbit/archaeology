@@ -267,6 +267,8 @@ _ames_recv_cb(uv_udp_t*        wax_u,
     pan->poc.hear.pip_w = pip_w;
     pan->poc.hear.len_w = nrd_i;
     pan->poc.hear.buf_u = buf_u.base;
+
+    u2_reck_plam(pan);
   }
   u2_lo_shut(u2_yes);
 }

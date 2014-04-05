@@ -5,6 +5,8 @@
 typedef struct _u2_pock {
   c3_w    nam_m;    //  discriminant %boot|%blew|%hail|%hear|%wake...
   union {
+    struct _born {
+    } born;
     struct _they {
       c3_l  num_l;  //  connection number
       c3_w  sas_w;  //  status
@@ -38,4 +40,4 @@ typedef struct _u2_plan {
 } u2_plan;
 
 void
-u2_reck_plam(u2_reck* rec_u, u2_plan* pan_u);
+u2_reck_plam(u2_plan* pan_u);

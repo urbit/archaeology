@@ -854,7 +854,7 @@ _http_request(u2_hreq* req_u)
   pan->poc.nam_m      = c3__this;
   pan->poc.this.req_u = req_u;
 
-  u2_reck_plam(u2A, pan);
+  u2_reck_plam(pan);
 }
 
 /* _http_flush(): transmit any ready data.
@@ -926,9 +926,13 @@ _http_respond(u2_hrep* rep_u)
 void
 u2_http_ef_bake(void)
 {
-  u2_noun pax = u2nq(c3__gold, c3__http, u2k(u2A->sen), u2_nul);
+  u2_plan* pan = c3_malloc(sizeof(*pan));
 
-  u2_reck_plan(u2A, pax, u2nc(c3__born, u2_nul));
+  pan->met_m = c3__gold;
+  pan->van_m = c3__http;
+
+  pan->poc.nam_m = c3__born;
+  u2_reck_plam(pan);
 }
 
 /* u2_http_ef_thou(): send %thou effect (incoming response) to http.

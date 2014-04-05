@@ -983,7 +983,7 @@ u2_reck_plan(u2_reck* rec_u,
 /* u2_reck_plam(): queue plan/pock for deferred ovum conversion.
  */
 void
-u2_reck_plam(u2_reck* rec_u, u2_plan* pan_u)
+u2_reck_plam(u2_plan* pan_u)
 {
   uv_mutex_lock(&u2_Host.qoc);
   if ( u2_nul == u2_Host.pla.pan_u ) {

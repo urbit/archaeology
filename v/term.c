@@ -641,7 +641,7 @@ _term_read_cb(uv_stream_t* str_u,
     pan->poc.term.len_w = siz_i;
     pan->poc.term.buf_u = buf_u.base;
 
-    u2_reck_plam(u2A, pan);
+    u2_reck_plam(pan);
   }
 }
 

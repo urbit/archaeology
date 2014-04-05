@@ -455,7 +455,7 @@ _cttp_httr(c3_l num_l, c3_w sas_w, u2_hhed* mes, u2_hbod* uct)
   pan->poc.they.hed_u = mes;
   pan->poc.they.bod_u = uct;
 
-  u2_reck_plam(u2_Host.arv_u, pan);
+  u2_reck_plam(pan);
 }
 
 /* _cttp_httr_cres(): deliver valid response.
