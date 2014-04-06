@@ -200,11 +200,6 @@
     **/
 #     define u2_ray_fnit(ray) \
         ( u2_ray_a(ray) ? (HalfEnd - u2_ray_b(ray)) : (ray) )
-#   ifdef LoomFold
-#     define u2_ray_nit(ray) u2_ray_fnit(ray)
-#   else
-#     define u2_ray_nit(ray) (ray)
-#   endif
 
 #     define u2_ray_open(tid, tat, das) \
         ( (0 == u2_ray_a(tid)) \
@@ -227,7 +222,7 @@
         u2_ray_of(!u2_ray_a(ray), (HalfSize - (u2_ray_b(ray) + (siz_w))))
 
 #     define u2_at_nit(nit)    (Loom + nit)
-#     define u2_at_ray(ray)    u2_at_nit(u2_ray_nit(ray))
+#     define u2_at_ray(ray)    u2_at_nit(ray)
 #     define u2_nit_at(ptr_v)  (((c3_w *)(ptr_v)) - Loom)
 
 #   ifdef LoomFold

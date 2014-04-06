@@ -980,7 +980,7 @@ u2_reck_plan(u2_reck* rec_u,
   }
 }
 
-/* u2_reck_plam(): queue plan/pock for deferred ovum conversion.
+/* u2_reck_plam(): queue plan for deferred ovum conversion.
  */
 void
 u2_reck_plam(u2_plan* pan_u)

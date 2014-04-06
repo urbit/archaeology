@@ -413,27 +413,6 @@ u2_lo_soft(u2_reck* rec_u, c3_w sec_w, u2_funk fun_f, u2_noun arg)
   return pro;
 }
 
-#if 0
-/* _lo_hard(): standard hard wrapper.  Produces result and/or asserts.
-*/
-static u2_noun
-_lo_hard(u2_reck* rec_u, u2_funk fun_f, u2_noun arg)
-{
-  u2_noun pro = u2_lo_soft(rec_u, 0, fun_f, arg);
-
-  if ( u2_blip == u2h(pro) ) {
-    u2_noun poo = u2k(u2t(pro));
-
-    u2z(pro); return poo;
-  }
-  else {
-    u2_lo_punt(2, u2k(u2t(pro)));
-    u2z(pro);
-    c3_assert(0);
-  }
-}
-#endif
-
 /* u2_lo_open(): begin callback processing.
 */
 void

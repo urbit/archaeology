@@ -33,6 +33,8 @@
 #  pragma clang diagnostic ignored "-Wdeprecated-declarations"
 #endif
 
+#     define u2S  u2_Host.ssl_u
+
 /* Forward declarations.
 */
   static void  _cttp_ccon_kick(u2_ccon* coc_u);
