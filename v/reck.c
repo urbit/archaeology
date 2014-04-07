@@ -899,7 +899,7 @@ u2_reck_plam(u2_plan* pan_u)
   uv_mutex_lock(&u2_Host.qoc);
   gettimeofday(&pan_u->tim_tv, 0);
   if ( u2_nul == u2_Host.pla.pan_u ) {
-    c3_assert(0 == u2_Host.pla.pan_u);
+    c3_assert(0 == u2_Host.pla.nap_u);
     u2_Host.pla.pan_u = u2_Host.pla.nap_u = pan_u;
   } else {
     c3_assert(0 == u2_Host.pla.pan_u->nex_u);
@@ -907,4 +907,36 @@ u2_reck_plam(u2_plan* pan_u)
     u2_Host.pla.nap_u = pan_u;
   }
   uv_mutex_unlock(&u2_Host.qoc);
+  uv_cond_signal(&u2_Host.coq);
+}
+
+/* u2_reck_loop(): begin the interpreter mainloop.
+ */
+void
+u2_reck_loop(void* ign)
+{
+  u2_plan* pan;
+
+  while ( 1 ) {
+    uv_mutex_lock(&u2_Host.qoc);
+    if ( 0 == u2_Host.pla.pan_u ) {
+      again:  uv_cond_wait(&u2_Host.coq, &u2_Host.qoc);
+      if ( 0 == u2_Host.pla.pan_u ) { goto again; } // spurious wakeup
+    }
+
+    pan = u2_Host.pla.pan_u;
+    if ( pan == u2_Host.pla.nap_u ) {
+      c3_assert(pan->nex_u == 0);
+      u2_Host.pla.pan_u = u2_Host.pla.nap_u = 0;
+    }
+    else {
+      c3_assert(pan->nex_u != 0);
+      u2_Host.pla.pan_u = pan->nex_u;
+    }
+    uv_mutex_unlock(&u2_Host.qoc);
+    //  u2_reck_plan_to_ovum
+    //  ...
+  }
+
+
 }

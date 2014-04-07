@@ -537,7 +537,7 @@
 
         u2_reck*    arv_u;                  //  runtime
         uv_mutex_t  qoc;                    //  ovum-queue lock
-        uv_mutex_t  woc;                    //  wire allocator lock
+        uv_cond_t   coq;                    //  ovum condition
         uv_thread_t trp;                    //  interpreter thread
         struct {
           struct _u2_plan* pan_u;           //  exit of plan queue
@@ -1121,7 +1121,7 @@
       /* u2_raft_init(): start Raft process.
       */
         void
-        u2_raft_init(void*);
+        u2_raft_init();
 
       /* u2_raft_work(): poke, kick, and push pending events.
       */

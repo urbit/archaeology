@@ -22,6 +22,7 @@
 #include <term.h>
 
 #include "all.h"
+#include "v/reck.h"
 #include "v/vere.h"
 
 static jmp_buf Signal_buf;
@@ -326,7 +327,6 @@ u2_lo_soft(u2_reck* rec_u, c3_w sec_w, u2_funk fun_f, u2_noun arg)
 {
   u2_noun hoe, pro, rop;
 
-  uv_mutex_lock(&u2_Host.woc);
   u2_rl_leap(u2_Wire, c3__rock);
 
   //  system level setjmp, for signals
@@ -410,7 +410,6 @@ u2_lo_soft(u2_reck* rec_u, c3_w sec_w, u2_funk fun_f, u2_noun arg)
   }
   pro = rop;
 
-  uv_mutex_unlock(&u2_Host.woc);
   return pro;
 }
 
@@ -569,7 +568,7 @@ u2_lo_loop()
   // signal(SIGIO, SIG_IGN);    //  linux is wont to produce for some reason
 
   _lo_init();
-  uv_thread_create(&u2_Host.trp, u2_raft_init, u2_nul);
+  uv_thread_create(&u2_Host.trp, u2_reck_loop, u2_nul);
 
   if ( u2_no == u2_Host.ops_u.bat ) {
     uv_run(u2L, UV_RUN_DEFAULT);

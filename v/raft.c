@@ -1422,10 +1422,9 @@ _raft_lone_init(u2_raft* raf_u)
 /* u2_raft_init(): start Raft process.
 */
 void
-u2_raft_init(void* ign)
+u2_raft_init()
 {
   u2_raft* raf_u = u2R;
-  (void)ign;
 
   //  Initialize timer -- used in both single and multi-instance mode,
   //  for different things.

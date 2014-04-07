@@ -42,3 +42,6 @@ typedef struct _u2_plan {
 
 void
 u2_reck_plam(u2_plan* pan_u);
+
+void
+u2_reck_loop(void* ign);
