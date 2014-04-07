@@ -898,9 +898,6 @@ u2_reck_poke(u2_reck* rec_u, u2_noun ovo)
 void
 u2_reck_sync(u2_reck* rec_u)
 {
-#if 0
-  u2_reck_plow(rec_u, u2_sync_reck(rec_u));
-#endif
 }
 
 /* u2_reck_boot(): boot the reck engine (unprotected).
@@ -995,20 +992,4 @@ u2_reck_plam(u2_plan* pan_u)
     u2_Host.pla.nap_u = pan_u;
   }
   uv_mutex_unlock(&u2_Host.qoc);
-}
-
-/* u2_reck_plow(): queue multiple ova (external).
-*/
-void
-u2_reck_plow(u2_reck* rec_u, u2_noun ova)
-{
-  u2_noun ovi = ova;
-
-  while ( u2_nul != ovi ) {
-    u2_noun ovo=u2h(ovi);
-
-    u2_reck_plan(rec_u, u2k(u2h(ovo)), u2k(u2t(ovo)));
-    ovi = u2t(ovi);
-  }
-  u2z(ova);
 }

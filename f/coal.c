@@ -459,24 +459,6 @@ _cm_jack(u2_noun old, u2_noun nuw)
   }
 }
 
-#if 0
-/* _cm_depth()
-*/
-static c3_w
-_cm_depth(u2_noun old, u2_noun nuw)
-{
-  c3_w dep_w = 0;
-
-  while ( nuw != old ) {
-    c3_assert(u2_yes == u2du(nuw));
-    nuw = u2t(nuw);
-
-    dep_w++;
-  }
-  return dep_w;
-}
-#endif
-
 /* u2_cm_wail(): produce and reset the local trace, without bailing.
 */
 u2_noun

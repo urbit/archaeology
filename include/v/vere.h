@@ -814,11 +814,6 @@
                      u2_noun  pax,
                      u2_noun  fav);
 
-      /* u2_reck_plow(): queue ovum list in order (external).
-      */
-        void
-        u2_reck_plow(u2_reck* rec_u, u2_noun ova);
-
       /* u2_reck_work(): flush ova (unprotected).
       */
         void
