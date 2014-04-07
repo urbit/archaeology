@@ -556,7 +556,6 @@ _http_conn_read_cb(uv_stream_t* tcp_u,
 {
   u2_hcon* hon_u = (u2_hcon*)(void*) tcp_u;
 
-  u2_lo_open();
   {
     if ( siz_i < 0 ) {
       uv_err_t las_u = uv_last_error(u2L);
@@ -584,7 +583,6 @@ _http_conn_read_cb(uv_stream_t* tcp_u,
       free(buf_u.base);
     }
   }
-  u2_lo_shut(u2_yes);
 }
 
 /* _http_conn_new(): create http connection.

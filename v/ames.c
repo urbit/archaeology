@@ -250,7 +250,6 @@ _ames_recv_cb(uv_udp_t*        wax_u,
     return;
   }
 
-  u2_lo_open();
   {
     struct sockaddr_in* add_u = (struct sockaddr_in *)adr_u;
     c3_s                por_s = ntohs(add_u->sin_port);
@@ -270,7 +269,6 @@ _ames_recv_cb(uv_udp_t*        wax_u,
 
     u2_reck_plam(pan);
   }
-  u2_lo_shut(u2_yes);
 }
 
 /* u2_ames_io_init(): initialize ames I/O.

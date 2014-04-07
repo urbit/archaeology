@@ -413,64 +413,6 @@ u2_lo_soft(u2_reck* rec_u, c3_w sec_w, u2_funk fun_f, u2_noun arg)
   return pro;
 }
 
-/* u2_lo_open(): begin callback processing.
-*/
-void
-u2_lo_open(void)
-{
-  //  update time
-  //
-  u2_reck_time(u2A);
-}
-
-/* u2_lo_shut(): end callback processing.
-*/
-void
-u2_lo_shut(u2_bean inn)
-{
-  // u2_lo_grab("lo_shut a", u2_none);
-
-  //  process actions
-  //
-  u2_raft_work(u2A);
-
-  // u2_lo_grab("lo_shut b", u2_none);
-
-  //  update time
-  //
-  u2_reck_time(u2A);
-
-  // u2_lo_grab("lo_shut c", u2_none);
-
-  //  for input operations, poll fs (XX not permanent)
-  //  XX remove raty_lead guard
-  //
-  if ( u2R->typ_e == u2_raty_lead && u2_yes == inn ) {
-    u2_unix_ef_look();
-  }
-
-  // u2_lo_grab("lo_shut d", u2_none);
-
-  //  clean shutdown
-  //
-  if ( u2_no == u2_Host.liv ) {
-    //  direct save and die
-    //
-    u2_cm_purge();
-    // u2_lo_grab("lo_exit", u2_none);
-    u2_loom_save(u2A->ent_w);
-    u2_loom_exit();
-    u2_lo_exit();
-
-    exit(0);
-  }
-  else {
-    //  poll arvo to generate any event binding changes
-    //
-    _lo_poll();
-  }
-}
-
 #if 0
 //  _lo_bench_noop(): benchmark no-op events.
 //

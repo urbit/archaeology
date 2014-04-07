@@ -1207,8 +1207,7 @@ u2_unix_do_look(void)
 static void
 _unix_ef_sync(uv_prepare_t* han_u, c3_i sas_i)
 {
-  u2_lo_open();
-  u2_lo_shut(u2_yes);
+  c3_stub;
 }
 
 /* _unix_time_cb(): timer callback.
@@ -1224,7 +1223,6 @@ _unix_time_cb(uv_timer_t* tim_u, c3_i sas_i)
 static void
 _unix_sign_cb(uv_signal_t* sil_u, c3_i num_i)
 {
-  u2_lo_open();
   {
     switch ( num_i ) {
       default: fprintf(stderr, "\r\nmysterious signal %d\r\n", num_i); break;
@@ -1238,7 +1236,6 @@ _unix_sign_cb(uv_signal_t* sil_u, c3_i num_i)
       // case SIGCHLD: u2_save_ef_chld(); break;
     }
   }
-  u2_lo_shut(u2_yes);
 }
 
 /* u2_unix_ef_hold()

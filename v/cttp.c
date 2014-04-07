@@ -955,17 +955,13 @@ _cttp_ccon_kick_connect(u2_ccon* coc_u)
 static void
 _cttp_ccon_kick_write_cb(uv_write_t* wri_u, c3_i sas_i)
 {
-  u2_lo_open();
-  {
-    _u2_write_t* ruq_u = (void *)wri_u;
+  _u2_write_t* ruq_u = (void *)wri_u;
 
-    if ( 0 != sas_i ) {
-      _cttp_ccon_fail(ruq_u->coc_u, u2_yes);
-    }
-    free(ruq_u->buf_y);
-    free(ruq_u);
+  if ( 0 != sas_i ) {
+    _cttp_ccon_fail(ruq_u->coc_u, u2_yes);
   }
-  u2_lo_shut(u2_no);
+  free(ruq_u->buf_y);
+  free(ruq_u);
 }
 
 /* _cttp_ccon_kick_write()
@@ -1154,7 +1150,6 @@ _cttp_ccon_kick_read_cryp_cb(uv_stream_t* tcp_u,
 {
   u2_ccon *coc_u = _cttp_ccon_wax((uv_tcp_t*)tcp_u);
 
-  u2_lo_open();
   {
     if ( siz_i < 0 ) {
       uv_err_t las_u = uv_last_error(u2L);
@@ -1176,7 +1171,6 @@ _cttp_ccon_kick_read_cryp_cb(uv_stream_t* tcp_u,
       free(buf_u.base);
     }
   }
-  u2_lo_shut(u2_yes);
 }
 
 /* _cttp_ccon_read_clyr_cb()
@@ -1188,7 +1182,6 @@ _cttp_ccon_kick_read_clyr_cb(uv_stream_t* tcp_u,
 {
   u2_ccon *coc_u = _cttp_ccon_wax((uv_tcp_t*)tcp_u);
 
-  u2_lo_open();
   {
     if ( siz_i < 0 ) {
       uv_err_t las_u = uv_last_error(u2L);
@@ -1202,7 +1195,6 @@ _cttp_ccon_kick_read_clyr_cb(uv_stream_t* tcp_u,
       free(buf_u.base);
     }
   }
-  u2_lo_shut(u2_yes);
 }
 
 /* _cttp_ccon_kick_read_clyr(): start reading on insecure socket.

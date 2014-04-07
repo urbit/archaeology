@@ -785,7 +785,6 @@ _raft_conn_read_cb(uv_stream_t* tcp_u,
 {
   u2_rcon* ron_u = (u2_rcon*)tcp_u;
 
-  u2_lo_open();
   {
     if ( siz_i < 0 ) {
       uv_err_t las_u = uv_last_error(u2L);
@@ -808,7 +807,6 @@ _raft_conn_read_cb(uv_stream_t* tcp_u,
     }
   }
   free(buf_u.base);
-  u2_lo_shut(u2_no);
 }
 
 /* _raft_conn_new(): allocate a new raft connection.
@@ -1595,8 +1593,6 @@ _raft_comm(u2_reck* rec_u, c3_w bid_w)
 {
   u2_cart* egg_u;
 
-  u2_lo_open();
-
   egg_u = rec_u->ova.egg_u;
   while ( egg_u ) {
     if ( egg_u->ent_w <= bid_w ) {
@@ -1605,7 +1601,6 @@ _raft_comm(u2_reck* rec_u, c3_w bid_w)
     } else break;
     egg_u = egg_u->nex_u;
   }
-  u2_lo_shut(u2_yes);
 }
 
 static void
