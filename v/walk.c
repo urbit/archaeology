@@ -30,20 +30,6 @@
   **  --
   */
 
-#if 0
-static u2_noun
-_walk_ok(u2_reck* rec_u, u2_noun nod)
-{
-  u2_noun don = u2_cn_mung(u2k(rec_u->toy.arch), u2k(nod));
-
-  if ( u2_no == u2_sing(nod, don) ) {
-    c3_assert(0);
-  }
-  u2z(don);
-  return nod;
-}
-#endif
-
 /* u2_walk_safe(): load file or 0.
 */
 u2_noun

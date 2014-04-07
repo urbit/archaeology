@@ -214,33 +214,6 @@ _reck_scot(u2_reck* rec_u, u2_noun dim)
   return u2_do("scot", dim);
 }
 
-#if 0
-/* _reck_spoo(): noun path from c, kind of a hack.
-*/
-static u2_noun
-_reck_spoo(c3_c* pax_c)
-{
-  if ( !*pax_c ) {
-    return u2_nul;
-  } else {
-    c3_c* ash_c = strchr(pax_c, '/');
-
-    if ( !ash_c ) {
-      return u2nc(u2_ci_string(pax_c), u2_nul);
-    }
-    else {
-      u2_noun pan;
-
-      *ash_c = 0;
-      pan = u2_ci_string(pax_c);
-      *ash_c = '/';
-
-      return u2nc(pan, _reck_spoo(ash_c + 1));
-    }
-  }
-}
-#endif
-
 /* _reck_load_arvo(): read an arvo file.
 */
 static u2_noun
@@ -295,18 +268,6 @@ u2_reck_numb(u2_reck* rec_u)
   u2z(rec_u->sen);
   rec_u->sen = _reck_scot(rec_u, u2nc(c3__uv, rec_u->sev_l));
 }
-
-#if 0
-/* _reck_time_bump(): advance the reck time by a small increment.
-*/
-static void
-_reck_time_bump(u2_reck* rec_u)
-{
-  c3_d bum_d = (1ULL << 48ULL);
-
-  rec_u->now = u2_cka_add(rec_u->now, u2_ci_chubs(1, &bum_d));
-}
-#endif
 
 /* u2_reck_peek(): query the reck namespace (protected).
 */
@@ -422,30 +383,6 @@ u2_reck_cold(u2_reck* rec_u, c3_w kno_w)
     u2z(u2_reck_gate("mook"));
   }
 
-#if 0
-  rec_u->toy.rain = u2_reck_wish(rec_u, "rain");
-  rec_u->toy.ream = u2_reck_wish(rec_u, "ream");
-  rec_u->toy.slay = u2_reck_wish(rec_u, "slay");
-  rec_u->toy.slaw = u2_reck_wish(rec_u, "slaw");
-  rec_u->toy.slam = u2_reck_wish(rec_u, "slam");
-  rec_u->toy.slap = u2_reck_wish(rec_u, "slap");
-  rec_u->toy.slop = u2_reck_wish(rec_u, "slop");
-  rec_u->toy.scot = u2_reck_wish(rec_u, "scot");
-  rec_u->toy.spat = u2_reck_wish(rec_u, "spat");
-  rec_u->toy.stab = u2_reck_wish(rec_u, "stab");
-  rec_u->toy.turf = u2_reck_wish(rec_u, "turf");
-  rec_u->toy.tuft = u2_reck_wish(rec_u, "tuft");
-  rec_u->toy.wash = u2_reck_wish(rec_u, "wash");
-  rec_u->toy.hoof = u2_reck_wish(rec_u, "hoof");
-  rec_u->toy.mook = u2_reck_wish(rec_u, "mook");
-
-  rec_u->toy.sham = u2_reck_wish(rec_u, "sham");
-  rec_u->toy.shen = u2_reck_wish(rec_u, "en:crya");
-  rec_u->toy.shed = u2_reck_wish(rec_u, "de:crya");
-  rec_u->toy.cyst = u2_reck_wish(rec_u, "cyst");
-  rec_u->toy.lump = u2_reck_wish(rec_u, "lump");
-#endif
-
   u2_reck_time(rec_u);
 
   u2_reck_numb(rec_u);
@@ -479,23 +416,6 @@ u2_reck_init(u2_reck* rec_u, c3_w kno_w, u2_noun ken)
   else {
     rec_u->ken = ken;
     rec_u->roc = u2_cn_nock(0, u2k(ken));
-#if 0
-    rec_u->toy.rain = u2_reck_wish(rec_u, "rain");
-    rec_u->toy.ream = u2_reck_wish(rec_u, "ream");
-    rec_u->toy.slay = u2_reck_wish(rec_u, "slay");
-    rec_u->toy.slaw = u2_reck_wish(rec_u, "slaw");
-    rec_u->toy.slam = u2_reck_wish(rec_u, "slam");
-    rec_u->toy.slap = u2_reck_wish(rec_u, "slap");
-    rec_u->toy.slop = u2_reck_wish(rec_u, "slop");
-    rec_u->toy.scot = u2_reck_wish(rec_u, "scot");
-    rec_u->toy.spat = u2_reck_wish(rec_u, "spat");
-    rec_u->toy.stab = u2_reck_wish(rec_u, "stab");
-    rec_u->toy.turf = u2_reck_wish(rec_u, "turf");
-    rec_u->toy.tuft = u2_reck_wish(rec_u, "tuft");
-    rec_u->toy.wash = u2_reck_wish(rec_u, "wash");
-    rec_u->toy.hoof = u2_reck_wish(rec_u, "hoof");
-    rec_u->toy.mook = u2_reck_wish(rec_u, "mook");
-#endif
     //  Direct poke to install tang/vanes.  Shd be in egz but isnt.
     //
     {
@@ -523,12 +443,6 @@ u2_reck_init(u2_reck* rec_u, c3_w kno_w, u2_noun ken)
                              u2nc(c3__eyre, u2_nul),
                              _reck_load_arvo(rec_u, "eyre"));
     }
-#if 0
-    rec_u->toy.sham = u2_reck_wish(rec_u, "sham");
-    rec_u->toy.shen = u2_reck_wish(rec_u, "en:crya");
-    rec_u->toy.shed = u2_reck_wish(rec_u, "de:crya");
-    rec_u->toy.cyst = u2_reck_wish(rec_u, "cyst");
-#endif
     u2_reck_time(rec_u);
     u2_reck_numb(rec_u);
     {
