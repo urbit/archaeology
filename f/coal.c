@@ -434,7 +434,7 @@ u2_cm_rind()
   u2_kite_tax(kit_r) = u2k(u2_wire_tax(u2_Wire));
   u2_kite_don(kit_r) = u2k(u2_wrac_at(u2_Wire, duz.don));
 
-  return u2_at_cord(u2_kite_buf_r(kit_r), c3_wiseof(jmp_buf));
+  return u2_at_ray(u2_kite_buf_r(kit_r));
 }
 
 /* _cm_jack(): steal the trace as of the current kite.
@@ -533,7 +533,7 @@ u2_cm_bail(c3_l how_l)
     // Copy out the jump buffer; free the old kite.
     {
       memcpy((void *)buf_f,
-             u2_at_cord(u2_kite_buf_r(kit_r), c3_wiseof(jmp_buf)),
+             u2_at_ray(u2_kite_buf_r(kit_r)),
              sizeof(jmp_buf));
 
       u2_wire_kit_r(u2_Wire) = u2_kite_par_r(kit_r);
@@ -575,7 +575,7 @@ u2_cm_bowl(u2_noun how)
     // Copy out the jump buffer; free the old kite.
     {
       memcpy((void *)buf_f,
-             u2_at_cord(u2_kite_buf_r(kit_r), c3_wiseof(jmp_buf)),
+             u2_at_ray(u2_kite_buf_r(kit_r)),
              sizeof(jmp_buf));
 
       u2_wire_kit_r(u2_Wire) = u2_kite_par_r(kit_r);

@@ -225,13 +225,6 @@
 #     define u2_at_ray(ray)    u2_at_nit(ray)
 #     define u2_nit_at(ptr_v)  (((c3_w *)(ptr_v)) - Loom)
 
-#   ifdef LoomFold
-#     define u2_at_cord(ray, siz) \
-        (u2_ray_a(ray) ? (u2_at_ray(ray) - ((siz) - 1)) : u2_at_ray(ray))
-#   else
-#     define u2_at_cord(ray, siz) u2_at_ray(ray)
-#   endif
-
 #     define u2_aftr(ray, type, field) \
         ((ray) + \
          ( ((c3_w *)&((type *)0)->field) - \

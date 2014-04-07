@@ -49,5 +49,5 @@
 
   /**   Global variables.
   **/
-#define  u2_Arv  ((u2_reck*)u2_at_cord(u2_wire_arv_r(u2_Wire), sizeof(u2_reck)))
+#define  u2_Arv  ((u2_reck*)u2_at_ray(u2_wire_arv_r(u2_Wire)))
 #define  u2A      u2_Arv
