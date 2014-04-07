@@ -377,6 +377,7 @@ u2_lo_soft(u2_reck* rec_u, c3_w sec_w, u2_funk fun_f, u2_noun arg)
     rop = u2nc(pre, u2k(u2t(mok)));
     u2z(mok);
     fprintf(stderr, "error computed\r\n");
+    c3_assert(0);
     return rop;
   }
 
@@ -568,7 +569,7 @@ u2_lo_loop()
   // signal(SIGIO, SIG_IGN);    //  linux is wont to produce for some reason
 
   _lo_init();
-  u2_raft_init();
+  uv_thread_create(&u2_Host.trp, u2_raft_init, u2_nul);
 
   if ( u2_no == u2_Host.ops_u.bat ) {
     uv_run(u2L, UV_RUN_DEFAULT);

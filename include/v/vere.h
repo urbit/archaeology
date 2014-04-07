@@ -535,9 +535,10 @@
         u2_bean    liv;                     //  if u2_no, shut down
         void*      ssl_u;                   //  struct SSL_CTX*
 
-        u2_reck*   arv_u;                   //  runtime
-        uv_mutex_t qoc;                     //  ovum-queue lock
-        uv_mutex_t woc;                     //  wire allocator lock
+        u2_reck*    arv_u;                  //  runtime
+        uv_mutex_t  qoc;                    //  ovum-queue lock
+        uv_mutex_t  woc;                    //  wire allocator lock
+        uv_thread_t trp;                    //  interpreter thread
         struct {
           struct _u2_plan* pan_u;           //  exit of plan queue
           struct _u2_plan* nap_u;           //  entry of plan queue
@@ -546,7 +547,6 @@
         u2_bean ames_wake:1;
         u2_bean batz_wake:1;
         u2_bean clay_wake:1;
-
       } u2_host;                            //  host == computer == process
 
 #     define u2L  u2_Host.lup_u             //  global event loop
@@ -1121,7 +1121,7 @@
       /* u2_raft_init(): start Raft process.
       */
         void
-        u2_raft_init(void);
+        u2_raft_init(void*);
 
       /* u2_raft_work(): poke, kick, and push pending events.
       */

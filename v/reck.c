@@ -897,6 +897,7 @@ void
 u2_reck_plam(u2_plan* pan_u)
 {
   uv_mutex_lock(&u2_Host.qoc);
+  gettimeofday(&pan_u->tim_tv, 0);
   if ( u2_nul == u2_Host.pla.pan_u ) {
     c3_assert(0 == u2_Host.pla.pan_u);
     u2_Host.pla.pan_u = u2_Host.pla.nap_u = pan_u;

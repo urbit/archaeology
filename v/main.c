@@ -415,6 +415,7 @@ main(c3_i   argc,
   u2_lo_grab("main", u2_none);
 
   u2_lo_loop();
+  uv_thread_join(&u2_Host.trp);
 
   return 0;
 }
