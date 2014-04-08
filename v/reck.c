@@ -916,6 +916,7 @@ void
 u2_reck_loop(void* ign)
 {
   u2_plan* pan;
+  (void)ign;
 
   while ( 1 ) {
     uv_mutex_lock(&u2_Host.qoc);
@@ -934,6 +935,7 @@ u2_reck_loop(void* ign)
       u2_Host.pla.pan_u = pan->nex_u;
     }
     uv_mutex_unlock(&u2_Host.qoc);
+    uL(fprintf(stderr, "reck %p\n", pan));
     //  u2_reck_plan_to_ovum
     //  ...
   }

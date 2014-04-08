@@ -446,7 +446,7 @@ _cttp_httr(c3_l num_l, c3_w sas_w, u2_hhed* mes, u2_hbod* uct)
 {
   u2_plan* pan;
 
-  pan = c3_malloc(sizeof(u2_plan));
+  pan = c3_calloc(sizeof(u2_plan));
 
   pan->met_m = c3__iron;
   pan->van_m = c3__http;

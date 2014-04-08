@@ -844,7 +844,7 @@ _http_new_response(c3_l sev_l, c3_l coq_l, c3_l seq_l, u2_noun rep)
 static void
 _http_request(u2_hreq* req_u)
 {
-  u2_plan* pan = c3_malloc(sizeof(*pan));
+  u2_plan* pan = c3_calloc(sizeof(*pan));
 
   pan->met_m = c3__iron;
   pan->van_m = c3__http;
@@ -924,7 +924,7 @@ _http_respond(u2_hrep* rep_u)
 void
 u2_http_ef_bake(void)
 {
-  u2_plan* pan = c3_malloc(sizeof(*pan));
+  u2_plan* pan = c3_calloc(sizeof(*pan));
 
   pan->met_m = c3__gold;
   pan->van_m = c3__http;

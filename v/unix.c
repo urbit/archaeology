@@ -1207,7 +1207,7 @@ u2_unix_do_look(void)
 static void
 _unix_ef_sync(uv_prepare_t* han_u, c3_i sas_i)
 {
-  c3_stub;
+  uL(fprintf(stderr, "sync-sunk\n"));
 }
 
 /* _unix_time_cb(): timer callback.

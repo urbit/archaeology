@@ -254,7 +254,7 @@ _ames_recv_cb(uv_udp_t*        wax_u,
     struct sockaddr_in* add_u = (struct sockaddr_in *)adr_u;
     c3_s                por_s = ntohs(add_u->sin_port);
     c3_w                pip_w = ntohl(add_u->sin_addr.s_addr);
-    u2_plan*            pan = c3_malloc(sizeof(u2_plan));
+    u2_plan*            pan = c3_calloc(sizeof(*pan));
 
     // fprintf(stderr, "ames: plan\r\n");
     pan->met_m = c3__gold;

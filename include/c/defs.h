@@ -96,3 +96,11 @@
         c3_assert(!"memory lost");              \
       }                                         \
       rut;})
+/* c3_calloc(): asserting calloc
+ */
+#define c3_calloc(s) ({                         \
+      void* rut = calloc(s, 1);                 \
+      if ( 0 == rut ) {                         \
+        c3_assert(!"memory lost");              \
+      }                                         \
+      rut;})

@@ -630,7 +630,7 @@ _term_read_cb(uv_stream_t* str_u,
     free(buf_u.base);
   }
   else {
-    u2_plan* pan = c3_malloc(sizeof(*pan));
+    u2_plan* pan = c3_calloc(sizeof(*pan));
 
     pan->met_m = c3__gold;
     pan->van_m = c3__term;
