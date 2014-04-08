@@ -793,9 +793,7 @@ _ho_run(u2_ray      wir_r,
 {
   u2_noun ret;
 
-  u2_tx_glu_bit(wir_r, u2_no);
   ret = jet_j->fun_f(wir_r, cor);
-  u2_tx_glu_bit(wir_r, u2_yes);
 
   if ( u2_none == ret ) {
     return u2_cm_bail(c3__exit);
@@ -835,9 +833,7 @@ _ho_run(u2_ray      wir_r,
         u2_noun ret;
 
         u2_wire_kit_r(wir_r) = 0;
-        u2_tx_glu_bit(wir_r, u2_no);
         ret = jet_j->fun_f(wir_r, cor);
-        u2_tx_glu_bit(wir_r, u2_yes);
         u2_wire_kit_r(wir_r) = kit_r;
 
         if ( u2_none == ret ) {
@@ -888,9 +884,7 @@ _ho_run(u2_ray      wir_r,
           ret = u2_none;
         }
         else {
-          u2_tx_glu_bit(wir_r, u2_no);
           ret = jet_j->fun_f(wir_r, cor);
-          u2_tx_glu_bit(wir_r, u2_yes);
           *tax = u2_none;
 
           c3_assert(u2_wire_tax(wir_r) == u2_kite_tax(u2_wire_kit_r(wir_r)));

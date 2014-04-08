@@ -100,16 +100,6 @@
       c3_assert(_tx_on == 1);
       // printf("sample sys %d\n", u2_trac_at(rac_r, wer.sys));
 
-      if ( u2_yes == u2_trac_at(rac_r, wer.sys) ) {
-        if ( u2_yes == u2_trac_at(rac_r, wer.glu) ) {
-          u2_trac_be(rac_r, c3_d, wer.com_d) += 1;
-        } else {
-          u2_trac_be(rac_r, c3_d, wer.jet_d) += 1;
-        }
-      } else {
-        u2_trac_be(rac_r, c3_d, wer.erp_d) += 1;
-      }
-
       _tx_sample_in(u2_trac_at(rac_r, duz.don));
     }
 
@@ -332,28 +322,6 @@ _tx_events(u2_wire wir_r,
   return cot;
 }
 
-/* u2_tx_sys_bit(): set system bit, returning old value.
-*/
-u2_bean
-u2_tx_sys_bit(u2_ray wir_r, u2_bean val)
-{
-  u2_bean bit = u2_wrac_at(wir_r, wer.sys);
-
-  u2_wrac_at(wir_r, wer.sys) = val;
-  return bit;
-}
-
-/* u2_tx_glu_bit(): set glutem bit, returning old value.
-*/
-u2_bean
-u2_tx_glu_bit(u2_ray wir_r, u2_bean val)
-{
-  u2_bean bit = u2_wrac_at(wir_r, wer.glu);
-
-  u2_wrac_at(wir_r, wer.glu) = val;
-  return bit;
-}
-
 /* u2_tx_init(): initialize state.
 */
 u2_ray
@@ -375,8 +343,6 @@ u2_tx_open(u2_wire wir_r)
   u2_ray rac_r = u2_wire_rac_r(wir_r);
 
   u2_trac_at(rac_r, wer.ryp) = u2_nul;
-  u2_trac_at(rac_r, wer.sys) = u2_yes;
-  u2_trac_at(rac_r, wer.glu) = u2_yes;
   u2_trac_be(rac_r, c3_d, wer.erp_d) = 0;
   u2_trac_be(rac_r, c3_d, wer.com_d) = 0;
   u2_trac_be(rac_r, c3_d, wer.jet_d) = 0;

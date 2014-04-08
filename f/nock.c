@@ -143,9 +143,7 @@ _nock_hint(u2_noun  zep,                                          //  transfer
     }
 
     case c3__slog: {
-      u2_tx_sys_bit(u2_Wire, u2_yes);
       u2_tx_slog(u2_Wire, hod);
-      u2_tx_sys_bit(u2_Wire, u2_no);
 
       u2z(hod);
       return pon ? _nock_mool(bus, nex, pon) : _nock_cool(bus, nex);
@@ -155,9 +153,7 @@ _nock_hint(u2_noun  zep,                                          //  transfer
       pro = pon ? _nock_mool(bus, nex, pon) : _nock_cool(bus, nex);
 
       if ( !pon || (u2_no != *pon) ) {
-        u2_tx_sys_bit(u2_Wire, u2_yes);
         pro = u2_ds_mine(u2_Wire, hod, pro);
-        u2_tx_sys_bit(u2_Wire, u2_no);
       }
       u2z(hod);
       return pro;
@@ -199,9 +195,7 @@ _nock_hint(u2_noun  zep,                                          //  transfer
           u2z(hod);
           hod = xod;
         }
-        u2_tx_sys_bit(u2_Wire, u2_yes);
         pro = u2_ds_mine(u2_Wire, hod, pro);
-        u2_tx_sys_bit(u2_Wire, u2_no);
       }
       u2z(hod);
       return pro;
@@ -225,9 +219,7 @@ _nock_hint(u2_noun  zep,                                          //  transfer
                     : _nock_cool(u2k(bus), u2k(nex));
 
           if ( !pon || (u2_no != *pon) ) {
-            u2_tx_sys_bit(u2_Wire, u2_yes);
             sav = u2_rl_save_cell(u2_Wire, 0, bus, nex, pro);
-            u2_tx_sys_bit(u2_Wire, u2_no);
 
             u2_tx_did_pod(u2_Wire, 1);
             u2_tx_did_fin(u2_Wire, 1);
@@ -241,9 +233,7 @@ _nock_hint(u2_noun  zep,                                          //  transfer
     }
 
     case c3__ping: {
-      u2_tx_sys_bit(u2_Wire, u2_yes);
       u2_tx_did_act(u2_Wire, hod);
-      u2_tx_sys_bit(u2_Wire, u2_no);
       u2z(hod);
 
       return pon ? _nock_mool(bus, nex, pon) : _nock_cool(bus, nex);
@@ -252,9 +242,7 @@ _nock_hint(u2_noun  zep,                                          //  transfer
     case c3__live: {
       u2_bean qox;
 
-      u2_tx_sys_bit(u2_Wire, u2_yes);
       qox = u2_tx_task_in(u2_Wire, hod);
-      u2_tx_sys_bit(u2_Wire, u2_no);
 
       u2z(hod);
       if ( u2_no == qox ) {
@@ -278,9 +266,7 @@ _nock_hint(u2_noun  zep,                                          //  transfer
         else if ( !pon || (u2_no != *pon) ) {
           u2_noun nuu;
 
-          u2_tx_sys_bit(u2_Wire, u2_yes);
           nuu = u2_rl_uniq(u2_Wire, pro);
-          u2_tx_sys_bit(u2_Wire, u2_no);
 
           u2_tx_did_fin(u2_Wire, 1);
           if ( nuu == pro ) {
@@ -467,13 +453,11 @@ _nock_cool(u2_noun bus,
           u2_noun seb = _nock_cool(bus, u2k(c_gal));
           u2_weak xip;
 
-          u2_tx_sys_bit(u2_Wire, u2_yes);
           xip = u2_ds_find(u2_Wire, seb);
 
           if ( u2_none != xip ) {
             u2_noun pro = u2_ho_kick(u2_Wire, xip, seb, b_gal);
 
-            u2_tx_sys_bit(u2_Wire, u2_no);
             if ( u2_none == pro ) {
               return u2_cm_bail(c3__exit);
             }
@@ -483,7 +467,6 @@ _nock_cool(u2_noun bus,
             }
           }
           else {
-            u2_tx_sys_bit(u2_Wire, u2_no);
             {
               u2_noun nex = u2_ct(u2at(b_gal, seb));
 
@@ -781,16 +764,12 @@ _nock_mool(u2_noun  bus,
           u2z(fol);
           if ( 0 != *pon ) { return seb; }
 
-          u2_tx_sys_bit(u2_Wire, u2_yes);
           xip = u2_ds_find(u2_Wire, seb);
-          u2_tx_sys_bit(u2_Wire, u2_no);
 
           if ( u2_none != xip ) {
             u2_noun pro;
 
-            u2_tx_sys_bit(u2_Wire, u2_yes);
             pro = u2_ho_kicq(u2_Wire, xip, seb, b_gal, pon);
-            u2_tx_sys_bit(u2_Wire, u2_no);
             u2z(seb);
 
             if ( u2_none == pro ) {
@@ -931,19 +910,7 @@ u2_noun
 u2_cn_nock(u2_noun bus,
            u2_noun fol)
 {
-  u2_noun pro;
-  u2_bean bit;
-
-  bit = u2_tx_sys_bit(u2_Wire, u2_no);
-  //  c3_assert(bit == u2_yes);
-  bit = u2_tx_glu_bit(u2_Wire, u2_yes);
-
-  pro = _nock_cool(bus, fol);
-
-  u2_tx_sys_bit(u2_Wire, u2_yes);
-  u2_tx_glu_bit(u2_Wire, bit);
-
-  return pro;
+  return _nock_cool(bus, fol);
 }
 
 /* u2_cn_mink(): logical virtual nock.
@@ -954,11 +921,6 @@ u2_cn_mink(u2_noun bus,
            u2_noun fly)
 {
   u2_noun res;
-  u2_bean bit;
-
-  bit = u2_tx_sys_bit(u2_Wire, u2_no);
-  c3_assert(bit == u2_yes);
-  bit = u2_tx_glu_bit(u2_Wire, u2_yes);
 
   {
     u2_noun lad;
@@ -973,9 +935,6 @@ u2_cn_mink(u2_noun bus,
     u2z(u2_hevn_at(lad));
     u2_hevn_at(lad) = lad;
   }
-
-  u2_tx_sys_bit(u2_Wire, u2_yes);
-  u2_tx_glu_bit(u2_Wire, bit);
 
   return res;
 }

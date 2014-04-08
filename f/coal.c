@@ -495,7 +495,6 @@ u2_cm_bail(c3_l how_l)
     if ( c3__fail == how_l ) { c3_assert(0); }
     c3_assert(0);
   }
-  u2_tx_sys_bit(u2_Wire, u2_yes);
 
   // fprintf(stderr, "bail\n");
   // if ( _num == 0 ) { c3_assert(0); } else _num--;
@@ -540,7 +539,6 @@ u2_cm_bowl(u2_noun how)
 {
   u2_ray kit_r = u2_wire_kit_r(u2_Wire);
 
-  u2_tx_sys_bit(u2_Wire, u2_yes);
 
   {
     u2_noun jaq;

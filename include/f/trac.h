@@ -55,14 +55,6 @@
             */
             u2_noun ryp;
 
-            /* Mode bit - u2_yes == C/system, u2_no == interpreted
-            */
-            u2_bean sys;
-
-            /* Function bit for sys - u2_yes == overhead, u2_no == function
-            */
-            u2_bean glu;
-
             /* Number of samples in random C code.
             */
             c3_d com_d;
@@ -229,17 +221,6 @@
         u2_tx_did_act(u2_ray  wir_r,
                       u2_noun did);                               //  retain
 
-      /* u2_tx_sys_bit(): set system bit, returning old value.
-      */
-        u2_bean
-        u2_tx_sys_bit(u2_ray  wir_r,
-                      u2_bean val);
-
-      /* u2_tx_glu_bit(): set glue bit within system bit.
-      */
-        u2_bean
-        u2_tx_glu_bit(u2_ray wir_r,
-                      u2_bean val);
     /** Tasks.
     **/
       /* u2_tx_task_in(): enter a task for profiling purposes.
