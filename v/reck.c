@@ -195,6 +195,7 @@ u2_reck_gate(const c3_c* txt_c)
 u2_noun
 u2_reck_do(const c3_c* txt_c, u2_noun arg)
 {
+  c3_thread_sane();
   return u2_cn_mung(u2_reck_gate(txt_c), arg);
 }
 
@@ -203,6 +204,7 @@ u2_reck_do(const c3_c* txt_c, u2_noun arg)
 u2_noun
 u2_reck_wish(u2_reck* rec_u, c3_c* str_c)
 {
+  c3_thread_sane();
   return _reck_nock_wish(rec_u, u2_ci_string(str_c));
 }
 
@@ -902,7 +904,7 @@ u2_reck_plam(u2_plan* pan_u)
     c3_assert(0 == u2_Host.pla.nap_u);
     u2_Host.pla.pan_u = u2_Host.pla.nap_u = pan_u;
   } else {
-    c3_assert(0 == u2_Host.pla.pan_u->nex_u);
+    c3_assert(0 == u2_Host.pla.nap_u->nex_u);
     u2_Host.pla.nap_u->nex_u = pan_u;
     u2_Host.pla.nap_u = pan_u;
   }
@@ -917,6 +919,17 @@ u2_reck_loop(void* ign)
 {
   u2_plan* pan;
   (void)ign;
+
+  u2_Host.tid_d = uv_thread_self();
+
+  u2_reck_time(u2A);
+  u2_reck_numb(u2A);
+  {
+    c3_c* dyt_c = u2_cr_string(u2A->wen);
+
+    printf("time: %s\n", dyt_c);
+    free(dyt_c);
+  }
 
   while ( 1 ) {
     uv_mutex_lock(&u2_Host.qoc);
@@ -935,10 +948,20 @@ u2_reck_loop(void* ign)
       u2_Host.pla.pan_u = pan->nex_u;
     }
     uv_mutex_unlock(&u2_Host.qoc);
-    uL(fprintf(stderr, "reck %p\n", pan));
+    fprintf(stderr, "reck %p\r\n", pan);
+
     //  u2_reck_plan_to_ovum
     //  ...
+
+    if ( u2A->ent_w > u2_Host.sav_u.ent_w ) {
+      fprintf(stderr, "autosaving... ent_w %d\n", u2A->ent_w);
+
+      u2_cm_purge();
+      u2_lo_grab("save", u2_none);
+
+      u2_loom_save(u2A->ent_w);
+      u2_Host.sav_u.ent_w = u2A->ent_w;
+
+    }
   }
-
-
 }

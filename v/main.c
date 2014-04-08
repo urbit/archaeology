@@ -308,18 +308,15 @@ main(c3_i   argc,
           (u2_yes == u2_loom_load()) )
     {
       u2_Host.wir_r = u2_ray_of(0, 0);
-      u2_Wire = u2_Host.wir_r;
 
-      u2_Host.cpu_c = u2_Host.ops_u.cpu_c;
-      u2_Host.arv_u = u2_Arv;
 
-      u2_Arv->ova.egg_u = u2_Arv->ova.geg_u = 0;
+      u2A->ova.egg_u = u2A->ova.geg_u = 0;
 
       u2_lo_grab("init", u2_none);
 
       //  Horrible ancient stuff.
       //
-      kno_w = u2_Host.arv_u->kno_w;
+      kno_w = u2A->kno_w;
       u2_Host.kno_w = kno_w;
 
       u2_ho_push();
@@ -327,26 +324,15 @@ main(c3_i   argc,
     else {
       u2_loom_boot();
       u2_Host.wir_r = u2_wr_init(c3__rock, u2_ray_of(0, 0), u2_ray_of(1, 0));
-      u2_Wire = u2_Host.wir_r;
-
-      u2_Host.cpu_c = u2_Host.ops_u.cpu_c;
-      u2_Host.arv_u = u2_Arv;
     }
   }
+
+  u2_Wire = u2_Host.wir_r;
+  u2_Host.cpu_c = u2_Host.ops_u.cpu_c;
 
   //  If we have not loaded from checkpoint, build kernel.
   //
-  if ( 0 != u2_Host.arv_u->ent_w ) {
-    u2_reck_time(u2_Host.arv_u);
-    u2_reck_numb(u2_Host.arv_u);
-    {
-      c3_c* dyt_c = u2_cr_string(u2_Host.arv_u->wen);
-
-      printf("time: %s\n", dyt_c);
-      free(dyt_c);
-    }
-  }
-  else {
+  if (0 == u2A->ent_w) {
     //  Set outside bail trap.  Should not be used, but you never know...
     //
     if ( 0 != u2_cm_trap() ) {
@@ -367,7 +353,7 @@ main(c3_i   argc,
       {
         u2_Host.kno_w = u2_Host.ops_u.kno_w;
 
-        u2_reck_boot(u2_Host.arv_u);
+        u2_reck_boot(u2A);
       }
       u2_cm_done();
     }
@@ -396,7 +382,7 @@ main(c3_i   argc,
       //
       u2_lo_sway(0, u2k(u2_wire_tax(u2_Wire)));
 
-      u2_lo_bail(u2_Host.arv_u);
+      u2_lo_bail(u2A);
 
       exit(1);
     }
@@ -418,4 +404,21 @@ main(c3_i   argc,
   uv_thread_join(&u2_Host.trp);
 
   return 0;
+}
+
+void
+c3_thread_sane()
+{
+  if ( u2_Host.tid_d == uv_thread_self() ) {
+    c3_assert(0 == u2_Wire);
+  }
+  else {
+    c3_assert(u2_wire_bas_r(0) == u2_Wire);
+  }
+}
+
+long
+u2_intr_tred()
+{
+  return u2_Host.tid_d;
 }

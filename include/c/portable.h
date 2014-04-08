@@ -97,7 +97,7 @@
 #   ifndef c3_global
 #     define c3_global
 #   endif
-
+#     define c3_thread __thread
 
   /** External, OS-independent library dependencies.
   **/

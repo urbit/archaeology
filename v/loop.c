@@ -327,6 +327,8 @@ u2_lo_soft(u2_reck* rec_u, c3_w sec_w, u2_funk fun_f, u2_noun arg)
 {
   u2_noun hoe, pro, rop;
 
+  c3_thread_sane();
+
   u2_rl_leap(u2_Wire, c3__rock);
 
   //  system level setjmp, for signals
@@ -567,9 +569,10 @@ u2_lo_loop()
   signal(SIGPIPE, SIG_IGN);     //  pipe, schmipe
   // signal(SIGIO, SIG_IGN);    //  linux is wont to produce for some reason
 
-  _lo_init();
   uv_thread_create(&u2_Host.trp, u2_reck_loop, u2_nul);
+  u2_Wire = u2_wire_bas_r(u2_Wire);
 
+  _lo_init();
   if ( u2_no == u2_Host.ops_u.bat ) {
     uv_run(u2L, UV_RUN_DEFAULT);
   }
@@ -652,7 +655,7 @@ _lo_mark()
   c3_w siz_w;
 
   siz_w = u2_cm_mark_internal();
-  siz_w += _lo_mark_reck(u2_Host.arv_u);
+  siz_w += _lo_mark_reck(u2_Arv);
 
   return siz_w;
 }

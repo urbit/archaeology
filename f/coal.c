@@ -10,6 +10,8 @@
 
 #include "../gen164/pit.h"
 
+c3_thread u2_ray u2_Wire;
+
   /**  Jet dependencies.  Minimize these.
   **/
 #   define Pt5Y   k_164__mood__hoon

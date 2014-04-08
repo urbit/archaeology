@@ -630,6 +630,9 @@ _term_read_cb(uv_stream_t* str_u,
     free(buf_u.base);
   }
   else {
+    /* possible optimization: check the end of the queue and extend the
+     * buffer if it's the same [vane metal name num].
+     */
     u2_plan* pan = c3_calloc(sizeof(*pan));
 
     pan->met_m = c3__gold;

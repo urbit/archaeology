@@ -535,10 +535,10 @@
         u2_bean    liv;                     //  if u2_no, shut down
         void*      ssl_u;                   //  struct SSL_CTX*
 
-        u2_reck*    arv_u;                  //  runtime
         uv_mutex_t  qoc;                    //  ovum-queue lock
         uv_cond_t   coq;                    //  ovum condition
         uv_thread_t trp;                    //  interpreter thread
+        c3_d        tid_d;                  //  interpreter thread id
         struct {
           struct _u2_plan* pan_u;           //  exit of plan queue
           struct _u2_plan* nap_u;           //  entry of plan queue
@@ -559,7 +559,7 @@
   /** Global variables.
   **/
     c3_global  u2_host  u2_Host;
-    c3_global  u2_wire  u2_Wire;
+extern c3_thread u2_ray u2_Wire;
     c3_global  u2_raft  u2_Raft;
     c3_global  c3_c*    u2_Local;
     c3_global  c3_c*    u2_System;

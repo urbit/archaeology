@@ -104,3 +104,5 @@
         c3_assert(!"memory lost");              \
       }                                         \
       rut;})
+
+void c3_thread_sane();

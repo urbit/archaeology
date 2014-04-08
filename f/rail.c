@@ -571,6 +571,7 @@ _rl_bloq_cheq(u2_ray box_r)
 #endif
 }
 
+extern long u2_intr_tred();
 /* _rl_bloq_grab():
 **
 **  Allocate `len_w` words of memory on `ral_r`, or return 0.
@@ -579,6 +580,12 @@ static u2_ray
 _rl_bloq_grab(u2_ray ral_r,
               c3_w   len_w)
 {
+  if ( u2_intr_tred() == uv_thread_self() ) {
+    assert(0 == ral_r);
+  }
+  else {
+    assert(u2_wire_bas_r(0) == ral_r);
+  }
   if ( c3__sand == u2_rail_hip_m(ral_r) ) {
     /* Sand allocation - no box, no overhead.
     */

@@ -15,10 +15,7 @@
   *** turn depends on u2_System.
   **/
 
-  /** Globals.
-  **/
-    c3_global u2_ray u2_Wire;                 //  __thread or equivalent
-
+extern c3_thread u2_ray u2_Wire;
 
   /** Aliases - selective and syntactically unique.
   **/
