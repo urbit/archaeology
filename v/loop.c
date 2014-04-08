@@ -291,8 +291,10 @@ u2_lo_tank(c3_l tab_l, u2_noun tac)
 void
 u2_lo_punt(c3_l tab_l, u2_noun tac)
 {
-  u2_noun blu   = u2_term_get_blew(0);
-  c3_l    col_l = u2h(blu);
+  c3_l    col_l;
+  c3_l    row_l;
+  u2_term_get_blew(1, &col_l, &row_l);
+
   u2_noun cat   = tac;
 
   //  We are calling nock here, but hopefully need no protection.
@@ -304,7 +306,6 @@ u2_lo_punt(c3_l tab_l, u2_noun tac)
     cat = u2t(cat);
   }
   u2z(tac);
-  u2z(blu);
 }
 
 /* u2_lo_sway(): print trace.

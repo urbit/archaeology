@@ -682,36 +682,26 @@ _term_ef_get(c3_l     tid_l)
 
 /* u2_term_get_blew(): return window size [columns rows].
 */
-u2_noun
-u2_term_get_blew(c3_l tid_l)
+void
+u2_term_get_blew(c3_l tid_l, c3_l* loc_l, c3_l* wor_l)
 {
   u2_utty*       uty_u = _term_ef_get(tid_l);
   c3_l           col_l, row_l;
 
-#if 1
   struct winsize siz_u;
   if ( uty_u && (0 == ioctl(uty_u->fid_i, TIOCGWINSZ, &siz_u)) ) {
     col_l = siz_u.ws_col;
     row_l = siz_u.ws_row;
+
+    uty_u->tat_u.siz.col_l = col_l;
+    uty_u->tat_u.siz.row_l = row_l;
   } else {
     col_l = 80;
     row_l = 24;
   }
-#else
-  {
-    c3_i col_i, row_i;
 
-    uv_tty_get_winsize(&uty_u->wax_u, &col_i, &row_i);
-    col_l = col_i;
-    row_l = row_i;
-  }
-#endif
-  if ( uty_u ) {
-    uty_u->tat_u.siz.col_l = col_l;
-    uty_u->tat_u.siz.row_l = row_l;
-  }
-
-  return u2nc(col_l, row_l);
+  *loc_l = col_l;
+  *wor_l = row_l;
 }
 
 /* u2_term_ef_winc(): window change.  Just console right now.
@@ -719,9 +709,11 @@ u2_term_get_blew(c3_l tid_l)
 void
 u2_term_ef_winc(void)
 {
+#if 0
   u2_noun pax = u2nq(c3__gold, c3__term, '1', u2_nul);
 
   u2_reck_plan(u2A, pax, u2nc(c3__blew, u2_term_get_blew(1)));
+#endif
 }
 
 /* u2_term_ef_ctlc(): send ^C on console.
@@ -739,6 +731,7 @@ u2_term_ef_ctlc(void)
 void
 u2_term_ef_boil(c3_l ono_l)
 {
+#if 0
   if ( ono_l ) {
     u2_noun tid_l;
 
@@ -750,15 +743,20 @@ u2_term_ef_boil(c3_l ono_l)
       u2_reck_plan(u2A, pax, hud);
     }
   }
-
+#endif
   {
-    u2_noun pax = u2nq(c3__gold, c3__term, '1', u2_nul);
+    u2_plan* pan = c3_calloc(sizeof(*pan));
+    pan->met_m = c3__gold;
+    pan->van_m = c3__term;
+    pan->poc.nam_m = c3__blew;
+    u2_term_get_blew(1, &pan->poc.blew.col_l, &pan->poc.blew.row_l);
+    u2_reck_plam(pan);
 
-    //  u2_reck_plan(u2A, u2k(pax), u2nc(c3__init, u2k(u2h(u2A->own))));
-    u2_reck_plan(u2A, u2k(pax), u2nc(c3__blew, u2_term_get_blew(1)));
-    u2_reck_plan(u2A, u2k(pax), u2nc(c3__hail, u2_nul));
-
-    u2z(pax);
+    pan = c3_calloc(sizeof(*pan));
+    pan->met_m = c3__gold;
+    pan->van_m = c3__term;
+    pan->poc.nam_m = c3__hail;
+    u2_reck_plam(pan);
   }
 }
 
@@ -767,6 +765,7 @@ u2_term_ef_boil(c3_l ono_l)
 void
 u2_term_ef_bake(u2_noun  fav)
 {
+#if 0
   u2_noun pax = u2nq(c3__gold, c3__term, '1', u2_nul);
 
   u2_reck_plan(u2A, u2k(pax), u2nc(c3__boot, fav));
@@ -774,6 +773,7 @@ u2_term_ef_bake(u2_noun  fav)
   u2_reck_plan(u2A, u2k(pax), u2nc(c3__hail, u2_nul));
 
   u2z(pax);
+#endif
 }
 
 /* _term_ef_blit(): send blit to terminal.

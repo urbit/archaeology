@@ -384,16 +384,6 @@ u2_reck_cold(u2_reck* rec_u, c3_w kno_w)
     u2z(u2_reck_gate("wash"));
     u2z(u2_reck_gate("mook"));
   }
-
-  u2_reck_time(rec_u);
-
-  u2_reck_numb(rec_u);
-  {
-    c3_c* dyt_c = u2_cr_string(rec_u->wen);
-
-    printf("time: %s\n", dyt_c);
-    free(dyt_c);
-  }
 }
 
 /* u2_reck_init(): load the reck engine, from old staged kernel.
@@ -444,14 +434,6 @@ u2_reck_init(u2_reck* rec_u, c3_w kno_w, u2_noun ken)
       _reck_init_veer(rec_u, 'e',
                              u2nc(c3__eyre, u2_nul),
                              _reck_load_arvo(rec_u, "eyre"));
-    }
-    u2_reck_time(rec_u);
-    u2_reck_numb(rec_u);
-    {
-      c3_c* dyt_c = u2_cr_string(rec_u->wen);
-
-      printf("time: %s\n", dyt_c);
-      free(dyt_c);
     }
   }
 }
@@ -881,6 +863,7 @@ u2_reck_plan(u2_reck* rec_u,
              u2_noun  pax,
              u2_noun  fav)
 {
+  c3_assert(u2_Host.tid_d == uv_thread_self());
   if ( u2_raty_lead == u2R->typ_e ) {
     u2_noun egg = u2nc(pax, fav);
     rec_u->roe = u2nc(u2nc(u2_nul, egg), rec_u->roe);
@@ -898,6 +881,8 @@ u2_reck_plan(u2_reck* rec_u,
 void
 u2_reck_plam(u2_plan* pan_u)
 {
+  //  don't execute from the interpreter thread
+  c3_assert(u2_Host.tid_d != uv_thread_self());
   uv_mutex_lock(&u2_Host.qoc);
   gettimeofday(&pan_u->tim_tv, 0);
   if ( u2_nul == u2_Host.pla.pan_u ) {
@@ -954,14 +939,14 @@ u2_reck_loop(void* ign)
     //  ...
 
     if ( u2A->ent_w > u2_Host.sav_u.ent_w ) {
-      fprintf(stderr, "autosaving... ent_w %d\n", u2A->ent_w);
+      fprintf(stderr, "autosaving... ent_w %d\r\n", u2A->ent_w);
 
       u2_cm_purge();
       u2_lo_grab("save", u2_none);
 
       u2_loom_save(u2A->ent_w);
       u2_Host.sav_u.ent_w = u2A->ent_w;
-
+      fprintf(stderr, "save done\r\n");
     }
   }
 }

@@ -580,11 +580,13 @@ static u2_ray
 _rl_bloq_grab(u2_ray ral_r,
               c3_w   len_w)
 {
-  if ( u2_intr_tred() == uv_thread_self() ) {
-    assert(0 == ral_r);
-  }
-  else {
-    assert(u2_wire_bas_r(0) == ral_r);
+  if ( u2_intr_tred() != 0) {
+    if ( u2_intr_tred() == uv_thread_self() ) {
+      assert(0 == ral_r || u2_wire_bas_r(0) == ral_r);
+    }
+    else {
+      assert(u2_wire_bas_r(0) == ral_r);
+    }
   }
   if ( c3__sand == u2_rail_hip_m(ral_r) ) {
     /* Sand allocation - no box, no overhead.

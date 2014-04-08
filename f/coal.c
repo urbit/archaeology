@@ -605,7 +605,7 @@ u2_cm_sweep(c3_w sav_w)
 void
 u2_cm_purge()
 {
-  u2_rl_drain(u2_Wire);
+  u2_rl_drain(u2_wire_bas_r(0));
 }
 
 /* u2_cm_mark_noun(): mark individual noun.

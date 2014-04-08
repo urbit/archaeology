@@ -5,17 +5,16 @@
 typedef struct _u2_pock {
   c3_w    nam_m;    //  discriminant %boot|%blew|%hail|%hear|%wake...
   union {
+    struct _blew {
+      c3_l  col_l;
+      c3_l  row_l;
+    } blew;
     struct _born {
     } born;
-    struct _they {
-      c3_l  num_l;  //  connection number
-      c3_w  sas_w;  //  status
-      void* hed_u;  //  headers
-      void* bod_u;  //  body
-    } they;
-    struct _this {
-      void* req_u;  //  u2_hreq
-    } this;
+    struct _boot {
+    } boot;
+    struct _hail {
+    } hail;
     struct _hear {
       c3_w  aty_w;  //  address type %if|%is (%is not supported)
       c3_s  por_s;  //  port short
@@ -28,6 +27,15 @@ typedef struct _u2_pock {
       c3_w  len_w;  //  term buffer length
       c3_c* buf_u;  //  term buffer
     } term;
+    struct _they {
+      c3_l  num_l;  //  connection number
+      c3_w  sas_w;  //  status
+      void* hed_u;  //  headers
+      void* bod_u;  //  body
+    } they;
+    struct _this {
+      void* req_u;  //  u2_hreq
+    } this;
   };
 } u2_pock;
 

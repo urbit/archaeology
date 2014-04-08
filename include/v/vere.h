@@ -890,8 +890,8 @@ extern c3_thread u2_ray u2_Wire;
     **/
       /* u2_term_get_blew(): return window size [columns rows].
       */
-        u2_noun
-        u2_term_get_blew(c3_l tid_l);
+        void
+        u2_term_get_blew(c3_l tid_l, c3_l* loc_l, c3_l* wor_l);
 
       /* u2_term_ef_boil(): initial effects for restored server.
       */

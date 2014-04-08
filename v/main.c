@@ -409,6 +409,9 @@ main(c3_i   argc,
 void
 c3_thread_sane()
 {
+  if ( 0 == u2_Host.tid_d ) {
+    return;
+  }
   if ( u2_Host.tid_d == uv_thread_self() ) {
     c3_assert(0 == u2_Wire);
   }
