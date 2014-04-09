@@ -262,20 +262,11 @@
         c3_l tno_l;                         //  terminal count in host
       } u2_uled;
 
-    /* u2_olar: event log trailer, old version.
+    /* u2_ular: event trailer.
     */
       typedef struct {
         c3_w syn_w;                         //  must equal mug of address
-        c3_w ent_w;                         //  event sequence number
-        c3_w len_w;                         //  word length of this event
-        c3_w mug_w;                         //  mug of entry
-      } u2_olar;
-
-    /* u2_ular: event log trailer.
-    */
-      typedef struct {
-        c3_w syn_w;                         //  must equal mug of address
-        c3_w ent_w;                         //  event sequence number
+        c3_d ent_d;                         //  event sequence number
         c3_w len_w;                         //  word length of this event
         c3_w mug_w;                         //  mug of entry
         c3_w tem_w;                         //  raft term of event
@@ -419,26 +410,24 @@
         struct _u2_utty* nex_u;             //  next in host list
       } u2_utty;
 
-    /* u2_raty: raft server type.
+    /* u2_sist: disk persistence layer.
     */
-      typedef enum {
-        u2_raty_none,
-        u2_raty_foll,
-        u2_raty_cand,
-        u2_raty_lead
-      } u2_raty;
+      typedef struct {
+        u2_ulog lug_u;
+        c3_d    ent_d;
+        c3_w    lat_w;
+        c3_d    cit_d;
+      } u2_sist;
 
     /* u2_raft: raft state.
     */
       typedef struct {
         uv_tcp_t         wax_u;             //  TCP listener
         uv_timer_t       tim_u;             //  election/heartbeat timer
-        u2_ulog          lug_u;             //  event log
-        c3_w             ent_w;             //  last log index
-        c3_w             lat_w;             //  last log term
-        u2_raty          typ_e;             //  server type
+        u2_sist          sis_u;             //  event log
+        c3_w             sat_w;             //  state (%foll|%cand|%lead)
         struct _u2_rnam* nam_u;             //  list of peers
-        struct _u2_rcon* run_u;             //  unknown connections
+        struct _u2_rcon* run_u;             //  unidentified conns
         c3_w             pop_w;             //  population count
         c3_w             vot_w;             //  votes in this election
         c3_c*            str_c;             //  our name
@@ -487,8 +476,19 @@
         c3_c*            por_c;             //  port
         u2_rcon*         ron_u;             //  connection
         struct _u2_rnam* nex_u;             //  pointer to next peer
+        c3_d             nei_d;             //  next log to send them
+        c3_d             mai_d;             //  highest matching log
         u2_bean          vog;               //  did they vote for us?
       } u2_rnam;
+
+    /* u2_rent: raft log entry. Sent over the wire.
+    */
+      typedef struct {
+        c3_w             tem_w;             //  term
+        c3_w             typ_w;             //  type, %ra|%ov
+        c3_w             len_w;             //  word length of blob
+        c3_w*            bob_w;             //  blob
+      } u2_rent;
 
     /* u2_opts: command line configuration.
     */
@@ -832,6 +832,11 @@ extern c3_thread u2_ray u2_Wire;
         void
         u2_lo_lead(u2_reck* rec_u);
 
+      /* u2_lo_deal(): actions on demotion from leader.
+      */
+        void
+        u2_lo_deal(u2_reck* rec_u);
+
       /* u2_lo_exit(): shut down io across pier.
       */
         void
@@ -857,6 +862,11 @@ extern c3_thread u2_ray u2_Wire;
       */
         void
         u2_lo_punt(c3_l tab_l, u2_noun tac);
+
+      /* u2_lo_rand(): fill a 32-byte buffer with random data.
+      */
+        void
+        u2_lo_rand(c3_w* rad_w);
 
       /* u2_lo_sway(): print trace.
       */
@@ -1116,7 +1126,7 @@ extern c3_thread u2_ray u2_Wire;
       /* u2_raft_readopt(): parse command line options.
       */
         u2_rnam*
-        u2_raft_readopt(const c3_c* arg_c, c3_c* our_c, c3_s oup_s);
+        u2_raft_readopt(const c3_c* arg_c, const c3_c* our_c, c3_s oup_s);
 
       /* u2_raft_init(): start Raft process.
       */
@@ -1138,18 +1148,38 @@ extern c3_thread u2_ray u2_Wire;
       /* u2_sist_pack(): write a log entry to disk.
       **
       ** XX Synchronous.
+      */
+        void
+        u2_sist_pack(u2_sist* sis_u, u2_rent* ent_u);
+
+      /* u2_sist_rent(): retrieve a range of log entries.
       **
-      ** typ_w is a mote describing the entry type: %ov for Arvo
-      ** logs, %ra for Raft events.
+      ** lai_d refers to the entry before the first to retrieve (e.g. 0 to
+      ** retrieve the first entry, whose sequence nubmer is 1.) n_d is the
+      ** number of entries to retrieve.
       **
-      ** Returns the entry's sequence number.
+      ** Caller must free all ent_u->bob_w.
+      */
+        void
+        u2_sist_rent(u2_sist* sis_u, c3_d lai_d, c3_d n_d, u2_rent* ent_u);
+
+      /* u2_sist_term(): term of log entry.
       */
         c3_w
-        u2_sist_pack(u2_reck* rec_u,
-                     c3_w tem_w,
-                     c3_w typ_w,
-                     c3_w* bob_w,
-                     c3_w len_w);
+        u2_sist_term(u2_sist* sis_u, c3_d ent_d);
+
+      /* u2_sist_song(): bring reck up to date with entry ent_d.
+      */
+        void
+        u2_sist_song(u2_sist* sis_u, u2_reck* rec_u, c3_d cit_d);
+
+      /* u2_sist_redo(): rewrite log entries.
+      **
+      ** ent_d is the location of the last entry to preserve. nuu_d is
+      ** the number of entries to write. ent_u is the entries.
+      */
+        void
+        u2_sist_redo(u2_sist* sis_u, c3_d ent_d, c3_d nuu_d, u2_rent* ent_u);
 
       /* u2_sist_put(): moronic key-value store put.
       **

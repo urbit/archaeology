@@ -25,6 +25,14 @@
 #include "v/reck.h"
 #include "v/vere.h"
 
+#if defined(U2_OS_linux)
+#include <stdio_ext.h>
+#define fpurge(fd) __fpurge(fd)
+#define DEVRANDOM "/dev/urandom"
+#else
+#define DEVRANDOM "/dev/random"
+#endif
+
 static jmp_buf Signal_buf;
 #ifndef SIGSTKSZ
 # define SIGSTKSZ 16384
@@ -572,6 +580,8 @@ u2_lo_loop()
 
   uv_thread_create(&u2_Host.trp, u2_reck_loop, u2_nul);
   u2_Wire = u2_wire_bas_r(u2_Wire);
+  //u2_sist_boot();
+  //u2_raft_init();
 
   _lo_init();
   if ( u2_no == u2_Host.ops_u.bat ) {
@@ -579,38 +589,150 @@ u2_lo_loop()
   }
 }
 
+/* u2_lo_rand(): fill a 256-bit (8-word) buffer.
+*/
+void
+u2_lo_rand(c3_w* rad_w)
+{
+  c3_i fid_i = open(DEVRANDOM, O_RDONLY);
+  c3_i ret_i;
+
+  if ( 32 != read(fid_i, (c3_y*) rad_w, 32) ) {
+    c3_assert(!"lo_rand");
+  }
+  ret_i = close(fid_i);
+  c3_assert(0 == ret_i);
+}
+
+/* _lo_zen(): get OS entropy.
+*/
+static u2_noun
+_lo_zen(u2_reck* rec_u)
+{
+  c3_w rad_w[8];
+
+  u2_lo_rand(rad_w);
+  return u2_ci_words(8, rad_w);
+}
+
+/* _lo_text(): ask for a name string.
+*/
+static u2_noun
+_lo_text(u2_reck* rec_u, c3_c* pom_c)
+{
+  c3_c   paw_c[60];
+  u2_noun say;
+
+  uH;
+  while ( 1 ) {
+    printf("%s: ", pom_c);
+
+    paw_c[0] = 0;
+    fpurge(stdin);
+    fgets(paw_c, 59, stdin);
+
+    if ( '\n' == paw_c[0] ) {
+      continue;
+    }
+    else {
+      c3_w len_w = strlen(paw_c);
+
+      if ( paw_c[len_w - 1] == '\n' ) {
+        paw_c[len_w-1] = 0;
+      }
+      say = u2_ci_string(paw_c);
+      break;
+    }
+  }
+  uL(0);
+  return say;
+}
+
 /* u2_lo_lead(): actions on promotion to leader.
 */
 void
 u2_lo_lead(u2_reck* rec_u)
 {
-  //  Further server configuration.
-  //
+  //  Terminal initialization.
   {
-    u2_http_ef_bake();
+    if ( u2_yes == u2_Host.ops_u.nuu ) {
+      u2_noun pig = u2_none;
+
+      if ( 0 == u2_Host.ops_u.imp_c ) {
+        u2_noun ten;
+
+        ten = _lo_zen(rec_u);
+        uL(fprintf(uH, "generating key pair...\n"));
+        pig = u2nq(c3__make, u2_nul, 11, ten);
+      }
+      else {
+        u2_noun imp = u2_ci_string(u2_Host.ops_u.imp_c);
+        u2_noun whu = u2_dc("slaw", 'p', u2k(imp));
+
+        if ( u2_nul == whu ) {
+          uL(fprintf(uH, "czar: incorrect format\n"));
+          u2_lo_bail(rec_u);
+        }
+        else {
+          u2_noun gen = _lo_text(u2A, "generator");
+          u2_noun gun = u2_dc("slaw", c3__uw, gen);
+
+          if ( u2_nul == gun ) {
+            uL(fprintf(uH, "czar: incorrect format\n"));
+            u2_lo_bail(rec_u);
+          }
+          else {
+            pig = u2nt(c3__sith, u2k(u2t(whu)), u2k(u2t(gun)));
+            u2z(gun);
+          }
+          u2z(whu);
+        }
+        u2z(imp);
+      }
+      u2_term_ef_bake(pig);
+    }
+
+    u2_term_ef_boil(1);  //  XX multiple terms
   }
 
-  _lo_talk();
-  {
-    u2_unix_ef_look();
-    u2_reck_plan(rec_u, u2nt(c3__gold, c3__ames, u2_nul),
-                        u2nc(c3__kick, u2k(rec_u->now)));
-  }
-  _lo_poll();
+  u2_raft_work(rec_u);
 
-#if 1
+  if ( u2_no == u2_Host.ops_u.bat ) {
+    //  Further server configuration.
+    //
+    {
+      u2_http_ef_bake();
+    }
+    //  Bring up listeners.
+    _lo_talk();
+    {
+      u2_unix_ef_look();
+      u2_reck_plan(rec_u,
+                   u2nt(c3__gold, c3__ames, u2_nul),
+                   u2nc(c3__kick, u2k(rec_u->now)));
+    }
+    _lo_poll();
+  }
+
+#if 0
   u2_loom_save(rec_u->ent_w);
 
   u2_Host.sav_u.ent_w = rec_u->ent_w;
 #endif
 
-  if ( u2_yes == u2_Host.ops_u.nuu ) {
-    u2_term_ef_boil(1);
-  }
 
 #if 1
   _lo_slow();
 #endif
+}
+
+/* u2_lo_deal(): actions on demotion from leader.
+*/
+void
+u2_lo_deal(u2_reck* rec_u)
+{
+  //  TODO bring down listeners, drop events
+  u2_lo_bail(rec_u);
 }
 
 /* _lo_mark_reck(): mark a reck.

@@ -12,15 +12,6 @@
 #include "v/vere.h"
 
 
-/* u2_rent: Log entry wire format.
-*/
-typedef struct {
-  c3_w             tem_w;                               //  Log entry term
-  c3_w             typ_w;                               //  Entry type, %ra|%ov
-  c3_w             len_w;                               //  Word length of blob
-  c3_w*            bob_w;                               //  Blob
-} u2_rent;
-
 /* u2_rmsg: Raft RPC wire format.
 */
 typedef struct _u2_rmsg {
@@ -52,11 +43,14 @@ typedef struct _u2_rmsg {
 static ssize_t _raft_rmsg_read(const u2_rbuf* buf_u, u2_rmsg* msg_u);
 static void _raft_rmsg_send(u2_rcon* ron_u, const u2_rmsg* msg_u);
 static void _raft_rmsg_free(u2_rmsg* msg_u);
+static void _raft_conn_all(u2_raft* raf_u, void (*con_f)(u2_rcon* ron_u));
 static void _raft_conn_dead(u2_rcon* ron_u);
 static u2_bean _raft_remove_run(u2_rcon* ron_u);
+static void _raft_send_apen(u2_rcon* ron_u);
 static void _raft_send_rasp(u2_rcon* ron_u, c3_t suc_t);
 static void _raft_rreq_free(u2_rreq* req_u);
 static void _raft_time_cb(uv_timer_t* tim_u, c3_i sas_i);
+static void _raft_comm(u2_reck* rec_u, c3_w bid_w);
 
 static void
 _raft_rnam_free(u2_rnam* nam_u)
@@ -101,7 +95,7 @@ _raft_readname(const c3_c* str_c, c3_w siz_w)
 /* u2_raft_readopt(): parse a string into a list of raft peers.
 */
 u2_rnam*
-u2_raft_readopt(const c3_c* arg_c, c3_c* our_c, c3_s oup_s)
+u2_raft_readopt(const c3_c* arg_c, const c3_c* our_c, c3_s oup_s)
 {
   u2_rnam* nam_u;
   u2_rnam* nex_u;
@@ -120,7 +114,7 @@ u2_raft_readopt(const c3_c* arg_c, c3_c* our_c, c3_s oup_s)
     c3_c* end_c;
     c3_w  por_w = strtoul(nam_u->por_c, &end_c, 10);
 
-    if ( '\0' == *nam_u->por_c || '\0' != *end_c || por_w >= 65536 ) {
+    if ( '\0' == *nam_u->por_c || '\0' != *end_c || por_w >= 65536U ) {
       uL(fprintf(uH, "raft: invalid port %s\n", nam_u->por_c));
       _raft_rnam_free(nam_u);
       _raft_rnam_free(nex_u);
@@ -153,6 +147,7 @@ static c3_w
 _raft_election_rand()
 {
   c3_w ret = (1.0 + (float) rand() / RAND_MAX) * 150;
+
   //uL(fprintf(uH, "raft: timeout %d\n", ret));
   return ret;
 }
@@ -162,31 +157,42 @@ _raft_election_rand()
 static void
 _raft_promote(u2_raft* raf_u)
 {
-  if ( u2_raty_lead == raf_u->typ_e ) {
+  if ( c3__lead == raf_u->sat_w ) {
     uL(fprintf(uH, "raft: double promote; ignoring\n"));
   }
   else {
-    c3_i sas_i;
-
     if ( 1 == raf_u->pop_w ) {
-      uL(fprintf(uH, "raft:      -> lead\n"));
-      raf_u->typ_e = u2_raty_lead;
-      //  TODO boot in multiuser mode
-      u2_sist_boot();
-      if ( u2_no == u2_Host.ops_u.bat ) {
-        u2_lo_lead(u2A);
-      }
+      u2_sist_song(&raf_u->sis_u, u2A, raf_u->sis_u.ent_d);
     }
     else {
-      c3_assert(u2_raty_cand == raf_u->typ_e);
+      c3_assert(c3__cand == raf_u->sat_w);
       uL(fprintf(uH, "raft: cand -> lead\n"));
-      raf_u->typ_e = u2_raty_lead;
 
-      sas_i = uv_timer_stop(&raf_u->tim_u);
-      c3_assert(0 == sas_i);
-      sas_i = uv_timer_start(&raf_u->tim_u, _raft_time_cb, 50, 50);
-      c3_assert(0 == sas_i);
+      //  Reinitialize leader-specific state.
+      {
+        u2_rnam* nam_u;
+
+        for ( nam_u = raf_u->nam_u; nam_u; nam_u = nam_u->nex_u ) {
+          nam_u->nei_d = raf_u->sis_u.ent_d + 1ULL;
+          nam_u->mai_d = 0;
+        }
+      }
+
+      //  Reset timer for heartbeats.
+      {
+        c3_i sas_i;
+
+        sas_i = uv_timer_stop(&raf_u->tim_u);
+        c3_assert(0 == sas_i);
+        sas_i = uv_timer_start(&raf_u->tim_u, _raft_time_cb, 0, 50);
+        c3_assert(0 == sas_i);
+      }
+
+      //  Try to get everyone's log up to date.
+      _raft_conn_all(raf_u, _raft_send_apen);
     }
+    raf_u->sat_w = c3__lead;
+    u2_lo_lead(u2A);
   }
 }
 
@@ -195,14 +201,14 @@ _raft_promote(u2_raft* raf_u)
 static void
 _raft_demote(u2_raft* raf_u)
 {
-  u2_raty typ_e = raf_u->typ_e;
+  c3_w sat_w = raf_u->sat_w;
 
   raf_u->vog_c = 0;
   u2_sist_nil("vote");
   raf_u->vot_w = 0;
-  raf_u->typ_e = u2_raty_foll;
+  raf_u->sat_w = c3__foll;
 
-  if ( u2_raty_lead == typ_e ) {
+  if ( c3__lead == sat_w ) {
     c3_i sas_i;
 
     uL(fprintf(uH, "raft: lead -> foll\n"));
@@ -211,10 +217,10 @@ _raft_demote(u2_raft* raf_u)
     sas_i = uv_timer_start(&raf_u->tim_u, _raft_time_cb,
                            _raft_election_rand(), 0);
     c3_assert(0 == sas_i);
-    //  TODO dump not-yet-committed events
+    u2_lo_deal(u2A);
   }
   else {
-    c3_assert(u2_raty_cand == typ_e);
+    c3_assert(c3__cand == sat_w);
     uL(fprintf(uH, "raft: cand -> foll\n"));
   }
 }
@@ -228,8 +234,8 @@ _raft_note_term(u2_raft* raf_u, c3_w tem_w)
     uL(fprintf(uH, "raft: got term from network: %d\n", tem_w));
     raf_u->tem_w = tem_w;
     u2_sist_put("term", (c3_y*)&raf_u->tem_w, sizeof(c3_w));
-    c3_assert(raf_u->typ_e != u2_raty_none);
-    if ( raf_u->typ_e == u2_raty_foll ) {
+    c3_assert(raf_u->sat_w != 0);
+    if ( raf_u->sat_w == c3__foll ) {
       c3_assert(0 == raf_u->vot_w);
     } else _raft_demote(raf_u);
   }
@@ -241,7 +247,7 @@ _raft_note_term(u2_raft* raf_u, c3_w tem_w)
 ** matches.  Otherwise, try to associate it with a name, killing old
 ** connections to that name.
 */
-static void  //  TODO indicate whether conn died
+static void
 _raft_rest_name(u2_rcon* ron_u, const c3_c* nam_c)
 {
   if ( 0 != ron_u->nam_u ) {
@@ -257,6 +263,8 @@ _raft_rest_name(u2_rcon* ron_u, const c3_c* nam_c)
 
     while ( nam_u ) {
       if ( 0 == strcmp(nam_u->str_c, nam_c) ) {
+        u2_bean suc;
+
         if ( nam_u->ron_u ) {
           c3_assert(nam_u->ron_u != ron_u);
           //uL(fprintf(uH, "raft: closing old conn %p to %s (%p)\n",
@@ -266,7 +274,8 @@ _raft_rest_name(u2_rcon* ron_u, const c3_c* nam_c)
         uL(fprintf(uH, "raft: incoming conn from %s\n", nam_u->str_c));
         nam_u->ron_u = ron_u;
         ron_u->nam_u = nam_u;
-        _raft_remove_run(ron_u);
+        suc = _raft_remove_run(ron_u);
+        c3_assert(u2_yes == suc);
         break;
       }
       else nam_u = nam_u->nex_u;
@@ -285,7 +294,7 @@ _raft_do_rest(u2_rcon* ron_u, const u2_rmsg* msg_u)
 {
   u2_raft* raf_u = ron_u->raf_u;
 
-  if ( u2_raty_cand == raf_u->typ_e || u2_raty_foll == raf_u->typ_e ) {
+  if ( c3__cand == raf_u->sat_w || c3__foll == raf_u->sat_w ) {
     c3_i sas_i;
 
     sas_i = uv_timer_stop(&raf_u->tim_u);
@@ -296,7 +305,9 @@ _raft_do_rest(u2_rcon* ron_u, const u2_rmsg* msg_u)
   }
 
   _raft_rest_name(ron_u, msg_u->rest.nam_c);
-  _raft_note_term(raf_u, msg_u->tem_w);
+  if ( u2_yes == ron_u->liv ) {
+    _raft_note_term(raf_u, msg_u->tem_w);
+  }
 }
 
 /* _raft_do_apen(): Handle incoming AppendEntries.
@@ -304,9 +315,69 @@ _raft_do_rest(u2_rcon* ron_u, const u2_rmsg* msg_u)
 static void
 _raft_do_apen(u2_rcon* ron_u, const u2_rmsg* msg_u)
 {
+  u2_raft* raf_u = ron_u->raf_u;
+
   c3_assert(c3__apen == msg_u->typ_w);
   _raft_do_rest(ron_u, msg_u);
-  /* TODO respond */
+  if ( u2_no == ron_u->liv ) {
+    uL(fprintf(uH, "raft: ignoring apen on dead conn\n"));
+  }
+  else {
+    if ( msg_u->tem_w < raf_u->tem_w ) {
+      uL(fprintf(uH, "raft: apen: term\n"));
+      _raft_send_rasp(ron_u, 0);
+    }
+    else if (raf_u->sis_u.ent_d < msg_u->rest.lai_d ) {
+      uL(fprintf(uH, "raft: apen: ent %llu %llu\n",
+                 raf_u->sis_u.ent_d, msg_u->rest.lai_d));
+      _raft_send_rasp(ron_u, 0);
+    }
+    else if (msg_u->rest.lat_w != u2_sist_term(&raf_u->sis_u,
+                                               msg_u->rest.lai_d) )
+    {
+      uL(fprintf(uH, "raft: apen: tem\n"));
+      _raft_send_rasp(ron_u, 0);
+    }
+    else {
+      _raft_send_rasp(ron_u, 1);
+
+      if ( c3__foll != raf_u->sat_w ) {
+        uL(fprintf(uH, "raft: received apen from new leader\n"));
+        _raft_demote(raf_u);
+      }
+      if ( 0 != msg_u->rest.apen.ent_d ) {
+        u2_sist_redo(&raf_u->sis_u, msg_u->rest.lai_d, msg_u->rest.apen.ent_d,
+                     msg_u->rest.apen.ent_u);
+        if ( msg_u->rest.apen.cit_d > raf_u->sis_u.cit_d ) {
+          u2_sist_song(&raf_u->sis_u, u2A, msg_u->rest.apen.cit_d);
+        }
+      }
+    }
+  }
+}
+
+/* _raft_tall(): update commitIndex after push.
+*/
+static void
+_raft_tall(u2_raft* raf_u, c3_d mai_d)
+{
+  u2_rnam* nam_u;
+  c3_w     mat_w = 0;
+
+  c3_assert(raf_u->pop_w > 1);
+  for ( nam_u = raf_u->nam_u; nam_u; nam_u = nam_u->nex_u ) {
+    if ( nam_u->mai_d >= mai_d ) {
+      mat_w++;
+    }
+  }
+  if ( mat_w >= raf_u->pop_w / 2 &&
+       raf_u->sis_u.ent_d >= mai_d &&
+       raf_u->tem_w == u2_sist_term(&raf_u->sis_u, mai_d) )
+  {
+    uL(fprintf(uH, "raft: committing %llu\n", mai_d));
+    raf_u->sis_u.cit_d = mai_d;
+    _raft_comm(u2A, mai_d);
+  }
 }
 
 /* _raft_apen_done(): process AppendEntries response.
@@ -314,8 +385,29 @@ _raft_do_apen(u2_rcon* ron_u, const u2_rmsg* msg_u)
 static void
 _raft_apen_done(u2_rreq* req_u, c3_w suc_w)
 {
+  u2_rcon* ron_u = req_u->ron_u;
+  u2_raft* raf_u = ron_u->raf_u;
+  u2_rnam* nam_u = ron_u->nam_u;
+
   c3_assert(c3__apen == req_u->msg_u->typ_w);
-  /* TODO */
+  if ( suc_w ) {
+    if ( req_u->msg_u->rest.apen.ent_d > 0 ) {
+      uL(fprintf(uH, "raft: successfully pushed %3llu entries to %s\n",
+                 req_u->msg_u->rest.apen.ent_d,
+                 nam_u->str_c));
+      nam_u->mai_d =
+        req_u->msg_u->rest.lai_d + req_u->msg_u->rest.apen.ent_d;
+      nam_u->nei_d = nam_u->mai_d + 1;
+      _raft_tall(raf_u, nam_u->mai_d);
+    }
+  }
+  else {
+    uL(fprintf(uH, "raft: failed to push to %s\n", nam_u->str_c));
+    if ( nam_u->nei_d > 1 ) {
+      nam_u->nei_d--;
+    }
+    _raft_send_apen(ron_u);
+  }
 }
 
 /* _raft_do_revo(): Handle incoming RequestVote.
@@ -332,9 +424,9 @@ _raft_do_revo(u2_rcon* ron_u, const u2_rmsg* msg_u)
   if ( msg_u->tem_w >= raf_u->tem_w                     &&
        (0 == raf_u->vog_c                             ||
         0 == strcmp(raf_u->vog_c, ron_u->nam_u->str_c)) &&
-       (raf_u->lat_w < msg_u->rest.lat_w              ||
-        (raf_u->lat_w == msg_u->rest.lat_w          &&
-         raf_u->ent_w <= msg_u->rest.lai_d)) )
+       (raf_u->sis_u.lat_w < msg_u->rest.lat_w        ||
+        (raf_u->sis_u.lat_w == msg_u->rest.lat_w    &&
+         raf_u->sis_u.ent_d <= msg_u->rest.lai_d)) )
   {
     raf_u->vog_c = ron_u->nam_u->str_c;
     u2_sist_put("vote", (c3_y*)raf_u->vog_c, strlen(raf_u->vog_c));
@@ -630,11 +722,11 @@ _raft_rmsg_send(u2_rcon* ron_u, const u2_rmsg* msg_u)
     _raft_bytes_send(ron_u, &msg_u->rest.apen.cit_d, sizeof(c3_d));
     _raft_bytes_send(ron_u, &msg_u->rest.apen.ent_d, sizeof(c3_d));
     for ( i_d = 0; i_d < msg_u->rest.apen.ent_d; i_d++ ) {
-      len_d += 3 * sizeof(c3_w) + ent_u[i_d].len_w;
+      len_d += 3 * sizeof(c3_w) + 4 * ent_u[i_d].len_w;
       _raft_bytes_send(ron_u, &ent_u[i_d].tem_w, sizeof(c3_w));
       _raft_bytes_send(ron_u, &ent_u[i_d].typ_w, sizeof(c3_w));
       _raft_bytes_send(ron_u, &ent_u[i_d].len_w, sizeof(c3_w));
-      _raft_bytes_send(ron_u, ent_u[i_d].bob_w, ent_u[i_d].len_w);
+      _raft_bytes_send(ron_u, ent_u[i_d].bob_w, 4 * ent_u[i_d].len_w);
     }
   }
 
@@ -886,13 +978,29 @@ _raft_rreq_free(u2_rreq* req_u)
   free(req_u);
 }
 
+/* _raft_unnamed(): no u2_rnam has this connection.
+*/
+static u2_bean
+_raft_unnamed(u2_rcon* ron_u)
+{
+  u2_raft* raf_u = ron_u->raf_u;
+  u2_rnam* nam_u = raf_u->nam_u;
+
+  while ( nam_u ) {
+    if ( nam_u->ron_u == ron_u ) {
+      return u2_no;
+    }
+    nam_u = nam_u->nex_u;
+  }
+  return u2_yes;
+}
+
 /* _raft_conn_free(): unlink a connection and free its resources.
 */
 static void
 _raft_conn_free(uv_handle_t* had_u)
 {
   u2_rcon* ron_u = (void*)had_u;
-  u2_raft* raf_u = ron_u->raf_u;
 
   //uL(fprintf(uH, "raft: conn_free %p\n", ron_u));
 
@@ -905,16 +1013,9 @@ _raft_conn_free(uv_handle_t* had_u)
   }
   else {
     u2_bean suc = _raft_remove_run(ron_u);
-    c3_assert(u2_yes == suc);
-    //  Slow, expensive debug assert.
-    {
-      u2_rnam* nam_u = raf_u->nam_u;
 
-      while ( nam_u ) {
-        c3_assert(nam_u->ron_u != ron_u);
-        nam_u = nam_u->nex_u;
-      }
-    }
+    c3_assert(u2_yes == suc);
+    c3_assert(u2_yes == _raft_unnamed(ron_u));
   }
 
   //  Free requests.
@@ -947,15 +1048,13 @@ _raft_conn_dead(u2_rcon* ron_u)
 {
   if ( u2_no == ron_u->liv ) {
     //uL(fprintf(uH, "raft: conn already dead %p\n", ron_u));
-    return;
   }
   else {
     uL(fprintf(uH, "raft: conn_dead %p\n", ron_u));
     ron_u->liv = u2_no;
+    uv_read_stop((uv_stream_t*)&ron_u->wax_u);
+    uv_close((uv_handle_t*)&ron_u->wax_u, _raft_conn_free);
   }
-
-  uv_read_stop((uv_stream_t*)&ron_u->wax_u);
-  uv_close((uv_handle_t*)&ron_u->wax_u, _raft_conn_free);
 }
 
 /* _raft_listen_cb(): generic listen callback.
@@ -1003,8 +1102,9 @@ _raft_connect_cb(uv_connect_t* con_u, c3_i sas_i)
   free(con_u);
 
   if ( 0 != sas_i ) {
-    uL(fprintf(uH, "raft: connect_cb: %s\n",
-                   uv_strerror(uv_last_error(u2L))));
+    //  XX drops specific error types
+    c3_log_every(25, "raft: connect_cb: %s 25\n",
+                 uv_strerror(uv_last_error(u2L)));
     uv_close((uv_handle_t*)&ron_u->wax_u, _raft_conn_free);
   }
   else {
@@ -1064,7 +1164,7 @@ _raft_getaddrinfo_cb(uv_getaddrinfo_t* raq_u,
   free(raq_u);
 }
 
-/* _raft_conn_all(): ensure that we are connected to each peer.
+/* _raft_conn_all(): perform an action once per peer, connecting if necessary.
 */
 static void
 _raft_conn_all(u2_raft* raf_u, void (*con_f)(u2_rcon* ron_u))
@@ -1187,7 +1287,7 @@ _raft_write_revo(u2_rcon* ron_u, u2_rmsg* msg_u)
 {
   u2_raft* raf_u = ron_u->raf_u;
 
-  _raft_write_rest(ron_u, raf_u->ent_w, raf_u->lat_w, msg_u);
+  _raft_write_rest(ron_u, raf_u->sis_u.ent_d, raf_u->sis_u.lat_w, msg_u);
   msg_u->typ_w = c3__revo;
 }
 
@@ -1212,13 +1312,50 @@ _raft_send_rasp(u2_rcon* ron_u, c3_t suc_t)
 static void
 _raft_send_beat(u2_rcon* ron_u)
 {
-  u2_rreq*    req_u = _raft_rreq_new(ron_u);
-  u2_rmsg*    msg_u = req_u->msg_u;
+  u2_rreq* req_u = _raft_rreq_new(ron_u);
+  u2_rmsg* msg_u = req_u->msg_u;
 
   c3_log_every(50, "raft: beat 50\n");
 
   _raft_write_apen(ron_u, 0, 0, 0, 0, 0, msg_u);
   _raft_rmsg_send(ron_u, msg_u);
+}
+
+/* _raft_send_apen(): send new log entries to a peer.
+**
+** Creates a new request.
+*/
+static void
+_raft_send_apen(u2_rcon* ron_u)
+{
+  u2_rnam* nam_u = ron_u->nam_u;
+  u2_raft* raf_u = ron_u->raf_u;
+
+  c3_assert(nam_u);
+  if ( nam_u->nei_d > raf_u->sis_u.ent_d ) {
+    _raft_send_beat(ron_u);
+  }
+  else {
+    u2_rreq* req_u = _raft_rreq_new(ron_u);
+    u2_rmsg* msg_u = req_u->msg_u;
+    u2_rent* ent_u;
+    c3_d     n_d;
+    c3_d     lai_d;
+    c3_w     lat_w;
+
+    c3_assert(nam_u->nei_d > 0);
+    c3_assert(raf_u->sis_u.ent_d >= nam_u->nei_d);
+    lai_d = nam_u->nei_d - 1;
+    lat_w = u2_sist_term(&raf_u->sis_u, lai_d);
+    n_d = raf_u->sis_u.ent_d - lai_d;
+
+    ent_u = malloc(sizeof(u2_rent) * n_d);
+    u2_sist_rent(&raf_u->sis_u, lai_d, n_d, ent_u);
+
+    _raft_write_apen(ron_u, lai_d, lat_w, raf_u->sis_u.cit_d, n_d, ent_u,
+                     msg_u);
+    _raft_rmsg_send(ron_u, msg_u);
+  }
 }
 
 /* _raft_send_revo(): send a RequestVote to a peer.
@@ -1242,6 +1379,7 @@ _raft_start_election(u2_raft* raf_u)
 {
   c3_i sas_i;
 
+  c3_assert(c3__cand == raf_u->sat_w);
   c3_assert(0 == uv_is_active((uv_handle_t*)&raf_u->tim_u));
   sas_i = uv_timer_start(&raf_u->tim_u, _raft_time_cb,
                          _raft_election_rand(), 0);
@@ -1285,21 +1423,21 @@ _raft_time_cb(uv_timer_t* tim_u, c3_i sas_i)
   //uL(fprintf(uH, "raft: time\n"));
 
   c3_assert(sas_i == 0);
-  switch ( raf_u->typ_e ) {
+  switch ( raf_u->sat_w ) {
     default: {
       uL(fprintf(uH, "raft: time_cb: unknown server state\n"));
       c3_assert(0);
     }
-    case u2_raty_foll: {
+    case c3__foll: {
       uL(fprintf(uH, "raft: foll -> cand\n"));
-      raf_u->typ_e = u2_raty_cand;
+      raf_u->sat_w = c3__cand;
       // continue to cand
     }
-    case u2_raty_cand: {
+    case c3__cand: {
       _raft_start_election(raf_u);
       break;
     }
-    case u2_raty_lead: {
+    case c3__lead: {
       _raft_heartbeat(raf_u);
       break;
     }
@@ -1312,7 +1450,7 @@ static void
 _raft_foll_init(u2_raft* raf_u)
 {
   uL(fprintf(uH, "raft: none -> foll\n"));
-  raf_u->typ_e = u2_raty_foll;
+  raf_u->sat_w = c3__foll;
 
   //  Initialize and count peers.
   {
@@ -1365,7 +1503,7 @@ _raft_foll_init(u2_raft* raf_u)
       if ( 0 == strcmp(vog_c, raf_u->str_c) ) {
         raf_u->vog_c = raf_u->str_c;
         raf_u->vot_w = 1;
-        raf_u->typ_e = u2_raty_cand;
+        raf_u->sat_w = c3__cand;
       }
       else {
         u2_rnam* nam_u;
@@ -1588,6 +1726,8 @@ _raft_punk(u2_reck* rec_u, u2_noun ovo)
   // uL(fprintf(uH, "punk oot %s\n", txt_c));
 }
 
+/* _raft_comm(): mark events committed.
+*/
 static void
 _raft_comm(u2_reck* rec_u, c3_w bid_w)
 {
@@ -1596,43 +1736,50 @@ _raft_comm(u2_reck* rec_u, c3_w bid_w)
   egg_u = rec_u->ova.egg_u;
   while ( egg_u ) {
     if ( egg_u->ent_w <= bid_w ) {
-      egg_u->did = u2_yes;
       egg_u->cit = u2_yes;
     } else break;
     egg_u = egg_u->nex_u;
   }
 }
 
+/* _raft_comm_cb(): call _raft_comm from single-instance mode.
+*/
 static void
 _raft_comm_cb(uv_timer_t* tim_u, c3_i sas_i)
 {
   u2_raft* raf_u = tim_u->data;
 
-  _raft_comm(u2A, raf_u->ent_w);
+  _raft_comm(u2A, raf_u->sis_u.ent_d);
 }
 
-static c3_w
+/* _raft_push(): write ovum to raft, transferring.
+*/
+static c3_d
 _raft_push(u2_raft* raf_u, c3_w* bob_w, c3_w len_w)
 {
-  c3_assert(raf_u->typ_e == u2_raty_lead);
+  u2_rent ent_u;
+
+  c3_assert(c3__lead == raf_u->sat_w);
   c3_assert(0 != bob_w && 0 < len_w);
 
-  if ( 1 == raf_u->pop_w ) {
-    c3_assert(u2_raty_lead == raf_u->typ_e);
-    raf_u->ent_w = u2_sist_pack(u2A, raf_u->tem_w, c3__ov, bob_w, len_w);
-    raf_u->lat_w = raf_u->tem_w;  //  XX
+  ent_u.tem_w = raf_u->tem_w;
+  ent_u.typ_w = c3__ov;
+  ent_u.len_w = len_w;
+  ent_u.bob_w = bob_w;
 
+  u2_sist_pack(&raf_u->sis_u, &ent_u);
+
+  if ( 1 == raf_u->pop_w ) {
     if ( !uv_is_active((uv_handle_t*)&raf_u->tim_u) ) {
       uv_timer_start(&raf_u->tim_u, _raft_comm_cb, 0, 0);
     }
-
-    return raf_u->ent_w;
   }
   else {
-    //  TODO
-    uL(fprintf(uH, "raft: multi-instance push\n"));
-    c3_assert(0);
+    _raft_conn_all(raf_u, _raft_send_apen);
   }
+
+  free(bob_w);
+  return raf_u->sis_u.ent_d;
 }
 
 /* _raft_kick_all(): kick a list of events, transferring.
@@ -1654,7 +1801,7 @@ _raft_kick_all(u2_reck* rec_u, u2_noun vir)
 void
 u2_raft_work(u2_reck* rec_u)
 {
-  if ( u2R->typ_e != u2_raty_lead ) {
+  if ( u2R->sat_w != c3__lead ) {
     c3_assert(rec_u->ova.egg_u == 0);
     if ( u2_nul != rec_u->roe ) {
       uL(fprintf(uH, "raft: dropping roe!!\n"));
@@ -1673,9 +1820,8 @@ u2_raft_work(u2_reck* rec_u)
     while ( rec_u->ova.egg_u ) {
       egg_u = rec_u->ova.egg_u;
 
-      if ( u2_yes == egg_u->did ) {
+      if ( u2_yes == egg_u->cit ) {
         vir = egg_u->vir;
-
         if ( egg_u == rec_u->ova.geg_u ) {
           c3_assert(egg_u->nex_u == 0);
           rec_u->ova.geg_u = rec_u->ova.egg_u = 0;
@@ -1687,15 +1833,7 @@ u2_raft_work(u2_reck* rec_u)
           free(egg_u);
         }
 
-        if ( u2_yes == egg_u->cit ) {
-          _raft_kick_all(rec_u, vir);
-        }
-        else {
-          //  We poked an event, but Raft failed to persist it.
-          //  TODO: gracefully recover.
-          uL(fprintf(uH, "vere: event executed but not persisted\n"));
-          c3_assert(0);
-        }
+        _raft_kick_all(rec_u, vir);
       }
       else break;
     }
@@ -1703,7 +1841,7 @@ u2_raft_work(u2_reck* rec_u)
     //  Poke pending events, leaving the poked events and errors on rec_u->roe.
     //
     {
-      if ( 0 == u2R->lug_u.len_d ) {
+      if ( 0 == u2R->sis_u.lug_u.len_d ) {
         return;
       }
       ova = u2_ckb_flop(rec_u->roe);
@@ -1740,7 +1878,6 @@ u2_raft_work(u2_reck* rec_u)
           egg_u = c3_malloc(sizeof(*egg_u));
           egg_u->nex_u = 0;
           egg_u->cit = u2_no;
-          egg_u->did = u2_no;
           egg_u->vir = vir;
 
           ron = u2_cke_jam(u2nc(u2k(rec_u->now), ovo));

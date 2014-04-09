@@ -331,7 +331,8 @@ u2_reck_cold(u2_reck* rec_u, c3_w kno_w)
 {
   memset(rec_u, 0, sizeof(*rec_u));
   rec_u->kno_w = kno_w;
-  rec_u->ent_w = 1;
+  rec_u->rno_w = 0;
+  rec_u->ent_w = 0;
 
   rec_u->own = 0;
   rec_u->now = 0;
@@ -864,7 +865,7 @@ u2_reck_plan(u2_reck* rec_u,
              u2_noun  fav)
 {
   c3_assert(u2_Host.tid_d == uv_thread_self());
-  if ( u2_raty_lead == u2R->typ_e ) {
+  if ( c3__lead == u2R->sat_w ) {
     u2_noun egg = u2nc(pax, fav);
     rec_u->roe = u2nc(u2nc(u2_nul, egg), rec_u->roe);
   }
