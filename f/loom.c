@@ -1068,13 +1068,15 @@ _frag_word(c3_w a_w, u2_noun b)
     c3_w nob_w = clz_w / 8;
     c3_w lef_w = clz_w % 8;
     c3_w i_w;
-
+    
     for ( i_w = 0; i_w < nob_w; i_w++ ) {
       b = _fragbyte(b, a_w % 8);
       a_w = a_w >> 8;
     }
 
-    b = _fragbit(b, a_w % lef_w, lef_w);
+    if ( lef_w != 0 ) {
+      b = _fragbit(b, a_w % lef_w, lef_w);
+    }
 
     return b;
   }
