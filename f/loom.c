@@ -5170,9 +5170,9 @@ _frag_word(c3_w a_w, u2_noun b)
     }
 
     if ( lef_w != 0 ) {
-      a_w = a_w << 32 - lef_w;
-      a_w = a_w >> 32 - lef_w;
-      b = _fragbit(b, a_w % lef_w, lef_w);
+      a_w = a_w << (32 - lef_w);
+      a_w = a_w >> (32 - lef_w);
+      b = _fragbit(b, a_w, lef_w);
     }
 
     return b;
