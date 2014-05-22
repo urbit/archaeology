@@ -23,2073 +23,2073 @@ _loom_stop(c3_i sig)
 /* code generated */
 static u2_noun _fragbit(u2_noun b, c3_w bits, c3_w nbits) {
   switch(nbits) {
-    case 1: 
-      switch(bits) {
-        case 0:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 1:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-      }
-    case 2: 
-      switch(bits) {
-        case 0:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 1:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 2:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 3:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-      }
-    case 3: 
-      switch(bits) {
-        case 0:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 1:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 2:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 3:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 4:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 5:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 6:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 7:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-      }
-    case 4: 
-      switch(bits) {
-        case 0:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 1:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 2:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 3:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 4:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 5:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 6:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 7:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 8:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 9:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 10:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 11:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 12:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 13:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 14:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 15:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-      }
-    case 5: 
-      switch(bits) {
-        case 0:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 1:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 2:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 3:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 4:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 5:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 6:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 7:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 8:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 9:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 10:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 11:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 12:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 13:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 14:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 15:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 16:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 17:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 18:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 19:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 20:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 21:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 22:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 23:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 24:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 25:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 26:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 27:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 28:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 29:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 30:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 31:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-      }
-    case 6: 
-      switch(bits) {
-        case 0:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 1:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 2:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 3:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 4:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 5:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 6:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 7:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 8:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 9:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 10:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 11:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 12:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 13:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 14:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 15:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 16:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 17:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 18:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 19:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 20:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 21:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 22:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 23:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 24:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 25:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 26:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 27:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 28:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 29:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 30:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 31:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 32:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 33:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 34:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 35:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 36:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 37:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 38:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 39:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 40:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 41:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 42:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 43:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 44:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 45:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 46:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 47:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 48:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 49:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 50:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 51:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 52:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 53:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 54:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 55:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 56:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 57:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 58:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 59:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 60:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 61:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 62:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 63:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-      }
-    case 7: 
-      switch(bits) {
-        case 0:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 1:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 2:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 3:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 4:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 5:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 6:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 7:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 8:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 9:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 10:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 11:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 12:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 13:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 14:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 15:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 16:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 17:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 18:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 19:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 20:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 21:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 22:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 23:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 24:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 25:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 26:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 27:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 28:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 29:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 30:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 31:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 32:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 33:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 34:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 35:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 36:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 37:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 38:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 39:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 40:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 41:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 42:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 43:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 44:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 45:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 46:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 47:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 48:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 49:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 50:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 51:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 52:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 53:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 54:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 55:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 56:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 57:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 58:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 59:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 60:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 61:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 62:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 63:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          return b;
-        case 64:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 65:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 66:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 67:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 68:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 69:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 70:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 71:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 72:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 73:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 74:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 75:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 76:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 77:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 78:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 79:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 80:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 81:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 82:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 83:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 84:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 85:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 86:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 87:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 88:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 89:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 90:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 91:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 92:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 93:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 94:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 95:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 96:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 97:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 98:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 99:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 100:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 101:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 102:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 103:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 104:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 105:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 106:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 107:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 108:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 109:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 110:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 111:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 112:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 113:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 114:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 115:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 116:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 117:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 118:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 119:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 120:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 121:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 122:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 123:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 124:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 125:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 126:
-          b = u2_h(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-        case 127:
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          b = u2_t(b); if(b == u2_none) return u2_none;
-          return b;
-      }
+  case 1: 
+    switch(bits) {
+    case 0:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 1:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    }
+  case 2: 
+    switch(bits) {
+    case 0:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 1:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 2:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 3:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    }
+  case 3: 
+    switch(bits) {
+    case 0:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 1:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 2:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 3:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 4:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 5:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 6:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 7:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    }
+  case 4: 
+    switch(bits) {
+    case 0:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 1:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 2:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 3:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 4:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 5:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 6:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 7:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 8:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 9:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 10:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 11:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 12:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 13:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 14:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 15:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    }
+  case 5: 
+    switch(bits) {
+    case 0:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 1:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 2:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 3:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 4:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 5:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 6:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 7:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 8:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 9:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 10:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 11:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 12:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 13:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 14:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 15:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 16:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 17:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 18:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 19:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 20:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 21:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 22:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 23:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 24:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 25:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 26:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 27:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 28:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 29:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 30:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 31:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    }
+  case 6: 
+    switch(bits) {
+    case 0:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 1:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 2:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 3:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 4:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 5:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 6:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 7:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 8:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 9:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 10:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 11:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 12:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 13:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 14:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 15:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 16:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 17:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 18:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 19:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 20:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 21:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 22:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 23:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 24:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 25:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 26:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 27:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 28:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 29:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 30:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 31:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 32:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 33:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 34:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 35:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 36:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 37:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 38:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 39:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 40:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 41:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 42:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 43:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 44:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 45:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 46:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 47:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 48:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 49:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 50:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 51:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 52:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 53:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 54:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 55:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 56:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 57:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 58:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 59:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 60:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 61:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 62:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 63:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    }
+  case 7: 
+    switch(bits) {
+    case 0:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 1:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 2:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 3:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 4:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 5:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 6:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 7:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 8:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 9:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 10:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 11:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 12:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 13:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 14:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 15:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 16:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 17:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 18:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 19:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 20:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 21:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 22:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 23:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 24:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 25:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 26:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 27:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 28:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 29:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 30:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 31:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 32:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 33:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 34:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 35:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 36:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 37:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 38:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 39:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 40:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 41:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 42:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 43:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 44:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 45:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 46:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 47:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 48:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 49:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 50:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 51:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 52:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 53:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 54:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 55:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 56:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 57:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 58:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 59:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 60:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 61:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 62:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 63:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      return b;
+    case 64:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 65:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 66:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 67:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 68:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 69:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 70:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 71:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 72:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 73:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 74:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 75:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 76:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 77:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 78:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 79:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 80:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 81:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 82:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 83:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 84:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 85:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 86:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 87:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 88:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 89:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 90:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 91:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 92:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 93:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 94:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 95:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 96:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 97:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 98:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 99:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 100:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 101:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 102:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 103:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 104:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 105:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 106:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 107:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 108:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 109:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 110:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 111:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 112:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 113:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 114:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 115:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 116:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 117:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 118:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 119:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 120:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 121:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 122:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 123:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 124:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 125:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 126:
+      b = u2_h(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    case 127:
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      b = u2_t(b); if(b == u2_none) return u2_none;
+      return b;
+    }
   }
 
   return u2_none;
@@ -2098,2566 +2098,2566 @@ static u2_noun _fragbit(u2_noun b, c3_w bits, c3_w nbits) {
 /* code generated */
 static u2_noun _fragbyte(u2_noun b, c3_w byt) {
   switch(byt) {
-    case 0: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 1: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 2: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 3: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 4: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 5: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 6: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 7: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 8: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 9: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 10: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 11: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 12: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 13: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 14: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 15: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 16: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 17: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 18: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 19: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 20: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 21: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 22: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 23: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 24: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 25: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 26: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 27: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 28: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 29: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 30: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 31: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 32: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 33: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 34: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 35: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 36: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 37: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 38: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 39: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 40: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 41: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 42: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 43: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 44: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 45: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 46: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 47: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 48: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 49: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 50: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 51: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 52: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 53: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 54: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 55: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 56: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 57: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 58: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 59: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 60: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 61: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 62: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 63: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 64: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 65: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 66: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 67: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 68: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 69: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 70: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 71: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 72: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 73: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 74: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 75: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 76: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 77: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 78: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 79: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 80: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 81: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 82: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 83: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 84: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 85: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 86: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 87: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 88: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 89: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 90: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 91: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 92: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 93: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 94: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 95: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 96: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 97: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 98: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 99: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 100: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 101: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 102: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 103: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 104: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 105: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 106: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 107: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 108: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 109: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 110: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 111: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 112: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 113: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 114: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 115: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 116: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 117: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 118: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 119: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 120: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 121: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 122: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 123: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 124: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 125: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 126: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 127: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      return b;
-    case 128: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 129: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 130: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 131: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 132: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 133: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 134: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 135: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 136: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 137: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 138: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 139: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 140: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 141: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 142: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 143: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 144: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 145: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 146: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 147: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 148: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 149: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 150: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 151: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 152: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 153: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 154: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 155: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 156: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 157: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 158: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 159: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 160: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 161: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 162: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 163: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 164: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 165: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 166: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 167: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 168: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 169: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 170: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 171: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 172: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 173: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 174: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 175: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 176: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 177: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 178: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 179: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 180: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 181: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 182: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 183: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 184: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 185: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 186: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 187: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 188: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 189: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 190: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 191: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 192: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 193: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 194: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 195: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 196: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 197: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 198: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 199: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 200: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 201: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 202: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 203: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 204: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 205: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 206: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 207: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 208: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 209: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 210: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 211: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 212: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 213: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 214: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 215: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 216: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 217: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 218: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 219: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 220: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 221: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 222: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 223: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 224: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 225: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 226: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 227: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 228: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 229: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 230: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 231: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 232: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 233: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 234: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 235: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 236: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 237: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 238: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 239: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 240: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 241: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 242: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 243: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 244: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 245: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 246: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 247: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 248: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 249: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 250: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 251: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 252: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 253: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 254: 
-      b = u2_h(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
-    case 255: 
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      b = u2_t(b); if(b == u2_none) return u2_none;
-      return b;
+  case 0: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 1: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 2: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 3: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 4: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 5: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 6: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 7: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 8: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 9: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 10: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 11: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 12: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 13: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 14: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 15: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 16: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 17: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 18: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 19: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 20: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 21: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 22: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 23: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 24: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 25: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 26: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 27: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 28: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 29: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 30: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 31: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 32: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 33: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 34: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 35: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 36: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 37: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 38: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 39: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 40: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 41: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 42: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 43: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 44: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 45: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 46: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 47: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 48: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 49: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 50: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 51: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 52: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 53: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 54: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 55: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 56: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 57: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 58: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 59: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 60: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 61: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 62: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 63: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 64: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 65: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 66: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 67: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 68: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 69: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 70: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 71: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 72: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 73: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 74: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 75: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 76: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 77: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 78: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 79: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 80: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 81: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 82: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 83: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 84: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 85: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 86: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 87: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 88: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 89: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 90: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 91: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 92: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 93: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 94: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 95: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 96: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 97: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 98: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 99: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 100: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 101: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 102: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 103: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 104: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 105: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 106: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 107: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 108: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 109: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 110: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 111: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 112: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 113: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 114: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 115: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 116: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 117: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 118: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 119: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 120: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 121: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 122: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 123: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 124: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 125: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 126: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 127: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    return b;
+  case 128: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 129: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 130: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 131: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 132: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 133: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 134: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 135: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 136: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 137: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 138: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 139: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 140: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 141: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 142: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 143: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 144: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 145: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 146: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 147: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 148: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 149: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 150: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 151: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 152: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 153: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 154: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 155: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 156: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 157: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 158: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 159: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 160: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 161: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 162: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 163: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 164: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 165: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 166: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 167: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 168: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 169: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 170: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 171: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 172: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 173: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 174: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 175: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 176: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 177: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 178: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 179: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 180: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 181: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 182: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 183: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 184: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 185: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 186: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 187: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 188: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 189: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 190: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 191: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 192: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 193: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 194: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 195: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 196: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 197: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 198: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 199: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 200: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 201: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 202: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 203: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 204: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 205: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 206: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 207: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 208: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 209: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 210: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 211: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 212: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 213: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 214: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 215: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 216: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 217: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 218: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 219: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 220: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 221: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 222: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 223: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 224: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 225: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 226: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 227: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 228: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 229: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 230: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 231: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 232: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 233: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 234: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 235: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 236: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 237: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 238: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 239: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 240: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 241: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 242: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 243: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 244: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 245: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 246: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 247: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 248: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 249: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 250: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 251: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 252: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 253: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 254: 
+    b = u2_h(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
+  case 255: 
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    b = u2_t(b); if(b == u2_none) return u2_none;
+    return b;
   }
   return u2_none;
 }
