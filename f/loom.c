@@ -5165,11 +5165,13 @@ _frag_word(c3_w a_w, u2_noun b)
     c3_w i_w;
     
     for ( i_w = 0; i_w < nob_w; i_w++ ) {
-      b = _fragbyte(b, a_w % 8);
+      b = _fragbyte(b, a_w % 256);
       a_w = a_w >> 8;
     }
 
     if ( lef_w != 0 ) {
+      a_w = a_w << 32 - lef_w;
+      a_w = a_w >> 32 - lef_w;
       b = _fragbit(b, a_w % lef_w, lef_w);
     }
 
