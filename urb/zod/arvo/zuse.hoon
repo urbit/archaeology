@@ -2416,7 +2416,20 @@
           $:  $:  rtt=@dr                               ::  smoothed rtt
                   rto=@dr                               ::  retransmit timeout
                   rtn=(unit ,@da)                       ::  next timeout
-                  rue=(unit ,@da)                       ::  last heard from
+                  rue=(unit ,@da)                       ::  last heard frot
+                  rtl=@da                               ::  last speed adjustment
+                  rle=@da                               ::  last edge
+                  rld=@da                               ::  last doubling
+                  rhw=@dr                               ::  highwater
+                  rlw=@dr                               ::  lowwater
+                  rtd=@dr                               ::  deviation
+                  rts=@dr                               ::  sec per msg
+                  rsrh=?                                ::  seen recent high
+                  rsrl=?                                ::  seen recent low
+                  rsoh=?                                ::  seen older high
+                  rsol=?                                ::  seen older low
+                  rtp=?                                 ::  phase
+                  ini=?                                 ::  initialized?
               ==                                        ::
               $:  nus=@ud                               ::  number sent
                   nif=@ud                               ::  number live

@@ -1,6 +1,7 @@
 ::
 ::  ames (4a), networking
 ::
+!:
   |=  pit=vase
   =>  =~
 ::  structures
@@ -768,7 +769,7 @@
   ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
   ::              section 4aF, packet pump             ::
   |%
-  ++  pu                                                ::  packet pump
+  ++  pu  !:                                            ::  packet pump
     |_  shed
     ++  abet  +<
     ++  ahoy                                            ::    ahoy:pu
@@ -778,6 +779,19 @@
           rto  ~s4
           rtn  ~
           rue  ~
+          rtl  `@da`0
+          rle  `@da`0
+          rld  `@da`0
+          rhw  ~s1
+          rlw  ~s1
+          rtd  (div ~s1 2)
+          rts  ~s1
+          rsrh  %.n
+          rsrl  %.n
+          rsoh  %.n
+          rsol  %.n
+          rtp  %.n
+          ini  %.n
           nus  0
           nif  0
           nep  0
@@ -837,7 +851,7 @@
       =+  rig=$(puq r.puq)
       ?^(rig rig [~ p.n.puq])
     ::
-    ++  bine                                            ::    bine:pu
+    ++  bine  !:                                        ::    bine:pu
       |=  [now=@da num=@ud]                             ::  apply ack
       ^-  [(unit soup) _+>]
       ?~  puq  !!
@@ -847,10 +861,15 @@
           [-.lef +.lef(puq [n.puq puq.lef r.puq])]
         =+  rig=$(puq r.puq)
         [-.rig +.rig(puq [n.puq l.puq puq.rig])]
-      =:  rtt  ?.  &(liv.q.n.puq =(1 nux.q.n.puq))  rtt
-               =+  gap=(sub now lys.q.n.puq)
-               ::  ~&  [%bock-trip num (div gap (div ~s1 1.000))]
-               (div (add (mul 2 rtt) gap) 3)
+      =+  gap=(sub now lys.q.n.puq)
+      =+  ^=  rttst
+          ?.  &(liv.q.n.puq =(1 nux.q.n.puq))
+            +<-.abet
+          (cong now gap +<-.abet)
+      =:   
+          +<-.abet  rttst
+        ==
+      =:
           nif  (sub nif !liv.q.n.puq)
         ==
       =+  lez=(dec (need (~(get by pyz) gom.q.n.puq)))
@@ -860,6 +879,120 @@
           [~ (~(put by pyz) gom.q.n.puq lez)]
       :-  gub
       +>.$(puq ~(nap to puq))
+    ::
+    ++  nano  !:
+      |=  a=@dr
+      ^-  @u
+      (div (lsh 0 6 a) ~s1)
+    ++  nona  !:
+      |=  a=@u
+      ^-  @dr
+      (mul ~s1 (rsh 0 6 a))
+    ::
+    ::  additive adjust
+    ++  adjust  !:
+      |=  [now=@da s=[rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]]
+      ^-  [rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]
+      ~&  %adjust
+      ~&  [%low `@dr`rlw.s]
+      ~&  [%high `@dr`rhw.s]
+      ~&  [%seen-recent-high rsrh.s]
+      ~&  [%seen-recent-low rsrl.s]
+      ~&  [%orig-rtt-avg rtt.s]
+      ~&  [%rto `@dr`rto.s]
+      =+  second=~s1
+      =+  rand=(div rts.s 16)
+      ::  if tis been awhile, start slow
+      =+  ^=  s2
+          ?:  (gth (sub now rtl.s) (mul 10 second))
+            ~&  %slow-start
+             s(rts (add second rand))
+          s
+      =+  ^=  s3
+          ?:  (gth (nano rts.s2) 131.072)
+            ~&  %additive-adjust
+            =+  d=(sun:rd (nano rts.s2))
+            =+  den=(add:rd .~1 (div:rd (mul:rd d d) .~2251799813685248))
+              s2(rts (nona (hol:rd (div:rd d den))))
+          s2
+      ::  check phases
+      =+  ^=  s4
+          ?:  !rtp.s3
+            ?:  rsoh.s3
+              ~&  [%phase 1]
+              ~&  %multiplicative-adjust
+              ~&  %edge
+              s3(rtp %.y, rle now, rts (add rts.s2 rand))
+            s3
+          ?:  rsol.s3
+            ~&  [%phase 0]
+            s3(rtp %.n)
+          s3
+      ::  reset flags
+      s4(rsoh rsrh.s4, rsol rsrl.s4, rsrh %.n, rsrl %.n, rtl now)
+    ++  check  !:
+      |=  [now=@da s=[rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]]
+      ^-  [rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]
+      =+  a=(lth (sub now rle.s) ~s60)
+      =+  b=(lth now :(add rld.s (mul 4 rts.s) (mul 64 rto.s) ~s5))
+      =+  c=(lth now :(add rld.s (mul 4 rts.s) (mul 2 rto.s)))
+      =+  d=(lth (nano rts.s) 65.535)
+      ?:  |(&(a b) &(!a c) d)
+        s
+      (double now s)
+    ::
+    ::  I'll just trust DJB that this doesn't infinite loop w/ check
+    ++  double  !:
+      |=  [now=@da s=[rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]]
+      ^-  [rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]
+    ~&  %double
+    ?:  =(rle 0)
+      ~&  %edge
+      (check now s(rts (div rts.s 2), rld now, rle now))
+    (check now s(rts (div rts.s 2), rld now))
+    ::
+    ::  Aye, this is truly a mess (less so now)
+    ++  cong  !:
+      |=  [now=@da gap=@dr s=[rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]]
+      ^-  [rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]
+      =+  millisec=(rsh 0 3 ~s1)
+      ::  Initialilze if necessary
+      =+  ^=  s2
+          ?.  ini.s
+            s(rts gap, rtt gap, rtd (div gap 2), rhw rtt, rlw rtt, rtl now, ini %.y)
+          s
+      ::  Jacobson's retransmission timeout/initialization
+      =+  delta=(dif:si (sun:si `@u`gap) (sun:si `@u`rtt.s))
+      =+  st=s(rtt (abs:si (sum:si (sun:si `@u`rtt.s) (fra:si delta --8))))   
+      =+  adel=(abs:si delta)
+      =+  adel2=(dif:si (sun:si adel) (sun:si `@u`rtd.st))
+      =+  st2=st(rtd (abs:si (sum:si (sun:si `@u`rtd.st) (fra:si adel2 --4))))
+      =+  s3=st2(rto (add rtt.st2 (mul 4 rtd.st2)))
+      ::  anti-spike
+      =+  s4=s3(rto (add rto.s3 (mul 8 rts.s3)))
+      ::  calculate high/low-waters
+      =+  s5=s4(rhw (abs:si (add:si (sun:si `@u`rhw.s4) (fra:si (dif:si (sun:si `@u`gap) (sun:si `@u`rhw.s4)) --1.024))))
+      =+  ^=  s6
+          ?:  (gth gap rlw.s5)
+            s5(rlw (add rlw.s5 (div (sub gap rlw.s5) 8.192)))
+          =+  f=(fra:si (dif:si (sun:si `@u`gap) (sun:si `@u`rlw.s5)) --256)
+          s5(rlw (abs:si (add:si (sun:si `@u`rlw.s5) f)))
+      ::  check for seen high/low
+      =+  ^=  s7
+          ?:  (gth rtt.s6 (add rhw.s6 (mul 5 millisec)))
+            :: ~&  %seen-recent-high
+            s6(rsrh %.y)
+          s6
+      =+  ^=  s8
+          ?:  (lth rtt.s7 rlw.s7)
+            :: ~&  %seen-recent-low
+            s7(rsrl %.y)
+          s7
+      =+  ^=  s9
+          ?:  (gth now (add rtl.s8 (mul 16 rts.s8)))
+            (adjust now s8)
+          s8
+      (check now s9)
     ::
     ++  bock                                            ::    bock:pu
       |=  [now=@da num=@ud]                             ::  ack by sequence
