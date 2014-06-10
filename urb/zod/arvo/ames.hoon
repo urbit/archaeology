@@ -1656,7 +1656,7 @@
       =.  doz  $(wab.yem l.wab.yem)
       =.  doz  $(wab.yem r.wab.yem)
       =+  bah=q.n.wab.yem
-      (hunt doz rtn.sop.bah)
+      (hunt doz (min rtn.sop.bah rtb.sop.bah))
     ::
     ++  load
       |=  old=furt
