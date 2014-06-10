@@ -1011,6 +1011,8 @@
       |=  now=@da                                       ::  harvest queue
       ^-  [(list rock) _+>]
       ?:  =(~ puq)  [~ +>(rtn ~)]
+      ?.  |(=(rlb 0) &(!=(~ rtb) ?>(?>(^ rtb) (gte now u.rtb))))
+        [~ +>]                                          ::  can't send yet
       ?.  (gth caw nif)  [~ +>]
       =+  wid=(sub caw nif)
       =:  rlb  now
@@ -1072,11 +1074,7 @@
         ?.  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))
           [~ +>]
         (panic now)
-      =^  h  +>
-        ?.  |(=(rlb 0) &(!=(~ rtb) ?>(?>(^ rtb) (gte now u.rtb))))
-          [~ +>]
-        (harv now)
-      [h +>]
+      (harv now)
     ::
     ++  wept                                            ::    wept:pu
       |=  [fip=@ud lap=@ud]                             ::  fip thru lap-1
@@ -1113,9 +1111,7 @@
           diq  (~(put by diq) (shaf %flap i.wyv) [p=nus q=now])
           puq  (~(put to puq) [nus `soul`[gom 0 | ~2000.1.1 i.wyv]])
         ==
-      ?:  |(=(rlb 0) &(!=(~ rtb) ?>(?>(^ rtb) (gte now u.rtb))))
-        (harv now)
-      [~ +>]
+      (harv now)
     --
   --
   ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -1519,6 +1515,11 @@
           =^  wyv  diz  (zuul:diz now ham)
           =^  feh  puz  (whap:puz now gom wyv)
           (busk xong:diz feh)
+        ++  winf
+          |=  [gom=soup ham=meal]
+          ^+  +>
+          =^  wyv  diz  (zuul:diz now ham)
+          =^  feh  puz  (whap:puz now gom wyv)
         ::
         ++  wool                                        ::    wool:ho:um:am
           |=  [hen=duct cha=path val=*]                 ::  send a statement
