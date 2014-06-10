@@ -812,11 +812,8 @@
         ::  ~&  [%bick-none `@p`(mug fap)]              ::  not a real error
         [[~ ~] +>.$]
       ::  ~&  [%bick-good `@p`(mug fap) u.sun]
-      :: =+  ^=  rttst
           ::  ?.  &(liv.q.n.puq =(1 p.sun))             ::  not sure if good?
-          ::   +<-.abet
-          :: (cong now (sub now q.sun) +<-.abet)           ::  congestion update
-      =.  +<-.abet  (cong now (sub now q.sun +<-.abet)
+      =.  +>.$  (cong now (sub now q.n))
       =.  diq  (~(del by diq) fap)
       =^  gub  +>.$  (bock now u.sun)
       =^  yop  +>.$  (harv now)
@@ -825,11 +822,8 @@
     ++  bilk                                            ::    bilk:pu
       |=  now=@da                                       ::  inbound packet
       ^+  +>
-      =+  trt=(mul 2 rtt)
       %=  +>.$
         rue  [~ now]
-        rto  trt
-        rtn  ?~(puq ~ [~ (add now trt)])
       ==
     ::
     ++  boom                                            ::    boom:pu
@@ -868,7 +862,6 @@
           [-.lef +.lef(puq [n.puq puq.lef r.puq])]
         =+  rig=$(puq r.puq)
         [-.rig +.rig(puq [n.puq l.puq puq.rig])]
-      =+  gap=(sub now lys.q.n.puq)
       =:
           nif  (sub nif !liv.q.n.puq)
         ==
@@ -1020,6 +1013,9 @@
       ?:  =(~ puq)  [~ +>(rtn ~)]
       ?.  (gth caw nif)  [~ +>]
       =+  wid=(sub caw nif)
+      =:  rlb  now
+          rtb  (add rlb rts)
+        ==
       =|  rub=(list rock)
       =<  abet  =<  apse
       |%
@@ -1072,9 +1068,15 @@
     ++  wack                                            ::    wack:pu
       |=  now=@da                                       ::  wakeup (timeout)
       ^-  [(list rock) _+>]
-      =^  res  +>.$  ?:  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))  [~ +>]
-      ::  ~&  [%slow (div rto (div ~s1 1.000))]
-      (harv now)
+      =^  res  +>
+        ?.  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))
+          [~ +>]
+        (panic now)
+      =^  h  +>
+        ?.  |(=(rlb 0) &(!=(~ rtb) ?>(?>(^ rtb) (gte now u.rtb))))
+          [~ +>]
+        (harv now)
+      [h +>]
     ::
     ++  wept                                            ::    wept:pu
       |=  [fip=@ud lap=@ud]                             ::  fip thru lap-1
@@ -1111,7 +1113,9 @@
           diq  (~(put by diq) (shaf %flap i.wyv) [p=nus q=now])
           puq  (~(put to puq) [nus `soul`[gom 0 | ~2000.1.1 i.wyv]])
         ==
-      (harv now)
+      ?:  |(=(rlb 0) &(!=(~ rtb) ?>(?>(^ rtb) (gte now u.rtb))))
+        (harv now)
+      [~ +>]
     --
   --
   ::::::::::::::::::::::::::::::::::::::::::::::::::::::::

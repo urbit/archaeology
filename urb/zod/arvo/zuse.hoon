@@ -2416,7 +2416,9 @@
           $:  $:  rtt=@dr                               ::  smoothed rtt
                   rto=@dr                               ::  retransmit timeout
                   rtn=(unit ,@da)                       ::  next timeout
+                  rtb=(unit ,@da)                       ::  next block send
                   rue=(unit ,@da)                       ::  last heard frot
+                  rlb=@da                               ::  last sent block
                   rtl=@da                               ::  last speed adjustment
                   rle=@da                               ::  last edge
                   rld=@da                               ::  last doubling
@@ -2437,8 +2439,8 @@
                   caw=@ud                               ::  logical window
                   cag=@ud                               ::  congest thresh
               ==                                        ::
-              $:  diq=(map flap ,@ud)                   ::  packets sent
-                  pyz=(map soup ,@ud)                   ::  message/unacked
+              $:  diq=(map flap ,[p=@ud q=@ud])         ::  packets sent
+                  pyz=(map soup ,@da)                   ::  message/unacked
                   puq=(qeu ,[p=@ud q=soul])             ::  packet queue
               ==                                        ::
           ==                                            ::
