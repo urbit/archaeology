@@ -778,7 +778,9 @@
           rtt  ~s1
           rto  ~s4
           rtn  ~
+          rtb  ~
           rue  ~
+          rlb  `@da`0
           rtl  `@da`0
           rle  `@da`0
           rld  `@da`0
@@ -810,6 +812,11 @@
         ::  ~&  [%bick-none `@p`(mug fap)]              ::  not a real error
         [[~ ~] +>.$]
       ::  ~&  [%bick-good `@p`(mug fap) u.sun]
+      :: =+  ^=  rttst
+          ::  ?.  &(liv.q.n.puq =(1 p.sun))             ::  not sure if good?
+          ::   +<-.abet
+          :: (cong now (sub now q.sun) +<-.abet)           ::  congestion update
+      =.  +<-.abet  (cong now (sub now q.sun +<-.abet)
       =.  diq  (~(del by diq) fap)
       =^  gub  +>.$  (bock now u.sun)
       =^  yop  +>.$  (harv now)
@@ -862,13 +869,6 @@
         =+  rig=$(puq r.puq)
         [-.rig +.rig(puq [n.puq l.puq puq.rig])]
       =+  gap=(sub now lys.q.n.puq)
-      =+  ^=  rttst
-          ?.  &(liv.q.n.puq =(1 nux.q.n.puq))
-            +<-.abet
-          (cong now gap +<-.abet)
-      =:   
-          +<-.abet  rttst
-        ==
       =:
           nif  (sub nif !liv.q.n.puq)
         ==
@@ -891,55 +891,59 @@
     ::
     ::  additive adjust
     ++  adjust  !:
-      |=  [now=@da s=[rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]]
-      ^-  [rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]
+      |=  now=@da
       ~&  %adjust
-      ~&  [%low `@dr`rlw.s]
-      ~&  [%high `@dr`rhw.s]
-      ~&  [%seen-recent-high rsrh.s]
-      ~&  [%seen-recent-low rsrl.s]
-      ~&  [%orig-rtt-avg rtt.s]
-      ~&  [%rto `@dr`rto.s]
+      ~&  [%low `@dr`rlw]
+      ~&  [%high `@dr`rhw]
+      ~&  [%seen-recent-high rsrh]
+      ~&  [%seen-recent-low rsrl]
+      ~&  [%orig-rtt-avg rtt]
+      ~&  [%rto `@dr`rto]
       =+  second=~s1
-      =+  rand=(div rts.s 16)
+      =+  rand=(div rts 16)
       ::  if tis been awhile, start slow
-      =+  ^=  s2
-          ?:  (gth (sub now rtl.s) (mul 10 second))
+      =.  rts
+          ?:  (gth (sub now rtl) (mul 10 second))
             ~&  %slow-start
-             s(rts (add second rand))
-          s
-      =+  ^=  s3
-          ?:  (gth (nano rts.s2) 131.072)
+             (add second rand)
+          rts
+      =.  rts
+          ?:  (gth (nano rts) 131.072)
             ~&  %additive-adjust
-            =+  d=(sun:rd (nano rts.s2))
+            =+  d=(sun:rd (nano rts))
             =+  den=(add:rd .~1 (div:rd (mul:rd d d) .~2251799813685248))
-              s2(rts (nona (hol:rd (div:rd d den))))
-          s2
+              (nona (hol:rd (div:rd d den)))
+          rts
       ::  check phases
-      =+  ^=  s4
-          ?:  !rtp.s3
-            ?:  rsoh.s3
+      =.  +>.$
+          ?:  !rtp
+            ?:  rsoh
               ~&  [%phase 1]
               ~&  %multiplicative-adjust
               ~&  %edge
-              s3(rtp %.y, rle now, rts (add rts.s2 rand))
-            s3
+              +>.$(rtp %.y, rle now, rts (add rts.s2 rand))
+            +>.$
           ?:  rsol.s3
             ~&  [%phase 0]
-            s3(rtp %.n)
-          s3
+            +>.$(rtp %.n)
+          +>.$
       ::  reset flags
-      s4(rsoh rsrh.s4, rsol rsrl.s4, rsrh %.n, rsrl %.n, rtl now)
+      =:  rsoh  rsrh
+          rsol  rsrl
+          rsrh  %.n
+          rsrl  %.n
+          rtl  now
+        ==
+      +>.$
     ++  check  !:
-      |=  [now=@da s=[rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]]
-      ^-  [rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]
-      =+  a=(lth (sub now rle.s) ~s60)
-      =+  b=(lth now :(add rld.s (mul 4 rts.s) (mul 64 rto.s) ~s5))
-      =+  c=(lth now :(add rld.s (mul 4 rts.s) (mul 2 rto.s)))
-      =+  d=(lth (nano rts.s) 65.535)
+      |=  now=@da
+      =+  a=(lth (sub now rle) ~s60)
+      =+  b=(lth now :(add rld (mul 4 rts) (mul 64 rto) ~s5))
+      =+  c=(lth now :(add rld (mul 4 rts) (mul 2 rto)))
+      =+  d=(lth (nano rts) 65.535)
       ?:  |(&(a b) &(!a c) d)
-        s
-      (double now s)
+        +>.$
+      (double now)
     ::
     ::  I'll just trust DJB that this doesn't infinite loop w/ check
     ++  double  !:
@@ -953,46 +957,45 @@
     ::
     ::  Aye, this is truly a mess (less so now)
     ++  cong  !:
-      |=  [now=@da gap=@dr s=[rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]]
-      ^-  [rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]
+      |+  [now=@da gap=@dr]
       =+  millisec=(rsh 0 3 ~s1)
       ::  Initialilze if necessary
-      =+  ^=  s2
+      =.  +>.$
           ?.  ini.s
-            s(rts gap, rtt gap, rtd (div gap 2), rhw rtt, rlw rtt, rtl now, ini %.y)
-          s
+            +>.$(rts gap, rtt gap, rtd (div gap 2), rhw rtt, rlw rtt, rtl now, ini %.y)
+          +>.$
       ::  Jacobson's retransmission timeout/initialization
-      =+  delta=(dif:si (sun:si `@u`gap) (sun:si `@u`rtt.s))
-      =+  st=s(rtt (abs:si (sum:si (sun:si `@u`rtt.s) (fra:si delta --8))))   
+      =+  delta=(dif:si (sun:si `@u`gap) (sun:si `@u`rtt))
+      =.  rtt  (abs:si (sum:si (sun:si `@u`rtt) (fra:si delta --8)))
       =+  adel=(abs:si delta)
-      =+  adel2=(dif:si (sun:si adel) (sun:si `@u`rtd.st))
-      =+  st2=st(rtd (abs:si (sum:si (sun:si `@u`rtd.st) (fra:si adel2 --4))))
-      =+  s3=st2(rto (add rtt.st2 (mul 4 rtd.st2)))
+      =+  adel2=(dif:si (sun:si adel) (sun:si `@u`rtd))
+      =.  rtd  (abs:si (sum:si (sun:si `@u`rtd) (fra:si adel2 --4)))
+      =.  rto  (add rtt (mul 4 rtd))
       ::  anti-spike
-      =+  s4=s3(rto (add rto.s3 (mul 8 rts.s3)))
+      =.  rto  (add rto (mul 8 rts))
       ::  calculate high/low-waters
-      =+  s5=s4(rhw (abs:si (add:si (sun:si `@u`rhw.s4) (fra:si (dif:si (sun:si `@u`gap) (sun:si `@u`rhw.s4)) --1.024))))
-      =+  ^=  s6
-          ?:  (gth gap rlw.s5)
-            s5(rlw (add rlw.s5 (div (sub gap rlw.s5) 8.192)))
-          =+  f=(fra:si (dif:si (sun:si `@u`gap) (sun:si `@u`rlw.s5)) --256)
-          s5(rlw (abs:si (add:si (sun:si `@u`rlw.s5) f)))
+      =.  rhw  (abs:si (add:si (sun:si `@u`rhw) (fra:si (dif:si (sun:si `@u`gap) (sun:si `@u`rhw)) --1.024)))
+      =.  rlw
+          ?:  (gth gap rlw)
+            (add rlw (div (sub gap rlw) 8.192))
+          =+  f=(fra:si (dif:si (sun:si `@u`gap) (sun:si `@u`rlw)) --256)
+          rlw (abs:si (add:si (sun:si `@u`rlw) f))
       ::  check for seen high/low
-      =+  ^=  s7
-          ?:  (gth rtt.s6 (add rhw.s6 (mul 5 millisec)))
+      =.  rsrh
+          ?:  (gth rtt (add rhw (mul 5 millisec)))
             :: ~&  %seen-recent-high
-            s6(rsrh %.y)
-          s6
-      =+  ^=  s8
-          ?:  (lth rtt.s7 rlw.s7)
+            %.y
+          rsrh
+      =.  rsrl
+          ?:  (lth rtt rlw)
             :: ~&  %seen-recent-low
-            s7(rsrl %.y)
-          s7
-      =+  ^=  s9
-          ?:  (gth now (add rtl.s8 (mul 16 rts.s8)))
-            (adjust now s8)
-          s8
-      (check now s9)
+            %.y
+          %.n
+      =.  +>.$
+          ?:  (gth now (add rtl (mul 16 rts)))
+            (adjust now)
+          +>.$
+      (check now)
     ::
     ++  bock                                            ::    bock:pu
       |=  [now=@da num=@ud]                             ::  ack by sequence
@@ -1050,21 +1053,27 @@
         ^+(. =+(rig=apse(puq r.puq) rig(puq [n.puq l.puq puq.rig])))
       --
     ::
+    ++  panic                                           ::  handle timeout
+      |=  now=@da
+      =.  +>  (wept 0 nus)
+      ?>  =(0 nif)
+      =+  pan=(gth now (add rlp (mul 4 rto)))           ::  should panic
+      =:  caw  2
+          rts  ?:  pan
+                 (mul rts 2)
+               rts
+          rlp  ?:  pan
+                 now
+               rlp
+          rle  ?:  pan
+                 now
+               rle
+        ==
     ++  wack                                            ::    wack:pu
       |=  now=@da                                       ::  wakeup (timeout)
       ^-  [(list rock) _+>]
-      ?.  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))  [~ +>]
+      =^  res  +>.$  ?:  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))  [~ +>]
       ::  ~&  [%slow (div rto (div ~s1 1.000))]
-      =.  +>  (wept 0 nus)
-      ?>  =(0 nif)
-      =+  oub=(gte rto ~s16)
-      =:  caw  2
-          rto  ;:  min
-                 (mul 2 rto)
-                 ~m2
-                 (mul ~s16 ?~(rue 1 +((div (sub now u.rue) ~d1))))
-               ==
-        ==
       (harv now)
     ::
     ++  wept                                            ::    wept:pu
@@ -1099,7 +1108,7 @@
         %=  $
           wyv  t.wyv
           nus  +(nus)
-          diq  (~(put by diq) (shaf %flap i.wyv) nus)
+          diq  (~(put by diq) (shaf %flap i.wyv) [p=nus q=now])
           puq  (~(put to puq) [nus `soul`[gom 0 | ~2000.1.1 i.wyv]])
         ==
       (harv now)
