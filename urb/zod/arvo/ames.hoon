@@ -776,12 +776,13 @@
       ^+  .                                             ::  initialize
       %_    .
           rtt  ~s1
-          rto  ~s4
+          rto  ~s1
           rtn  ~
           rtb  ~
           rue  ~
           rlb  `@da`0
           rtl  `@da`0
+          rlp  `@da`0
           rle  `@da`0
           rld  `@da`0
           rhw  ~s1
@@ -808,14 +809,15 @@
       |=  [now=@da fap=flap]                            ::  ack by hash
       ^-  [[p=(unit soup) q=(list rock)] _+>]
       =+  sun=(~(get by diq) fap)
+      ~!  sun
       ?~  sun
         ::  ~&  [%bick-none `@p`(mug fap)]              ::  not a real error
         [[~ ~] +>.$]
       ::  ~&  [%bick-good `@p`(mug fap) u.sun]
           ::  ?.  &(liv.q.n.puq =(1 p.sun))             ::  not sure if good?
-      =.  +>.$  (cong now (sub now q.n))
+      =.  +>.$  (cong now (sub now q.u.sun))
       =.  diq  (~(del by diq) fap)
-      =^  gub  +>.$  (bock now u.sun)
+      =^  gub  +>.$  (bock now p.u.sun)
       =^  yop  +>.$  (harv now)
       [[gub yop] +>.$]
     ::
@@ -831,8 +833,9 @@
       |(?=(~ rue) (gte (sub now u.rue) ~m1))
     ::
     ++  bust                                            ::    bust:pu
+      |=  now=@da
       ^-  ?                                             ::  not responding
-      &(?=(^ rtn) (gte rto ~s16))
+      &(?=(^ rtn) (gte now u.rtn) (gte rto ~s16))
     ::
     ++  bike                                            ::    bike:pu
       ^+  .                                             ::  check stats
@@ -893,12 +896,11 @@
       ~&  [%orig-rtt-avg rtt]
       ~&  [%rto `@dr`rto]
       =+  second=~s1
-      =+  rand=(div rts 16)
       ::  if tis been awhile, start slow
       =.  rts
           ?:  (gth (sub now rtl) (mul 10 second))
             ~&  %slow-start
-             (add second rand)
+             (add second (~(rad og now) (div second 8)))
           rts
       =.  rts
           ?:  (gth (nano rts) 131.072)
@@ -914,9 +916,10 @@
               ~&  [%phase 1]
               ~&  %multiplicative-adjust
               ~&  %edge
-              +>.$(rtp %.y, rle now, rts (add rts.s2 rand))
+              =+  r=(~(rad og +(now)) (div rts 4))
+              +>.$(rtp %.y, rle now, rts (add rts r))
             +>.$
-          ?:  rsol.s3
+          ?:  rsol
             ~&  [%phase 0]
             +>.$(rtp %.n)
           +>.$
@@ -940,22 +943,28 @@
     ::
     ::  I'll just trust DJB that this doesn't infinite loop w/ check
     ++  double  !:
-      |=  [now=@da s=[rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]]
-      ^-  [rtt=@dr rto=@dr rtn=(unit ,@da) rue=(unit ,@da) rtl=@da rle=@da rld=@da rhw=@dr rlw=@dr rtd=@dr rts=@dr rsrh=? rsrl=? rsoh=? rsol=? rtp=? ini=?]
-    ~&  %double
-    ?:  =(rle 0)
-      ~&  %edge
-      (check now s(rts (div rts.s 2), rld now, rle now))
-    (check now s(rts (div rts.s 2), rld now))
+      |=  now=@da
+      ~&  %double
+      =.  rle  ?:  =(rle 0)
+                 ~&  %edg1
+                 now
+               rle
+      =:
+          rts  (div rts 2)
+          rld  now
+        ==
+      (check now)
     ::
     ::  Aye, this is truly a mess (less so now)
     ++  cong  !:
-      |+  [now=@da gap=@dr]
+      |=  [now=@da gap=@dr]
+      ~&  [%ack %gap gap]
+      =+  gap2=(min gap ~s1)
       =+  millisec=(rsh 0 3 ~s1)
       ::  Initialilze if necessary
       =.  +>.$
-          ?.  ini.s
-            +>.$(rts gap, rtt gap, rtd (div gap 2), rhw rtt, rlw rtt, rtl now, ini %.y)
+          ?.  ini
+            +>.$(rts gap2, rtt gap2, rtd (div gap2 2), rhw rtt, rlw rtt, rtl now, ini %.y)
           +>.$
       ::  Jacobson's retransmission timeout/initialization
       =+  delta=(dif:si (sun:si `@u`gap) (sun:si `@u`rtt))
@@ -972,7 +981,7 @@
           ?:  (gth gap rlw)
             (add rlw (div (sub gap rlw) 8.192))
           =+  f=(fra:si (dif:si (sun:si `@u`gap) (sun:si `@u`rlw)) --256)
-          rlw (abs:si (add:si (sun:si `@u`rlw) f))
+          (abs:si (add:si (sun:si `@u`rlw) f))
       ::  check for seen high/low
       =.  rsrh
           ?:  (gth rtt (add rhw (mul 5 millisec)))
@@ -1011,12 +1020,12 @@
       |=  now=@da                                       ::  harvest queue
       ^-  [(list rock) _+>]
       ?:  =(~ puq)  [~ +>(rtn ~)]
-      ?.  |(=(rlb 0) &(!=(~ rtb) ?>(?>(^ rtb) (gte now u.rtb))))
+      ?.  |(=(~ rtb) &(!=(~ rtb) ?>(?=(^ rtb) (gte now u.rtb))))
         [~ +>]                                          ::  can't send yet
       ?.  (gth caw nif)  [~ +>]
       =+  wid=(sub caw nif)
       =:  rlb  now
-          rtb  (add rlb rts)
+          rtb  (some (add now rts))
         ==
       =|  rub=(list rock)
       =<  abet  =<  apse
@@ -1033,7 +1042,7 @@
         ?>  ?=(^ puq)
         ?:  =(0 wid)  .
         ?.  =(| liv.q.n.puq)  .
-        ::  ~&  [%harv nux.q.n.puq p.n.puq]
+        ~&  [%harv nux.q.n.puq p.n.puq]
         %_    .
           wid          (dec wid)
           rub          [pac.q.n.puq rub]
@@ -1055,9 +1064,11 @@
       |=  now=@da
       =.  +>  (wept 0 nus)
       ?>  =(0 nif)
+      ~&  %timeout
       =+  pan=(gth now (add rlp (mul 4 rto)))           ::  should panic
       =:  caw  2
           rts  ?:  pan
+                 ~&  [%panic %rts `@dr`(mul rts 2)]
                  (mul rts 2)
                rts
           rlp  ?:  pan
@@ -1067,6 +1078,7 @@
                  now
                rle
         ==
+      [pan +>.$]
     ++  wack                                            ::    wack:pu
       |=  now=@da                                       ::  wakeup (timeout)
       ^-  [(list rock) _+>]
@@ -1178,7 +1190,7 @@
         [~ fox]
       =<  zork
       =<  zank
-      ::  ~&  [%hear p.p.kec ryn `@p`(mug (shaf %flap pac))]
+      ~&  [%hear p.p.kec ryn `@p`(mug (shaf %flap pac))]
       %-  ~(chew la:(ho:(um q.p.kec) p.p.kec) kay ryn %none (shaf %flap pac))
       [q.kec r.kec]
     ::
@@ -1284,11 +1296,11 @@
             |%
             ++  apse
               ^+  +>.$
-              =+  oub=bust:puz
+              =+  oub=(bust:puz now)
               =+  neg==(~ yed.caq.dur.diz)
               =.  +>.$  east
               =+  eng==(~ yed.caq.dur.diz)
-              =+  bou=bust:puz
+              =+  bou=(bust:puz now)
               =.  bin
                 ?.  &(oub !bou)  bin
                 :_(bin [%wine [our her] " is ok"])
@@ -1355,6 +1367,7 @@
             (dine fud)
           ::
           ++  cock                                      ::    cock:la:ho:um:am
+            ~&  %back
             ^+  .                                       ::  acknowledgment
             ::  ~&  [%back kay dam]
             =^  pax  diz  (zuul:diz now [%back kay dam ~s0])
@@ -1472,7 +1485,7 @@
           |=  hen=duct                                  ::  test connection
           ^+  +>
           ?.  ?&  =(~ puq.puz)
-                  ?|  bust:puz
+                  ?|  (bust:puz now)
                       ?=(~ rue.puz)
                       (gth now (add ~s32 u.rue.puz))
                       (lth u.rue.puz hop.fox)
@@ -1483,9 +1496,9 @@
         ::
         ++  thaw                                        ::    thaw:ho:um:am
           ^+  .                                         ::  wakeup bomb
-          =+  oub=bust:puz
+          =+  oub=(bust:puz now)
           =^  yem  puz  (wack:puz now)
-          =+  bou=bust:puz
+          =+  bou=(bust:puz now)
           =.  bin
               ?.  &(bou !oub)  bin
               :_(bin [%wine [our her] " not responding still trying"])
@@ -1515,11 +1528,6 @@
           =^  wyv  diz  (zuul:diz now ham)
           =^  feh  puz  (whap:puz now gom wyv)
           (busk xong:diz feh)
-        ++  winf
-          |=  [gom=soup ham=meal]
-          ^+  +>
-          =^  wyv  diz  (zuul:diz now ham)
-          =^  feh  puz  (whap:puz now gom wyv)
         ::
         ++  wool                                        ::    wool:ho:um:am
           |=  [hen=duct cha=path val=*]                 ::  send a statement
@@ -1657,8 +1665,16 @@
       =.  doz  $(wab.yem l.wab.yem)
       =.  doz  $(wab.yem r.wab.yem)
       =+  bah=q.n.wab.yem
-      (hunt doz (min rtn.sop.bah rtb.sop.bah))
+      (hunt doz (dozu rtn.sop.bah rtb.sop.bah))
     ::
+    ++  dozu
+      |=  [a=(unit ,@da) b=(unit ,@da)]
+      ^-  (unit ,@da)
+      ?~  a
+        b
+      ?~  b
+        a
+      (some (min u.a u.b))
     ++  load
       |=  old=furt
       ^+  ..^$
@@ -1790,7 +1806,7 @@
       ==
     ::
         %ouzo
-      ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
+      ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
       :_  fox
       [[hen [%give %send p.bon q.bon]] ~]
     ::

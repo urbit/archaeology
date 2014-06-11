@@ -2420,6 +2420,7 @@
                   rue=(unit ,@da)                       ::  last heard frot
                   rlb=@da                               ::  last sent block
                   rtl=@da                               ::  last speed adjustment
+                  rlp=@da                               ::  last panic
                   rle=@da                               ::  last edge
                   rld=@da                               ::  last doubling
                   rhw=@dr                               ::  highwater
@@ -2439,7 +2440,7 @@
                   caw=@ud                               ::  logical window
                   cag=@ud                               ::  congest thresh
               ==                                        ::
-              $:  diq=(map flap ,[p=@ud q=@ud])         ::  packets sent
+              $:  diq=(map flap ,[p=@ud q=@da])         ::  packets sent
                   pyz=(map soup ,@da)                   ::  message/unacked
                   puq=(qeu ,[p=@ud q=soul])             ::  packet queue
               ==                                        ::
