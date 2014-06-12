@@ -895,6 +895,7 @@
       ~&  [%seen-recent-low rsrl]
       ~&  [%orig-rtt-avg rtt]
       ~&  [%rto `@dr`rto]
+      ~&  [%initial-rts rts]
       =+  second=~s1
       ::  if tis been awhile, start slow
       =.  rts
@@ -930,6 +931,7 @@
           rsrl  %.n
           rtl  now
         ==
+      ~&  [%final-rts rts]
       +>.$
     ++  check  !:
       |=  now=@da
@@ -958,7 +960,7 @@
     ::  Aye, this is truly a mess (less so now)
     ++  cong  !:
       |=  [now=@da gap=@dr]
-      ~&  [%ack %gap gap]
+      ::  ~&  [%ack %gap gap]
       =+  gap2=(min gap ~s1)
       =+  millisec=(rsh 0 3 ~s1)
       ::  Initialilze if necessary
@@ -1019,14 +1021,14 @@
     ++  harv                                            ::    harv:pu
       |=  now=@da                                       ::  harvest queue
       ^-  [(list rock) _+>]
-      ?:  =(~ puq)  [~ +>(rtn ~)]
+      ?:  =(~ puq)  [~ +>(rtn ~, rtb ~)]
       ?.  |(=(~ rtb) &(!=(~ rtb) ?>(?=(^ rtb) (gte now u.rtb))))
         [~ +>]                                          ::  can't send yet
-      ?.  (gth caw nif)  [~ +>]
-      =+  wid=(sub caw nif)
       =:  rlb  now
           rtb  (some (add now rts))
         ==
+      ?.  (gth caw nif)  [~ +>]
+      =+  wid=(sub caw nif)
       =|  rub=(list rock)
       =<  abet  =<  apse
       |%
@@ -1042,7 +1044,7 @@
         ?>  ?=(^ puq)
         ?:  =(0 wid)  .
         ?.  =(| liv.q.n.puq)  .
-        ~&  [%harv nux.q.n.puq p.n.puq]
+        ::  ~&  [%harv nux.q.n.puq p.n.puq]
         %_    .
           wid          (dec wid)
           rub          [pac.q.n.puq rub]
@@ -1064,7 +1066,7 @@
       |=  now=@da
       =.  +>  (wept 0 nus)
       ?>  =(0 nif)
-      ~&  %timeout
+      ::  ~&  %timeout
       =+  pan=(gth now (add rlp (mul 4 rto)))           ::  should panic
       =:  caw  2
           rts  ?:  pan
@@ -1077,12 +1079,13 @@
           rle  ?:  pan
                  now
                rle
+          rtn  (some (add now rto))
         ==
       [pan +>.$]
     ++  wack                                            ::    wack:pu
       |=  now=@da                                       ::  wakeup (timeout)
       ^-  [(list rock) _+>]
-      =^  res  +>
+      =^  pan  +>
         ?.  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))
           [~ +>]
         (panic now)
@@ -1190,7 +1193,7 @@
         [~ fox]
       =<  zork
       =<  zank
-      ~&  [%hear p.p.kec ryn `@p`(mug (shaf %flap pac))]
+      ::  ~&  [%hear p.p.kec ryn `@p`(mug (shaf %flap pac))]
       %-  ~(chew la:(ho:(um q.p.kec) p.p.kec) kay ryn %none (shaf %flap pac))
       [q.kec r.kec]
     ::
@@ -1291,6 +1294,7 @@
           ::
           ++  chew                                      ::    chew:la:ho:um:am
             |=  [sin=skin msg=@]                        ::  receive
+            ~&  %chew
             ^+  +>
             =<  apse
             |%
@@ -1367,7 +1371,6 @@
             (dine fud)
           ::
           ++  cock                                      ::    cock:la:ho:um:am
-            ~&  %back
             ^+  .                                       ::  acknowledgment
             ::  ~&  [%back kay dam]
             =^  pax  diz  (zuul:diz now [%back kay dam ~s0])
@@ -1665,16 +1668,8 @@
       =.  doz  $(wab.yem l.wab.yem)
       =.  doz  $(wab.yem r.wab.yem)
       =+  bah=q.n.wab.yem
-      (hunt doz (dozu rtn.sop.bah rtb.sop.bah))
+      (hunt doz (hunt rtn.sop.bah rtb.sop.bah))
     ::
-    ++  dozu
-      |=  [a=(unit ,@da) b=(unit ,@da)]
-      ^-  (unit ,@da)
-      ?~  a
-        b
-      ?~  b
-        a
-      (some (min u.a u.b))
     ++  load
       |=  old=furt
       ^+  ..^$
@@ -1806,7 +1801,7 @@
       ==
     ::
         %ouzo
-      ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
+      ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
       :_  fox
       [[hen [%give %send p.bon q.bon]] ~]
     ::
