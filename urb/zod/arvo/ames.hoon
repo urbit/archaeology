@@ -809,15 +809,17 @@
       |=  [now=@da fap=flap]                            ::  ack by hash
       ^-  [[p=(unit soup) q=(list rock)] _+>]
       =+  sun=(~(get by diq) fap)
-      ~!  sun
+      =+  sur=(~(get by dir) fap)
       ?~  sun
         ::  ~&  [%bick-none `@p`(mug fap)]              ::  not a real error
         [[~ ~] +>.$]
+      ?~  sur
+        [[~ ~] +>.$]
       ::  ~&  [%bick-good `@p`(mug fap) u.sun]
           ::  ?.  &(liv.q.n.puq =(1 p.sun))             ::  not sure if good?
-      =.  +>.$  (cong now (sub now q.u.sun))
+      =.  +>.$  (cong now (sub now u.sur))
       =.  diq  (~(del by diq) fap)
-      =^  gub  +>.$  (bock now p.u.sun)
+      =^  gub  +>.$  (bock now u.sun)
       =^  yop  +>.$  (harv now)
       [[gub yop] +>.$]
     ::
@@ -895,7 +897,7 @@
       ::~&  [%seen-recent-low rsrl]
       ::~&  [%orig-rtt-avg rtt]
       ::~&  [%rto `@dr`rto]
-      ~&  [%initial-rts rts]
+      :: ~&  [%initial-rts rts]
       =+  second=~s1
       ::  if tis been awhile, start slow
       =.  rts
@@ -935,7 +937,7 @@
           rsrl  %.n
           rtl  now
         ==
-      ~&  [%final-rts rts]
+      ::  ~&  [%final-rts rts]
       +>.$
     ++  check  !:
       |=  now=@da
@@ -950,7 +952,7 @@
     ::  I'll just trust DJB that this doesn't infinite loop w/ check
     ++  double  !:
       |=  now=@da
-      ~&  %double
+      :: ~&  %double
       =.  rle  ?:  =(rle 0)
                  ~&  %edg1
                  now
@@ -964,7 +966,7 @@
     ::  Aye, this is truly a mess (less so now)
     ++  cong  !:
       |=  [now=@da gap=@dr]
-      ::  ~&  [%ack %gap gap]
+      :: ~&  [%ack %gap gap]
       =+  gap2=(min gap ~s1)
       =+  millisec=(rsh 0 3 ~s1)
       ::  Initialilze if necessary
@@ -1038,10 +1040,10 @@
       ::?.  (gth caw nif)  [~ +>]
       ::=+  wid=(sub caw nif)
       ::=+  wid=1
-      ~&  [%window wid]
+      :: ~&  [%window wid]
       =|  rub=(list rock)
       =<  abet  =<  apse
-      ~&  [%rto rto %rtd rtd]
+      :: ~&  [%rto rto %rtd rtd]
       |%
       ++  abet
         ?~  rub  [~ +>.$]
@@ -1063,6 +1065,7 @@
           liv.q.n.puq  &
           nux.q.n.puq  +(nux.q.n.puq)
           lys.q.n.puq  now
+          dir  (~(put by dir) (shaf %flap pac.q.n.puq) now)
           rlb  now
         ==
       ::
@@ -1079,7 +1082,8 @@
       =.  +>  (wept 0 nus)
       ?>  =(0 nif)
       ::  ~&  %timeout
-      =+  pan=(gth now (add rlp (mul 4 rto)))           ::  should panic
+      ::=+  pan=(gth now (add rlp (mul 4 rto)))           ::  should panic
+      =+  pan=(gth now (add rlp rto))                         ::  not djb's #, but works better?
       =:  caw  2
           rts  ?:  pan
                  ~&  [%panic %rts `@dr`(mul rts 2)]
@@ -1135,7 +1139,7 @@
         %=  $
           wyv  t.wyv
           nus  +(nus)
-          diq  (~(put by diq) (shaf %flap i.wyv) [p=nus q=now])
+          diq  (~(put by diq) (shaf %flap i.wyv) nus)
           puq  (~(put to puq) [nus `soul`[gom 0 | ~2000.1.1 i.wyv]])
         ==
       (harv now)

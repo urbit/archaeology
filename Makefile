@@ -69,7 +69,8 @@ CFLAGS= -O2 -g \
 	-Ioutside/cre2/src/src \
 	-Ioutside/ed25519/src \
 	$(DEFINES) \
-	$(MDEFINES)
+	$(MDEFINES) \
+	-DGHETTO
 
 CWFLAGS=-Wall
 

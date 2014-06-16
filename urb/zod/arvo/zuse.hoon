@@ -2446,7 +2446,8 @@
                   caw=@ud                               ::  logical window
                   cag=@ud                               ::  congest thresh
               ==                                        ::
-              $:  diq=(map flap ,[p=@ud q=@da])         ::  packets sent
+              $:  diq=(map flap ,@ud)                   ::  packets sent
+                  dir=(map flap ,@da)                   ::  packets time
                   pyz=(map soup ,@da)                   ::  message/unacked
                   puq=(qeu ,[p=@ud q=soul])             ::  packet queue
               ==                                        ::
