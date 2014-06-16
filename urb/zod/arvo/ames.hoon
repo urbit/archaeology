@@ -1079,11 +1079,11 @@
     ::
     ++  panic                                           ::  handle timeout
       |=  now=@da
-      =.  +>  (wept 0 nus)
-      ?>  =(0 nif)
+      :: =.  +>  (wept 0 nus)
+      =.  +>  (wupt now)
+      ::  ?>  =(0 nif)
       ::  ~&  %timeout
-      ::=+  pan=(gth now (add rlp (mul 4 rto)))           ::  should panic
-      =+  pan=(gth now (add rlp rto))                         ::  not djb's #, but works better?
+      =+  pan=(gth now (add rlp (mul 4 rto)))           ::  should panic
       =:  caw  2
           rts  ?:  pan
                  ~&  [%panic %rts `@dr`(mul rts 2)]
@@ -1101,10 +1101,10 @@
     ++  wack                                            ::    wack:pu
       |=  now=@da                                       ::  wakeup (timeout)
       ^-  [(list rock) _+>]
-      =^  pan  +>
-        ?.  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))
-          [~ +>]
-        (panic now)
+      =^  pan  +>  (panic now)
+        ::?.  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))
+        ::  [~ +>]
+        ::(panic now)
       (harv now)
     ::
     ++  wept                                            ::    wept:pu
@@ -1129,6 +1129,29 @@
         ^+(. =+(rig=apse(puq r.puq) rig(puq [n.puq l.puq puq.rig])))
       --
     ::
+    ++  wupt
+      |=  now=@da
+      =<  abet  =<  apse
+      |%
+      ++  abet  +>.$
+      ++  apse
+        ^+  .
+        ?~  puq  .
+        =>  rigt  =<  left
+        ?>  ?=(^ puq)
+        ?.  liv.q.n.puq  . 
+        ?.  (gth now r.n.puq)  .
+        :: trigger resend of packet
+        .(nif (dec nif), liv.q.n.puq |, r.n.puq (add now rto))
+      ::
+      ++  left
+        ?>  ?=(^ puq)
+        ^+(. =+(lef=apse(puq l.puq) lef(puq [n.puq puq.lef r.puq])))
+      ++  rigt
+        ?>  ?=(^ puq)
+        ^+(. =+(rig=apse(puq r.puq) rig(puq [n.puq l.puq puq.rig])))
+      --
+    ::
     ++  whap                                            ::    whap:pu
       |=  [now=@da gom=soup wyv=(list rock)]            ::  send a message
       ^-  [(list rock) _+>]
@@ -1140,7 +1163,7 @@
           wyv  t.wyv
           nus  +(nus)
           diq  (~(put by diq) (shaf %flap i.wyv) nus)
-          puq  (~(put to puq) [nus `soul`[gom 0 | ~2000.1.1 i.wyv]])
+          puq  (~(put to puq) [nus `soul`[gom 0 | ~2000.1.1 i.wyv] (add now rto)])
         ==
       (harv now)
     --
@@ -1577,7 +1600,7 @@
                   =+  qup=(~(tap to puq.sop.bah) ~)
                   :-  %qup
                   %+  turn  qup
-                  |=  [a=@ud b=soul]
+                  |=  [a=@ud b=soul r=@da]
                   :*  a
                       nux.b
                       liv.b

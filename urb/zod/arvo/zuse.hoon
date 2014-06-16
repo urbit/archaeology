@@ -2449,7 +2449,7 @@
               $:  diq=(map flap ,@ud)                   ::  packets sent
                   dir=(map flap ,@da)                   ::  packets time
                   pyz=(map soup ,@da)                   ::  message/unacked
-                  puq=(qeu ,[p=@ud q=soul])             ::  packet queue
+                  puq=(qeu ,[p=@ud q=soul r=@da])       ::  packet queue
               ==                                        ::
           ==                                            ::
 ++  silk                                                ::  construction layer
