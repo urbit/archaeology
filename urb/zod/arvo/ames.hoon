@@ -1028,18 +1028,20 @@
       ?:  =(~ puq)  [~ +>(rtn ~, rtb ~)]
       ?.  |(=(~ rtb) &(!=(~ rtb) ?>(?=(^ rtb) (gte now u.rtb))))
         [~ +>]                                          ::  can't send yet
-      =:  rlb  now
-          rtb  (some (add now rts))
-        ==
       =+  ^=  wid
           ?:  (lth (sub now rlb) (add ~s1 (div ~s1 10)))
             (max 1 (div (sub now rlb) rts))
           1
+      =:
+          rtb  (some (add now rts))
+        ==
       ::?.  (gth caw nif)  [~ +>]
       ::=+  wid=(sub caw nif)
       ::=+  wid=1
+      ~&  [%window wid]
       =|  rub=(list rock)
       =<  abet  =<  apse
+      ~&  [%rto rto %rtd rtd]
       |%
       ++  abet
         ?~  rub  [~ +>.$]
@@ -1053,7 +1055,7 @@
         ?>  ?=(^ puq)
         ?:  =(0 wid)  .
         ?.  =(| liv.q.n.puq)  .
-        ~&  [%harv nux.q.n.puq p.n.puq]
+        ~&  [%harv nux.q.n.puq p.n.puq wid]
         %_    .
           wid          (dec wid)
           rub          [pac.q.n.puq rub]
@@ -1061,6 +1063,7 @@
           liv.q.n.puq  &
           nux.q.n.puq  +(nux.q.n.puq)
           lys.q.n.puq  now
+          rlb  now
         ==
       ::
       ++  left
