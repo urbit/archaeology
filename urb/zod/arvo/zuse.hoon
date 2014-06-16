@@ -1869,6 +1869,12 @@
     ==
   ==
 ::
+++  huns
+  |=  [one=(unit ,@da) two=(unit ,@da)]
+  ^-  (unit ,@da)
+  ?~  one  two
+  ?~  two  one
+  ?:((gth u.one u.two) one two)
 ++  hunt
   |=  [one=(unit ,@da) two=(unit ,@da)]
   ^-  (unit ,@da)

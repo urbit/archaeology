@@ -879,22 +879,22 @@
     ++  nano  !:
       |=  a=@dr
       ^-  @u
-      (div (lsh 0 6 a) ~s1)
+      (div (mul 1.000.000.000 a) ~s1)
     ++  nona  !:
       |=  a=@u
       ^-  @dr
-      (mul ~s1 (rsh 0 6 a))
+      (div (mul ~s1 a) 1.000.000.000)
     ::
     ::  additive adjust
     ++  adjust  !:
       |=  now=@da
-      ~&  %adjust
-      ~&  [%low `@dr`rlw]
-      ~&  [%high `@dr`rhw]
-      ~&  [%seen-recent-high rsrh]
-      ~&  [%seen-recent-low rsrl]
-      ~&  [%orig-rtt-avg rtt]
-      ~&  [%rto `@dr`rto]
+      ::~&  %adjust
+      ::~&  [%low `@dr`rlw]
+      ::~&  [%high `@dr`rhw]
+      ::~&  [%seen-recent-high rsrh]
+      ::~&  [%seen-recent-low rsrl]
+      ::~&  [%orig-rtt-avg rtt]
+      ::~&  [%rto `@dr`rto]
       ~&  [%initial-rts rts]
       =+  second=~s1
       ::  if tis been awhile, start slow
@@ -905,10 +905,14 @@
           rts
       =.  rts
           ?:  (gth (nano rts) 131.072)
-            ~&  %additive-adjust
+            ?:  (lth (nano rts) 16.777.216)
+              ~&  %additive-adjust-taylor
+              =+  u=(div (nano rts) 131.072)
+              (nona (sub (nano rts) :(mul u u u)))
+            ~&  %additive-adjust-float
             =+  d=(sun:rd (nano rts))
             =+  den=(add:rd .~1 (div:rd (mul:rd d d) .~2251799813685248))
-              (nona (hol:rd (div:rd d den)))
+            (nona (hol:rd (div:rd d den)))
           rts
       ::  check phases
       =.  +>.$
@@ -1027,8 +1031,13 @@
       =:  rlb  now
           rtb  (some (add now rts))
         ==
-      ?.  (gth caw nif)  [~ +>]
-      =+  wid=(sub caw nif)
+      =+  ^=  wid
+          ?:  (lth (sub now rlb) (add ~s1 (div ~s1 10)))
+            (max 1 (div (sub now rlb) rts))
+          1
+      ::?.  (gth caw nif)  [~ +>]
+      ::=+  wid=(sub caw nif)
+      ::=+  wid=1
       =|  rub=(list rock)
       =<  abet  =<  apse
       |%
@@ -1044,7 +1053,7 @@
         ?>  ?=(^ puq)
         ?:  =(0 wid)  .
         ?.  =(| liv.q.n.puq)  .
-        ::  ~&  [%harv nux.q.n.puq p.n.puq]
+        ~&  [%harv nux.q.n.puq p.n.puq]
         %_    .
           wid          (dec wid)
           rub          [pac.q.n.puq rub]
@@ -1658,6 +1667,7 @@
     ++  doze
       |=  [now=@da hen=duct]
       =+  doz=`(unit ,@da)`[~ (add now ~s32)]
+      =+  doy=`(unit ,@da)`[~ (add now ~s2)]
       |-  ^+  doz
       ?~  zac.fox  doz
       =.  doz  $(zac.fox l.zac.fox)
@@ -1668,7 +1678,7 @@
       =.  doz  $(wab.yem l.wab.yem)
       =.  doz  $(wab.yem r.wab.yem)
       =+  bah=q.n.wab.yem
-      (hunt doz (hunt rtn.sop.bah rtb.sop.bah))
+      (huns doy (hunt doz (hunt rtn.sop.bah rtb.sop.bah)))
     ::
     ++  load
       |=  old=furt
