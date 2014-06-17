@@ -216,7 +216,7 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
                               _ames_send_cb) ) {
           uL(fprintf(uH, "ames: send: %s\n", uv_strerror(uv_last_error(u2L))));
         }
-        // fprintf(stderr, "ames: send\r\n");
+        fprintf(stderr, "ames: send\r\n");
       }
     }
   }

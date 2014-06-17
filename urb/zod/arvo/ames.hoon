@@ -795,6 +795,7 @@
           rsol  %.n
           rtp  %.n
           ini  %.n
+          ctr  0
           nus  0
           nif  0
           nep  0
@@ -900,6 +901,7 @@
       :: ~&  [%initial-rts rts]
       =+  second=~s1
       ::  if tis been awhile, start slow
+      =.  ctr  0
       =.  rts
           ?:  (gth (sub now rtl) (mul 10 second))
             ~&  %slow-start
@@ -993,16 +995,17 @@
       ::  check for seen high/low
       =.  rsrh
           ?:  (gth rtt (add rhw (mul 5 millisec)))
-            :: ~&  %seen-recent-high
+            ~&  %seen-recent-high
             %.y
           rsrh
       =.  rsrl
           ?:  (lth rtt rlw)
-            :: ~&  %seen-recent-low
+            ~&  %seen-recent-low
             %.y
           %.n
+      =.  ctr  +(ctr)
       =.  +>.$
-          ?:  (gth now (add rtl (mul 16 rts)))
+          ?:  |((gte ctr 16) (gth now (add rtl ~s10)))
             (adjust now)
           +>.$
       (check now)
@@ -1067,6 +1070,7 @@
           lys.q.n.puq  now
           dir  (~(put by dir) (shaf %flap pac.q.n.puq) now)
           rlb  now
+          rtn  ?~  rtn  (some (add now rto))  rtn
         ==
       ::
       ++  left
@@ -1080,10 +1084,11 @@
     ++  panic                                           ::  handle timeout
       |=  now=@da
       :: =.  +>  (wept 0 nus)
-      =.  +>  (wupt now)
+      =^  fnd  +>  (wupt now)
+      =.  rtn  ?:  fnd  (some (add now rto))  ~
       ::  ?>  =(0 nif)
       ::  ~&  %timeout
-      =+  pan=(gth now (add rlp (mul 4 rto)))           ::  should panic
+      =+  pan=&(fnd (gth now (add rlp (mul 4 rto))))   ::  should panic
       =:  caw  2
           rts  ?:  pan
                  ~&  [%panic %rts `@dr`(mul rts 2)]
@@ -1095,7 +1100,6 @@
           rle  ?:  pan
                  now
                rle
-          rtn  (some (add now rto))
         ==
       [pan +>.$]
     ++  wack                                            ::    wack:pu
@@ -1131,9 +1135,11 @@
     ::
     ++  wupt
       |=  now=@da
+      ^-  [? _+>]
+      =+  fnd=|
       =<  abet  =<  apse
       |%
-      ++  abet  +>.$
+      ++  abet  [fnd +>.$]
       ++  apse
         ^+  .
         ?~  puq  .
@@ -1142,7 +1148,12 @@
         ?.  liv.q.n.puq  . 
         ?.  (gth now r.n.puq)  .
         :: trigger resend of packet
-        .(nif (dec nif), liv.q.n.puq |, r.n.puq (add now rto))
+        %_    .
+          fnd  &
+          nif  (dec nif)
+          liv.q.n.puq  |
+          r.n.puq  (add now rto)
+        ==
       ::
       ++  left
         ?>  ?=(^ puq)
@@ -1411,7 +1422,7 @@
           ::
           ++  cock                                      ::    cock:la:ho:um:am
             ^+  .                                       ::  acknowledgment
-            ::  ~&  [%back kay dam]
+            ~&  [%back kay dam]
             =^  pax  diz  (zuul:diz now [%back kay dam ~s0])
             +(+> (busk(diz (wast:diz ryn)) xong:diz pax))
           ::
@@ -1841,7 +1852,7 @@
       ==
     ::
         %ouzo
-      ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
+      ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
       :_  fox
       [[hen [%give %send p.bon q.bon]] ~]
     ::

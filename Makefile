@@ -57,7 +57,7 @@ endif
 INCLUDE=include
 MDEFINES=-DU2_OS_$(OS) -DU2_OS_ENDIAN_$(ENDIAN) -D U2_LIB=\"$(LIB)\" 
 
-CFLAGS= -O2 -g \
+CFLAGS= -O2 -g -DGHETTO \
 	-funsigned-char \
 	-I/usr/local/include \
 	-I/opt/local/include \
@@ -69,8 +69,7 @@ CFLAGS= -O2 -g \
 	-Ioutside/cre2/src/src \
 	-Ioutside/ed25519/src \
 	$(DEFINES) \
-	$(MDEFINES) \
-	-DGHETTO
+	$(MDEFINES)
 
 CWFLAGS=-Wall
 

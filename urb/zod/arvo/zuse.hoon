@@ -2439,6 +2439,7 @@
                   rsol=?                                ::  seen older low
                   rtp=?                                 ::  phase
                   ini=?                                 ::  initialized?
+                  ctr=@u                                ::  ctr for adjust
               ==                                        ::
               $:  nus=@ud                               ::  number sent
                   nif=@ud                               ::  number live
