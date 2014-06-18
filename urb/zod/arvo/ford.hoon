@@ -5,6 +5,7 @@
 =>  =~
 ::  structures
 |%
+++  bead  ,[p=(set beam) q=cage]                        ::  computed result
 ++  gift                                                ::  out result <-$
           $%  [%made p=(each bead (list tank))]         ::  computed result
           ==                                            ::
@@ -15,6 +16,11 @@
 ++  note                                                ::  out request $->
           $%  [%warp p=sock q=riff]                     ::  to %clay
           ==                                            ::
+++  rave                                                ::  see %clay
+          $%  [& p=mood]                                ::  single request
+              [| p=moat]                                ::  change range
+          ==                                            ::
+++  riff  ,[p=desk q=(unit rave)]                       ::  see %clay
 ++  sign                                                ::  in result $-<
           $%  [%writ p=riot]                            ::  by %clay
           ==                                            ::
@@ -586,6 +592,15 @@
         (fine cof [p.kas vax])
       ::
           %done  [cof %0 p.kas q.kas]
+          %dude
+        =+  dog=$(kas q.kas)
+        ?.  ?=(%2 -.q.dog)  dog
+        dog(p.q [p.kas p.q.dog])
+      ::
+          %dune
+        ?~  q.kas  [cof [%2 [%leaf "no data"]~]]
+        $(kas [%done p.kas u.q.kas])
+      ::
           %mute  (kale cof p.kas q.kas)
           %pass
         %+  cope  $(kas p.kas)

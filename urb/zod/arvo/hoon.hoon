@@ -100,6 +100,7 @@
 ++  mart  (list ,[n=mane v=tape])                       ::  XML attributes
 ++  marx  $|(@tas [n=mane a=mart])                      ::  XML tag
 ++  metl  ?(%gold %iron %zinc %lead)                    ::  core variance
+++  noun  ,*
 ++  null  ,~                                            ::  null, nil, etc
 ++  odor  ,@ta                                          ::  atom format
 ++  tarp  ,[d=@ud h=@ud m=@ud s=@ud f=(list ,@ux)]      ::  parsed time
@@ -248,6 +249,7 @@
             [%ktbr p=twig]                              ::  %gold core to %iron
             [%ktdt p=twig q=twig]                       ::  cast q to type (p q)
             [%ktls p=twig q=twig]                       ::  cast q to p, verify
+            [%kthx p=twig q=twig]                       ::  cast q to p, verify
             [%kthp p=tile q=twig]                       ::  cast q to icon of p
             [%ktpm p=twig]                              ::  %gold core to %zinc
             [%ktsg p=twig]                              ::  p as static constant
@@ -1315,7 +1317,7 @@
              $(n m(s !s.m), m n(s !s.n))
            =+  dif=(abs:si (dif:si e.n e.m))
            =+  a2=(lsh 0 dif a.n)                    :: p+1+dif bits
-           =+  a3=(^sub a2 a.m)                      :: assume m is negative for now
+           =+  a3=(^sub a2 a.m)                      :: assume m < 0 for now
            =+  dif2=(^sub (met 0 a2) (met 0 a3))     :: (met 0 a2) > (met 0 a3)
            [s=s.n e=(dif:si e.n (sun:si dif2)) a=(lia p a3)]  :: n > m => s=s.n
 
@@ -1366,7 +1368,8 @@
            =+  a2=(lia:fl 52 a.a)
            =+  b=(ira:fl a2)
            ::=+  c=(lsh 0 (^sub 52 (met 0 b)) b)
-           (can 0 [[52 b] [[11 (abs:si (sum:si (sun:si 1.023) e.a))] [[1 `@`s.a] ~]]])
+           %+  can  0
+           [[52 b] [[11 (abs:si (sum:si (sun:si 1.023) e.a))] [[1 `@`s.a] ~]]]
   ::  Sign of an @rd
   ++  sig  |=  [a=@rd]  ^-  ?
            =(0 (rsh 0 63 a))
@@ -1655,6 +1658,22 @@
       $(a l.a)
     $(a r.a)
   ::
+  +-  int                                               ::  intersection
+    ~/  %int
+    |*  b=_a
+    |-  ^+  a
+    ?~  b
+      ~
+    ?~  a
+      ~
+    ?.  (vor n.a n.b)
+      $(a b, b a)
+    ?:  =(n.b n.a)
+      [n.a $(a l.a, b l.b) $(a r.a, b r.b)]
+    ?:  (hor n.b n.a)
+      %-  uni(+< $(a l.a, b [n.b l.b ~]))  $(b r.b)
+    %-  uni(+< $(a r.a, b [n.b ~ r.b]))  $(b l.b)
+  ::
   +-  put                                               ::  puts b in a, sorted
     ~/  %put
     |*  b=*
@@ -1688,6 +1707,26 @@
     ?~  a
       b
     $(a r.a, b [n.a $(a l.a)])
+  ::
+  +-  uni                                               ::  union
+    ~/  %uni
+    |*  b=_a
+    |-  ^+  a
+    ?~  b
+      a
+    ?~  a
+      b
+    ?:  (vor n.a n.b)
+      ?:  =(n.b n.a)
+        [n.b $(a l.a, b l.b) $(a r.a, b r.b)]
+      ?:  (hor n.b n.a)
+        $(a [n.a $(a l.a, b [n.b l.b ~]) r.a], b r.b)
+      $(a [n.a l.a $(a r.a, b [n.b ~ r.b])], b l.b)
+    ?:  =(n.a n.b)
+      [n.b $(b l.b, a l.a) $(b r.b, a r.a)]
+    ?:  (hor n.a n.b)
+      $(b [n.b $(b l.b, a [n.a l.a ~]) r.b], a r.a)
+    $(b [n.b l.b $(b r.b, a [n.a ~ r.a])], a l.a)
   ::
   +-  wyt                                               ::  depth of set
     .+
@@ -1809,6 +1848,26 @@
     |*  b=*
     !=(~ (get(+< a) b))
   ::
+  +-  int                                               ::  intersection
+    ~/  %int
+    |*  b=_a
+    |-  ^+  a
+    ?~  b
+      ~
+    ?~  a
+      ~
+    ?:  (vor p.n.a p.n.b)
+      ?:  =(p.n.b p.n.a)
+        [n.b $(a l.a, b l.b) $(a r.a, b r.b)]
+      ?:  (hor p.n.b p.n.a)
+        %-  uni(+< $(a l.a, b [n.b l.b ~]))  $(b r.b)
+      %-  uni(+< $(a r.a, b [n.b ~ r.b]))  $(b l.b)
+    ?:  =(p.n.a p.n.b)
+      [n.b $(b l.b, a l.a) $(b r.b, a r.a)]
+    ?:  (hor p.n.a p.n.b)
+      %-  uni(+< $(b l.b, a [n.a l.a ~]))  $(a r.a)
+    %-  uni(+< $(b r.b, a [n.a ~ r.a]))  $(a l.a)
+  ::
   +-  mar                                               ::  add with validation
     |*  [b=_?>(?=(^ a) p.n.a) c=(unit ,_?>(?=(^ a) q.n.a))]
     ?~  c
@@ -1867,14 +1926,31 @@
       b
     $(a r.a, b [n.a $(a l.a)])
   ::
-  +-  uni                                               ::  union, merge
+  +-  tur                                               ::  turn
+    |*  b=$+([* *] *)
+    |-
+    ?~  a  ~
+    [n=[p=p.n.a q=(b p.n.a q.n.a)] l=$(a l.a) r=$(a r.a)]
+  ::
+  +-  uni                                               ::  union
     ~/  %uni
-    |=  b=_a
-    ?~  b  a
-    %=  $
-      a  (~(put by a) p.n.b q.n.b)
-      b  (~(uni by l.b) r.b)
-    ==
+    |*  b=_a
+    |-  ^+  a
+    ?~  b
+      a
+    ?~  a
+      b
+    ?:  (vor p.n.a p.n.b)
+      ?:  =(p.n.b p.n.a)
+        [n.b $(a l.a, b l.b) $(a r.a, b r.b)]
+      ?:  (hor p.n.b p.n.a)
+        $(a [n.a $(a l.a, b [n.b l.b ~]) r.a], b r.b)
+      $(a [n.a l.a $(a r.a, b [n.b ~ r.b])], b l.b)
+    ?:  =(p.n.a p.n.b)
+      [n.b $(b l.b, a l.a) $(b r.b, a r.a)]
+    ?:  (hor p.n.a p.n.b)
+      $(b [n.b $(b l.b, a [n.a l.a ~]) r.b], a r.a)
+    $(b [n.b l.b $(b r.b, a [n.a ~ r.a])], a l.a)
   ::
   +-  wyt                                               ::  depth of map
     .+
@@ -1923,7 +1999,7 @@
     =+  b=get(+< l.a)
     bal(+< ^+(a [p.b q.b r.a]))
   ::
-  +-  put                                               ::  insert new head
+  +-  put                                               ::  insert new tail
     |*  b=*
     |-  ^+  a
     ?~  a
@@ -3893,15 +3969,16 @@
     [%2 tax]
   ?:  ?=(^ -.fol)
     =+  hed=$(fol -.fol)
-    ?:  ?=(2 -.hed)
+    ?:  ?=(%2 -.hed)
       hed
     =+  tal=$(fol +.fol)
     ?-  -.tal
-      0  ?-(-.hed 0 [%0 p.hed p.tal], 1 hed)
-      1  ?-(-.hed 0 tal, 1 [%1 (weld p.hed p.tal)])
-      2  tal
+      %0  ?-(-.hed %0 [%0 p.hed p.tal], %1 hed)
+      %1  ?-(-.hed %0 tal, %1 [%1 (weld p.hed p.tal)])
+      %2  tal
     ==
-  ?-    fol
+  ?+    fol
+    [%2 tax]
   ::
       [0 b=@]
     ?:  =(0 b.fol)  [%2 tax]
@@ -3913,25 +3990,26 @@
       [1 b=*]
     [%0 b.fol]
   ::
-      [2 b=^ c=*]
-    =+  ben=$(fol [b.fol c.fol])
-    ?.  ?=(0 -.ben)  ben
+      [2 b=[^ *]]
+    =+  ben=$(fol b.fol)
+    ?.  ?=(%0 -.ben)  ben
     ?>(?=(^ p.ben) $(sub -.p.ben, fol +.p.ben))
+::    ?>(?=(^ p.ben) $([sub fol] p.ben)
   ::
       [3 b=*]
     =+  ben=$(fol b.fol)
-    ?.  ?=(0 -.ben)  ben
+    ?.  ?=(%0 -.ben)  ben
     [%0 .?(p.ben)]
   ::
       [4 b=*]
     =+  ben=$(fol b.fol)
-    ?.  ?=(0 -.ben)  ben
+    ?.  ?=(%0 -.ben)  ben
     ?.  ?=(@ p.ben)  [%2 tax]
     [%0 .+(p.ben)]
   ::
       [5 b=*]
     =+  ben=$(fol b.fol)
-    ?.  ?=(0 -.ben)  ben
+    ?.  ?=(%0 -.ben)  ben
     ?.  ?=(^ p.ben)  [%2 tax]
     [%0 =(-.p.ben +.p.ben)]
   ::
@@ -3942,21 +4020,19 @@
       [8 b=* c=*]       $(fol =>(fol [7 [[0 1] b] c]))
       [9 b=* c=*]       $(fol =>(fol [7 c 0 b]))
       [10 @ c=*]        $(fol c.fol)
-      [10 [* c=*] d=*]
+      [10 [b=* c=*] d=*]
     =+  ben=$(fol c.fol)
-    ?.  ?=(0 -.ben)  ben
-    ?:  ?=(?(%hunk %lose %mean %spot) +<-.fol)
-      $(fol d.fol, tax [[+<-.fol p.ben] tax])
+    ?.  ?=(%0 -.ben)  ben
+    ?:  ?=(?(%hunk %lose %mean %spot) b.fol)
+      $(fol d.fol, tax [[b.fol p.ben] tax])
     $(fol d.fol)
   ::
       [11 b=*]
     =+  ben=$(fol b.fol)
-    ?.  ?=(0 -.ben)  ben
+    ?.  ?=(%0 -.ben)  ben
     =+  val=(sky p.ben)
-    ?@(val [%1 p.ben ~] [%0 +.val])
+    ?~(val [%1 p.ben ~] [%0 u.val])
   ::
-      *
-    [%2 tax]
   ==
 ::
 ++  mock
@@ -5728,6 +5804,7 @@
 ::
 ++  slit
   |=  [gat=type sam=type]
+  ?>  (~(nest ut (~(peek ut gat) %free 6)) & sam)
   (~(play ut [%cell gat sam]) [%cncl [~ 2] [~ 3]])
 ::
 ++  slym
@@ -7318,7 +7395,11 @@
     ::
         [%dtwt *]  [(nice bool) [%3 q:$(gen p.gen, gol %noun)]]
         [%ktbr *]  =+(vat=$(gen p.gen) [(wrap(sut p.vat) %iron) q.vat])
+    ::
         [%ktls *]
+      =+(hif=(nice (play p.gen)) [hif q:$(gen q.gen, gol hif)])
+    ::
+        [%kthx *]
       =+(hif=(nice (play p.gen)) [hif q:$(gen q.gen, gol hif)])
     ::
         [%ktpm *]  =+(vat=$(gen p.gen) [(wrap(sut p.vat) %zinc) q.vat])
@@ -7482,6 +7563,10 @@
       =+(vat=$(gen p.gen) [(wrap(sut p.vat) %iron) (wrap(sut q.vat) %iron)])
     ::
         [%ktls *]
+      =+  hif=[p=(nice (play p.gen)) q=(play(sut dox) p.gen)]
+      =+($(gen q.gen, gol p.hif) hif)
+    ::
+        [%kthx *]
       =+  hif=[p=(nice (play p.gen)) q=(play(sut dox) p.gen)]
       =+($(gen q.gen, gol p.hif) hif)
     ::
@@ -7833,6 +7918,7 @@
       [%dtts *]  bool
       [%dtwt *]  bool
       [%ktbr *]  (wrap(sut $(gen p.gen)) %iron)
+      [%kthx *]  $(gen p.gen)
       [%ktls *]  $(gen p.gen)
       [%ktpm *]  (wrap(sut $(gen p.gen)) %zinc)
       [%ktsg *]  $(gen p.gen)
@@ -8216,9 +8302,9 @@
         [a e]
       ;~  plug
         fry
-        ;~(pose (stag ~ ;~(pfix fas sym)) (easy ~))
-        ;~(pose (stag ~ ;~(pfix pat sym)) (easy ~))
-        ;~(pose (stag ~ ;~(pfix dot (stag %smdq soil))) (easy ~))
+        ;~(pose (stag ~ ;~(pfix dot sym)) (easy ~))
+        ;~(pose (stag ~ ;~(pfix hax sym)) (easy ~))
+        ;~(pose (stag ~ ;~(pfix fas (stag %smdq soil))) (easy ~))
         ;~  pose
           %+  ifix  [pel per]
           %+  more  ;~(plug com ace)
@@ -8682,6 +8768,7 @@
                     ['.' (rune dot %ktdt expb)]
                     ['-' (rune hep %kthp expo)]
                     ['+' (rune lus %ktls expb)]
+                    ['#' (rune hax %kthx expb)]
                     ['&' (rune pam %ktpm expa)]
                     ['~' (rune sig %ktsg expa)]
                     ['=' (rune tis %ktts expg)]
@@ -9099,7 +9186,7 @@
 ++  arvo  (mold mill mill)                              ::  arvo card
 ++  beam  ,[[p=ship q=desk r=case] s=path]              ::  global name
 ++  beak  ,[p=ship q=desk r=case]                       ::  garnish with beak
-++  bone  ,@ud                                          ::  opaque 
+++  bone  ,@ud                                          ::  opaque duct
 ++  care  ?(%$ %u %v %w %x %y %z)                       ::  namespace mode
 ++  case                                                ::  version
           $%  [%da p=@da]                               ::  date
@@ -9130,12 +9217,14 @@
           ==                                            ::
 ++  glob  ,[p=logo q=ship r=mark]                       ::  global brand
 ++  herd  (hypo curd)                                   ::  typed card
-++  hide                                                ::  computation state
-        $:  own=[p=ship q=@tas]                         ::  static identity
-          $=  seq                                       ::  dynamic sequence
+++  hide                                                ::  standard app state
+        $:  $:  our=ship                                ::  owner/operator
+                app=@tas                                ::  app identity
+            ==                                          ::  
+            sup=(map bone (pair ship path))             ::  subscription set
             $:  tik=@ud                                 ::  boot number
-                num=@ud                                 ::  action number
-                eny=@                                   ::  entropy
+                act=@ud                                 ::  action number
+                eny=@uvI                                ::  entropy
                 lat=@da                                 ::  date of last tick
         ==  ==                                          ::
 ++  hilt  ?(0 1 2)                                      ::  lead iron gold
@@ -9171,7 +9260,7 @@
           ==                                            ::
 ++  muse  ,[p=@tas q=duct r=arvo]                       ::  sourced move
 ++  mosh  ,[p=duct q=(mold curd curd)]                  ::  vane move
-++  move  ,[p=duct q=arvo]                  ::  arvo move
+++  move  ,[p=duct q=arvo]                              ::  arvo move
 ++  ovum  ,[p=wire q=curd]                              ::  typeless ovum
 ++  pane  (list ,[p=@tas q=vase])                       ::  kernel modules
 ++  pone  (list ,[p=@tas q=vise])                       ::  kernel modules, old
