@@ -1236,6 +1236,7 @@
     ++  gnaw                                            ::    gnaw:am
       |=  [kay=cape ryn=lane pac=rock]                  ::  process packet
       ^-  [p=(list boon) q=furt]
+      ~&  %gnaw-start
       ?.  =(0 (end 0 3 pac))  [~ fox]
       =+  kec=(bite pac)
       ?:  (goop p.p.kec)  [~ fox]
@@ -1244,8 +1245,11 @@
       =<  zork
       =<  zank
       ::  ~&  [%hear p.p.kec ryn `@p`(mug (shaf %flap pac))]
-      %-  ~(chew la:(ho:(um q.p.kec) p.p.kec) kay ryn %none (shaf %flap pac))
-      [q.kec r.kec]
+      =+  ^=  res  
+          %-  ~(chew la:(ho:(um q.p.kec) p.p.kec) kay ryn %none (shaf %flap pac))
+          [q.kec r.kec]
+      ~&  %gnaw-end
+      res
     ::
     ++  goop
       |=  him=ship
@@ -1852,7 +1856,7 @@
       ==
     ::
         %ouzo
-      ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
+      ::  ~&  [%send now p.bon `@p`(mug (shaf %flap q.bon))]
       :_  fox
       [[hen [%give %send p.bon q.bon]] ~]
     ::
