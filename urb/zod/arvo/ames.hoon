@@ -909,10 +909,10 @@
       =.  rts
           ?:  (gth (nano rts) 131.072)
             ?:  (lth (nano rts) 16.777.216)
-              ~&  %additive-adjust-taylor
+              :: ~&  %additive-adjust-taylor
               =+  u=(div (nano rts) 131.072)
               (nona (sub (nano rts) :(mul u u u)))
-            ~&  %additive-adjust-float
+            :: ~&  %additive-adjust-float
             =+  d=(sun:rd (nano rts))
             =+  den=(add:rd .~1 (div:rd (mul:rd d d) .~2251799813685248))
             (nona (hol:rd (div:rd d den)))
@@ -967,7 +967,7 @@
     ::  Aye, this is truly a mess (less so now)
     ++  cong  !:
       |=  [now=@da gap=@dr]
-      :: ~&  [%ack %gap gap]
+      ~&  [%ack %gap gap]
       =+  gap2=(min gap ~s1)
       =+  millisec=(rsh 0 3 ~s1)
       ::  Initialilze if necessary
@@ -1033,7 +1033,7 @@
       ?.  |(=(~ rtb) &(!=(~ rtb) ?>(?=(^ rtb) (gte now u.rtb))))
         [~ +>]                                          ::  can't send yet
       =+  ^=  wid
-          ?:  (lth (sub now rlb) (add ~s1 (div ~s1 10)))
+          ?:  (lth (sub now rlb) (add (div ~s1 10) (div ~s1 40)))
             (max 1 (div (sub now rlb) rts))
           1
       =:
@@ -1235,7 +1235,6 @@
     ++  gnaw                                            ::    gnaw:am
       |=  [kay=cape ryn=lane pac=rock]                  ::  process packet
       ^-  [p=(list boon) q=furt]
-      ~&  %gnaw-start
       ?.  =(0 (end 0 3 pac))  [~ fox]
       =+  kec=(bite pac)
       ?:  (goop p.p.kec)  [~ fox]
@@ -1247,7 +1246,6 @@
       =+  ^=  res  
           %-  ~(chew la:(ho:(um q.p.kec) p.p.kec) kay ryn %none (shaf %flap pac))
           [q.kec r.kec]
-      ~&  %gnaw-end
       res
     ::
     ++  goop
@@ -1425,7 +1423,7 @@
           ::
           ++  cock                                      ::    cock:la:ho:um:am
             ^+  .                                       ::  acknowledgment
-            ~&  [%back kay dam]
+            ::  ~&  [%back kay dam]
             =^  pax  diz  (zuul:diz now [%back kay dam ~s0])
             +(+> (busk(diz (wast:diz ryn)) xong:diz pax))
           ::
@@ -1711,7 +1709,7 @@
     ++  doze
       |=  [now=@da hen=duct]
       =+  doz=`(unit ,@da)`[~ (add now ~s32)]
-      =+  doy=`(unit ,@da)`[~ (add now ~s2)]
+      =+  doy=`(unit ,@da)`[~ (add now (div ~s1 10))]
       |-  ^+  doz
       ?~  zac.fox  doz
       =.  doz  $(zac.fox l.zac.fox)

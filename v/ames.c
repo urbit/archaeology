@@ -250,7 +250,7 @@ _ames_recv_cb(uv_udp_t*        wax_u,
               struct sockaddr* adr_u,
               unsigned         flg_i)
 {
-  // uL(fprintf(uH, "ames: rx %p\r\n", buf_u.base));
+  uL(fprintf(uH, "ames: rx %p\r\n", buf_u.base));
 
   if ( 0 == nrd_i ) {
     _ames_free(buf_u.base);
