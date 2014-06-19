@@ -1034,11 +1034,9 @@
         [~ +>]                                          ::  can't send yet
       =+  ^=  wid
           ?:  (lth (sub now rlb) (add (div ~s1 10) (div ~s1 40)))
-            (max 1 (div (sub now rlb) rts))
+            (max 1 (div (sub now rlb) rts)
           1
-      =:
-          rtb  (some (add now rts))
-        ==
+      =.  rtb  (some (add now rts))
       ::?.  (gth caw nif)  [~ +>]
       ::=+  wid=(sub caw nif)
       ::=+  wid=1
@@ -1048,7 +1046,7 @@
       :: ~&  [%rto rto %rtd rtd]
       |%
       ++  abet
-        ?~  rub  [~ +>.$]
+        ?~  rub  [~ +>.$(rtb ~)]
         [(flop rub) +>.$(rtn [~ (add rto now)])]
       ::
       ++  apse
@@ -1085,9 +1083,12 @@
       :: =.  +>  (wept 0 nus)
       =^  fnd  +>  (wupt now)
       =.  rtn  ?:  fnd  (some (add now rto))  ~
+      =.  rtb  ?:  fnd                                  ::  trigger resent
+                 (hunt rtb (some (add now rts)))
+               rtb
       ::  ?>  =(0 nif)
       ::  ~&  %timeout
-      =+  pan=&(fnd (gth now (add rlp (mul 4 rto))))   ::  should panic
+      =+  pan=&(fnd (gth now (add rlp (mul 4 rto))))    ::  should panic
       =:  caw  2
           rts  ?:  pan
                  ~&  [%panic %rts `@dr`(mul rts 2)]
