@@ -25,6 +25,8 @@
 #include "all.h"
 #include "v/vere.h"
 
+static struct timeval recv_end;
+
 /* _ames_alloc(): libuv buffer allocator.
 */
 static uv_buf_t
@@ -281,6 +283,11 @@ _ames_recv_cb(uv_udp_t*        wax_u,
               unsigned         flg_i)
 {
   // uL(fprintf(uH, "ames: rx %p\r\n", buf_u.base));
+  struct timeval t2, r;
+  gettimeofday(&t2, 0);
+  timersub(&t2, &recv_end, &r);
+  c3_w ms_w = (r.tv_sec * 1000) + (r.tv_usec / 1000);
+  fprintf(stderr, "ames: recv: downtime: %d\r\n", ms_w);
 
   if ( 0 == nrd_i ) {
     _ames_free(buf_u.base);
@@ -304,6 +311,11 @@ _ames_recv_cb(uv_udp_t*        wax_u,
     _ames_free(buf_u.base);
     u2_lo_shut(u2_yes);
   }
+
+  gettimeofday(&recv_end, 0);
+  timersub(&recv_end, &t2, &r);
+  ms_w = (r.tv_sec * 1000) + (r.tv_usec / 1000);
+  fprintf(stderr, "ames: recv: uptime: %d\r\n", ms_w);
 }
 
 /* u2_ames_io_init(): initialize ames I/O.
