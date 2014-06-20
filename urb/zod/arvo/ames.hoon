@@ -1033,8 +1033,8 @@
       ?.  |(=(~ rtb) &(!=(~ rtb) ?>(?=(^ rtb) (gte now u.rtb))))
         [~ +>]                                          ::  can't send yet
       =+  ^=  wid
-          ?:  (lth (sub now rlb) (add (div ~s1 10) (div ~s1 40)))
-            (max 1 (div (sub now rlb) rts)
+          ?:  (lth (sub now rlb) (div ~s1 10))
+            (max 1 (div (sub now rlb) rts))
           1
       =.  rtb  (some (add now rts))
       ::?.  (gth caw nif)  [~ +>]
@@ -1046,6 +1046,7 @@
       :: ~&  [%rto rto %rtd rtd]
       |%
       ++  abet
+        ~&  [%harv (lent rub)]
         ?~  rub  [~ +>.$(rtb ~)]
         [(flop rub) +>.$(rtn [~ (add rto now)])]
       ::
@@ -1057,7 +1058,7 @@
         ?>  ?=(^ puq)
         ?:  =(0 wid)  .
         ?.  =(| liv.q.n.puq)  .
-        ~&  [%harv nux.q.n.puq p.n.puq wid]
+        ::  ~&  [%harv nux.q.n.puq p.n.puq wid]
         %_    .
           wid          (dec wid)
           rub          [pac.q.n.puq rub]
@@ -1065,8 +1066,8 @@
           liv.q.n.puq  &
           nux.q.n.puq  +(nux.q.n.puq)
           lys.q.n.puq  now
-          dir  (~(put by dir) (shaf %flap pac.q.n.puq) now)
-          rlb  now
+          dir          (~(put by dir) (shaf %flap pac.q.n.puq) now)
+          rlb          now
           rtn  ?~  rtn  (some (add now rto))  rtn
         ==
       ::
@@ -1710,7 +1711,7 @@
     ++  doze
       |=  [now=@da hen=duct]
       =+  doz=`(unit ,@da)`[~ (add now ~s32)]
-      =+  doy=`(unit ,@da)`[~ (add now (div ~s1 10))]
+      =+  doy=`(unit ,@da)`[~ (add now (div ~s1 20))]
       |-  ^+  doz
       ?~  zac.fox  doz
       =.  doz  $(zac.fox l.zac.fox)

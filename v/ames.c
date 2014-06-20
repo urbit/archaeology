@@ -160,7 +160,7 @@ _ames_send_cb(uv_udp_send_t* req_u, c3_i sas_i)
   if ( 0 != sas_i ) {
     uL(fprintf(uH, "ames: send_cb: %s\n", uv_strerror(uv_last_error(u2L))));
   }
-  // fprintf(stderr, "ames: tx\r\n");
+  fprintf(stderr, "ames: tx\r\n");
   free(ruq_u->buf_y);
   free(ruq_u);
 }
@@ -378,7 +378,7 @@ u2_ames_io_poll()
     }
     else sam_u->alm = u2_yes;
 
-    uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
+    // uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
     uv_timer_start(&sam_u->tim_u, _ames_time_cb, gap_d, 0);
   }
   else {
