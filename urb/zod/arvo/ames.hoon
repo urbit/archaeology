@@ -1033,7 +1033,7 @@
       ?.  |(=(~ rtb) &(!=(~ rtb) ?>(?=(^ rtb) (gte now u.rtb))))
         [~ +>]                                          ::  can't send yet
       =+  ^=  wid
-          ?:  (lth (sub now rlb) (div ~s1 10))
+          ?:  (lth (sub now rlb) (div ~s1 5))
             (max 1 (div (sub now rlb) rts))
           1
       =.  rtb  (some (add now rts))
@@ -1347,7 +1347,6 @@
           ::
           ++  chew                                      ::    chew:la:ho:um:am
             |=  [sin=skin msg=@]                        ::  receive
-            ~&  %chew
             ^+  +>
             =<  apse
             |%

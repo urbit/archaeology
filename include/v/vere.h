@@ -207,6 +207,7 @@
         c3_w       law_w;                   //  last wakeup, unix time
         c3_s       por_s;                   //  public IPv4 port
         c3_w       imp_w[256];              //  imperial IPs
+        int        soc_u;                   //  socket out
       } u2_ames;
 
     /* u2_save: checkpoint control.

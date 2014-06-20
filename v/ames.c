@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <sys/ioctl.h>
+#include <sys/socket.h>
 #include <sys/stat.h>
 #include <unistd.h>
 #include <setjmp.h>
@@ -19,6 +20,7 @@
 #include <curses.h>
 #include <termios.h>
 #include <term.h>
+#include <time.h>
 
 #include "all.h"
 #include "v/vere.h"
@@ -160,7 +162,7 @@ _ames_send_cb(uv_udp_send_t* req_u, c3_i sas_i)
   if ( 0 != sas_i ) {
     uL(fprintf(uH, "ames: send_cb: %s\n", uv_strerror(uv_last_error(u2L))));
   }
-  fprintf(stderr, "ames: tx\r\n");
+  // fprintf(stderr, "ames: tx\r\n");
   free(ruq_u->buf_y);
   free(ruq_u);
 }
@@ -173,6 +175,7 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
   u2_ames* sam_u = &u2_Host.sam_u;
   c3_s     por_s;
   c3_w     pip_w;
+  static struct timeval t;
 
   if ( u2_Host.ops_u.fuz_w && ((rand() % 100) < u2_Host.ops_u.fuz_w) ) {
     u2z(pac);
@@ -189,6 +192,9 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
       pip_w = 0x7f000001;
       por_s = u2_Host.sam_u.por_s;
     }
+    else {
+      por_s--; // seems legit
+    }
     {
       struct sockaddr_in add_u;
 
@@ -199,24 +205,48 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
       }
 
       if ( 0 != pip_w ) {
-        uv_buf_t        buf_u = uv_buf_init((c3_c*)buf_y, len_w);
-        _u2_udp_send_t* ruq_u = c3_malloc(sizeof(_u2_udp_send_t));
+        int sen_u;
+        int soc_u;
 
-        ruq_u->buf_y = buf_y;
+        struct timeval t2, r;
+        gettimeofday(&t2, 0);
+        timersub(&t2, &t, &r);
+        c3_w ms_w = (r.tv_sec * 1000) + (r.tv_usec / 1000);
+        fprintf(stderr, "ames: tx: time: %d\r\n", ms_w);
+        t = t2;
+
+        if(sam_u->soc_u == 0) {
+            struct sockaddr_in loc_u;
+            u2_Host.sam_u.soc_u = socket(AF_INET, SOCK_DGRAM, 0);
+            if(sam_u->soc_u <= 0) {
+                fprintf(stderr, "ames: tx: socket failed\r\n");
+            }
+            memset(&loc_u, 0, sizeof(loc_u));
+            loc_u.sin_family = AF_INET;
+            loc_u.sin_port = htons(u2_Host.sam_u.por_s+1);
+            loc_u.sin_addr.s_addr = htonl(INADDR_ANY);
+            if(0 > bind(u2_Host.sam_u.soc_u, (struct sockaddr *) &loc_u, sizeof(loc_u))) {
+                fprintf(stderr, "ames: tx: bind failed\r\n");
+                close(sam_u->soc_u);
+                sam_u->soc_u = 0;
+            }
+        fprintf(stderr,
+            "ames: tx: bind [route to %d] [from port %d] [to port %d] [bytes %d]\r\n",
+            pip_w, u2_Host.sam_u.por_s+1, por_s, sen_u);
+        }
+        soc_u = sam_u->soc_u;
 
         memset(&add_u, 0, sizeof(add_u));
         add_u.sin_family = AF_INET;
-        add_u.sin_addr.s_addr = htonl(pip_w);
         add_u.sin_port = htons(por_s);
+        add_u.sin_addr.s_addr = htonl(pip_w);
 
-        if ( 0 != uv_udp_send(&ruq_u->snd_u,
-                              &sam_u->wax_u,
-                              &buf_u, 1,
-                              add_u,
-                              _ames_send_cb) ) {
-          uL(fprintf(uH, "ames: send: %s\n", uv_strerror(uv_last_error(u2L))));
-        }
-        fprintf(stderr, "ames: send\r\n");
+        sen_u = sendto(soc_u, buf_y, len_w, 0, (struct sockaddr *) &add_u, sizeof(add_u));
+        if(sen_u < 0)
+          uL(fprintf(uH, "ames: send failed"));
+        fprintf(stderr,
+            "ames: tx [route to %d] [from port %d] [to port %d] [bytes %d]\r\n",
+            pip_w, u2_Host.sam_u.por_s+1, por_s, sen_u);
       }
     }
   }
@@ -250,7 +280,7 @@ _ames_recv_cb(uv_udp_t*        wax_u,
               struct sockaddr* adr_u,
               unsigned         flg_i)
 {
-  uL(fprintf(uH, "ames: rx %p\r\n", buf_u.base));
+  // uL(fprintf(uH, "ames: rx %p\r\n", buf_u.base));
 
   if ( 0 == nrd_i ) {
     _ames_free(buf_u.base);
@@ -285,6 +315,7 @@ u2_ames_io_init()
   c3_s por_s;
 
   por_s = u2_Host.ops_u.por_s;
+  sam_u->soc_u = 0;
   if ( 0 != u2_Host.ops_u.imp_c ) {
     u2_noun imp   = u2_ci_string(u2_Host.ops_u.imp_c);
     u2_noun num   = u2_dc("slaw", 'p', imp);
@@ -351,6 +382,7 @@ void
 u2_ames_io_exit()
 {
   u2_ames* sam_u = &u2_Host.sam_u;
+  close(sam_u->soc_u);
 
   uv_close((uv_handle_t*)&sam_u->wax_u, 0);
 }
