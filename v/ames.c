@@ -267,7 +267,6 @@ _ames_recv_cb(uv_udp_t*        wax_u,
   gettimeofday(&t2, 0);
   timersub(&t2, &recv_end, &r);
   c3_w ms_w = (r.tv_sec * 1000) + (r.tv_usec / 1000);
-  fprintf(stderr, "ames: recv: downtime: %d\r\n", ms_w);
 
   if ( 0 == nrd_i ) {
     _ames_free(buf_u.base);
@@ -295,7 +294,7 @@ _ames_recv_cb(uv_udp_t*        wax_u,
   gettimeofday(&recv_end, 0);
   timersub(&recv_end, &t2, &r);
   ms_w = (r.tv_sec * 1000) + (r.tv_usec / 1000);
-  fprintf(stderr, "ames: recv: uptime: %d\r\n", ms_w);
+  fprintf(stderr, "ames: recv: time: %d\r\n", ms_w);
 }
 
 /* u2_ames_io_init(): initialize ames I/O.
@@ -332,8 +331,11 @@ u2_ames_io_init()
   {
     struct sockaddr_in add_u;
     c3_i               add_i = sizeof(add_u);
+    int flags;
 
     sam_u->soc_u = socket(AF_INET, SOCK_DGRAM, 0);
+    flags = fcntl(sam_u->soc_u, F_GETFL, 0);
+    fcntl(sam_u->soc_u, F_SETFL, flags | O_NONBLOCK);
 
     memset(&add_u, 0, sizeof(add_u));
     add_u.sin_family = AF_INET;
@@ -392,7 +394,6 @@ u2_ames_io_poll()
 {
   u2_ames* sam_u = &u2_Host.sam_u;
   u2_noun  wen = u2_reck_keep(u2A, u2nt(c3__gold, c3__ames, u2_nul));
-  fprintf(stderr, "POLL\r\n");
 
   if ( (u2_nul != wen) &&
        (u2_yes == u2du(wen)) &&
@@ -409,7 +410,7 @@ u2_ames_io_poll()
     }
     else sam_u->alm = u2_yes;
 
-    uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
+    //uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
     uv_timer_start(&sam_u->tim_u, _ames_time_cb, gap_d, 0);
   }
   else {
