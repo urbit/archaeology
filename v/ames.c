@@ -194,9 +194,6 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
       pip_w = 0x7f000001;
       por_s = u2_Host.sam_u.por_s;
     }
-    else {
-      por_s--; // seems legit
-    }
     {
       struct sockaddr_in add_u;
 
@@ -217,25 +214,6 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
         fprintf(stderr, "ames: tx: time: %d\r\n", ms_w);
         t = t2;
 
-        if(sam_u->soc_u == 0) {
-            struct sockaddr_in loc_u;
-            u2_Host.sam_u.soc_u = socket(AF_INET, SOCK_DGRAM, 0);
-            if(sam_u->soc_u <= 0) {
-                fprintf(stderr, "ames: tx: socket failed\r\n");
-            }
-            memset(&loc_u, 0, sizeof(loc_u));
-            loc_u.sin_family = AF_INET;
-            loc_u.sin_port = htons(u2_Host.sam_u.por_s+1);
-            loc_u.sin_addr.s_addr = htonl(INADDR_ANY);
-            if(0 > bind(u2_Host.sam_u.soc_u, (struct sockaddr *) &loc_u, sizeof(loc_u))) {
-                fprintf(stderr, "ames: tx: bind failed\r\n");
-                close(sam_u->soc_u);
-                sam_u->soc_u = 0;
-            }
-        fprintf(stderr,
-            "ames: tx: bind [route to %d] [from port %d] [to port %d] [bytes %d]\r\n",
-            pip_w, u2_Host.sam_u.por_s+1, por_s, sen_u);
-        }
         soc_u = sam_u->soc_u;
 
         memset(&add_u, 0, sizeof(add_u));
@@ -243,12 +221,14 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
         add_u.sin_port = htons(por_s);
         add_u.sin_addr.s_addr = htonl(pip_w);
 
+        printf("presend\r\n");
         sen_u = sendto(soc_u, buf_y, len_w, 0, (struct sockaddr *) &add_u, sizeof(add_u));
+        printf("postsend\r\n");
         if(sen_u < 0)
           uL(fprintf(uH, "ames: send failed"));
         fprintf(stderr,
             "ames: tx [route to %d] [from port %d] [to port %d] [bytes %d]\r\n",
-            pip_w, u2_Host.sam_u.por_s+1, por_s, sen_u);
+            pip_w, u2_Host.sam_u.por_s, por_s, sen_u);
       }
     }
   }
@@ -327,7 +307,6 @@ u2_ames_io_init()
   c3_s por_s;
 
   por_s = u2_Host.ops_u.por_s;
-  sam_u->soc_u = 0;
   if ( 0 != u2_Host.ops_u.imp_c ) {
     u2_noun imp   = u2_ci_string(u2_Host.ops_u.imp_c);
     u2_noun num   = u2_dc("slaw", 'p', imp);
@@ -354,12 +333,19 @@ u2_ames_io_init()
     struct sockaddr_in add_u;
     c3_i               add_i = sizeof(add_u);
 
+    sam_u->soc_u = socket(AF_INET, SOCK_DGRAM, 0);
+
     memset(&add_u, 0, sizeof(add_u));
     add_u.sin_family = AF_INET;
     add_u.sin_addr.s_addr = htonl(INADDR_ANY);
     add_u.sin_port = htons(por_s);
 
-    if ( uv_udp_bind(&sam_u->wax_u, add_u, 0) != 0 ) {
+    if ( uv_udp_open(&sam_u->wax_u, sam_u->soc_u) != 0 ) {
+      uL(fprintf(uH, "ames: open: %s\n",
+                     uv_strerror(uv_last_error(u2L))));
+      c3_assert(0);
+    }
+    if ( uv_udp_bind(&sam_u->wax_u, add_u, 0) != 0) {
       uL(fprintf(uH, "ames: bind: %s\n",
                      uv_strerror(uv_last_error(u2L))));
       c3_assert(0);
@@ -394,7 +380,7 @@ void
 u2_ames_io_exit()
 {
   u2_ames* sam_u = &u2_Host.sam_u;
-  close(sam_u->soc_u);
+  //close(sam_u->soc_u);
 
   uv_close((uv_handle_t*)&sam_u->wax_u, 0);
 }
@@ -406,6 +392,7 @@ u2_ames_io_poll()
 {
   u2_ames* sam_u = &u2_Host.sam_u;
   u2_noun  wen = u2_reck_keep(u2A, u2nt(c3__gold, c3__ames, u2_nul));
+  fprintf(stderr, "POLL\r\n");
 
   if ( (u2_nul != wen) &&
        (u2_yes == u2du(wen)) &&
@@ -422,7 +409,7 @@ u2_ames_io_poll()
     }
     else sam_u->alm = u2_yes;
 
-    // uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
+    uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
     uv_timer_start(&sam_u->tim_u, _ames_time_cb, gap_d, 0);
   }
   else {

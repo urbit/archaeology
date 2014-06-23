@@ -1106,6 +1106,7 @@
     ++  wack                                            ::    wack:pu
       |=  now=@da                                       ::  wakeup (timeout)
       ^-  [(list rock) _+>]
+      ~&  %wack
       =^  pan  +>  (panic now)
         ::?.  &(!=(~ rtn) ?>(?=(^ rtn) (gte now u.rtn)))
         ::  [~ +>]
