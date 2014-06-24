@@ -906,17 +906,26 @@
             ~&  %slow-start
              (add second (~(rad og now) (div second 8)))
           rts
+      ~&  [%pre-adjust (mul (div rts ~s1) 1.000.000)]
+      ::  DJB uses bex 51 as time constant, but urbit is slow
       =.  rts
-          ?:  (gth (nano rts) 131.072)
+          ::?:  (gth (nano rts) 131.072)
+          ?:  (gth (nano rts) 100.000.000)
             ?:  (lth (nano rts) 16.777.216)
               :: ~&  %additive-adjust-taylor
-              =+  u=(div (nano rts) 131.072)
-              (nona (sub (nano rts) :(mul u u u)))
+              ::=+  u=(nano rts) 131.072)
+              =+  u=(nano rts)
+              (nona (sub (nano rts) (div :(mul u u u) (bex 57))))
             :: ~&  %additive-adjust-float
             =+  d=(sun:rd (nano rts))
-            =+  den=(add:rd .~1 (div:rd (mul:rd d d) .~2251799813685248))
+            ::=+  den=(add:rd .~1 (div:rd (mul:rd d d) .~2251799813685248))
+            =+  den=(add:rd .~1 (div:rd (mul:rd d d) (bex:rd (sun:si 57))))
+            ~&  [%rts `@u`rts]
+            ~&  [%d `@ux`d]
+            ~&  [%den `@ux`den]
             (nona (hol:rd (div:rd d den)))
           rts
+      ~&  [%post-adjust (div (mul rts 1.000.000) ~s1)]
       ::  check phases
       =.  +>.$
           ?:  !rtp
@@ -967,9 +976,10 @@
     ::  Aye, this is truly a mess (less so now)
     ++  cong  !:
       |=  [now=@da gap=@dr]
-      ~&  [%ack %gap gap]
+      ~&  [%ack %gap (div gap (div ~s1 1.000.000))]
+      ~&  [%rts (div rts (div ~s1 1.000.000))]
       =+  gap2=(min gap ~s1)
-      =+  millisec=(rsh 0 3 ~s1)
+      =+  millisec=(div ~s1 1.000)
       ::  Initialilze if necessary
       =.  +>.$
           ?.  ini
@@ -1004,7 +1014,7 @@
           %.n
       =.  ctr  +(ctr)
       =.  +>.$
-          ?:  |((gte ctr 16) (gth now (add rtl ~s10)))
+          ?:  |((gte ctr 2) (gth now (add rtl ~s10)))
             (adjust now)
           +>.$
       (check now)
@@ -1033,10 +1043,10 @@
       ?.  |(=(~ rtb) &(!=(~ rtb) ?>(?=(^ rtb) (gte now u.rtb))))
         [~ +>]                                          ::  can't send yet
       =+  ^=  wid
-          ?:  (lth (sub now rlb) (div ~s1 5))
+          ?:  (lth (sub now rlb) (div ~s1 2))
             (max 1 (div (sub now rlb) rts))
           1
-      =.  rtb  (some (add now rts))
+      =.  rtb  (some (add now (max rts (div ~s1 5))))
       ::?.  (gth caw nif)  [~ +>]
       ::=+  wid=(sub caw nif)
       ::=+  wid=1
@@ -1046,9 +1056,12 @@
       :: ~&  [%rto rto %rtd rtd]
       |%
       ++  abet
-        ~&  [%harv (lent rub)]
+        ::?~  rub  [~ +>.$(rtb ~)]
         ?~  rub  [~ +>.$(rtb ~)]
-        [(flop rub) +>.$(rtn [~ (add rto now)])]
+        ~&  [%harv (lent rub)]
+        ~&  [%rto rto]
+        ~&  [%nif nif]
+        [(flop rub) +>.$]
       ::
       ++  apse
         ^+  .
@@ -1083,9 +1096,14 @@
       |=  now=@da
       :: =.  +>  (wept 0 nus)
       =^  fnd  +>  (wupt now)
-      =.  rtn  ?:  fnd  (some (add now rto))  ~
+      ::=.  rtn  ?:  fnd  (some (add now rto))  ~
+      =.  rtn  ?~  rtn
+                 [~ (add now (div ~s1 2))]
+               ?:  (gth now u.rtn)
+                 [~ (add now (div ~s1 2))]
+               rtn
       =.  rtb  ?:  fnd                                  ::  trigger resent
-                 (hunt rtb (some (add now rts)))
+                 (hunt rtb (some (add now (max rts (div ~s1 5)))))
                rtb
       ::  ?>  =(0 nif)
       ::  ~&  %timeout
@@ -1139,6 +1157,7 @@
       |=  now=@da
       ^-  [? _+>]
       =+  fnd=|
+      =+  newrtn=~
       =<  abet  =<  apse
       |%
       ++  abet  [fnd +>.$]
@@ -1711,7 +1730,6 @@
     ++  doze
       |=  [now=@da hen=duct]
       =+  doz=`(unit ,@da)`[~ (add now ~s32)]
-      =+  doy=`(unit ,@da)`[~ (add now (div ~s1 20))]
       |-  ^+  doz
       ?~  zac.fox  doz
       =.  doz  $(zac.fox l.zac.fox)
@@ -1722,7 +1740,7 @@
       =.  doz  $(wab.yem l.wab.yem)
       =.  doz  $(wab.yem r.wab.yem)
       =+  bah=q.n.wab.yem
-      (huns doy (hunt doz (hunt rtn.sop.bah rtb.sop.bah)))
+      (hunt doz (hunt rtn.sop.bah rtb.sop.bah))
     ::
     ++  load
       |=  old=furt

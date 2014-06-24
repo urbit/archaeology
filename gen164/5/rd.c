@@ -322,12 +322,12 @@ union doub {
   };
   u2_ho_jet
   j2_mcj(Pt5, rd, add)[] = {
-    { ".2", c3__lite, j2_mc(Pt5, rd, add), Tier5_test, u2_none, u2_none },
+    { ".2", c3__lite, j2_mc(Pt5, rd, add), Tier5, u2_none, u2_none },
     { }
   };
   u2_ho_jet
   j2_mcj(Pt5, rd, sub)[] = {
-    { ".2", c3__lite, j2_mc(Pt5, rd, sub), Tier5_test, u2_none, u2_none },
+    { ".2", c3__lite, j2_mc(Pt5, rd, sub), Tier5, u2_none, u2_none },
     { }
   };
   u2_ho_jet

@@ -211,7 +211,7 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
         gettimeofday(&t2, 0);
         timersub(&t2, &t, &r);
         c3_w ms_w = (r.tv_sec * 1000) + (r.tv_usec / 1000);
-        fprintf(stderr, "ames: tx: time: %d\r\n", ms_w);
+        // fprintf(stderr, "ames: tx: time: %d\r\n", ms_w);
         t = t2;
 
         soc_u = sam_u->soc_u;
@@ -221,14 +221,12 @@ u2_ames_ef_send(u2_noun lan, u2_noun pac)
         add_u.sin_port = htons(por_s);
         add_u.sin_addr.s_addr = htonl(pip_w);
 
-        printf("presend\r\n");
         sen_u = sendto(soc_u, buf_y, len_w, 0, (struct sockaddr *) &add_u, sizeof(add_u));
-        printf("postsend\r\n");
         if(sen_u < 0)
           uL(fprintf(uH, "ames: send failed"));
-        fprintf(stderr,
+        /*fprintf(stderr,
             "ames: tx [route to %d] [from port %d] [to port %d] [bytes %d]\r\n",
-            pip_w, u2_Host.sam_u.por_s, por_s, sen_u);
+            pip_w, u2_Host.sam_u.por_s, por_s, sen_u);*/
       }
     }
   }
@@ -262,7 +260,7 @@ _ames_recv_cb(uv_udp_t*        wax_u,
               struct sockaddr* adr_u,
               unsigned         flg_i)
 {
-  // uL(fprintf(uH, "ames: rx %p\r\n", buf_u.base));
+  uL(fprintf(uH, "ames: rx %p\r\n", buf_u.base));
   struct timeval t2, r;
   gettimeofday(&t2, 0);
   timersub(&t2, &recv_end, &r);
@@ -294,7 +292,7 @@ _ames_recv_cb(uv_udp_t*        wax_u,
   gettimeofday(&recv_end, 0);
   timersub(&recv_end, &t2, &r);
   ms_w = (r.tv_sec * 1000) + (r.tv_usec / 1000);
-  fprintf(stderr, "ames: recv: time: %d\r\n", ms_w);
+  // fprintf(stderr, "ames: recv: time: %d\r\n", ms_w);
 }
 
 /* u2_ames_io_init(): initialize ames I/O.
@@ -410,7 +408,7 @@ u2_ames_io_poll()
     }
     else sam_u->alm = u2_yes;
 
-    //uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
+    uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
     uv_timer_start(&sam_u->tim_u, _ames_time_cb, gap_d, 0);
   }
   else {

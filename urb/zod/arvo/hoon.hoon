@@ -1322,7 +1322,6 @@
            [s=s.n e=(dif:si e.n (sun:si dif2)) a=(lia p a3)]  :: n > m => s=s.n
 
   ++  mul  |=  [p=@u n=[s=? e=@s a=@u] m=[s=? e=@s a=@u]]  ^-  [s=? e=@ a=@]
-           ~&  [[%n [a.n e.n]] [%m [a.m e.m]]]
            =+  a2=(^mul a.n a.m)
            :: =+  a3=(mix (lsh 0 (^mul p 2) 1) (end 0 (^mul p 2) a2))
            =+  e2=(met 0 (rsh 0 (^add 1 (^mul p 2)) a2))
@@ -1332,7 +1331,6 @@
            [s=s2 e=:(sum:si e.n e.m (sun:si e2)) a=a4]
 
   ++  div  |=  [p=@u n=[s=? e=@s a=@u] m=[s=? e=@s a=@u]]  ^-  [s=? e=@ a=@]
-           ~&  [[%n [a.n e.n]] [%m [a.m e.m]]]
            =+  b=(lia p (^div (lsh 0 (^mul p 3) a.n) a.m))
            ?:  (^gte a.n a.m)
              [s=|(s.n s.m) e=(dif:si e.n e.m) a=b]
@@ -1401,14 +1399,10 @@
 
   ++  mul  ~/  %mul
            |=  [a=@rd b=@rd]  ^-  @rd
-           ~&  [%a `@ub`a]
-           ~&  [%b `@ub`b]
            (bit (mul:fl 52 (sea a) (sea b)))
 
   ++  div  ~/  %div
            |=  [a=@rd b=@rd]  ^-  @rd
-           ~&  [%a `@ub`a]
-           ~&  [%b `@ub`b]
            (bit (div:fl 52 (sea a) (sea b)))
 
   ++  lte  ~/  %lte
