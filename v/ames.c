@@ -408,7 +408,7 @@ u2_ames_io_poll()
     }
     else sam_u->alm = u2_yes;
 
-    uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
+    //uL(fprintf(uH, "ames: io: gap: %d\n", gap_d));
     uv_timer_start(&sam_u->tim_u, _ames_time_cb, gap_d, 0);
   }
   else {

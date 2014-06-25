@@ -2413,6 +2413,8 @@
                   rtp=?                                 ::  phase
                   ini=?                                 ::  initialized?
                   ctr=@u                                ::  ctr for adjust
+                  tco=@u                                ::  timeout count
+                  pco=@u                                ::  packet count
               ==                                        ::
               $:  nus=@ud                               ::  number sent
                   nif=@ud                               ::  number live

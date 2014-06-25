@@ -795,6 +795,8 @@
           rtp  %.n
           ini  %.n
           ctr  0
+          tco  0
+          pco  0
           nus  0
           nif  0
           nep  0
@@ -1014,7 +1016,7 @@
           %.n
       =.  ctr  +(ctr)
       =.  +>.$
-          ?:  |((gte ctr 2) (gth now (add rtl ~s10)))
+          ?:  |((gte ctr 4) (gth now (add rtl ~s10)))
             (adjust now)
           +>.$
       (check now)
@@ -1061,6 +1063,8 @@
         ~&  [%harv (lent rub)]
         ~&  [%rto rto]
         ~&  [%nif nif]
+        ~&  [%tco tco]
+        ~&  [%pco pco]
         [(flop rub) +>.$]
       ::
       ++  apse
@@ -1081,6 +1085,7 @@
           lys.q.n.puq  now
           dir          (~(put by dir) (shaf %flap pac.q.n.puq) now)
           rlb          now
+          pco          +(pco)
           rtn  ?~  rtn  (some (add now rto))  rtn
         ==
       ::
@@ -1174,6 +1179,7 @@
           nif  (dec nif)
           liv.q.n.puq  |
           r.n.puq  (add now rto)
+          tco  +(tco)
         ==
       ::
       ++  left
