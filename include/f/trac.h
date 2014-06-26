@@ -172,6 +172,12 @@
         void
         u2_tx_open(u2_ray wir_r);
 
+      /* u2_tx_samp_on(): enable profiling.
+      */
+        void
+        u2_tx_samp_on();
+
+
       /* u2_tx_do_*(): set debug/profile bean.  Return old value.
       */
         u2_bean u2_tx_do_debug(u2_ray wir_r, u2_bean lag);

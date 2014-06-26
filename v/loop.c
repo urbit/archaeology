@@ -650,6 +650,9 @@ u2_lo_loop()
   _lo_init();
   u2_raft_init();
 
+  if ( u2_Flag_Profile == u2_yes ) {
+    u2_tx_samp_on();
+  }
   if ( u2_no == u2_Host.ops_u.bat ) {
     uv_run(u2L, UV_RUN_DEFAULT);
   }
