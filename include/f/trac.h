@@ -216,19 +216,6 @@
                 ? u2_wrac_at(wir_r, wof.med_w) \
                 : u2_wrac_at(wir_r, wof.max_w) ) )
 
-#       define u2_tx_add_cas(wir_r, det_ws) u2_tx_mex(wir_r, sys.cas_x, det_ws)
-#       define u2_tx_add_men(wir_r, det_ws) u2_tx_mex(wir_r, sys.men_x, det_ws)
-#       define u2_tx_add_bek(wir_r, det_ws) u2_tx_mex(wir_r, sys.bek_x, det_ws)
-
-#       define u2_tx_sink_cas(wir_r) u2_tx_add_cas(wir_r, 1)
-#       define u2_tx_rise_cas(wir_r) u2_tx_add_cas(wir_r, -1)
-
-      /* u2_tx_add_mem(): add memory to rail.  A hack.  Not used.
-      */
-#       define u2_tx_add_mem(ral_r, det_ws) \
-          ( (0 == ral_r) ? u2_tx_add_men(ral_r, det_ws) \
-                         : u2_tx_add_bek(0, det_ws)
-
       /* u2_tx_did_act(): record user actions.
       */
         void

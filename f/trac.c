@@ -98,7 +98,7 @@
       u2_ray rac_r = _tx_rac_r;
 
       c3_assert(_tx_on == 1);
-      // printf("sample sys %d\n", u2_trac_at(rac_r, wer.sys));
+      //  printf("sample sys %d\n", u2_trac_at(rac_r, wer.sys));
 
       if ( u2_yes == u2_trac_at(rac_r, wer.sys) ) {
         if ( u2_yes == u2_trac_at(rac_r, wer.glu) ) {
@@ -154,7 +154,7 @@ _tx_samp_on(u2_ray rac_r)
 }
 
 void u2_tx_samp_on() {
-  _tx_samp_on(u2_Wire);
+  _tx_samp_on(u2_wire_rac_r(u2_Wire));
 }
 
 /* _tx_samp_off(): turn profile sampling off.
