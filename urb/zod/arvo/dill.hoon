@@ -309,6 +309,55 @@
       +>(mos :_(mos [hen %give +.sih]))
     ==
   ::
+  ++  snak  !:
+    =>  |%
+        ++  crep
+          |*  a=(list)
+          |=  [n=@ b=_a]
+          :(weld (scag n a) b (slag n (slag (lent b) a)))
+        ++  cfil
+          |*  [a=@ *]
+          ?:  =(0 a)  ~
+          [i=+<+ t=$(a (dec a))]
+
+        --
+    |=  dir=?(%u %d %l %r)  ::  %$
+    ?~  q.q.yar
+      beep
+    =+  bed=u.q.q.yar
+    =+  curs=(add [pol bus]:bed)
+    =+  plas=[(div curs p.q.yar) (mod curs p.q.yar)]
+    =+  pref="::  Snake!  ::"
+    =+  ^=  arrw
+        ?.  =(pref (scag (lent pref) but.bed))
+          [4 10]
+        :: :~(sfix (star ;~(less (mask "^v<>") prn)) (star prn))
+        =+  =+  [arrs=(sa "^v<>") tap=(tufa but.bed)]
+            =|  n=@  |-
+            ?~  tap  n
+            ?:  (~(has in arrs) i.tap)  n
+            $(n +(n), tap t.tap)
+        =+  (add - pol.bed)
+        [(sub (max 3 (div - p.q.yar)) 3) (max 1 (dec (mod - p.q.yar)))]
+    =+  plat=(rip 3 (fil 3 (sub p.q.yar pol.bed) ' '))
+    =+  wal=(rip 3 (fil 3 p.q.yar '#'))
+    =+  lev=`tape`['#' (welp (rip 3 (fil 3 (sub p.q.yar 2) ' ')) '#' ~)]
+    =+  ^=  cha  ^-  wall
+        ?-  dir
+          %u  ~[" ^ " " + " "   "]
+          %l  ~["   " "<+ " "   "]
+          %r  ~["   " " +>" "   "]
+          %d  ~["   " " + " " v "]
+        ==
+    =+  levs=`wall`(cfil 10 lev)
+    =.  levs  ((crep levs) -.arrw (turn cha |=(tape ((crep lev) +.arrw +<))))
+    =.  but.bed  (zing plat wal (tuba (zing levs)) wal ~)
+    =+  head=(tuba :(welp pref "  " <plas> "  " <arrw>))
+    =.  but.bed  ((crep but.bed) 0 head)
+    =.  bus.bed  (min bus.bed (lent but.bed))
+    =.  bul.bed  (lent but.bed)
+    (edit(mos mos) bed)  ::  XX  request timer
+  ::
   ++  lear                                              ::  handle request
     |=  kyz=kiss
     ^+  +>
@@ -337,6 +386,8 @@
         ==
       ?-    -.p.kyz
           %aro                                          ::  arrow
+        ?:  =('::dill#snake' &2.q.hyt.u.q.q.yar)
+          (snak p.p.kyz)
         ?-    p.p.kyz
             %d                                          ::  down
           ?:  =(0 hiz.u.q.q.yar)
