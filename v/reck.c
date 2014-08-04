@@ -560,6 +560,24 @@ _reck_kick_ames(u2_reck* rec_u, u2_noun pox, u2_noun fav)
   u2z(pox); u2z(fav); return u2_no;
 }
 
+/* _reck_kick_iris(): apply iris effects
+ */
+static u2_bean
+_reck_kick_iris(u2_reck* rec_u, u2_noun pox, u2_noun fav)
+{
+  u2_noun p_fav;
+
+  switch (u2h(fav)) {
+    default: break;
+    case c3__conn: p_fav = u2t(fav);
+    {
+      u2_iris_ef_connect(u2k(p_fav));
+      u2z(pox); u2z(fav); return u2_yes;
+    } break;
+  }
+  u2z(pox); u2z(fav); return u2_no;
+}
+
 /* _reck_kick_spec(): apply an effect, by path.
 */
 static u2_bean
@@ -634,6 +652,9 @@ _reck_kick_spec(u2_reck* rec_u, u2_noun pox, u2_noun fav)
         else {
           return _reck_kick_ames(rec_u, pox, fav);
         }
+      } break;
+      case c3__tcpu: {
+        return _reck_kick_iris(rec_u, pox, fav);
       } break;
 
       case c3__term: {

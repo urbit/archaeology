@@ -23,6 +23,7 @@
         [%e %eyre]
         [%f %ford]
         [%g %gall]
+        [%i %iris]
     ==
 %+  turn  vay
 |=  [a=@tas b=@tas]

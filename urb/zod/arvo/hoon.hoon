@@ -9821,6 +9821,8 @@
       [@ %sync *]  %c
       [@ %term *]  %d
       [@ %http *]  %e
+      [@ %iris *]  %i
+      [@ %tcpu *]  %i
     ==
   ::
   ++  doos                                              ::  sleep until

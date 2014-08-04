@@ -2795,6 +2795,7 @@
               [%sp p=(list lark)]                       ::  spawn task(s)
               [%sq p=ship q=@tas r=path s=*]            ::  send request
               [%sr p=ship q=path r=*]                   ::  send response
+              [%tc p=lant]                              ::  tcp connect
               [%te p=(list ,@t)]                        ::  dump lines
               [%th p=@ud q=love]                        ::  http response
               [%tq p=path q=hiss]                       ::  http request
@@ -2898,6 +2899,7 @@
               [%ix p=@da q=@ud r=@if]                   ::  IPv4 provisional
           ==                                            ::
 ++  lang  ,@ta                                          ::  IETF lang as code
+++  lant  ,[p=@ud r=@if]                                ::  simple addr
 ++  lark  ,[p=(unit ,@tas) q=lawn]                      ::  parsed command
 ++  lass  ?(%0 %1 %2)                                   ::  power increment
 ++  lath  $%                                            ::  pipeline stage

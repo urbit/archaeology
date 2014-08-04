@@ -1006,7 +1006,13 @@
       */
         void
         u2_ames_io_poll(void);
-
+    
+    /**  Iris, tcp
+    **/
+     /* u2_iris_ef_bake(): create iris(tcpu) duct
+     */
+      void
+      u2_iris_ef_bake(void);
     /**  Autosave.
     **/
       /* u2_save_ef_chld(): report SIGCHLD.

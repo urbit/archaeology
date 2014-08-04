@@ -636,6 +636,10 @@ _sist_make(u2_reck* rec_u, u2_noun fav)
   //
   u2_term_ef_bake(fav);
 
+  //
+  //  Initialize iris
+  u2_iris_ef_bake();
+
   //  Create the ship directory.
   //
   _sist_zest(rec_u);

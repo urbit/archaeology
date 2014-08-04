@@ -76,6 +76,9 @@
               [%nuke p=hasp q=ship]                     ::
               [%show p=hasp q=ship r=path]              ::
               [%wipe p=hasp]                            ::
+          ==  ==
+              $:  %i                                    ::  to %iris
+          $%  [%conn p=lant]                            ::
           ==  ==  ==                                    ::
 ++  rave                                                ::  see %clay
           $%  [& p=mood]                                ::  single request
@@ -886,7 +889,7 @@
         ::  [%tell ((hard (list ,@t)) val)]
         [%talk (dish:ut caf val)]
       ::
-      ++  haft                                          ::  process gift
+      ++  haft  !:                                      ::  process gift
         |=  guf=gilt
         ^+  +>
         ?-    -.guf
@@ -930,6 +933,7 @@
                  %+  gram  ~
                  [%pass tea %a [%want [who p.gud] [%q q.gud %b tea] s.gud]]
             %sr  (gram ~ %pass ~ %a [%want [who p.gud] [%r q.gud] r.gud])
+            %tc  (gram ~ %pass ~ %i %conn p.gud)
             %te  (gram ~ %give %tell p.gud)
             %th  (gram ~ %pass ~ %e %that p.gud q.gud)
             %tq  =+  tea=(bist %ma p.gud)

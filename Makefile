@@ -275,6 +275,7 @@ V_OFILES=\
        v/batz.o \
        v/cttp.o \
        v/http.o \
+       v/iris.o \
        v/loop.o \
        v/main.o \
        v/raft.o \
