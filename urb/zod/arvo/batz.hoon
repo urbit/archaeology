@@ -91,6 +91,7 @@
               [%hail ~]                                 ::  by any
               [%helo p=path q=prod]                     ::  by %ames
               [%init p=@p]                              ::  by %ames
+              [%foam p=(unit tock)]                     ::  by %iris
               [%mean p=(unit ,[p=term q=(list tank)])]  ::  by %gall
               [%nice ~]                                 ::  by %gall
               [%note p=@tD q=tank]                      ::  by %clay
@@ -280,6 +281,8 @@
       %hail  [[[hen %give sin] ~] +<.^^$]
       %helo  [~ +<.^^$]
       %init  [[[hen %give sin] ~] +<.^^$]
+      %foam  ?.  (fear tea)  [~ +<.^^$]
+             abet:lash:(lean tea hen sin)
       %mean  [~ +<.^^$]
       %nice  [~ +<.^^$]
       %note  [[[hen %give sin] ~] +<.^^$]
@@ -933,7 +936,6 @@
                  %+  gram  ~
                  [%pass tea %a [%want [who p.gud] [%q q.gud %b tea] s.gud]]
             %sr  (gram ~ %pass ~ %a [%want [who p.gud] [%r q.gud] r.gud])
-            %tc  (gram ~ %pass ~ %i %conn p.gud)
             %te  (gram ~ %give %tell p.gud)
             %th  (gram ~ %pass ~ %e %that p.gud q.gud)
             %tq  =+  tea=(bist %ma p.gud)
@@ -993,6 +995,7 @@
           %lq  (gump | p.gal gyp ted lap)
           %ow  +>
           %rt  +>
+          %tc  +>
           %up  +>(..ra (hoop lap ted))
           %wa  (gust gyp ted lap)
         ==
@@ -1012,6 +1015,7 @@
           %lq  (gump & p.gal [gyp ted lap])
           %ow  +>
           %rt  +>
+          %tc  (gram ~ %pass (bist [%ma lap]) %i %conn p.gal)
           %up  +>(..ra (hoot lap ted p.gal))
           %wa  (gush p.gal gyp ted lap)
         ==
@@ -1096,6 +1100,10 @@
               +>.$(+>.$ (glib lap [%rt ~]))
             ?>  ?=(%waft -.sik)
             +>.$(+>.$ (glib lap [%rt ~ q.sik]))
+              %tc
+            ?>  ?=(%foam -.sik)
+            ~&  %handle-foam
+            +>.$(+>.$ (glib lap [%tc +.sik]))
           ::
               %up
             ?>  ?=(%line -.sik)

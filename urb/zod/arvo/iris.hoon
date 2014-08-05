@@ -6,13 +6,15 @@
 |%
 ++  snow  $:                                            ::  tcp state
               tax=(map ,@ duct)                         ::  established sockets
+                                                        ::  by iris id
               tux=(map ,@ duct)                         ::  unestablished reqs
+                                                        ::  by tcpu id
               tcp=duct                                  ::  tcpu duct
               let=@                                     ::  for uniqueness
           ==                                            ::
 ++  gift                                                ::  out result <-$
           $%                                            ::
-              [%conn p=lant q=@]                        ::  connect (-> unix)
+              [%conn p=lant q=@]                        ::  connect (-> tcpu)
               [%hear p=tock q=@]                        ::  receive packet
               [%foam p=(unit tock)]                     ::  connected (-> user)
               [%went p=tock q=@]                        ::  packet sent (-> user)
@@ -20,15 +22,12 @@
 ++  kiss                                                ::  in request ->$
           $%                                            ::
               [%clos p=lant]                            ::  terminate connection
-              [%cone p=(unit lant) q=@ r=@]             ::  connected (<- unix)
+              [%cone p=lant q=@ r=(unit ,@)]            ::  connected (<- tcpu)
                                                         ::  q=id, r=socket
+              [%hear p=tock q=@]                        ::  hear (<- tcpu)
               [%conn p=lant]                            ::  connect (<- user)
               [%star *]                                 ::  start duct
               [%want p=tock q=@]                        ::  send message to path
-          ==                                            ::
-++  tock                                                ::  tcp connection
-          $:  lan=lant                                  ::  routed to
-              soc=@                                     ::  raw socket
           ==                                            ::
 ++  move  ,[p=duct q=(mold note gift)]                  ::
 --
@@ -53,13 +52,19 @@
     !!
     ::
       %cone                                             ::  got connection
-    ?~  p.kyz  !!                                       ::  XX handle failure
+    ~&  [%iris %cone]
+    ?~  r.kyz
+      :_  %=  ..^$
+            tux.sno  (~(del by tux.sno) q.kyz)
+          ==
+      :_  ~  :-  (~(got by tux.sno) q.kyz)              ::  trans duct
+      [%give %foam ~]
     :_  %=  ..^$
-          tax.sno  (~(put by tax.sno) r.kyz (~(got by tux.sno) q.kyz))
+          tax.sno  (~(put by tax.sno) u.r.kyz (~(got by tux.sno) q.kyz))
           tux.sno  (~(del by tux.sno) q.kyz)
         ==
     :_  ~  :-  (~(got by tux.sno) q.kyz)                ::  trans duct
-    [%give %foam [~ [u.p.kyz q.kyz]]]
+    [%give %foam [~ [p.kyz u.r.kyz]]]
     ::
       %conn                                             ::  request connection
     :_  %=  ..^$
@@ -67,8 +72,12 @@
           tux.sno  (~(put by tux.sno) let.sno hen)
         ==
     :_  ~  :-  tcp.sno
-    [%give %conn p.kyz let.sno]                         ::  send to unix
+    [%give %conn p.kyz let.sno]
     ::
+      %hear
+    ~&  [%iris %hear]
+    :-  ~
+    ..^$
       %star
     :-  ~
     ..^$(tcp.sno hen)

@@ -31,7 +31,7 @@ BIN=bin
 LIB=$(PWD)/urb
 
 RM=rm -f
-CC=gcc
+CC=clang
 CXX=g++
 CXXFLAGS=$(CFLAGS)
 CLD=g++ -O2 -g -L/usr/local/lib -L/opt/local/lib

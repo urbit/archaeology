@@ -2795,7 +2795,6 @@
               [%sp p=(list lark)]                       ::  spawn task(s)
               [%sq p=ship q=@tas r=path s=*]            ::  send request
               [%sr p=ship q=path r=*]                   ::  send response
-              [%tc p=lant]                              ::  tcp connect
               [%te p=(list ,@t)]                        ::  dump lines
               [%th p=@ud q=love]                        ::  http response
               [%tq p=path q=hiss]                       ::  http request
@@ -2836,6 +2835,7 @@
               [%ly p=newt q=tape]                       ::  lifecycle event
               [%ow p=cape]                              ::  one-way reaction
               [%rt p=(unit)]                            ::  roundtrip response
+              [%tc p=(unit tock)]                       ::  tcp connection
               [%up p=@t]                                ::  prompt response
               [%wa ~]                                   ::  alarm
           ==                                            ::
@@ -2850,6 +2850,7 @@
               [%lq p=@tas]                              ::  listen for service
               [%ow ~]                                   ::  one-way reaction
               [%rt ~]                                   ::  roundtrip response
+              [%tc p=lant]                              ::  tcp connect
               [%up p=prod]                              ::  user prompt
               [%wa p=@da]                               ::  alarm
           ==                                            ::
@@ -3086,6 +3087,10 @@
 ++  tart  $+([@da path note] bowl)                      ::  process core
 ++  taxi  ,[p=lane q=rock]                              ::  routed packet
 ++  tick  ,@ud                                          ::  process id
+++  tock                                                ::  tcp connection
+          $:  lan=lant                                  ::  routed to
+              soc=@                                     ::  raw socket
+          ==                                            ::
 ++  toro  ,[p=@ta q=nori]                               ::  general change
 ++  town                                                ::  all security state
           $:  lit=@ud                                   ::  imperial modulus
