@@ -2802,6 +2802,7 @@
               [%xx p=curd]                              ::  return card
               [%xy p=path q=curd]                       ::  push card
               [%xz p=[p=ship q=term] q=ship r=mark s=zang]
+              [%yz p=[p=ship q=term] q=ship r=mark s=* t=path]
               [%zz p=path q=path r=curd]                ::
           ==                                            ::
 ++  zang                                                ::  XX evil hack

@@ -76,7 +76,7 @@
               [%nuke p=hasp q=ship]                     ::
               [%show p=hasp q=ship r=path]              ::
               [%wipe p=hasp]                            ::
-          ==  ==
+          ==  ==                                        ::
               $:  %i                                    ::  to %iris
           $%  [%conn p=lant]                            ::
           ==  ==  ==                                    ::
@@ -955,6 +955,8 @@
                    !!
                  (gram ~ %pass ~ u.hug)
             %xz  =+  tea=(bist %ma /chat/hi/hey)
+                 (gram ~ %pass tea %g %mess p.gud q.gud r.gud !>(s.gud))
+            %yz  =+  tea=(bist %ma t.gud)
                  (gram ~ %pass tea %g %mess p.gud q.gud r.gud !>(s.gud))
             %zz  =+  tea=(bist %ma q.gud)
                  ?.  ?=([@ ~] p.gud) 
