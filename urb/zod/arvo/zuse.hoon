@@ -2739,6 +2739,7 @@
               q=(set monk)                              ::  authors
           ==                                            ::
 ++  deed  ,[p=@ q=step r=?]                             ::  sig, stage, fake?
+++  dock  ,[por=@ soc=@]                                ::  tcp bound socket
 ++  dome                                                ::  project state
           $:  ang=agon                                  ::  pedigree
               ank=ankh                                  ::  state
