@@ -2131,8 +2131,8 @@
     ;~(plug alf (star ;~(pose aln lus hep dot)))
   ::
   ++  smeg  (cook crip (plus pcar))                     ::  2396 segment
-  ++  tock  (cook crip (plus pcok))                     ::  6265 cookie-value
-  ++  tosk  ;~(pose tock (ifix [doq doq] tock))         ::  6265 cookie-value
+  ++  tocj  (cook crip (plus pcok))                     ::  6265 cookie-value
+  ++  tosk  ;~(pose tocj (ifix [doq doq] tocj))         ::  6265 cookie-value
   ++  toke  (cook crip (plus ptok))                     ::  2616 token
   ++  thor                                              ::  2396 host/port
     %+  cook  |*(a=[* *] [+.a -.a])

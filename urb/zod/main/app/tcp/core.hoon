@@ -10,7 +10,9 @@
           ==  ==  ==                                    ::
         ++  sign                                        ::  incoming response
           $?  $:  %i                                    ::
-              $%  [%foam (unit tock)]                   ::
+              $%  [%foam p=(unit tock)]                 ::
+                  [%hear p=tock @]                      ::
+                  [%done p=tock]                        ::
           ==  ==  ==                                    ::
         ++  tcpu                                        ::  kiss
           $%  [%star ~]
@@ -33,7 +35,7 @@
 ++  pour
   |=  [way=path sih=sign]
   ^-  [(list move) _+>]
-  ~&  [%iris-over-galll sih]
+  ~&  [%iris-over-gall sih]
   [~ +>]
 ::
 --

@@ -118,7 +118,7 @@
           $%  [%dirt p=twig]                            ::
           ==                                            ::
 ++  sign                                                ::  in result $<-
-          $?  [?(%b %c %d %e) @tas *]                   ::
+          $?  [?(%b %c %d %e %i) @tas *]                ::
               $:  %a                                    ::  by %ames
           $%  [%woot p=ship q=coop]                     ::
           ==  ==                                        ::

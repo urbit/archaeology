@@ -1013,6 +1013,12 @@
      */
       void
       u2_iris_ef_bake(void);
+
+      void
+      u2_iris_ef_conn(u2_noun gif);
+
+      void
+      u2_iris_ef_send(u2_noun gif);
     /**  Autosave.
     **/
       /* u2_save_ef_chld(): report SIGCHLD.

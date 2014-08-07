@@ -9,25 +9,29 @@
                                                         ::  by iris id
               tux=(map ,@ duct)                         ::  unestablished reqs
                                                         ::  by tcpu id
+              lax=(map ,@ (set tock))                   ::  bound sockets XX
               tcp=duct                                  ::  tcpu duct
               let=@                                     ::  for uniqueness
           ==                                            ::
 ++  gift                                                ::  out result <-$
           $%                                            ::
               [%conn p=lant q=@]                        ::  connect (-> tcpu)
-              [%hear p=tock q=@]                        ::  receive packet
+              [%done p=tock]                            ::  close (-> user)
+              [%hear p=tock q=@]                        ::  receive (-> user)
               [%foam p=(unit tock)]                     ::  connected (-> user)
-              [%went p=tock q=@]                        ::  packet sent (-> user)
+              [%send p=tock q=@]                        ::  send packet (-> tcpu)
+              [%sent p=tock q=@]                        ::  packet sent (-> user)
           ==                                            ::
 ++  kiss                                                ::  in request ->$
           $%                                            ::
-              [%clos p=lant]                            ::  terminate connection
+              [%done p=tock]                            ::  terminate connection
               [%cone p=lant q=@ r=(unit ,@)]            ::  connected (<- tcpu)
                                                         ::  q=id, r=socket
               [%hear p=tock q=@]                        ::  hear (<- tcpu)
               [%conn p=lant]                            ::  connect (<- user)
-              [%star *]                                 ::  start duct
-              [%want p=tock q=@]                        ::  send message to path
+              [%star *]                                 ::  start duct (<- tcpu)
+              [%send p=tock q=@]                        ::  send (<- user)
+              [%send p=tock q=@]                        ::  sent (<- tcpu)
           ==                                            ::
 ++  move  ,[p=duct q=(mold note gift)]                  ::
 --
@@ -48,8 +52,12 @@
   |=  [hen=duct kyz=kiss]
   ^-  [p=(list move) q=_..^$]
   ?-    -.kyz
-      %clos
-    !!
+      %done
+    =+  tok=p.kyz
+    :_  ..^$(tax.sno (~(del by tax.sno) soc.tok))
+    :_  ~
+    :-  (~(got by tax.sno) soc.tok)                     ::  trans duct
+    [%give %done tok]
     ::
       %cone                                             ::  got connection
     ~&  [%iris %cone]
@@ -76,13 +84,14 @@
     ::
       %hear
     ~&  [%iris %hear]
-    :-  ~
-    ..^$
+    :_  ..^$  :_  ~
+    :-  (~(got by tax.sno) soc.p.kyz)
+    [%give kyz]
       %star
     :-  ~
     ..^$(tcp.sno hen)
     ::
-      %want 
+      %iris
     !!
     ::  pass to unix
   ==
