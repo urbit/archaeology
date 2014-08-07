@@ -18,6 +18,7 @@
                   [%done p=tock]                        ::
                   [%sent p=tock q=@]                    ::
                   [%bond p=(unit dock) q=@]             ::  bound to iris
+                  [%tick p=dock q=tock]                 ::  new tock
           ==  ==  ==                                    ::
         ++  tcpv                                        ::  kiss
           $%  [%star ~]                                 ::
@@ -52,6 +53,7 @@
              [(slav %ud i.t.way) %pass ~ %i %drop p.sih]
            [(slav %ud i.t.way) %pass ~ %i %send p.sih q.sih]
     %sent  [~ +>]
+    %tick  [~ +>]
   ==
 :: 
 --

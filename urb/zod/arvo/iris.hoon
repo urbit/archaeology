@@ -24,6 +24,7 @@
               [%foam p=(unit tock) q=lant]              ::  connected (-> user)
               [%send p=tock q=@]                        ::  send packet (-> tcpu)
               [%sent p=tock q=@]                        ::  packet sent (-> user)
+              [%tick p=dock q=tock]                     ::  new endpoint (-> user)
           ==                                            ::
 ++  kiss                                                ::  in request ->$
           $%                                            ::
@@ -40,6 +41,7 @@
               [%send p=tock q=@]                        ::  send (<- user)
               [%sent p=tock q=@]                        ::  sent (<- tcpu)
               [%stop p=dock]                            ::  stop bind  (<- user)
+              [%tick p=dock q=tock]                     ::  new endpoint (<- tcpu)
           ==                                            ::
 ++  move  ,[p=duct q=(mold note gift)]                  ::
 --
@@ -156,6 +158,19 @@
       %star
     :-  ~
     ..^$(tcp.sno hen)
+    ::
+    ::
+    ::
+      %tick
+    :_  %=  ..^$
+          lax.sno  =+  fax=(~(get by lax.sno) soc.p.kyz)
+                   %+  ~(put in lax.sno)  soc.p.kyz
+                   ?~  fax  (~(put in _(set tock)) q.kyz)
+                   (~(put in u.fax) q.kyz)
+          tax.sno  (~(put by tax.sno) soc.q.kyz (~(got by tax.sno) soc.p.kyz))
+        ==
+    :_  ~  :-  `duct`(~(got by tax.sno) soc.p.kyz)
+    [%give `gift`[%tick p.kyz q.kyz]]
     ::
     ::
     ::
