@@ -31,7 +31,7 @@
               [%conn p=lant]                            ::  connect (<- user)
               [%star *]                                 ::  start duct (<- tcpu)
               [%send p=tock q=@]                        ::  send (<- user)
-              [%send p=tock q=@]                        ::  sent (<- tcpu)
+              [%sent p=tock q=@]                        ::  sent (<- tcpu)
           ==                                            ::
 ++  move  ,[p=duct q=(mold note gift)]                  ::
 --
@@ -45,6 +45,7 @@
 ++  call                                                ::  request
   |=  [hen=duct hic=(hypo (hobo kiss))]
   ^-  [p=(list move) q=_..^$]
+  ~&  [%iris-request q.hic]
   =>  .(q.hic ?.(?=(%soft -.q.hic) q.hic ((hard kiss) p.q.hic)))
   (knob hen q.hic)
 ::
@@ -60,7 +61,6 @@
     [%give %done tok]
     ::
       %cone                                             ::  got connection
-    ~&  [%iris %cone]
     ?~  r.kyz
       :_  %=  ..^$
             tux.sno  (~(del by tux.sno) q.kyz)
@@ -83,17 +83,23 @@
     [%give %conn p.kyz let.sno]
     ::
       %hear
-    ~&  [%iris %hear]
     :_  ..^$  :_  ~
     :-  (~(got by tax.sno) soc.p.kyz)
     [%give kyz]
+    ::
+      %send
+    :_  ..^$
+    :_  ~  :-  tcp.sno
+    [%give %send p.kyz q.kyz]
+    ::
+      %sent
+    :_  ..^$
+    :_  ~  :-  (~(got by tax.sno) soc.p.kyz)
+    [%give %sent p.kyz q.kyz]
+    ::
       %star
     :-  ~
     ..^$(tcp.sno hen)
-    ::
-      %iris
-    !!
-    ::  pass to unix
   ==
 ++  load
   |=  [%0 bar=snow]

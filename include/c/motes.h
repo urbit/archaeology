@@ -879,6 +879,7 @@
 #   define c3__sell   c3_s4('s','e','l','l')
 #   define c3__semp   c3_s4('s','e','m','p')
 #   define c3__send   c3_s4('s','e','n','d')
+#   define c3__sent   c3_s4('s','e','n','t')
 #   define c3__seq    c3_s3('s','e','q')
 #   define c3__serd   c3_s4('s','e','r','d')
 #   define c3__set    c3_s3('s','e','t')
