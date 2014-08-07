@@ -45,7 +45,6 @@
 ++  call                                                ::  request
   |=  [hen=duct hic=(hypo (hobo kiss))]
   ^-  [p=(list move) q=_..^$]
-  ~&  [%iris-request q.hic]
   =>  .(q.hic ?.(?=(%soft -.q.hic) q.hic ((hard kiss) p.q.hic)))
   (knob hen q.hic)
 ::
