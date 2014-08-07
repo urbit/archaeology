@@ -569,6 +569,11 @@ _reck_kick_iris(u2_reck* rec_u, u2_noun pox, u2_noun fav)
 
   switch (u2h(fav)) {
     default: break;
+    case c3__bind: p_fav = u2t(fav);
+    {
+      u2_iris_ef_bind(u2k(p_fav));
+      u2z(pox); u2z(fav); return u2_yes;
+    }
     case c3__conn: p_fav = u2t(fav);
     {
       u2_iris_ef_connect(u2k(p_fav));

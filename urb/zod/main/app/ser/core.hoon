@@ -7,6 +7,7 @@
         ++  note                                        ::  outgoing request
           $?  $:  %i                                    ::
               $%  [%conn p=lant]                        ::  connect to iris
+                  [%bind p=@]                           ::  bind to iris
                   [%drop p=tock]                        ::  drop iris connect
                   [%send p=tock q=@]                    ::  send over iris
           ==  ==  ==                                    ::
@@ -16,8 +17,9 @@
                   [%hear p=tock q=@]                    ::
                   [%done p=tock]                        ::
                   [%sent p=tock q=@]                    ::
+                  [%bond p=(unit dock) q=@]             ::  bound to iris
           ==  ==  ==                                    ::
-        ++  tcpu                                        ::  kiss
+        ++  tcpv                                        ::  kiss
           $%  [%star ~]                                 ::
               [%send q=@]                               ::
           ==
@@ -33,7 +35,7 @@
   ::
   ::
   ::`move`[ost %pass [%mess (scot %ud ost) ~] `note`[%i %conn 4.444 .127.0.0.1]]
-  `move`[ost %pass [%mess (scot %ud ost) ~] %i %conn 4.444 .127.0.0.1]
+  `move`[ost %pass [%mess (scot %ud ost) ~] %i %bind 5.555]
 ::
 ++  pour
   |=  [way=path sih=sign]
@@ -42,6 +44,7 @@
   ?>  ?=(%i -.sih) 
   ?>  ?=([@ @ ~] way)
   ?-  +<.sih 
+    %bond  [~ +>]
     %foam  [~ +>]
     %done  [~ +>]
     %hear  :_  +>  :_  ~
