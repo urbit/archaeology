@@ -574,6 +574,11 @@ _reck_kick_iris(u2_reck* rec_u, u2_noun pox, u2_noun fav)
       u2_iris_ef_connect(u2k(p_fav));
       u2z(pox); u2z(fav); return u2_yes;
     } break;
+    case c3__drop: p_fav = u2t(fav);
+    {
+      u2_iris_ef_drop(u2k(p_fav));
+      u2z(pox); u2z(fav); return u2_yes;
+    }
     case c3__send: p_fav = u2t(fav);
     {
       u2_iris_ef_send(u2k(p_fav));

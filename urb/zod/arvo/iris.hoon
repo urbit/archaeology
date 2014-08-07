@@ -16,6 +16,7 @@
 ++  gift                                                ::  out result <-$
           $%                                            ::
               [%conn p=lant q=@]                        ::  connect (-> tcpu)
+              [%drop p=tock]                            ::  terminate (-> tcpu)
               [%done p=tock]                            ::  close (-> user)
               [%hear p=tock q=@]                        ::  receive (-> user)
               [%foam p=(unit tock)]                     ::  connected (-> user)
@@ -24,7 +25,8 @@
           ==                                            ::
 ++  kiss                                                ::  in request ->$
           $%                                            ::
-              [%done p=tock]                            ::  terminate connection
+              [%drop p=tock]                            ::  terminate (<- user)
+              [%done p=tock]                            ::  terminate (<- tcpu)
               [%cone p=lant q=@ r=(unit ,@)]            ::  connected (<- tcpu)
                                                         ::  q=id, r=socket
               [%hear p=tock q=@]                        ::  hear (<- tcpu)
@@ -52,6 +54,11 @@
   |=  [hen=duct kyz=kiss]
   ^-  [p=(list move) q=_..^$]
   ?-    -.kyz
+      %drop
+    :_  ..^$
+    :_  ~
+    :-  tcp.sno                                         ::  to tcpu
+    [%give %drop p.kyz]
       %done
     =+  tok=p.kyz
     :_  ..^$(tax.sno (~(del by tax.sno) soc.tok))

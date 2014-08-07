@@ -7,6 +7,7 @@
         ++  note                                        ::  outgoing request
           $?  $:  %i                                    ::
               $%  [%conn p=lant]                        ::  connect to iris
+                  [%drop p=tock]                        ::  drop iris connect
                   [%send p=tock q=@]                    ::  send over iris
           ==  ==  ==                                    ::
         ++  sign                                        ::  incoming response
@@ -44,6 +45,8 @@
     %foam  [~ +>]
     %done  [~ +>]
     %hear  :_  +>  :_  ~
+           ?:  =("drop" (scag 4 (trip q.sih))) ::  newlin
+             [(slav %ud i.t.way) %pass ~ %i %drop p.sih]
            [(slav %ud i.t.way) %pass ~ %i %send p.sih q.sih]
     %sent  [~ +>]
   ==
