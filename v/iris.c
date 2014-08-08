@@ -78,7 +78,7 @@ struct u2_tock_list {
     struct u2_tock_list *n;
 };
 
-static struct u2_tock_list *tocks;
+static struct u2_tock_list *tocks = NULL;
 static struct u2_noun_buf last_socket;
 
 u2_noun u2_lant_put(struct u2_lant lan) {
@@ -148,16 +148,23 @@ struct u2_noun_buf u2_next_socket(void) {
     return nex;
 }
 
+/* guarantee sanity */
+void
+u2_iris_ef_init(void)
+{
+  if(tocks != NULL) return;
+  tocks = malloc(sizeof(*tocks));
+  last_socket = u2_noun_buf_get(0);
+}
+
 /***/
 void
 u2_iris_ef_bake(void)
 { 
   u2_noun pax = u2nq(u2_blip, c3__tcpu, u2k(u2A->sen), u2_nul);
-
-  tocks = malloc(sizeof(*tocks));
-  last_socket = u2_noun_buf_get(0);
-
   u2_reck_plan(u2A, pax, u2nc(c3__star, u2_nul));
+
+  u2_iris_ef_init(); /* sane start */
 }
 
 uv_buf_t _iris_alloc(uv_handle_t* handle, size_t siz) {
@@ -238,6 +245,8 @@ void _u2_iris_connect_cb(uv_connect_t *connect, int status) {
 void
 u2_iris_ef_connect(u2_noun gif)
 {
+    u2_iris_ef_init();
+
     //printf("iris: attempting connect\r\n");
     u2_noun lan = u2h(gif);
     u2_noun id = u2t(gif);
@@ -283,6 +292,7 @@ _u2_iris_ef_write_cb(uv_write_t *req, int status) {
 void
 u2_iris_ef_send(u2_noun gif)
 {
+    u2_iris_ef_init();
     //printf("iris: ef send\r\n");
     struct u2_tock tock;
 
@@ -317,6 +327,8 @@ u2_iris_ef_send(u2_noun gif)
 void
 u2_iris_ef_drop(u2_noun gif)
 {
+    u2_iris_ef_init();
+
     struct u2_tock tock;
     tock.lan = u2_lant_get(u2h(gif));
     tock.id = u2_noun_buf_get(u2t(gif));
@@ -391,6 +403,8 @@ _u2_iris_accept_cb(uv_stream_t *server, int status) {
 void
 u2_iris_ef_bind(u2_noun gif)
 {
+    u2_iris_ef_init();
+
     c3_s por = u2_cr_word(0, u2h(gif));
 
     uv_tcp_t *server = malloc(sizeof(*server));
