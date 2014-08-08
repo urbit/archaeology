@@ -101,7 +101,7 @@ char u2_tock_compare(struct u2_tock t1, struct u2_tock t2) {
 
 /* warn: tock becomes useless after */
 void u2_remove_tock(struct u2_tock t) {
-    printf("remove tock: %d\r\n", u2_noun_buf_put(t.id));
+    //printf("remove tock: %d\r\n", u2_noun_buf_put(t.id));
     if(tocks == NULL) {
         u2_free_tock(t);
         return; 
@@ -133,7 +133,7 @@ void u2_remove_tock(struct u2_tock t) {
 }
 
 uv_stream_t *u2_find_tock(struct u2_tock t) {  /* NULL = not found */
-    printf("find tock: %d\r\n", u2_noun_buf_put(t.id));
+    //printf("find tock: %d\r\n", u2_noun_buf_put(t.id));
     struct u2_tock_list *cur = tocks;
     while(cur != NULL) {  /* ignore last */
         struct u2_tock *zar = cur->s->data;
