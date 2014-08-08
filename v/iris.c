@@ -351,7 +351,7 @@ u2_iris_ef_stop(u2_noun gif)
     uv_stream_t *stream = u2_find_tock(tock);
     if(stream == NULL) return;
 
-    /* will send %done */
+    /* will send %gone */
     uv_close((uv_handle_t *)stream, _u2_dock_close_cb);
 }
 
