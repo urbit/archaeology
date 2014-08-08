@@ -664,6 +664,7 @@ u2_lo_lead(u2_reck* rec_u)
   //
   {
     u2_http_ef_bake();
+    u2_iris_ef_bake();
   }
 
   _lo_talk();

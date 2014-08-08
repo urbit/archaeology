@@ -8,9 +8,11 @@
                                                         ::  by iris id
               tux=(map ,@ duct)                         ::  unestablished reqs
                                                         ::  by tcpu id
+              lax=(set tock)                            ::  established tocks
+              lux=(set dock)                            ::  established docks
               tcp=duct                                  ::  tcpu duct
               let=@                                     ::  for uniqueness
-              gex=@                                     ::
+              gex=(unit ,@)                             ::  max socket in use
           ==                                            ::
 ++  gift                                                ::  out result <-$
           $%                                            ::
@@ -61,6 +63,9 @@
   ^-  [p=(list move) q=_..^$]
   =>  .(q.hic ?.(?=(%soft -.q.hic) q.hic ((hard kiss) p.q.hic)))
   (knob hen q.hic)
+++  next
+  ?~  gex.sno  0
+  +(u.gex.sno)
 ::
 ++  knob
   |=  [hen=duct kyz=kiss]
@@ -75,7 +80,7 @@
           tux.sno  (~(put by tux.sno) let.sno hen)
         ==
     :_  ~  :-  tcp.sno
-    [%give %bind +(gex.sno) p.kyz let.sno]
+    [%give %bind next p.kyz let.sno]
     ::
     ::
     ::
@@ -89,7 +94,8 @@
     :_  %=  ..^$
           tax.sno  (~(put by tax.sno) u.r.kyz (~(got by tux.sno) q.kyz))
           tux.sno  (~(del by tux.sno) q.kyz)
-          gex.sno  u.r.kyz
+          lux.sno  (~(put in lux.sno) [p.kyz u.r.kyz])
+          gex.sno  [~ u.r.kyz]
         ==
     :_  ~  :-  (~(got by tux.sno) q.kyz)                ::  trans duct
     [%give %bond [~ p.kyz u.r.kyz] p.kyz]
@@ -100,7 +106,7 @@
     :_  ..^$
     :_  ~
     :-  tcp.sno                                         ::  to tcpu
-    [%give %drop +(gex.sno) p.kyz]
+    [%give %drop next p.kyz]
     ::
     ::
     ::
@@ -125,7 +131,8 @@
     :_  %=  ..^$
           tax.sno  (~(put by tax.sno) u.r.kyz (~(got by tux.sno) q.kyz))
           tux.sno  (~(del by tux.sno) q.kyz)
-          gex.sno  u.r.kyz
+          lax.sno  (~(put in lax.sno) [p.kyz u.r.kyz])
+          gex.sno  [~ u.r.kyz]
         ==
     :_  ~  :-  (~(got by tux.sno) q.kyz)                ::  trans duct
     [%give %tock [~ [p.kyz u.r.kyz]] p.kyz]
@@ -138,7 +145,7 @@
           tux.sno  (~(put by tux.sno) let.sno hen)
         ==
     :_  ~  :-  tcp.sno
-    [%give %conn gex.sno p.kyz let.sno]
+    [%give %conn next p.kyz let.sno]
     ::
     ::
     ::
@@ -163,7 +170,7 @@
       %send
     :_  ..^$
     :_  ~  :-  tcp.sno
-    [%give %send +(gex.sno) p.kyz q.kyz]
+    [%give %send next p.kyz q.kyz]
     ::
     ::
     ::
@@ -175,15 +182,30 @@
     ::
     ::
       %star
-    :-  ~
-    ..^$(tcp.sno hen)
+    :_  %=  ..^$
+          tax.sno  ~
+          tux.sno  ~
+          lax.sno  ~
+          lux.sno  ~
+          tcp.sno  hen
+        ==
+    %+  welp
+      %+  turn  (~(tap in lax.sno) ~)
+      |=  toc=tock
+      :-  (~(got by tax.sno) soc.toc)
+      [%give %done toc]
+    %+  turn  (~(tap by lux.sno) ~)
+    |=  doc=dock
+    :-  (~(got by tax.sno) soc.doc)
+    [%give %gone doc]
     ::
     ::
     ::
       %tick
     :_  %=  ..^$
           tax.sno  (~(put by tax.sno) soc.q.kyz (~(got by tax.sno) soc.p.kyz))
-          gex.sno  soc.q.kyz
+          gex.sno  [~ soc.q.kyz]
+          lax.sno  (~(put in lax.sno) q.kyz)
         ==
     :_  ~  :-  `duct`(~(got by tax.sno) soc.p.kyz)
     [%give `gift`[%tick p.kyz q.kyz]]
@@ -193,7 +215,7 @@
       %stop
     :_  ..^$
     :_  ~  :-  tcp.sno
-    [%give %stop +(gex.sno) p.kyz]
+    [%give %stop next p.kyz]
   ==
 ++  load
   |=  [%0 bar=snow]

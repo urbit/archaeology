@@ -163,8 +163,6 @@ u2_iris_ef_bake(void)
 { 
   u2_noun pax = u2nq(u2_blip, c3__tcpu, u2k(u2A->sen), u2_nul);
   u2_reck_plan(u2A, pax, u2nc(c3__star, u2_nul));
-
-  u2_iris_ef_init(0); /* sane start */
 }
 
 uv_buf_t _iris_alloc(uv_handle_t* handle, size_t siz) {

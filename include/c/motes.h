@@ -541,6 +541,7 @@
 #   define c3__kern   c3_s4('k','e','r','n')
 #   define c3__kgo    c3_s3('k','g','o')
 #   define c3__kick   c3_s4('k','i','c','k')
+#   define c3__kill   c3_s4('k','i','l','l')
 #   define c3__kit    c3_s3('k','i','t')
 #   define c3__knit   c3_s4('k','n','i','t')
 #   define c3__kno    c3_s3('k','n','o')

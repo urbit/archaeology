@@ -50,7 +50,9 @@
     %bond  [~ +>(p.vat p.sih)]
     %tock  [~ +>]
     %done  [~ +>]
-    %gone  [~ +>]
+    %gone  :_  +>  :_  ~
+           =+  ost=(slav %ud i.t.way)
+           [ost %pass [%mess (scot %ud ost) ~] %i %bind 5.555]
     %hear  :_  +>  :_  ~
            ?:  =("drop" (scag 4 (trip q.sih))) ::  newlin
              [(slav %ud i.t.way) %pass ~ %i %drop p.sih]
