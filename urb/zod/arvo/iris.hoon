@@ -43,11 +43,11 @@
               [%stop p=dock]                            ::  stop bind  (<- user)
                                                         ::
               [%bond p=@ q=@ r=(unit ,@)]               ::  bound (<- tcpu)
-              [%cone p=lant q=@ r=(unit ,@)]            ::  connected (<- tcpu)
               [%done p=tock]                            ::  terminate (<- tcpu)
               [%gone p=dock]                            ::  terminate (<- tcpu)
               [%sent p=tock q=@]                        ::  sent (<- tcpu)
               [%tick p=dock q=tock]                     ::  new endpoint (<- tcpu)
+              [%tock p=lant q=@ r=(unit ,@)]            ::  connected (<- tcpu)
               [%star *]                                 ::  start duct (<- tcpu)
           ==                                            ::
 ++  move  ,[p=duct q=(mold note gift)]                  ::
@@ -124,7 +124,7 @@
     ::
     ::
     ::
-      %cone                                             ::  got connection
+      %tock                                             ::  got connection
     ?~  r.kyz
       :_  %=  ..^$
             tux.sno  (~(del by tux.sno) q.kyz)

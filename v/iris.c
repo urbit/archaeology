@@ -220,7 +220,7 @@ void _u2_iris_connect_cb(uv_connect_t *connect, int status) {
     if(status) {
         //printf("iris: failed to connect\r\n");
         u2_reck_plan(u2A, pax, u2nq(
-            c3__cone,
+            c3__tock,
             u2_lant_put(tcpu_connect->lan), 
             u2_noun_buf_put(tcpu_connect->id),
             u2_nul));
@@ -241,7 +241,7 @@ void _u2_iris_connect_cb(uv_connect_t *connect, int status) {
     //printf("iris: now bound\r\n");
 
     u2_reck_plan(u2A, pax, u2nq(
-        c3__cone,
+        c3__tock,
         u2_lant_put(tcpu_connect->lan),
         u2_noun_buf_put(tcpu_connect->id),
         u2nc(u2_nul, u2_noun_buf_put(tock->id))));

@@ -1038,6 +1038,7 @@
 #   define c3__tmsp   c3_s4('t','m','s','p')
 #   define c3__tmtr   c3_s4('t','m','t','r')
 #   define c3__to     c3_s2('t','o')
+#   define c3__tock   c3_s4('t','o','c','k')
 #   define c3__toe    c3_s3('t','o','e')
 #   define c3__tome   c3_s4('t','o','m','e')
 #   define c3__tong   c3_s4('t','o','n','g')

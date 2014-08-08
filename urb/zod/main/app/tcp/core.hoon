@@ -12,7 +12,7 @@
           ==  ==  ==                                    ::
         ++  sign                                        ::  incoming response
           $?  $:  %i                                    ::
-              $%  [%foam p=(unit tock) q=lant]          ::
+              $%  [%tock p=(unit tock) q=lant]          ::
                   [%hear p=tock q=@]                    ::
                   [%done p=tock]                        ::
                   [%sent p=tock q=@]                    ::
@@ -42,7 +42,7 @@
   ?>  ?=(%i -.sih) 
   ?>  ?=([@ @ ~] way)
   ?-  +<.sih 
-    %foam  [~ +>]
+    %tock  [~ +>]
     %done  [~ +>]
     %hear  :_  +>  :_  ~
            ?:  =("drop" (scag 4 (trip q.sih))) ::  newlin
