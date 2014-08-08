@@ -183,6 +183,7 @@
       %tick
     :_  %=  ..^$
           tax.sno  (~(put by tax.sno) soc.q.kyz (~(got by tax.sno) soc.p.kyz))
+          gex.sno  soc.q.kyz
         ==
     :_  ~  :-  `duct`(~(got by tax.sno) soc.p.kyz)
     [%give `gift`[%tick p.kyz q.kyz]]
