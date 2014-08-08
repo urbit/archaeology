@@ -80,6 +80,7 @@ struct u2_tock_list {
 
 static struct u2_tock_list *tocks = NULL;
 static struct u2_noun_buf last_socket;
+static int start = 0;
 
 u2_noun u2_lant_put(struct u2_lant lan) {
     return u2nc(u2_noun_buf_put(lan.port), u2_noun_buf_put(lan.ip));
@@ -100,8 +101,11 @@ char u2_tock_compare(struct u2_tock t1, struct u2_tock t2) {
 
 /* warn: tock becomes useless after */
 void u2_remove_tock(struct u2_tock t) {
-    fprintf("remove tock: %d\r\n", u2_noun_buf_put(t.id));
-    if(tocks->n == NULL) return;  /* empty */
+    printf("remove tock: %d\r\n", u2_noun_buf_put(t.id));
+    if(tocks == NULL) {
+        u2_free_tock(t);
+        return; 
+    } /* empty */
     struct u2_tock_list *cur = tocks;
     /* edge case */
     struct u2_tock *zar = cur->s->data;
@@ -113,7 +117,6 @@ void u2_remove_tock(struct u2_tock t) {
     }
     /* normal case */
     while(cur->n != NULL) {
-        if(cur->n->n == NULL) break; /* ignore last */
         zar = cur->n->s->data;
         if(u2_tock_compare(t, *zar)) {
             u2_free_tock(*zar);
@@ -130,8 +133,9 @@ void u2_remove_tock(struct u2_tock t) {
 }
 
 uv_stream_t *u2_find_tock(struct u2_tock t) {  /* NULL = not found */
+    printf("find tock: %d\r\n", u2_noun_buf_put(t.id));
     struct u2_tock_list *cur = tocks;
-    while(cur->n != NULL) {  /* ignore last */
+    while(cur != NULL) {  /* ignore last */
         struct u2_tock *zar = cur->s->data;
         if(u2_tock_compare(t, *zar)) {
             return cur->s;
@@ -153,8 +157,8 @@ struct u2_noun_buf u2_next_socket(void) {
 void
 u2_iris_ef_init(u2_noun def)
 {
-  if(tocks != NULL) return;
-  tocks = malloc(sizeof(*tocks));
+  if(start != 0) return;
+  start = 1;
   last_socket = u2_noun_buf_get(def);
 }
 
@@ -176,6 +180,7 @@ void _u2_tock_close_cb(uv_handle_t *stream) {
     u2_noun zar = u2nc(u2_lant_put(tock->lan), u2_noun_buf_put(tock->id));
     u2_remove_tock(*tock); /* tock now useless */
     free(tock); /* free data from stream */
+    stream->data = NULL;
     u2_noun pax = u2nq(u2_blip, c3__tcpu, u2k(u2A->sen), u2_nul);
     u2_reck_plan(u2A, pax, u2nc(c3__done, zar));
 }
@@ -185,6 +190,7 @@ void _u2_dock_close_cb(uv_handle_t *stream) {
     u2_noun zar = u2nc(u2_noun_buf_put(tock->lan.port), u2_noun_buf_put(tock->id));
     u2_remove_tock(*tock); /* tock now useless */
     free(tock); /* free data from stream */
+    stream->data = NULL;
     u2_noun pax = u2nq(u2_blip, c3__tcpu, u2k(u2A->sen), u2_nul);
     u2_reck_plan(u2A, pax, u2nc(c3__gone, zar));
 }
@@ -436,7 +442,7 @@ u2_iris_ef_bind(u2_noun gif)
     tock->lan.port = u2_noun_buf_get(u2h(gif));
     server->data = tock;
 
-    struct u2_tock_list *lis = tocks;
+    struct u2_tock_list *lis = malloc(sizeof(*lis));
     lis->s = (uv_stream_t*)server;
     lis->n = tocks;
     tocks = lis;
