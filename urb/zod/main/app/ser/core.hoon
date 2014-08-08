@@ -1,7 +1,7 @@
 ::  iris test app
 !:
 =>  |%  
-        ++  axel  ,[%0 @]                               ::  pointless state...
+        ++  axel  ,[%0 p=(unit dock)]                   ::  pointless state...
         ++  move  ,[p=bone q=(mold note gift)]          ::  arvo
         ++  gift  ,[%nice ~]                            ::
         ++  note                                        ::  outgoing request
@@ -10,12 +10,14 @@
                   [%bind p=@]                           ::  bind to iris
                   [%drop p=tock]                        ::  drop iris connect
                   [%send p=tock q=@]                    ::  send over iris
+                  [%stop p=dock]                        ::
           ==  ==  ==                                    ::
         ++  sign                                        ::  incoming response
           $?  $:  %i                                    ::
-              $%  [%foam p=(unit tock) q=lant]          ::
+              $%  [%tock p=(unit tock) q=lant]          ::
                   [%hear p=tock q=@]                    ::
                   [%done p=tock]                        ::
+                  [%gone p=dock]                        ::
                   [%sent p=tock q=@]                    ::
                   [%bond p=(unit dock) q=@]             ::  bound to iris
                   [%tick p=dock q=tock]                 ::  new tock
@@ -45,12 +47,15 @@
   ?>  ?=(%i -.sih) 
   ?>  ?=([@ @ ~] way)
   ?-  +<.sih 
-    %bond  [~ +>]
-    %foam  [~ +>]
+    %bond  [~ +>(p.vat p.sih)]
+    %tock  [~ +>]
     %done  [~ +>]
+    %gone  [~ +>]
     %hear  :_  +>  :_  ~
            ?:  =("drop" (scag 4 (trip q.sih))) ::  newlin
              [(slav %ud i.t.way) %pass ~ %i %drop p.sih]
+           ?:  =("stop" (scag 4 (trip q.sih)))
+             [(slav %ud i.t.way) %pass ~ %i %stop (need p.vat)]
            [(slav %ud i.t.way) %pass ~ %i %send p.sih q.sih]
     %sent  [~ +>]
     %tick  [~ +>]

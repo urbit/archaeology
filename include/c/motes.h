@@ -435,6 +435,7 @@
 #   define c3__goat   c3_s4('g','o','a','t')
 #   define c3__gold   c3_s4('g','o','l','d')
 #   define c3__good   c3_s4('g','o','o','d')
+#   define c3__gone   c3_s4('g','o','n','e')
 #   define c3__gorm   c3_s4('g','o','r','m')
 #   define c3__goto   c3_s4('g','o','t','o')
 #   define c3__grad   c3_s4('g','r','a','d')

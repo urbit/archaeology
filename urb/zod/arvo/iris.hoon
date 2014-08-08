@@ -1,5 +1,4 @@
 ::  iris, tcp
-!:
 |=  pit=vase
 =>  =~
 ::  structures
@@ -9,39 +8,43 @@
                                                         ::  by iris id
               tux=(map ,@ duct)                         ::  unestablished reqs
                                                         ::  by tcpu id
-              lax=(map ,@ (set tock))                   ::  bound sockets XX
               tcp=duct                                  ::  tcpu duct
               let=@                                     ::  for uniqueness
           ==                                            ::
 ++  gift                                                ::  out result <-$
           $%                                            ::
-              [%bind p=@ q=@]                           ::  bind (-> tcpu)
               [%bond p=(unit dock) q=@]                 ::  bound (-> user)
-              [%conn p=lant q=@]                        ::  connect (-> tcpu)
-              [%drop p=tock]                            ::  terminate (-> tcpu)
               [%done p=tock]                            ::  close (-> user)
+              [%gone p=dock]                            ::  close (-> user)
               [%hear p=tock q=@]                        ::  receive (-> user)
-              [%foam p=(unit tock) q=lant]              ::  connected (-> user)
-              [%send p=tock q=@]                        ::  send packet (-> tcpu)
               [%sent p=tock q=@]                        ::  packet sent (-> user)
               [%tick p=dock q=tock]                     ::  new endpoint (-> user)
+              [%tock p=(unit tock) q=lant]              ::  connected (-> user)
+                                                        ::
+              [%bind p=@ q=@]                           ::  bind (-> tcpu)
+              [%conn p=lant q=@]                        ::  connect (-> tcpu)
+              [%drop p=tock]                            ::  terminate (-> tcpu)
+              [%send p=tock q=@]                        ::  send packet (-> tcpu)
+              [%stop p=dock]                            ::  close (-> tcpu)
           ==                                            ::
 ++  kiss                                                ::  in request ->$
           $%                                            ::
               [%bind p=@]                               ::  bind (<- user)
-              [%bond p=@ q=@ r=(unit ,@)]               ::  bound (<- tcpu)
-                                                        ::  p=port, q=id, r=soc
               [%drop p=tock]                            ::  terminate (<- user)
-              [%done p=tock]                            ::  terminate (<- tcpu)
-              [%cone p=lant q=@ r=(unit ,@)]            ::  connected (<- tcpu)
+                                                        ::  p=port, q=id, r=soc
                                                         ::  q=id, r=socket
               [%hear p=tock q=@]                        ::  hear (<- tcpu)
               [%conn p=lant]                            ::  connect (<- user)
-              [%star *]                                 ::  start duct (<- tcpu)
               [%send p=tock q=@]                        ::  send (<- user)
-              [%sent p=tock q=@]                        ::  sent (<- tcpu)
               [%stop p=dock]                            ::  stop bind  (<- user)
+                                                        ::
+              [%bond p=@ q=@ r=(unit ,@)]               ::  bound (<- tcpu)
+              [%cone p=lant q=@ r=(unit ,@)]            ::  connected (<- tcpu)
+              [%done p=tock]                            ::  terminate (<- tcpu)
+              [%gone p=dock]                            ::  terminate (<- tcpu)
+              [%sent p=tock q=@]                        ::  sent (<- tcpu)
               [%tick p=dock q=tock]                     ::  new endpoint (<- tcpu)
+              [%star *]                                 ::  start duct (<- tcpu)
           ==                                            ::
 ++  move  ,[p=duct q=(mold note gift)]                  ::
 --
@@ -101,7 +104,9 @@
     ::
       %done
     =+  tok=p.kyz
-    :_  ..^$(tax.sno (~(del by tax.sno) soc.tok))
+    :_  %=  ..^$
+          tax.sno  (~(del by tax.sno) soc.tok)
+        ==
     :_  ~
     :-  (~(got by tax.sno) soc.tok)                     ::  trans duct
     [%give %done tok]
@@ -114,13 +119,13 @@
             tux.sno  (~(del by tux.sno) q.kyz)
           ==
       :_  ~  :-  (~(got by tux.sno) q.kyz)              ::  trans duct
-      [%give %foam ~ p.kyz]
+      [%give %tock ~ p.kyz]
     :_  %=  ..^$
           tax.sno  (~(put by tax.sno) u.r.kyz (~(got by tux.sno) q.kyz))
           tux.sno  (~(del by tux.sno) q.kyz)
         ==
     :_  ~  :-  (~(got by tux.sno) q.kyz)                ::  trans duct
-    [%give %foam [~ [p.kyz u.r.kyz]] p.kyz]
+    [%give %tock [~ [p.kyz u.r.kyz]] p.kyz]
     ::
     ::
     ::
@@ -131,6 +136,17 @@
         ==
     :_  ~  :-  tcp.sno
     [%give %conn p.kyz let.sno]
+    ::
+    ::
+    ::
+      %gone                                             ::  dock closed
+    =+  dok=p.kyz
+    :_  %=  ..^$
+          tax.sno  (~(del by tax.sno) soc.dok)
+        ==
+    :_  ~
+    :-  (~(got by tax.sno) soc.dok)                     ::  trans duct
+    [%give %gone dok]
     ::
     ::
     ::
@@ -163,10 +179,6 @@
     ::
       %tick
     :_  %=  ..^$
-          lax.sno  =+  fax=(~(get by lax.sno) soc.p.kyz)
-                   %+  ~(put in lax.sno)  soc.p.kyz
-                   ?~  fax  (~(put in _(set tock)) q.kyz)
-                   (~(put in u.fax) q.kyz)
           tax.sno  (~(put by tax.sno) soc.q.kyz (~(got by tax.sno) soc.p.kyz))
         ==
     :_  ~  :-  `duct`(~(got by tax.sno) soc.p.kyz)
@@ -175,7 +187,9 @@
     ::
     ::
       %stop
-    !!
+    :_  ..^$
+    :_  ~  :-  tcp.sno
+    [%give %stop p.kyz]
   ==
 ++  load
   |=  [%0 bar=snow]

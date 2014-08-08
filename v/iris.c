@@ -171,6 +171,15 @@ void _u2_tock_close_cb(uv_handle_t *stream) {
     u2_reck_plan(u2A, pax, u2nc(c3__done, zar));
 }
 
+void _u2_dock_close_cb(uv_handle_t *stream) {
+    struct u2_tock *tock = (struct u2_tock *)stream->data;
+    u2_noun zar = u2nc(u2_noun_buf_put(tock->lan.port), u2_noun_buf_put(tock->id));
+    u2_remove_tock(*tock); /* tock now useless */
+    free(tock); /* free data from stream */
+    u2_noun pax = u2nq(u2_blip, c3__tcpu, u2k(u2A->sen), u2_nul);
+    u2_reck_plan(u2A, pax, u2nc(c3__gone, zar));
+}
+
 void _u2_iris_recv_cb(uv_stream_t *stream, ssize_t nread, uv_buf_t buf) {
     struct u2_tock *tock = (struct u2_tock *)stream->data;
     u2_noun pax = u2nq(u2_blip, c3__tcpu, u2k(u2A->sen), u2_nul);
@@ -314,6 +323,21 @@ u2_iris_ef_drop(u2_noun gif)
 
     /* will send %done */
     uv_close((uv_handle_t *)stream, _u2_tock_close_cb);
+}
+
+void
+u2_iris_ef_stop(u2_noun gif)
+{
+    struct u2_tock tock;
+    tock.lan.ip = u2_noun_buf_get(0);
+    tock.lan.port = u2_noun_buf_get(u2h(gif));
+    tock.id = u2_noun_buf_get(u2t(gif));
+
+    uv_stream_t *stream = u2_find_tock(tock);
+    if(stream == NULL) return;
+
+    /* will send %done */
+    uv_close((uv_handle_t *)stream, _u2_dock_close_cb);
 }
 
 void
