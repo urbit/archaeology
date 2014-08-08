@@ -79,6 +79,7 @@ struct u2_tock_list {
 };
 
 static struct u2_tock_list *tocks;
+static struct u2_noun_buf last_socket;
 
 u2_noun u2_lant_put(struct u2_lant lan) {
     return u2nc(u2_noun_buf_put(lan.port), u2_noun_buf_put(lan.ip));
@@ -122,6 +123,7 @@ void u2_remove_tock(struct u2_tock t) {
 
         cur = cur->n;
     }
+    printf("iris: remove tock: not found\r\n");
     /* only if not found, otherwise this is double free */
     u2_free_tock(t);
 }
@@ -141,9 +143,9 @@ uv_stream_t *u2_find_tock(struct u2_tock t) {  /* NULL = not found */
 }
 
 struct u2_noun_buf u2_next_socket(void) {
-    if(tocks->n == NULL) return u2_noun_buf_get(0);
-    struct u2_tock *tock = tocks->s->data;
-    return u2_noun_buf_get(u2_cka_add(1, u2_noun_buf_put(tock->id)));
+    struct u2_noun_buf nex = last_socket;
+    last_socket = u2_noun_buf_get(u2_cka_add(1, u2_noun_buf_put(last_socket)));
+    return nex;
 }
 
 /***/
@@ -153,6 +155,7 @@ u2_iris_ef_bake(void)
   u2_noun pax = u2nq(u2_blip, c3__tcpu, u2k(u2A->sen), u2_nul);
 
   tocks = malloc(sizeof(*tocks));
+  last_socket = u2_noun_buf_get(0);
 
   u2_reck_plan(u2A, pax, u2nc(c3__star, u2_nul));
 }
