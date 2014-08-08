@@ -114,6 +114,7 @@
     =+  tok=p.kyz
     :_  %=  ..^$
           tax.sno  (~(del by tax.sno) soc.tok)
+          lax.sno  (~(del in lax.sno) tok)
         ==
     :_  ~
     :-  (~(got by tax.sno) soc.tok)                     ::  trans duct
@@ -153,6 +154,7 @@
     =+  dok=p.kyz
     :_  %=  ..^$
           tax.sno  (~(del by tax.sno) soc.dok)
+          lux.sno  (~(del in lux.sno) dok)
         ==
     :_  ~
     :-  (~(got by tax.sno) soc.dok)                     ::  trans duct

@@ -344,6 +344,9 @@ u2_iris_ef_drop(u2_noun gif)
 void
 u2_iris_ef_stop(u2_noun gif)
 {
+    u2_iris_ef_init(u2h(gif));
+    gif = u2t(gif);
+
     struct u2_tock tock;
     tock.lan.ip = u2_noun_buf_get(0);
     tock.lan.port = u2_noun_buf_get(u2h(gif));
