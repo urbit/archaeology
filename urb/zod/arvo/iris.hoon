@@ -10,6 +10,7 @@
                                                         ::  by tcpu id
               lax=(set tock)                            ::  established tocks
               lux=(set dock)                            ::  established docks
+              fox=(map tock dock)                       ::  dock by tock
               tcp=duct                                  ::  tcpu duct
               let=@                                     ::  for uniqueness
               gex=(unit ,@)                             ::  max socket in use
@@ -115,6 +116,7 @@
     :_  %=  ..^$
           tax.sno  (~(del by tax.sno) soc.tok)
           lax.sno  (~(del in lax.sno) tok)
+          fox.sno  (~(del by fox.sno) tok)
         ==
     :_  ~
     :-  (~(got by tax.sno) soc.tok)                     ::  trans duct
@@ -155,6 +157,16 @@
     :_  %=  ..^$
           tax.sno  (~(del by tax.sno) soc.dok)
           lux.sno  (~(del in lux.sno) dok)
+          fox.sno  %-  mo  
+                   ^-  (list ,[tock dock])
+                   %-  zing
+                   ^-  (list (list ,[tock dock]))
+                   %+  turn  (~(tap by fox.sno) ~)
+                   |=  [toc=tock doc=dock]
+                   ^-  (list ,[tock dock])
+                   ?:  =(soc.doc soc.p.kyz)
+                     ~
+                   :_  ~  [toc doc]
         ==
     :_  ~
     :-  (~(got by tax.sno) soc.dok)                     ::  trans duct
@@ -208,6 +220,7 @@
           tax.sno  (~(put by tax.sno) soc.q.kyz (~(got by tax.sno) soc.p.kyz))
           gex.sno  [~ soc.q.kyz]
           lax.sno  (~(put in lax.sno) q.kyz)
+          fox.sno  (~(put by fox.sno) q.kyz p.kyz)
         ==
     :_  ~  :-  `duct`(~(got by tax.sno) soc.p.kyz)
     [%give `gift`[%tick p.kyz q.kyz]]
@@ -216,6 +229,18 @@
     ::
       %stop
     :_  ..^$
+    %+  welp
+      ^-  (list move)
+      %-  zing
+      ^-  (list (list move))
+      %+  turn  (~(tap by fox.sno) ~)                   ::  XX could be faster
+      |=  [toc=tock doc=dock]
+      ^-  (list move)
+      ?:  =(soc.doc soc.p.kyz)
+        :_  ~
+        :-  tcp.sno
+        [%give %drop next toc]
+      ~
     :_  ~  :-  tcp.sno
     [%give %stop next p.kyz]
   ==

@@ -100,6 +100,7 @@ char u2_tock_compare(struct u2_tock t1, struct u2_tock t2) {
 
 /* warn: tock becomes useless after */
 void u2_remove_tock(struct u2_tock t) {
+    fprintf("remove tock: %d\r\n", u2_noun_buf_put(t.id));
     if(tocks->n == NULL) return;  /* empty */
     struct u2_tock_list *cur = tocks;
     /* edge case */
