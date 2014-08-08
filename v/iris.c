@@ -150,11 +150,11 @@ struct u2_noun_buf u2_next_socket(void) {
 
 /* guarantee sanity */
 void
-u2_iris_ef_init(void)
+u2_iris_ef_init(u2_noun def)
 {
   if(tocks != NULL) return;
   tocks = malloc(sizeof(*tocks));
-  last_socket = u2_noun_buf_get(0);
+  last_socket = u2_noun_buf_get(def);
 }
 
 /***/
@@ -164,7 +164,7 @@ u2_iris_ef_bake(void)
   u2_noun pax = u2nq(u2_blip, c3__tcpu, u2k(u2A->sen), u2_nul);
   u2_reck_plan(u2A, pax, u2nc(c3__star, u2_nul));
 
-  u2_iris_ef_init(); /* sane start */
+  u2_iris_ef_init(0); /* sane start */
 }
 
 uv_buf_t _iris_alloc(uv_handle_t* handle, size_t siz) {
@@ -245,7 +245,8 @@ void _u2_iris_connect_cb(uv_connect_t *connect, int status) {
 void
 u2_iris_ef_connect(u2_noun gif)
 {
-    u2_iris_ef_init();
+    u2_iris_ef_init(u2h(gif));
+    gif = u2t(gif);
 
     //printf("iris: attempting connect\r\n");
     u2_noun lan = u2h(gif);
@@ -292,7 +293,8 @@ _u2_iris_ef_write_cb(uv_write_t *req, int status) {
 void
 u2_iris_ef_send(u2_noun gif)
 {
-    u2_iris_ef_init();
+    u2_iris_ef_init(u2h(gif));
+    gif = u2t(gif);
     //printf("iris: ef send\r\n");
     struct u2_tock tock;
 
@@ -327,7 +329,8 @@ u2_iris_ef_send(u2_noun gif)
 void
 u2_iris_ef_drop(u2_noun gif)
 {
-    u2_iris_ef_init();
+    u2_iris_ef_init(u2h(gif));
+    gif = u2t(gif);
 
     struct u2_tock tock;
     tock.lan = u2_lant_get(u2h(gif));
@@ -366,7 +369,6 @@ _u2_iris_accept_cb(uv_stream_t *server, int status) {
     uv_tcp_init(u2L, client);
     if(uv_accept(server, (uv_stream_t *)client) == 0) {
         /* generate a tock for client */
-        printf("iris: accept client\r\n");
 
         struct u2_tock *bock = server->data;
         struct u2_tock *tock = malloc(sizeof(*tock));
@@ -392,7 +394,6 @@ _u2_iris_accept_cb(uv_stream_t *server, int status) {
             dock,
             u2nc(u2_lant_put(tock->lan), u2_noun_buf_put(tock->id))));
         
-        printf("iris: accepted client\r\n");
     }
     else {
         /* supposedly guaranteed to never happen or something */
@@ -403,17 +404,16 @@ _u2_iris_accept_cb(uv_stream_t *server, int status) {
 void
 u2_iris_ef_bind(u2_noun gif)
 {
-    u2_iris_ef_init();
+    u2_iris_ef_init(u2h(gif));
+    gif = u2t(gif);
 
     c3_s por = u2_cr_word(0, u2h(gif));
 
     uv_tcp_t *server = malloc(sizeof(*server));
     uv_tcp_init(u2L, server);
 
-    printf("iris: binding to %d\r\n", por);
     struct sockaddr_in bind_addr = uv_ip4_addr("127.0.0.1", por);
     uv_tcp_bind(server, bind_addr);
-    printf("iris: listening on %d\r\n", por);
     int res = uv_listen((uv_stream_t*)server, 128, _u2_iris_accept_cb);
     if(res) {
         printf("iris: bind fail\r\n");

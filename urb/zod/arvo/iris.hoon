@@ -10,6 +10,7 @@
                                                         ::  by tcpu id
               tcp=duct                                  ::  tcpu duct
               let=@                                     ::  for uniqueness
+              gex=@                                     ::
           ==                                            ::
 ++  gift                                                ::  out result <-$
           $%                                            ::
@@ -21,11 +22,11 @@
               [%tick p=dock q=tock]                     ::  new endpoint (-> user)
               [%tock p=(unit tock) q=lant]              ::  connected (-> user)
                                                         ::
-              [%bind p=@ q=@]                           ::  bind (-> tcpu)
-              [%conn p=lant q=@]                        ::  connect (-> tcpu)
-              [%drop p=tock]                            ::  terminate (-> tcpu)
-              [%send p=tock q=@]                        ::  send packet (-> tcpu)
-              [%stop p=dock]                            ::  close (-> tcpu)
+              [%bind i=@ p=@ q=@]                       ::  bind (-> tcpu)
+              [%conn i=@ p=lant q=@]                    ::  connect (-> tcpu)
+              [%drop i=@ p=tock]                        ::  terminate (-> tcpu)
+              [%send i=@ p=tock q=@]                    ::  send packet (-> tcpu)
+              [%stop i=@ p=dock]                        ::  close (-> tcpu)
           ==                                            ::
 ++  kiss                                                ::  in request ->$
           $%                                            ::
@@ -74,7 +75,7 @@
           tux.sno  (~(put by tux.sno) let.sno hen)
         ==
     :_  ~  :-  tcp.sno
-    [%give %bind p.kyz let.sno]
+    [%give %bind +(gex.sno) p.kyz let.sno]
     ::
     ::
     ::
@@ -88,6 +89,7 @@
     :_  %=  ..^$
           tax.sno  (~(put by tax.sno) u.r.kyz (~(got by tux.sno) q.kyz))
           tux.sno  (~(del by tux.sno) q.kyz)
+          gex.sno  u.r.kyz
         ==
     :_  ~  :-  (~(got by tux.sno) q.kyz)                ::  trans duct
     [%give %bond [~ p.kyz u.r.kyz] p.kyz]
@@ -98,7 +100,7 @@
     :_  ..^$
     :_  ~
     :-  tcp.sno                                         ::  to tcpu
-    [%give %drop p.kyz]
+    [%give %drop +(gex.sno) p.kyz]
     ::
     ::
     ::
@@ -123,6 +125,7 @@
     :_  %=  ..^$
           tax.sno  (~(put by tax.sno) u.r.kyz (~(got by tux.sno) q.kyz))
           tux.sno  (~(del by tux.sno) q.kyz)
+          gex.sno  u.r.kyz
         ==
     :_  ~  :-  (~(got by tux.sno) q.kyz)                ::  trans duct
     [%give %tock [~ [p.kyz u.r.kyz]] p.kyz]
@@ -135,7 +138,7 @@
           tux.sno  (~(put by tux.sno) let.sno hen)
         ==
     :_  ~  :-  tcp.sno
-    [%give %conn p.kyz let.sno]
+    [%give %conn gex.sno p.kyz let.sno]
     ::
     ::
     ::
@@ -160,7 +163,7 @@
       %send
     :_  ..^$
     :_  ~  :-  tcp.sno
-    [%give %send p.kyz q.kyz]
+    [%give %send +(gex.sno) p.kyz q.kyz]
     ::
     ::
     ::
@@ -189,7 +192,7 @@
       %stop
     :_  ..^$
     :_  ~  :-  tcp.sno
-    [%give %stop p.kyz]
+    [%give %stop +(gex.sno) p.kyz]
   ==
 ++  load
   |=  [%0 bar=snow]
