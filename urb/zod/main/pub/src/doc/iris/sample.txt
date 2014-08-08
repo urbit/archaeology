@@ -1,0 +1,133 @@
+> ::  iris test app
+> !:
+> =>  |%  
+>         ++  axel  ,[%0 p=(unit dock)]                   ::  pointless state...
+>         ++  move  ,[p=bone q=(mold note gift)]          ::  arvo
+>         ++  gift  ,[%nice ~]                            ::
+>         ++  note                                        ::  outgoing request
+>           $?  $:  %i                                    ::
+>               $%  [%conn p=lant]                        ::  connect to iris
+>                   [%bind p=@]                           ::  bind to iris
+>                   [%drop p=tock]                        ::  drop iris connect
+>                   [%send p=tock q=@]                    ::  send over iris
+>                   [%stop p=dock]                        ::
+>           ==  ==  ==                                    ::
+>         ++  sign                                        ::  incoming response
+>           $?  $:  %i                                    ::
+>               $%  [%tock p=(unit tock) q=lant]          ::
+>                   [%hear p=tock q=@]                    ::
+>                   [%done p=tock]                        ::
+>                   [%gone p=dock]                        ::
+>                   [%sent p=tock q=@]                    ::
+>                   [%bond p=(unit dock) q=@]             ::  bound to iris
+>                   [%tick p=dock q=tock]                 ::  new tock
+>           ==  ==  ==                                    ::
+>         ++  tcpv                                        ::  kiss
+>           $%  [%star ~]                                 ::
+>               [%send q=@]                               ::
+>           ==
+>     --                                                    
+Lets look at example iris usage through an app...
+First, misc type definitions (self explanatory)
+>>>>>>>
+> |_  [hid=hide vat=axel]
+> ++  poke
+>   |=  [ost=bone *]
+>   ^-  [(list move) _+>]
+
+We need a way to start the app. In this case, we just start when poked. You
+can poke in any of the normal methods. I poke it with the batz app :ser.
+>>>>>>>
+>   :_  +>
+>   :_  ~  
+>   `move`[ost %pass [%mess (scot %ud ost) ~] %i %bind 5.555]
+
+What is this doing? Note the actual gift is [%i %bind 5.555]. Naturally, this
+binds to port 5.555. What do we get back? A %bond, which is handled in
+++pour...
+
+We do some basic path manipulation (for reasons I don't really know)
+>>>>>>>
+> ++  pour
+>   |=  [way=path sih=sign]
+>   ^-  [(list move) _+>]
+>   ~&  [%iris-over-gall sih]
+>   ?>  ?=(%i -.sih) 
+>   ?>  ?=([@ @ ~] way)
+>   ?-  +<.sih 
+>  :::::::::::::::
+>     %bond  [~ +>(p.vat p.sih)]
+
+Okay, so the first event we handle from back from ames is the
+[%bond (unit dock) port]. You can see that what we do is set the dock
+in our state to the dock that we get back. The port is just useful auxilarly
+info.
+
+What is a ++dock? Simply a [por=@ soc=@]. Don't worry about what soc=@ is.
+Thats for %iris to deal with. por=@ is just a port. Semantically a ++dock is
+just a bound socket, with the port for your convenience.
+>>>>>>>
+>     %tock  [~ +>]
+
+This event never happens in this app, but its a good idea to describe this
+anyway. A ++tock is similar to a ++dock, but its a [lan=lant soc=@]. A ++lant
+is a port and ip address, in other words, a tcp endpoint... This is the event
+that we would get back if we called [%conn lant], which connects to an
+endpoint.
+>>>>>>>
+>     %done  [~ +>]
+
+This event means that a tock has closed. We don't really need to do
+anything... Of course, its [%done tock].
+>>>>>>>
+>     %gone  :_  +>  :_  ~
+>            =+  ost=(slav %ud i.t.way)
+>            [ost %pass [%mess (scot %ud ost) ~] %i %bind 5.555]
+
+This is the analagous event for docks as %done. In other words, [%gone dock].
+But what are we doing here? It sure looks like we are doing a %bind. Why is
+this good behavior? For one, theres almost no circumstances where the socket
+would close outside of us shutting down vere. Unless we told it to. Really, we
+should be seeing if we sent a %stop event, and if we didn't then we should
+rebind. But this is just a simple app, so we rebind every time.
+
+What this means is that when we restart vere, vere will send is a %gone for
+our dock (as well as a %done for every tock we have). Then we rebind, and the
+tcp server is still live.
+>>>>>>>
+>     %hear  :_  +>  :_  ~
+>            ?:  =("drop" (scag 4 (trip q.sih))) ::  newlin
+>              [(slav %ud i.t.way) %pass ~ %i %drop p.sih]
+>            ?:  =("stop" (scag 4 (trip q.sih)))
+>              [(slav %ud i.t.way) %pass ~ %i %stop (need p.vat)]
+>            [(slav %ud i.t.way) %pass ~ %i %send p.sih q.sih]
+
+The event [%hear tock @] tells us that we heard a message from a socket. In
+this case, we just echo it back with %send. Unless its "drop" or "stop", in
+which case we send the special events, so we can drop clients that way. Of
+course, when we send the "stop", the bind just restarts, because of the above
+event when it gets a %gone.
+>>>>>>>
+>     %sent  [~ +>]
+
+A [%sent tock @] means that a message to a socket went over the wire
+successfully. We ignore it.
+>>>>>>>
+>     %tick  [~ +>]
+
+Now, you might have been wondering where the tocks are coming from if we never
+send a %conn. The answer is that they are created automatically whenever we
+accept something from the dock we created with %bind (naturally, %conn doesn't
+require us to have a dock). Hence, %conn is used for clients, and %bind for
+servers.
+
+The [%tick dock tock] event means that we accepted a dock from a dock. If we
+are using multiple docks (a weird thing to do), we should record which dock
+the tock originated from. Of course, we don't do anything that silly, so we
+don't.
+>>>>>>>
+>   ==
+> :: 
+> --
+
+And done.
