@@ -42,11 +42,11 @@
   =+  ^=  cow
       |-  ^-  @ud
       ?-  ran
-        %czar  256
-        %king  (mul 255 $(ran %czar))
-        %duke  (mul 65.535 $(ran %king))
-        %earl  (mul (dec (bex 32)) $(ran %duke))
-        %pawn  (sub (bex 128) $(ran %earl))
+        %czar  (bex 8)
+        %king  (mul (bex 8) (dec (bex 8)))
+        %duke  (mul (bex 16) (dec (bex 16)))
+        %earl  (mul (bex 32) (dec (bex 32)))
+        %pawn  (mul (bex 64) (dec (bex 64)))
       ==
   =+  ^=  ves  ^-  tape
       ?-  ran
